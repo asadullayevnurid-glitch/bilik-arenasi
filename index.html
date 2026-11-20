@@ -18,7 +18,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid #ede9fe;
       padding: 10px 16px;
@@ -80,23 +80,17 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
     }
     .nav-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
     }
-    .nav-btn:active {
-      transform: translateY(0);
-    }
-    .pill-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      display: inline-grid;
-      place-items: center;
-      font-size: 0.72rem;
+    .wa-svg {
+      width: 17px;
+      height: 17px;
       flex-shrink: 0;
+      display: block;
     }
     .wa-channel-btn {
       background: linear-gradient(135deg, #ecfdf5, #d1fae5);
@@ -104,23 +98,15 @@
       color: #065f46;
       font-weight: 800;
     }
-    .wa-channel-btn .pill-dot {
-      background: #10b981;
-      color: #ffffff;
-    }
     .wa-chat-btn {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
+      background: linear-gradient(135deg, #25d366, #16a34a);
       border-color: #15803d;
       color: #ffffff;
       font-weight: 800;
-      box-shadow: 0 6px 14px rgba(22, 163, 74, 0.24);
+      box-shadow: 0 6px 14px rgba(22, 163, 74, 0.26);
     }
     .wa-chat-btn:hover {
-      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.34);
-    }
-    .wa-chat-btn .pill-dot {
-      background: rgba(255, 255, 255, 0.24);
-      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.36);
     }
     .container {
       max-width: 960px;
@@ -272,7 +258,7 @@
     .count-pill {
       color: #4c1d95;
       background: #f3e8ff;
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 999px;
       font-weight: 800;
     }
@@ -308,13 +294,16 @@
       margin-top: 6px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       font-size: 0.76rem;
       font-weight: 700;
     }
     .quiz-contact-links a {
       color: #15803d;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
     .options-list {
       display: flex;
@@ -398,6 +387,9 @@
       color: #166534;
       font-weight: 800;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     @media (max-width: 680px) {
       .hero-features { grid-template-columns: repeat(2, 1fr); }
@@ -420,11 +412,15 @@
       </div>
       <div class="nav-actions">
         <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener" class="nav-btn wa-channel-btn">
-          <span class="pill-dot">📢</span>
+          <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true">
+            <path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/>
+          </svg>
           <span>WhatsApp Kanal</span>
         </a>
         <a href="https://wa.me/994505231121" target="_blank" rel="noopener" class="nav-btn wa-chat-btn">
-          <span class="pill-dot">💬</span>
+          <svg class="wa-svg" viewBox="0 0 32 32" fill="#ffffff" aria-hidden="true">
+            <path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/>
+          </svg>
           <span>050 523 11 21</span>
         </a>
         <button type="button" class="nav-btn" onclick="goHome()">Ana Səhifə</button>
@@ -468,8 +464,14 @@
           <div id="q-test-title" style="font-weight:800; font-size:1rem;"></div>
           <div style="font-size:0.78rem; color:#64748b; font-weight:600;">Müəllim: Nurid Əsədullayev</div>
           <div class="quiz-contact-links">
-            <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">📢 WhatsApp Kanalı</a>
-            <a href="https://wa.me/994505231121" target="_blank" rel="noopener">💬 WhatsApp: 050 523 11 21</a>
+            <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">
+              <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
+              <span>WhatsApp Kanalı</span>
+            </a>
+            <a href="https://wa.me/994505231121" target="_blank" rel="noopener">
+              <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
+              <span>050 523 11 21</span>
+            </a>
           </div>
         </div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -507,13 +509,20 @@
   <footer class="site-footer">
     <div>Müəllim: Nurid Əsədullayev — Bilik Arenası</div>
     <div class="footer-links">
-      <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">📢 WhatsApp Kanal</a>
-      <a href="https://wa.me/994505231121" target="_blank" rel="noopener">💬 050 523 11 21</a>
+      <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">
+        <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
+        <span>WhatsApp Kanal</span>
+      </a>
+      <a href="https://wa.me/994505231121" target="_blank" rel="noopener">
+        <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
+        <span>050 523 11 21</span>
+      </a>
     </div>
   </footer>
 
   <script>
-    const COUNTER_NAMESPACE = "bilik-arenasi-nurid";
+    const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
+    const COUNTER_PREFIX = "bilik_arenasi_nurid_v2";
 
     const TESTS = [
       {
@@ -690,64 +699,58 @@
     let confirmed = {};
     let visitCounts = {};
 
-    function localCountKey(testId) {
-      return `ba_count_${testId}`;
-    }
-
-    function getLocalCount(testId) {
-      const val = Number(localStorage.getItem(localCountKey(testId)) || 0);
-      return Number.isFinite(val) ? val : 0;
-    }
-
-    function setLocalCount(testId, val) {
-      localStorage.setItem(localCountKey(testId), String(Math.max(0, Number(val) || 0)));
+    function counterKey(testId) {
+      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
     }
 
     function updateVisitUI(testId) {
-      const count = visitCounts[testId] ?? getLocalCount(testId);
+      const val = visitCounts[testId];
+      const text = typeof val === "number" ? `👥 ${val} nəfər daxil olub` : "👥 Yüklənir...";
       const badgeEl = document.getElementById(`count-${testId}`);
-      if (badgeEl) {
-        badgeEl.textContent = `👥 ${count} nəfər daxil olub`;
-      }
+      if (badgeEl) badgeEl.textContent = text;
+
       const quizEl = document.getElementById("q-visits");
       if (quizEl && currentTest && currentTest.id === testId) {
-        quizEl.textContent = `👥 ${count} baxış`;
+        quizEl.textContent = typeof val === "number" ? `👥 ${val} baxış` : "👥 ...";
       }
     }
 
     async function fetchVisitCount(testId) {
-      const localVal = getLocalCount(testId);
-      if (visitCounts[testId] === undefined) {
-        visitCounts[testId] = localVal;
-      }
       updateVisitUI(testId);
-
       try {
-        const res = await fetch(`https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${testId}/`);
+        const res = await fetch(`${COUNTER_BASE}/get/${counterKey(testId)}?t=${Date.now()}`, {
+          cache: "no-store"
+        });
         if (!res.ok) return;
         const data = await res.json();
-        if (typeof data.count === "number") {
-          const best = Math.max(data.count, localVal);
-          visitCounts[testId] = best;
-          setLocalCount(testId, best);
+        const num = Number(data.value);
+        if (Number.isFinite(num)) {
+          visitCounts[testId] = num;
+          updateVisitUI(testId);
+        } else {
+          visitCounts[testId] = 0;
           updateVisitUI(testId);
         }
-      } catch (_) {}
+      } catch (_) {
+        if (typeof visitCounts[testId] !== "number") visitCounts[testId] = 0;
+        updateVisitUI(testId);
+      }
     }
 
     async function incrementVisitCount(testId) {
-      const nextLocal = Math.max(visitCounts[testId] || 0, getLocalCount(testId)) + 1;
-      visitCounts[testId] = nextLocal;
-      setLocalCount(testId, nextLocal);
-      updateVisitUI(testId);
-
+      if (typeof visitCounts[testId] === "number") {
+        visitCounts[testId] += 1;
+        updateVisitUI(testId);
+      }
       try {
-        const res = await fetch(`https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${testId}/up`);
+        const res = await fetch(`${COUNTER_BASE}/hit/${counterKey(testId)}?t=${Date.now()}`, {
+          cache: "no-store"
+        });
         if (!res.ok) return;
         const data = await res.json();
-        if (typeof data.count === "number") {
-          visitCounts[testId] = data.count;
-          setLocalCount(testId, data.count);
+        const num = Number(data.value);
+        if (Number.isFinite(num)) {
+          visitCounts[testId] = num;
           updateVisitUI(testId);
         }
       } catch (_) {}
@@ -773,7 +776,7 @@
       const list = TESTS.filter(t => activeGroup === "all" || t.group === activeGroup);
       box.innerHTML = "";
       list.forEach(t => {
-        const currentCount = visitCounts[t.id] ?? getLocalCount(t.id);
+        const hasVal = typeof visitCounts[t.id] === "number";
         const div = document.createElement("div");
         div.className = "test-card";
         div.innerHTML = `
@@ -789,7 +792,7 @@
                 <span>👤 Müəllim: Nurid Əsədullayev</span>
                 <span>⏱ ${t.minutes} Dəq</span>
                 <span>📝 ${t.questions.length} Sual</span>
-                <span class="count-pill" id="count-${t.id}">👥 ${currentCount} nəfər daxil olub</span>
+                <span class="count-pill" id="count-${t.id}">${hasVal ? `👥 ${visitCounts[t.id]} nəfər daxil olub` : "👥 Yüklənir..."}</span>
               </div>
             </div>
           </div>
