@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bilik Arenası — Riyaziyyat Sınaq Platforması</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Bilik Arenası — Onlayn Sınaq Platforması</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f3f6fc;
+      --bg: #f3f0ff;
       --card: #ffffff;
-      --primary: #1d4ed8;
-      --primary-dark: #1e3a8a;
-      --accent: #0ea5e9;
+      --primary: #4c1d95;
+      --primary-dark: #2e1065;
+      --accent: #f59e0b;
       --text: #0f172a;
       --muted: #475569;
+      --border: #ddd6fe;
       --ok: #15803d;
       --ok-bg: #dcfce7;
       --bad: #b91c1c;
       --bad-bg: #fee2e2;
-      --border: #cbd5e1;
     }
     * { box-sizing: border-box; }
     body {
@@ -28,27 +28,48 @@
       color: var(--text);
       line-height: 1.5;
     }
-    header {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
-      color: #fff;
-      padding: 22px 16px;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.2);
+    .container {
+      max-width: 880px;
+      margin: 18px auto 40px;
+      padding: 0 14px;
     }
-    header h1 { margin: 0 0 6px; font-size: 1.75rem; font-weight: 800; }
-    header p { margin: 0; font-size: 0.92rem; opacity: 0.96; }
-    .container { max-width: 860px; margin: 20px auto; padding: 0 14px 36px; }
+    .hero-banner {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(46, 16, 101, 0.22);
+      border: 2px solid #c4b5fd;
+      background: #2e1065;
+      margin-bottom: 14px;
+    }
+    .hero-banner img {
+      display: block;
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+    }
+    .teacher-bar {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+    }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 4px 16px rgba(46, 16, 101, 0.06);
       margin-bottom: 16px;
     }
     .grid-grades {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
       gap: 10px;
       margin-top: 14px;
     }
@@ -56,7 +77,7 @@
       padding: 12px 8px;
       border: 2px solid var(--border);
       border-radius: 12px;
-      background: #f8fafc;
+      background: #faf5ff;
       font-family: inherit;
       font-weight: 700;
       font-size: 0.92rem;
@@ -65,7 +86,7 @@
     }
     .grade-btn.active {
       border-color: var(--primary);
-      background: #dbeafe;
+      background: #ede9fe;
       color: var(--primary-dark);
     }
     .btn {
@@ -76,10 +97,16 @@
       padding: 12px 20px;
       font-family: inherit;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       cursor: pointer;
     }
     .btn:hover { background: var(--primary-dark); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-confirm {
+      background: #6d28d9;
+      color: #fff;
+    }
+    .btn-confirm:hover { background: #4c1d95; }
     .btn-secondary {
       background: #e2e8f0;
       color: var(--text);
@@ -103,14 +130,19 @@
     .q-img {
       display: block;
       max-width: 100%;
-      max-height: 280px;
+      max-height: 270px;
       margin: 12px auto;
       border-radius: 10px;
       border: 1px solid var(--border);
     }
-    .options { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0;
+    }
     .option {
-      border: 2px solid var(--border);
+      border: 2px solid #cbd5e1;
       border-radius: 12px;
       padding: 12px 14px;
       text-align: left;
@@ -119,19 +151,45 @@
       font-size: 0.95rem;
       cursor: pointer;
     }
-    .option.selected {
+    .option.picked {
       border-color: var(--primary);
-      background: #dbeafe;
+      background: #f3e8ff;
       font-weight: 700;
     }
-    .explain {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: #f8fafc;
-      border-left: 4px solid var(--primary);
-      font-size: 0.9rem;
+    .option.correct {
+      border-color: var(--ok);
+      background: var(--ok-bg);
+      color: var(--ok);
+      font-weight: 800;
     }
+    .option.wrong {
+      border-color: var(--bad);
+      background: var(--bad-bg);
+      color: var(--bad);
+      font-weight: 800;
+    }
+    .feedback-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      border-left: 5px solid var(--primary);
+      background: #f8fafc;
+    }
+    .feedback-box.ok {
+      border-left-color: var(--ok);
+      background: #f0fdf4;
+    }
+    .feedback-box.bad {
+      border-left-color: var(--bad);
+      background: #fef2f2;
+    }
+    .status-tag {
+      font-weight: 800;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+    .status-tag.ok { color: var(--ok); }
+    .status-tag.bad { color: var(--bad); }
     .nav-row {
       display: flex;
       justify-content: space-between;
@@ -140,19 +198,26 @@
       flex-wrap: wrap;
     }
     .hidden { display: none; }
-    footer { text-align: center; color: var(--muted); font-size: 0.84rem; margin-top: 16px; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-top: 18px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Bilik Arenası</h1>
-    <p>1–11-ci siniflər üzrə onlayn riyaziyyat sınaq platforması • Müəllim: Nurid Əsədullayev</p>
-  </header>
-
   <div class="container">
+    <div class="hero-banner">
+      <img src="banner.png" alt="Bilik Arenası — Onlayn Sınaq Platforması" />
+    </div>
+    <div class="teacher-bar">Müəllim: Nurid Əsədullayev</div>
+
     <div id="start-screen" class="card">
       <h2 style="margin:0;">Sinif seçin və sınağa başlayın</h2>
-      <p style="color:var(--muted); margin:6px 0 0;">Hər sınaq 20 sual, 40 dəqiqə vaxt və ətraflı izahlarla tərtib olunub.</p>
+      <p style="color:var(--muted); margin:6px 0 0;">
+        Variantı seçib <strong>Təsdiqlə</strong> düyməsinə basın: cavab düz olsa yaşıl, səhv olsa qırmızı rənglənəcək və izahı görünəcək.
+      </p>
       <div class="grid-grades" id="grade-list"></div>
       <div style="margin-top:18px;">
         <button type="button" class="btn" id="start-btn">Sınağa başla</button>
@@ -168,7 +233,16 @@
       <h3 id="q-text" style="margin:10px 0 0; font-size:1.08rem;"></h3>
       <img id="q-img" class="q-img hidden" alt="Sual şəkli" />
       <div class="options" id="options-box"></div>
-      <div id="instant-explain" class="explain hidden"></div>
+
+      <div style="margin-top:8px;">
+        <button type="button" class="btn btn-confirm" id="confirm-btn">Cavabı təsdiqlə</button>
+      </div>
+
+      <div id="feedback-box" class="feedback-box hidden">
+        <div id="status-tag" class="status-tag"></div>
+        <div id="explain-text"></div>
+      </div>
+
       <div class="nav-row">
         <button type="button" class="btn btn-secondary" id="prev-btn">Əvvəlki</button>
         <button type="button" class="btn" id="next-btn">Növbəti</button>
@@ -177,31 +251,19 @@
     </div>
 
     <div id="result-screen" class="card hidden">
-      <h2 style="margin:0;">Nəticəniz</h2>
-      <p id="score-summary" style="font-size:1.1rem; font-weight:700; margin:10px 0 14px;"></p>
+      <h2 style="margin:0;">Sınağın yekun nəticəsi</h2>
+      <p id="score-summary" style="font-size:1.1rem; font-weight:800; margin:10px 0 14px;"></p>
       <div id="review-box"></div>
       <div style="margin-top:18px;">
         <button type="button" class="btn" id="restart-btn">Ana səhifəyə qayıt</button>
       </div>
     </div>
+
+    <footer>Bilik Arenası • Müəllim: Nurid Əsədullayev</footer>
   </div>
 
-  <footer>Bilik Arenası • Riyaziyyat Sınaq Portalı</footer>
-
   <script>
-    // Şəkil əlavə etmək üçün sual obyektinə img: "şəkil_ünvanı" yazın (məsələn: img: "images/1.png")
-    const customQuestions = {
-      // Nümunə:
-      // 5: [
-      //   {
-      //     q: "Şəkildəki düzbucaqlının sahəsini tapın.",
-      //     img: "images/duzbucaqli.png",
-      //     options: ["12 sm²", "15 sm²", "18 sm²", "20 sm²"],
-      //     answer: "15 sm²",
-      //     explain: "Sahə S = a · b düsturu ilə hesablanır."
-      //   }
-      // ]
-    };
+    const customQuestions = {};
 
     function buildQuestionsForGrade(grade) {
       if (Array.isArray(customQuestions[grade]) && customQuestions[grade].length > 0) {
@@ -211,20 +273,16 @@
       for (let i = 1; i <= 20; i++) {
         const a = i * 2 + grade;
         const b = i + 3;
-        const ans = a + b;
-        const opts = [
-          String(ans),
-          String(ans + 2),
-          String(Math.max(1, ans - 2)),
-          String(ans + 4)
-        ].sort((x, y) => x.localeCompare(y));
+        const ans = String(a + b);
+        const opts = [ans, String(a + b + 2), String(Math.max(1, a + b - 2)), String(a + b + 4)]
+          .sort((x, y) => Number(x) - Number(y));
 
         list.push({
-          q: `${grade}-ci sinif — Sual ${i}: ${a} + ${b} cəmini tapın.`,
+          q: `${grade}-ci sinif — Sual ${i}: ${a} + ${b} ifadəsinin qiymətini tapın.`,
           img: "",
           options: opts,
-          answer: String(ans),
-          explain: `${a} + ${b} = ${ans} olur.`
+          answer: ans,
+          explain: `${a} + ${b} = ${ans} edir.`
         });
       }
       return list;
@@ -233,7 +291,8 @@
     let selectedGrade = 5;
     let questions = [];
     let currentIdx = 0;
-    let userAnswers = {};
+    let pickedAnswers = {};
+    let confirmedAnswers = {};
     let secondsLeft = 40 * 60;
     let timerInterval = null;
 
@@ -264,14 +323,15 @@
     function startQuiz() {
       questions = buildQuestionsForGrade(selectedGrade);
       currentIdx = 0;
-      userAnswers = {};
+      pickedAnswers = {};
+      confirmedAnswers = {};
       secondsLeft = 40 * 60;
 
       startScreen.classList.add("hidden");
       resultScreen.classList.add("hidden");
       quizScreen.classList.remove("hidden");
-
       document.getElementById("q-grade-label").textContent = `${selectedGrade}-ci sinif`;
+
       renderQuestion();
 
       clearInterval(timerInterval);
@@ -288,6 +348,9 @@
 
     function renderQuestion() {
       const item = questions[currentIdx];
+      const picked = pickedAnswers[currentIdx];
+      const isConfirmed = Boolean(confirmedAnswers[currentIdx]);
+
       document.getElementById("q-progress").textContent = `Sual ${currentIdx + 1} / ${questions.length}`;
       document.getElementById("q-text").textContent = item.q;
 
@@ -306,21 +369,51 @@
       item.options.forEach(opt => {
         const b = document.createElement("button");
         b.type = "button";
-        b.className = "option" + (userAnswers[currentIdx] === opt ? " selected" : "");
+        b.className = "option";
         b.textContent = opt;
-        b.addEventListener("click", () => {
-          userAnswers[currentIdx] = opt;
-          renderQuestion();
-        });
+
+        if (!isConfirmed) {
+          if (picked === opt) b.classList.add("picked");
+          b.addEventListener("click", () => {
+            pickedAnswers[currentIdx] = opt;
+            renderQuestion();
+          });
+        } else {
+          b.disabled = true;
+          if (opt === item.answer) {
+            b.classList.add("correct");
+          } else if (picked === opt && picked !== item.answer) {
+            b.classList.add("wrong");
+          }
+        }
         optionsBox.appendChild(b);
       });
 
-      const expEl = document.getElementById("instant-explain");
-      if (userAnswers[currentIdx]) {
-        expEl.classList.remove("hidden");
-        expEl.textContent = `İzah: ${item.explain}`;
+      const confirmBtn = document.getElementById("confirm-btn");
+      confirmBtn.disabled = !picked || isConfirmed;
+      confirmBtn.textContent = isConfirmed ? "Təsdiqlənib" : "Cavabı təsdiqlə";
+
+      const feedbackBox = document.getElementById("feedback-box");
+      const statusTag = document.getElementById("status-tag");
+      const explainText = document.getElementById("explain-text");
+
+      if (isConfirmed) {
+        const isCorrect = picked === item.answer;
+        feedbackBox.classList.remove("hidden", "ok", "bad");
+        statusTag.classList.remove("ok", "bad");
+
+        if (isCorrect) {
+          feedbackBox.classList.add("ok");
+          statusTag.classList.add("ok");
+          statusTag.textContent = "✓ Düzgün cavab";
+        } else {
+          feedbackBox.classList.add("bad");
+          statusTag.classList.add("bad");
+          statusTag.textContent = `✕ Səhv cavab (Düzgün cavab: ${item.answer})`;
+        }
+        explainText.textContent = `İzah: ${item.explain}`;
       } else {
-        expEl.classList.add("hidden");
+        feedbackBox.classList.add("hidden");
       }
 
       document.getElementById("prev-btn").disabled = currentIdx === 0;
@@ -328,6 +421,12 @@
       document.getElementById("next-btn").classList.toggle("hidden", isLast);
       document.getElementById("finish-btn").classList.toggle("hidden", !isLast);
     }
+
+    document.getElementById("confirm-btn").addEventListener("click", () => {
+      if (!pickedAnswers[currentIdx]) return;
+      confirmedAnswers[currentIdx] = true;
+      renderQuestion();
+    });
 
     function finishQuiz() {
       clearInterval(timerInterval);
@@ -339,17 +438,17 @@
       reviewBox.innerHTML = "";
 
       questions.forEach((item, idx) => {
-        const picked = userAnswers[idx];
+        const picked = pickedAnswers[idx];
         const isCorrect = picked === item.answer;
         if (isCorrect) correctCount++;
 
         const div = document.createElement("div");
-        div.className = "explain";
-        div.style.borderLeftColor = isCorrect ? "#15803d" : "#b91c1c";
+        div.className = "feedback-box " + (isCorrect ? "ok" : "bad");
         div.innerHTML = `
-          <div><strong>${idx + 1}.</strong> ${item.q}</div>
+          <div class="status-tag ${isCorrect ? "ok" : "bad"}">${idx + 1}. ${isCorrect ? "✓ Düzgün" : "✕ Səhv"}</div>
+          <div>${item.q}</div>
           <div style="margin-top:6px;">Sizin cavabınız: <strong>${picked || "Cavab verilməyib"}</strong> | Düzgün cavab: <strong>${item.answer}</strong></div>
-          <div style="margin-top:4px; color:var(--muted);">İzah: ${item.explain}</div>
+          <div style="margin-top:4px;">İzah: ${item.explain}</div>
         `;
         reviewBox.appendChild(div);
       });
