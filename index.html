@@ -290,6 +290,21 @@
       border-radius: 18px;
       padding: 20px;
     }
+    .timer-pill {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+    .timer-pill.warning {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #b91c1c;
+    }
     .quiz-contact-links {
       margin-top: 6px;
       display: flex;
@@ -475,6 +490,7 @@
           </div>
         </div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div id="q-timer" class="timer-pill">⏱ 60:00</div>
           <div id="q-visits" style="background:#f3e8ff; color:#4c1d95; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
           <div id="q-progress" style="background:#ede9fe; color:#2e1065; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
         </div>
@@ -698,6 +714,53 @@
     let picked = {};
     let confirmed = {};
     let visitCounts = {};
+    let remainingSeconds = 0;
+    let timerInterval = null;
+    let quizFinished = false;
+
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
+
+    function formatTime(sec) {
+      const safeSec = Math.max(0, Number(sec) || 0);
+      const mins = Math.floor(safeSec / 60);
+      const secs = safeSec % 60;
+      return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    }
+
+    function updateTimerUI() {
+      const el = document.getElementById("q-timer");
+      if (!el) return;
+      el.textContent = `⏱ ${formatTime(remainingSeconds)}`;
+      if (remainingSeconds <= 300) {
+        el.classList.add("warning");
+      } else {
+        el.classList.remove("warning");
+      }
+    }
+
+    function startTimer(minutes) {
+      stopTimer();
+      remainingSeconds = Math.max(1, Number(minutes) || 60) * 60;
+      updateTimerUI();
+
+      timerInterval = setInterval(() => {
+        if (remainingSeconds > 0) {
+          remainingSeconds -= 1;
+          updateTimerUI();
+        }
+        if (remainingSeconds <= 0) {
+          stopTimer();
+          if (!quizFinished && currentTest) {
+            finishQuiz(true);
+          }
+        }
+      }, 1000);
+    }
 
     function counterKey(testId) {
       return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
@@ -757,7 +820,9 @@
     }
 
     function goHome() {
+      stopTimer();
       currentTest = null;
+      quizFinished = false;
       document.getElementById("home-view").style.display = "block";
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
@@ -809,11 +874,13 @@
       qIdx = 0;
       picked = {};
       confirmed = {};
+      quizFinished = false;
       document.getElementById("home-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
       document.getElementById("q-test-title").textContent = currentTest.title;
       fetchVisitCount(currentTest.id);
+      startTimer(currentTest.minutes);
       renderQuestion();
     }
 
@@ -887,8 +954,12 @@
       if (qIdx < currentTest.questions.length - 1) { qIdx++; renderQuestion(); }
     }
 
-    function finishQuiz() {
+    function finishQuiz(byTimeout = false) {
+      if (quizFinished || !currentTest) return;
+      quizFinished = true;
+      stopTimer();
       incrementVisitCount(currentTest.id);
+
       let score = 0;
       const list = document.getElementById("result-list");
       list.innerHTML = "";
@@ -906,7 +977,9 @@
         `;
         list.appendChild(div);
       });
-      document.getElementById("result-summary").textContent = `${currentTest.title} — ${score} / ${currentTest.questions.length} düzgün`;
+
+      const timeoutNote = byTimeout ? " (Vaxt bitdiyi üçün avtomatik yekunlaşdırıldı)" : "";
+      document.getElementById("result-summary").textContent = `${currentTest.title} — ${score} / ${currentTest.questions.length} düzgün${timeoutNote}`;
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "block";
     }
