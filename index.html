@@ -109,80 +109,410 @@
       text-align: center;
     }
     .hero-features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+    .num-badge-tag {
+      margin-top: 4px;
+      display: inline-block;
+      background: #22c55e;
+      color: #ffffff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 999px;
     }
-    .hero-pill {
-      background: #ffffff;
-      color: #2e1065;
-      border-radius: 14px;
-      padding: 10px 8px;
-      text-align: center;
-      font-size: 0.76rem;
+    .test-title {
+      margin: 0 0 6px;
+      font-size: 1rem;
       font-weight: 800;
     }
-    .section-title {
-      margin: 24px 0 2px;
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-    .section-sub {
-      margin: 0 0 14px;
-      font-size: 0.84rem;
+    .test-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
       color: #64748b;
       font-weight: 600;
     }
-    .filter-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    .filter-btn {
-      border: 1px solid #e2e8f0;
-      background: #ffffff;
-      color: #0f172a;
-      border-radius: 999px;
-      padding: 7px 14px;
+    .btn-purple {
+      background: #5b21b6;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 11px 18px;
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-gray {
+      background: #e2e8f0;
+      color: #0f172a;
+      border: none;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-family: inherit;
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
     }
-    .filter-btn.active {
-      background: #5b21b6;
-      border-color: #5b21b6;
-      color: #ffffff;
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid #ddd6fe;
+      border-radius: 18px;
+      padding: 20px;
     }
-    .test-list {
+    .options-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
+      margin: 16px 0;
     }
-    .test-card {
+    .opt-btn {
+      width: 100%;
+      text-align: left;
+      border: 2px solid #cbd5e1;
       background: #ffffff;
-      border: 1px solid #e9d5ff;
-      border-radius: 18px;
-      padding: 16px;
+      color: #0f172a;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .opt-btn.picked {
+      border-color: #5b21b6;
+      background: #f5f3ff;
+    }
+    .opt-btn.correct {
+      border-color: #15803d;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 800;
+    }
+    .opt-btn.wrong {
+      border-color: #b91c1c;
+      background: #fee2e2;
+      color: #b91c1c;
+      font-weight: 800;
+    }
+    .explain-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      border-left: 5px solid #5b21b6;
+      background: #f8fafc;
+    }
+    .explain-box.ok {
+      border-left-color: #15803d;
+      background: #f0fdf4;
+    }
+    .explain-box.bad {
+      border-left-color: #b91c1c;
+      background: #fef2f2;
+    }
+    .nav-bar {
+      margin-top: 18px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .test-card-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    @media (max-width: 680px) {
+      .hero-features { grid-template-columns: repeat(2, 1fr); }
+      .test-card { flex-direction: column; align-items: stretch; }
+      .btn-purple { width: 100%; }
     }
-    .num-badge {
-      flex-shrink: 0;
-      width: 68px;
-      border-radius: 14px;
-      background: #4c1d95;
-      color: #ffffff;
-      padding: 10px 6px;
-      text-align: center;
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" onclick="goHome()">
+        <div class="brand-icon">BA</div>
+        <div>
+          <div class="brand-title">BİLİK ARENASI</div>
+          <div class="brand-sub">Onlayn Sınaq Platforması</div>
+        </div>
+      </div>
+      <button type="button" class="nav-btn" onclick="goHome()">Ana Səhifə</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="home-view">
+      <div class="hero-card">
+        <div class="hero-title-box">
+          <h1 class="hero-main-title">BİLİK ARENASI</h1>
+          <div class="hero-sub-line">ONLAYN SINAQ PLATFORMASI</div>
+        </div>
+        <div class="hero-motto">Biliklərini sına, nəticəni gör, uğura doğru irəlilə!</div>
+        <div class="hero-features">
+          <div class="hero-pill">1–11 Siniflər</div>
+          <div class="hero-pill">Müxtəlif Sınaqlar</div>
+          <div class="hero-pill">Ani Nəticə</div>
+          <div class="hero-pill">Uğur Səninlədir!</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Sınaqlar</h2>
+      <p class="section-sub">1–11-ci siniflər üzrə riyaziyyat sınaq imtahanları</p>
+
+      <div class="filter-row">
+        <button type="button" class="filter-btn active" onclick="setFilter('all', this)">Hamısı</button>
+        <button type="button" class="filter-btn" onclick="setFilter('1-4', this)">1–4 Sinif</button>
+        <button type="button" class="filter-btn" onclick="setFilter('5-7', this)">5–7 Sinif</button>
+        <button type="button" class="filter-btn" onclick="setFilter('8-9', this)">8–9 Sinif</button>
+        <button type="button" class="filter-btn" onclick="setFilter('10-11', this)">10–11 Sinif</button>
+      </div>
+
+      <div class="test-list" id="test-list"></div>
+    </div>
+
+    <div id="quiz-view" class="quiz-card" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding-bottom:12px; border-bottom:1px solid #e2e8f0;">
+        <div>
+          <div id="q-test-title" style="font-weight:800; font-size:1rem;"></div>
+          <div style="font-size:0.78rem; color:#64748b; font-weight:600;">Müəllim: Nurid Əsədullayev</div>
+        </div>
+        <div id="q-progress" style="background:#ede9fe; color:#2e1065; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
+      </div>
+
+      <h3 id="q-text" style="margin:16px 0 6px; font-size:1.05rem;"></h3>
+      <div class="options-list" id="q-options"></div>
+
+      <button type="button" class="btn-purple" id="btn-confirm" onclick="confirmAnswer()">Cavabı təsdiqlə</button>
+
+      <div id="q-explain" class="explain-box" style="display:none;"></div>
+
+      <div class="nav-bar">
+        <button type="button" class="btn-gray" id="btn-prev" onclick="prevQuestion()">Əvvəlki</button>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn-purple" id="btn-next" onclick="nextQuestion()">Növbəti</button>
+          <button type="button" class="btn-purple" id="btn-finish" onclick="finishQuiz()" style="display:none;">Sınağı bitir</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-view" class="quiz-card" style="display:none;">
+      <h2 style="margin:0 0 8px;">Nəticə</h2>
+      <div id="result-summary" style="font-size:1.05rem; font-weight:800; color:#2e1065; margin-bottom:14px;"></div>
+      <div id="result-list"></div>
+      <div style="margin-top:16px;">
+        <button type="button" class="btn-purple" onclick="goHome()">Ana səhifəyə qayıt</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const TESTS = [
+      {
+        id: "t1",
+        num: "№1",
+        title: "Sınaq №1 — Natural ədədlər və əməllər (5-ci sinif)",
+        group: "5-7",
+        minutes: 30,
+        questions: [
+          {
+            q: "345 + 278 ifadəsinin qiymətini tapın.",
+            options: ["A) 613", "B) 623", "C) 633", "D) 523"],
+            answer: "B) 623",
+            explain: "345 + 278 = 623 edir."
+          },
+          {
+            q: "120 ədədini 15-ə böldükdə qismət neçə olar?",
+            options: ["A) 6", "B) 7", "C) 8", "D) 9"],
+            answer: "C) 8",
+            explain: "8 · 15 = 120 olduğu üçün cavab 8-dir."
+          }
+        ]
+      },
+      {
+        id: "t2",
+        num: "№2",
+        title: "Sınaq №2 — Adi və onluq kəsrlər (6-cı sinif)",
+        group: "5-7",
+        minutes: 30,
+        questions: [
+          {
+            q: "0,5 + 0,25 cəmini tapın.",
+            options: ["A) 0,30", "B) 0,75", "C) 0,85", "D) 1,25"],
+            answer: "B) 0,75",
+            explain: "0,50 + 0,25 = 0,75 edir."
+          }
+        ]
+      },
+      {
+        id: "t3",
+        num: "№3",
+        title: "Sınaq №3 — Üçbucaqlar: İtibucaqlı və korbucaqlı üçbucaqlar (7–8-ci sinif)",
+        group: "8-9",
+        minutes: 30,
+        questions: [
+          {
+            q: "Üçbucağın daxili bucaqlarının cəmi neçə dərəcədir?",
+            options: ["A) 90°", "B) 180°", "C) 270°", "D) 360°"],
+            answer: "B) 180°",
+            explain: "Üçbucağın daxili bucaqlarının cəmi 180°-dir."
+          }
+        ]
+      }
+    ];
+
+    let activeGroup = "all";
+    let currentTest = null;
+    let qIdx = 0;
+    let picked = {};
+    let confirmed = {};
+
+    function goHome() {
+      document.getElementById("home-view").style.display = "block";
+      document.getElementById("quiz-view").style.display = "none";
+      document.getElementById("result-view").style.display = "none";
+      renderTests();
     }
-    .num-badge-main {
-      font-size: 
+
+    function setFilter(group, el) {
+      activeGroup = group;
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      el.classList.add("active");
+      renderTests();
+    }
+
+    function renderTests() {
+      const box = document.getElementById("test-list");
+      const list = TESTS.filter(t => activeGroup === "all" || t.group === activeGroup);
+      box.innerHTML = "";
+      list.forEach(t => {
+        const div = document.createElement("div");
+        div.className = "test-card";
+        div.innerHTML = `
+          <div class="test-card-left">
+            <div class="num-badge">
+              <div style="font-size:0.65rem; opacity:0.85;">Sınaq</div>
+              <div class="num-badge-main">${t.num}</div>
+              <div class="num-badge-tag">ÖDƏNİŞSİZ</div>
+            </div>
+            <div>
+              <h3 class="test-title">${t.title}</h3>
+              <div class="test-meta">
+                <span>👤 Müəllim: Nurid Əsədullayev</span>
+                <span>⏱ ${t.minutes} Dəq</span>
+                <span>📝 ${t.questions.length} Sual</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-purple" onclick="startQuiz('${t.id}')">Testə Başla ▶</button>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function startQuiz(id) {
+      currentTest = TESTS.find(t => t.id === id);
+      if (!currentTest) return;
+      qIdx = 0;
+      picked = {};
+      confirmed = {};
+      document.getElementById("home-view").style.display = "none";
+      document.getElementById("result-view").style.display = "none";
+      document.getElementById("quiz-view").style.display = "block";
+      document.getElementById("q-test-title").textContent = currentTest.title;
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const item = currentTest.questions[qIdx];
+      const userPick = picked[qIdx];
+      const isDone = Boolean(confirmed[qIdx]);
+
+      document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${currentTest.questions.length}`;
+      document.getElementById("q-text").textContent = item.q;
+
+      const optBox = document.getElementById("q-options");
+      optBox.innerHTML = "";
+
+      item.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "opt-btn";
+        btn.textContent = opt;
+        if (!isDone) {
+          if (userPick === opt) btn.classList.add("picked");
+          btn.onclick = () => {
+            picked[qIdx] = opt;
+            renderQuestion();
+          };
+        } else {
+          btn.disabled = true;
+          if (opt === item.answer) btn.classList.add("correct");
+          else if (userPick === opt) btn.classList.add("wrong");
+        }
+        optBox.appendChild(btn);
+      });
+
+      const confBtn = document.getElementById("btn-confirm");
+      confBtn.disabled = !userPick || isDone;
+      confBtn.textContent = isDone ? "Təsdiqlənib" : "Cavabı təsdiqlə";
+
+      const expBox = document.getElementById("q-explain");
+      if (isDone) {
+        const ok = userPick === item.answer;
+        expBox.style.display = "block";
+        expBox.className = "explain-box " + (ok ? "ok" : "bad");
+        expBox.innerHTML = `
+          <div style="font-weight:800; color:${ok ? "#15803d" : "#b91c1c"};">
+            ${ok ? "✓ Düzgün cavab" : "✕ Səhv cavab (Düzgün cavab: " + item.answer + ")"}
+          </div>
+          <div style="margin-top:4px;">İzah: ${item.explain}</div>
+        `;
+      } else {
+        expBox.style.display = "none";
+      }
+
+      document.getElementById("btn-prev").disabled = qIdx === 0;
+      const last = qIdx === currentTest.questions.length - 1;
+      document.getElementById("btn-next").style.display = last ? "none" : "inline-block";
+      document.getElementById("btn-finish").style.display = last ? "inline-block" : "none";
+    }
+
+    function confirmAnswer() {
+      if (!picked[qIdx]) return;
+      confirmed[qIdx] = true;
+      renderQuestion();
+    }
+
+    function prevQuestion() {
+      if (qIdx > 0) { qIdx--; renderQuestion(); }
+    }
+
+    function nextQuestion() {
+      if (qIdx < currentTest.questions.length - 1) { qIdx++; renderQuestion(); }
+    }
+
+    function finishQuiz() {
+      let score = 0;
+      const list = document.getElementById("result-list");
+      list.innerHTML = "";
+      currentTest.questions.forEach((item, idx) => {
+        const ok = picked[idx] === item.answer;
+        if (ok) score++;
+        const div = document.createElement("div");
+        div.className = "explain-box " + (ok ? "ok" : "bad");
+        div.style.marginBottom = "10px";
+        div.innerHTML = `
+          <div style="font-weight:800;">${idx + 1}. ${ok ? "✓ Düzgün" : "✕ Səhv"}</div>
+          <div>${item.q}</div>
+          <div style="margin-top:4px;">Seçiminiz: <strong>${picked[idx] || "Seçilməyib"}</strong> | Doğru: <strong>${item.answer}</strong></div>
+          <div>İzah: ${item.explain}</div>
+        `;
+        list.appendChild(div);
+      });
+      document.getElementById("result-summary").textContent = `${currentTest.title} — ${score} / ${currentTest.questions.length} düzgün`;
+      document.getElementById("quiz-view").style.display = "none";
+      document.getElementById("result-view").style.display = "block";
+    }
+
+    renderTests();
+  </script>
+</body>
+</html>
