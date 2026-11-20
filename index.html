@@ -522,7 +522,7 @@
 
   <script>
     const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
-    const COUNTER_PREFIX = "bilik_arenasi_nurid_v2";
+    const COUNTER_PREFIX = "bilik_arenasi_istirak_v3";
 
     const TESTS = [
       {
@@ -703,20 +703,27 @@
       return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
     }
 
+    function getCountValue(testId) {
+      return typeof visitCounts[testId] === "number" ? visitCounts[testId] : 0;
+    }
+
     function updateVisitUI(testId) {
-      const val = visitCounts[testId];
-      const text = typeof val === "number" ? `👥 ${val} nəfər daxil olub` : "👥 Yüklənir...";
+      const val = getCountValue(testId);
       const badgeEl = document.getElementById(`count-${testId}`);
-      if (badgeEl) badgeEl.textContent = text;
+      if (badgeEl) badgeEl.textContent = `👥 ${val} iştirak`;
 
       const quizEl = document.getElementById("q-visits");
       if (quizEl && currentTest && currentTest.id === testId) {
-        quizEl.textContent = typeof val === "number" ? `👥 ${val} baxış` : "👥 ...";
+        quizEl.textContent = `👥 ${val} iştirak`;
       }
     }
 
     async function fetchVisitCount(testId) {
+      if (typeof visitCounts[testId] !== "number") {
+        visitCounts[testId] = 0;
+      }
       updateVisitUI(testId);
+
       try {
         const res = await fetch(`${COUNTER_BASE}/get/${counterKey(testId)}?t=${Date.now()}`, {
           cache: "no-store"
@@ -727,21 +734,14 @@
         if (Number.isFinite(num)) {
           visitCounts[testId] = num;
           updateVisitUI(testId);
-        } else {
-          visitCounts[testId] = 0;
-          updateVisitUI(testId);
         }
-      } catch (_) {
-        if (typeof visitCounts[testId] !== "number") visitCounts[testId] = 0;
-        updateVisitUI(testId);
-      }
+      } catch (_) {}
     }
 
     async function incrementVisitCount(testId) {
-      if (typeof visitCounts[testId] === "number") {
-        visitCounts[testId] += 1;
-        updateVisitUI(testId);
-      }
+      visitCounts[testId] = getCountValue(testId) + 1;
+      updateVisitUI(testId);
+
       try {
         const res = await fetch(`${COUNTER_BASE}/hit/${counterKey(testId)}?t=${Date.now()}`, {
           cache: "no-store"
@@ -776,7 +776,7 @@
       const list = TESTS.filter(t => activeGroup === "all" || t.group === activeGroup);
       box.innerHTML = "";
       list.forEach(t => {
-        const hasVal = typeof visitCounts[t.id] === "number";
+        const val = getCountValue(t.id);
         const div = document.createElement("div");
         div.className = "test-card";
         div.innerHTML = `
@@ -792,7 +792,7 @@
                 <span>👤 Müəllim: Nurid Əsədullayev</span>
                 <span>⏱ ${t.minutes} Dəq</span>
                 <span>📝 ${t.questions.length} Sual</span>
-                <span class="count-pill" id="count-${t.id}">${hasVal ? `👥 ${visitCounts[t.id]} nəfər daxil olub` : "👥 Yüklənir..."}</span>
+                <span class="count-pill" id="count-${t.id}">👥 ${val} iştirak</span>
               </div>
             </div>
           </div>
@@ -813,7 +813,7 @@
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
       document.getElementById("q-test-title").textContent = currentTest.title;
-      incrementVisitCount(currentTest.id);
+      fetchVisitCount(currentTest.id);
       renderQuestion();
     }
 
@@ -888,6 +888,7 @@
     }
 
     function finishQuiz() {
+      incrementVisitCount(currentTest.id);
       let score = 0;
       const list = document.getElementById("result-list");
       list.innerHTML = "";
