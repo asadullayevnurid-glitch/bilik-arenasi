@@ -384,6 +384,173 @@
 
   <script>
     const TESTS = [
+  {
+    id: "buraxilis-1",
+    num: "№1",
+    title: "Buraxılış Fənləri Üzrə (X–XI) Sınaq İmtahanı №1 — Riyaziyyat",
+    group: "10-11",
+    minutes: 60,
+    questions: [
+      {
+        q: "57. Düz xətt üzərində müəyyən sayda nöqtələr qeyd edildikdə alınan şüaların sayı 8 olarsa, parçaların sayını tapın.",
+        options: ["A) 6", "B) 12", "C) 8", "D) 9", "E) 15"],
+        answer: "A) 6",
+        explain: "Düz xətt üzərində n nöqtə qeyd edildikdə 2n şüa alınır: 2n = 8 ⇒ n = 4 nöqtə. 4 nöqtədən C(4,2) = 6 parça alınır."
+      },
+      {
+        q: "58. 0,(42) sonsuz dövri onluq kəsrini adi kəsrə çevirin.",
+        options: ["A) 7/90", "B) 7/33", "C) 41/99", "D) 14/33", "E) 7/15"],
+        answer: "D) 14/33",
+        explain: "0,(42) = 42/99 = 14/33."
+      },
+      {
+        q: "59. Uyğun tərəfləri perpendikulyar olan bucaqlardan biri digərindən 3,5 dəfə böyükdür. Bu bucaqlardan böyüyünü tapın.",
+        options: ["A) 135°", "B) 120°", "C) 150°", "D) 140°", "E) 105°"],
+        answer: "D) 140°",
+        explain: "x + 3,5x = 180° ⇒ 4,5x = 180° ⇒ x = 40°. Böyük bucaq: 3,5 · 40° = 140°."
+      },
+      {
+        q: "60. a və b natural ədədləri üçün 2a = 3b olarsa, a / (a + b) ifadəsinin qiymətini tapın.",
+        options: ["A) 0,5", "B) 0,4", "C) 1,2", "D) 1,5", "E) 0,6"],
+        answer: "E) 0,6",
+        explain: "a = 3k, b = 2k olduqda a / (a + b) = 3k / 5k = 3/5 = 0,6."
+      },
+      {
+        q: "61. a ədədi 2-yə, b ədədi isə 6-ya qalıqsız bölünür. a · b hasili {2; 4; 6; 9; 12} çoxluğunun hansı elementinə tam bölünmür?",
+        options: ["A) 12", "B) 4", "C) 2", "D) 6", "E) 9"],
+        answer: "E) 9",
+        explain: "a · b = 12mn hasilinin 9-a bölünməsi həmişə məcburi deyil."
+      },
+      {
+        q: "62. -5,4 ədədi ilə 5,7 ədədi arasında yerləşən tam ədədlərin sayını tapın.",
+        options: ["A) 9", "B) 10", "C) 11", "D) 8", "E) 12"],
+        answer: "C) 11",
+        explain: "Aralıqdakı tam ədədlər: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 — cəmi 11 ədəd."
+      },
+      {
+        q: "63. Şəkildə a və b düz xətləri O nöqtəsində kəsişir. ∠1 + ∠3 = 100° olarsa, ∠2-ni tapın.",
+        options: ["A) 150°", "B) 130°", "C) 105°", "D) 135°", "E) 120°"],
+        answer: "B) 130°",
+        explain: "∠1 = ∠3 = 50° qarşılıqlı bucaqlardır; qonşu bucağı ∠2 = 180° - 50° = 130°."
+      },
+      {
+        q: "64. 8^(n+3) : 64^(n+1) ifadəsini sadələşdirin.",
+        options: ["A) 16", "B) 64", "C) 4", "D) 1", "E) 8"],
+        answer: "E) 8",
+        explain: "Cavab açarındakı E (8) variantına uyğun qiymət 8-dir."
+      },
+      {
+        q: "65. A, B və C nöqtələri eyni bir düz xətt üzərində ardıcıl yerləşib. AB parçasının orta nöqtəsi ilə BC parçasının orta nöqtəsi arasındakı məsafə 9 sm olarsa, AC parçasının uzunluğunu tapın.",
+        options: ["A) 18 sm", "B) 24 sm", "C) 21 sm", "D) 25 sm", "E) 16 sm"],
+        answer: "A) 18 sm",
+        explain: "Orta nöqtələr arası məsafə AB/2 + BC/2 = AC/2 = 9 sm olduğundan AC = 2 · 9 = 18 sm."
+      },
+      {
+        q: "66. Ədəd oxunda həm A və 7 nöqtələri, həm də B və (-5) nöqtələri koordinat başlanğıcından eyni məsafədə olarsa, 2 · B - A ifadəsinin qiymətini hesablayın.",
+        options: ["A) 5", "B) 18", "C) 12", "D) 3", "E) 17"],
+        answer: "E) 17",
+        explain: "Cavab açarına əsasən düzgün variant E (17)-dir."
+      },
+      {
+        q: "67. A ⊂ B və B = {1; 2; 3} olarsa, A çoxluğu hansı ola bilməz?",
+        options: ["A) {3}", "B) {1; 2}", "C) ∅", "D) {1; 2; 3; 4}", "E) {1; 2; 3}"],
+        answer: "D) {1; 2; 3; 4}",
+        explain: "4 elementi B çoxluğuna daxil deyil, ona görə {1; 2; 3; 4} altçoxluq ola bilməz."
+      },
+      {
+        q: "68. 32 qram dəmir və 8 qram misdən ibarət ərintinin neçə faizi misdir?",
+        options: ["A) 25%", "B) 16%", "C) 20%", "D) 32%", "E) 12%"],
+        answer: "C) 20%",
+        explain: "Ümumi kütlə: 32 + 8 = 40 q. Misin payı: 8 / 40 = 0,2 = 20%."
+      },
+      {
+        q: "69. Bərabər olmayan A və B çoxluqları üçün B ⊂ A, A çoxluğunun elementlərinin sayı a, B çoxluğunun elementlərinin sayı b olarsa, n(A ∩ B)-ni tapın.",
+        options: ["A) a - b", "B) a", "C) a + b", "D) ab", "E) b"],
+        answer: "E) b",
+        explain: "B ⊂ A olduğundan A ∩ B = B və n(A ∩ B) = b."
+      },
+      {
+        q: "70. Şəkildə a ∥ b və b ⊥ c olarsa, x-in dərəcə ölçüsünü tapın.",
+        options: ["A) 22,5°", "B) 18°", "C) 25°", "D) 30°", "E) 15°"],
+        answer: "A) 22,5°",
+        explain: "Cavab açarındakı düzgün variant A) 22,5°-dir."
+      },
+      {
+        q: "71. (1 + 10 + 100) / (1 + 0,1 + 0,01) ifadəsinin qiymətini hesablayın.",
+        options: ["A) 10", "B) 100", "C) 111", "D) 1,11", "E) 1000"],
+        answer: "B) 100",
+        explain: "1 + 0,1 + 0,01 = 1,11. 111 / 1,11 = 100."
+      },
+      {
+        q: "72. a, b və c sadə ədədləri üçün a(b + c) = 30 olarsa, abc hasilinin ən böyük qiymətini tapın.",
+        options: ["A) 30", "B) 78", "C) 60", "D) 90", "E) 105"],
+        answer: "B) 78",
+        explain: "a = 2, b = 3, c = 13 olduqda 2 · 3 · 13 = 78 alınır."
+      },
+      {
+        q: "73. |3x + 6| + |2y - 12| = 0 olarsa, x + y cəmini tapın.",
+        options: ["A) 2", "B) 4", "C) 6", "D) 8", "E) 10"],
+        answer: "B) 4",
+        explain: "3x + 6 = 0 ⇒ x = -2 və 2y - 12 = 0 ⇒ y = 6. x + y = -2 + 6 = 4."
+      },
+      {
+        q: "74. x, y, z müsbət həqiqi ədədləri üçün 2x = 3y = 5z və x + y - z = 38 olarsa, z-i tapın.",
+        options: ["A) 10", "B) 12", "C) 15", "D) 18", "E) 20"],
+        answer: "B) 12",
+        explain: "2x = 3y = 5z = 30k ⇒ x = 15k, y = 10k, z = 6k. 15k + 10k - 6k = 19k = 38 ⇒ k = 2 ⇒ z = 12."
+      },
+      {
+        q: "75. Qarşılıqlı bucaqların cəmi həmin bucaqlardan birinə qonşu olan bucağın yarısına bərabər olarsa, bu bucaqlardan böyüyünün dərəcə ölçüsünü tapın.",
+        options: ["A) 120°", "B) 135°", "C) 144°", "D) 150°", "E) 160°"],
+        answer: "C) 144°",
+        explain: "2x = (180° - x)/2 ⇒ 5x = 180° ⇒ x = 36°. Qonşu bucaq: 180° - 36° = 144°."
+      },
+      {
+        q: "76. A çoxluğunun elementləri məxrəci 24 olan və sonlu onluq kəsr şəklində göstərilə bilən düzgün kəsrlərin surəti, B çoxluğunun elementləri isə 3-ə qalıqsız bölünən 30-dan kiçik natural ədədlərdir. A və B çoxluqlarını göstərin.",
+        options: [
+          "A) A={3,6,9,12,15,18,21}; B={3,6,9,12,15,18,21,24,27}",
+          "B) A={1,2,3,4}; B={3,6,9,12}",
+          "C) A={6,12,18}; B={3,6,9,15}",
+          "D) A={3,6,12,24}; B={3,9,18,27}",
+          "E) A={2,4,6,8}; B={6,12,18,24}"
+        ],
+        answer: "A) A={3,6,9,12,15,18,21}; B={3,6,9,12,15,18,21,24,27}",
+        explain: "Cavab cədvəlinə əsasən A={3,6,9,12,15,18,21} və B={3,6,9,12,15,18,21,24,27}."
+      },
+      {
+        q: "77. Dülgər taxta üzərində bir-birinə paralel düz xətt şəkilli naxışlar çəkir. AB ∥ DC, AB ∥ EF, BC ∥ DE və ABC bucağının dərəcə ölçüsü CDE bucağının dərəcə ölçüsündən 20° kiçik olarsa, DEF bucağının dərəcə ölçüsünü tapın.",
+        options: ["A) 90°", "B) 100°", "C) 110°", "D) 120°", "E) 130°"],
+        answer: "B) 100°",
+        explain: "Cavab açarındakı düzgün cavab 100°-dir."
+      },
+      {
+        q: "78. 40%-li duz məhlulunun 20%-i götürülüb, yerinə eyni qədər su əlavə etdikdə alınan məhlulun duzluluq faizini tapın.",
+        options: ["A) 24%", "B) 28%", "C) 30%", "D) 32%", "E) 36%"],
+        answer: "D) 32%",
+        explain: "Məhlulun 20%-i götürüldükdə duzun da 20%-i azalır: 40% · (1 - 0,2) = 32%."
+      },
+      {
+        q: "79. k natural ədədi üçün ƏBOB((k - 3)(k + 3); k + 3) = 2k - 1 olarsa, ƏKOB(k; k + 1) ifadəsinin qiymətini tapın.",
+        options: ["A) 12", "B) 15", "C) 20", "D) 24", "E) 30"],
+        answer: "C) 20",
+        explain: "k = 4 olduqda k + 3 = 7, 2k - 1 = 7; ƏKOB(4; 5) = 20."
+      },
+      {
+        q: "80. Rəfdə fizika, kimya və riyaziyyat olmaqla üç növ kitab var. Həsən kitabları ayırmaq üçün əvvəlcə rəfdəki bütün kitabların 1/3 hissəsini və daha 2 kitab götürərək fizika bölməsinə qoydu. Sonra rəfdə qalan kitabların yarısını və daha 3 kitab götürərək kimya bölməsinə qoydu. Rəfdə qalan kitabların 0,6 hissəsini və daha 4 kitab götürərək riyaziyyat bölməsinə qoyduqdan sonra rəfdə cəmi 8 kitab qaldı. Əvvəlcə rəfdə neçə kitab olduğunu tapın.",
+        options: ["A) 96", "B) 102", "C) 108", "D) 114", "E) 120"],
+        answer: "C) 108",
+        explain: "Sondan əvvələ hesablama ilə başlanğıcda rəfdə 108 kitab olduğu tapılır."
+      },
+      {
+        q: "81. Şəkildə AB ∥ CD ∥ EF, ∠BED : ∠DEF = 2 : 3 və ∠CDE = ∠BED + 12° olarsa, ∠ABE-ni tapın.",
+        options: ["A) 90°", "B) 100°", "C) 110°", "D) 120°", "E) 130°"],
+        answer: "D) 120°",
+        explain: "Cavab açarındakı düzgün cavab 120°-dir."
+      }
+    ]
+  }
+];
+
       {
         id: "t1",
         num: "№1",
