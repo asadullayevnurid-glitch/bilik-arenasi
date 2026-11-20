@@ -54,6 +54,12 @@
       color: #64748b;
       font-weight: 600;
     }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
     .nav-btn {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -63,10 +69,25 @@
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
+      text-decoration: none;
+      color: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .wa-channel-btn {
+      background: #ecfdf5;
+      border-color: #6ee7b7;
+      color: #065f46;
+    }
+    .wa-chat-btn {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
     }
     .container {
       max-width: 960px;
-      margin: 18px auto 48px;
+      margin: 18px auto 32px;
       padding: 0 16px;
     }
     .hero-card {
@@ -246,6 +267,18 @@
       border-radius: 18px;
       padding: 20px;
     }
+    .quiz-contact-links {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+    .quiz-contact-links a {
+      color: #15803d;
+      text-decoration: none;
+    }
     .options-list {
       display: flex;
       flex-direction: column;
@@ -303,6 +336,32 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+    .site-footer {
+      max-width: 960px;
+      margin: 0 auto 36px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: 1px solid #e9d5ff;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: #475569;
+      font-weight: 600;
+    }
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #166534;
+      font-weight: 800;
+      text-decoration: none;
+    }
     @media (max-width: 680px) {
       .hero-features { grid-template-columns: repeat(2, 1fr); }
       .test-card { flex-direction: column; align-items: stretch; }
@@ -320,7 +379,15 @@
           <div class="brand-sub">Onlayn Sınaq Platforması</div>
         </div>
       </div>
-      <button type="button" class="nav-btn" onclick="goHome()">Ana Səhifə</button>
+      <div class="nav-actions">
+        <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener" class="nav-btn wa-channel-btn">
+          📢 WhatsApp Kanal
+        </a>
+        <a href="https://wa.me/994505231121" target="_blank" rel="noopener" class="nav-btn wa-chat-btn">
+          💬 WhatsApp: 050 523 11 21
+        </a>
+        <button type="button" class="nav-btn" onclick="goHome()">Ana Səhifə</button>
+      </div>
     </div>
   </header>
 
@@ -359,6 +426,10 @@
         <div>
           <div id="q-test-title" style="font-weight:800; font-size:1rem;"></div>
           <div style="font-size:0.78rem; color:#64748b; font-weight:600;">Müəllim: Nurid Əsədullayev</div>
+          <div class="quiz-contact-links">
+            <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">📢 WhatsApp Kanalı</a>
+            <a href="https://wa.me/994505231121" target="_blank" rel="noopener">💬 WhatsApp: 050 523 11 21</a>
+          </div>
         </div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <div id="q-visits" style="background:#f3e8ff; color:#4c1d95; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
@@ -391,6 +462,14 @@
       </div>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div>Müəllim: Nurid Əsədullayev — Bilik Arenası</div>
+    <div class="footer-links">
+      <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">📢 WhatsApp Kanal</a>
+      <a href="https://wa.me/994505231121" target="_blank" rel="noopener">💬 050 523 11 21</a>
+    </div>
+  </footer>
 
   <script>
     const COUNTER_NAMESPACE = "bilik-arenasi-nurid";
