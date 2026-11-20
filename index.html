@@ -15,9 +15,14 @@
       line-height: 1.5;
     }
     .topbar {
-      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid #ede9fe;
       padding: 10px 16px;
+      box-shadow: 0 4px 18px rgba(76, 29, 149, 0.06);
     }
     .topbar-inner {
       max-width: 960px;
@@ -25,7 +30,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     .brand {
@@ -35,18 +40,19 @@
       cursor: pointer;
     }
     .brand-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: #4c1d95;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #5b21b6, #3b0764);
       color: #fde047;
       display: grid;
       place-items: center;
       font-weight: 800;
+      box-shadow: 0 4px 10px rgba(76, 29, 149, 0.25);
     }
     .brand-title {
       font-weight: 800;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       color: #2e1065;
     }
     .brand-sub {
@@ -64,26 +70,57 @@
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 999px;
-      padding: 7px 13px;
+      padding: 7px 14px;
       font-family: inherit;
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      color: #0f172a;
+      color: #1e293b;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 7px;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+    }
+    .nav-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+    }
+    .nav-btn:active {
+      transform: translateY(0);
+    }
+    .pill-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.72rem;
+      flex-shrink: 0;
     }
     .wa-channel-btn {
-      background: #ecfdf5;
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
       border-color: #6ee7b7;
       color: #065f46;
+      font-weight: 800;
+    }
+    .wa-channel-btn .pill-dot {
+      background: #10b981;
+      color: #ffffff;
     }
     .wa-chat-btn {
-      background: #dcfce7;
-      border-color: #86efac;
-      color: #166534;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: #15803d;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(22, 163, 74, 0.24);
+    }
+    .wa-chat-btn:hover {
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.34);
+    }
+    .wa-chat-btn .pill-dot {
+      background: rgba(255, 255, 255, 0.24);
+      color: #ffffff;
     }
     .container {
       max-width: 960px;
@@ -366,6 +403,8 @@
       .hero-features { grid-template-columns: repeat(2, 1fr); }
       .test-card { flex-direction: column; align-items: stretch; }
       .btn-purple { width: 100%; }
+      .topbar-inner { justify-content: center; }
+      .nav-actions { justify-content: center; }
     }
   </style>
 </head>
@@ -381,10 +420,12 @@
       </div>
       <div class="nav-actions">
         <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener" class="nav-btn wa-channel-btn">
-          📢 WhatsApp Kanal
+          <span class="pill-dot">📢</span>
+          <span>WhatsApp Kanal</span>
         </a>
         <a href="https://wa.me/994505231121" target="_blank" rel="noopener" class="nav-btn wa-chat-btn">
-          💬 WhatsApp: 050 523 11 21
+          <span class="pill-dot">💬</span>
+          <span>050 523 11 21</span>
         </a>
         <button type="button" class="nav-btn" onclick="goHome()">Ana Səhifə</button>
       </div>
