@@ -542,6 +542,165 @@
 
     const TESTS = [
       {
+        id: "sinif-5-1",
+        num: "№1",
+        title: "5-ci Sinif Riyaziyyat Sınaq İmtahanı (25 Sual)",
+        group: "5-7",
+        minutes: 45,
+        questions: [
+          {
+            q: "1. Rum rəqəmləri ilə verilmiş CCCXLVII ədədini onluq say sistemində yazın:",
+            options: ["A) 367", "B) 347", "C) 357", "D) 247"],
+            answer: "B) 347",
+            explain: "CCC = 300, XL = 40, VII = 7; cəmi 347-dir."
+          },
+          {
+            q: "2. 45782 ədədini yüzlüklərə qədər yuvarlaqlaşdırdıqda neçə alınar?",
+            options: ["A) 45700", "B) 46000", "C) 45780", "D) 45800"],
+            answer: "D) 45800",
+            explain: "Yüzlük mərtəbəsindən sonrakı rəqəm 8 (5-dən böyük) olduğundan 45700 → 45800 olur."
+          },
+          {
+            q: "3. Ən böyük altırəqəmli ədədlə ən kiçik altırəqəmli ədədin fərqini tapın:",
+            options: ["A) 900000", "B) 899999", "C) 899990", "D) 999999"],
+            answer: "B) 899999",
+            explain: "999999 - 100000 = 899999."
+          },
+          {
+            q: "4. Dörd milyon altmış min yetmiş ədədinin rəqəmlə yazılışı hansıdır?",
+            options: ["A) 4600070", "B) 4060070", "C) 4006070", "D) 4060700"],
+            answer: "B) 4060070",
+            explain: "4 milyon = 4000000, 60 min = 60000, 70 = 70; cəmi 4060070."
+          },
+          {
+            q: "5. 648392 ədədində neçə minlik var?",
+            options: ["A) 648", "B) 64", "C) 6483", "D) 8"],
+            answer: "A) 648",
+            explain: "648392 ədədində minliklərin ümumi sayı 648-dir."
+          },
+          {
+            q: "6. Əlverişli üsulla hesablayın: 25 · 47 · 4",
+            options: ["A) 4700", "B) 2350", "C) 470", "D) 47000"],
+            answer: "A) 4700",
+            explain: "(25 · 4) · 47 = 100 · 47 = 4700."
+          },
+          {
+            q: "7. Qalıqlı bölmədə bölən 15, natamam qismət 9, qalıq isə ən böyük mümkün ədəddir. Bölünəni tapın:",
+            options: ["A) 135", "B) 144", "C) 149", "D) 150"],
+            answer: "C) 149",
+            explain: "Bölən 15 olduqda ən böyük qalıq 14-dür. Bölünən: 15 · 9 + 14 = 135 + 14 = 149."
+          },
+          {
+            q: "8. 4x - 19 = 109 tənliyini həll edin:",
+            options: ["A) 28", "B) 22", "C) 32", "D) 36"],
+            answer: "C) 32",
+            explain: "4x = 109 + 19 = 128 ⇒ x = 128 : 4 = 32."
+          },
+          {
+            q: "9. İfadənin qiymətini hesablayın: 120 - (45 + 34) + 18 : 2",
+            options: ["A) 45", "B) 41", "C) 32", "D) 50"],
+            answer: "D) 50",
+            explain: "120 - 79 + 9 = 41 + 9 = 50."
+          },
+          {
+            q: "10. A = {6, 12, 18, 24} və B = {12, 15, 18, 21} çoxluqlarının kəsişməsini tapın:",
+            options: ["A) {6, 24}", "B) {6, 12, 18, 24}", "C) {12, 15, 18}", "D) {12, 18}"],
+            answer: "D) {12, 18}",
+            explain: "Hər iki çoxluqda olan ortaq elementlər 12 və 18-dir."
+          },
+          {
+            q: "11. M = {3, 7, 11, 15, 19, 23, 27} çoxluğunun neçə elementi var?",
+            options: ["A) 6", "B) 8", "C) 7", "D) 5"],
+            answer: "C) 7",
+            explain: "Çoxluqda 7 element var."
+          },
+          {
+            q: "12. n-in hansı ən böyük natural qiymətində n/6 kəsri düzgün kəsr olar?",
+            options: ["A) 5", "B) 6", "C) 4", "D) 7"],
+            answer: "A) 5",
+            explain: "Surəti məxrəcindən (6-dan) kiçik olan ən böyük natural ədəd 5-dir."
+          },
+          {
+            q: "13. 48 ədədinin 3/4 hissəsini tapın:",
+            options: ["A) 12", "B) 36", "C) 24", "D) 64"],
+            answer: "B) 36",
+            explain: "48 · (3/4) = 12 · 3 = 36."
+          },
+          {
+            q: "14. 2/5 hissəsi 18 olan ədədi tapın:",
+            options: ["A) 90", "B) 45", "C) 9", "D) 36"],
+            answer: "B) 45",
+            explain: "18 : (2/5) = 18 · (5/2) = 9 · 5 = 45."
+          },
+          {
+            q: "15. 23/7 düzgün olmayan kəsrini qarışıq ədəd şəklində yazın:",
+            options: ["A) 2 9/7", "B) 4 2/7", "C) 3 3/7", "D) 3 2/7"],
+            answer: "D) 3 2/7",
+            explain: "23 : 7 = 3 (qalıq 2) ⇒ 3 tam 7-də 2."
+          },
+          {
+            q: "16. Hesablayın: 4/13 + 9/13 - 3/13",
+            options: ["A) 8/13", "B) 16/13", "C) 10/13", "D) 13/13"],
+            answer: "C) 10/13",
+            explain: "(4 + 9 - 3) / 13 = 10/13."
+          },
+          {
+            q: "17. Onluq kəsrləri toplayın: 4,63 + 2,85",
+            options: ["A) 7,48", "B) 6,148", "C) 7,38", "D) 6,48"],
+            answer: "A) 7,48",
+            explain: "4,63 + 2,85 = 7,48."
+          },
+          {
+            q: "18. Çıxmanı yerinə yetirin: 9,2 - 3,86",
+            options: ["A) 6,66", "B) 6,34", "C) 5,44", "D) 5,34"],
+            answer: "D) 5,34",
+            explain: "9,20 - 3,86 = 5,34."
+          },
+          {
+            q: "19. 12,45 · 100 - 1200 ifadəsinin qiymətini hesablayın:",
+            options: ["A) 45", "B) 124,5", "C) 4,5", "D) 450"],
+            answer: "A) 45",
+            explain: "12,45 · 100 - 1200 = 1245 - 1200 = 45."
+          },
+          {
+            q: "20. 5,02; 5,2; 0,52; 5,12 onluq kəsrlərindən ən kiçiyini göstərin:",
+            options: ["A) 5,2", "B) 5,12", "C) 0,52", "D) 5,02"],
+            answer: "C) 0,52",
+            explain: "Tam hissəsi 0 olan yeganə ədəd 0,52-dir və o ən kiçikdir."
+          },
+          {
+            q: "21. Eni 8 sm, uzunluğu isə bundan 7 sm böyük olan düzbucaqlının perimetrini tapın:",
+            options: ["A) 23 sm", "B) 46 sm", "C) 120 sm", "D) 30 sm"],
+            answer: "B) 46 sm",
+            explain: "Uzunluq = 8 + 7 = 15 sm. P = 2 · (8 + 15) = 2 · 23 = 46 sm."
+          },
+          {
+            q: "22. Perimetri 32 sm olan kvadratın sahəsini tapın:",
+            options: ["A) 64 sm²", "B) 16 sm²", "C) 32 sm²", "D) 128 sm²"],
+            answer: "A) 64 sm²",
+            explain: "Kvadratın tərəfi: 32 : 4 = 8 sm. Sahəsi: 8 · 8 = 64 sm²."
+          },
+          {
+            q: "23. Düz bucağın bir hissəsi 38° olarsa, digər hissəsi neçə dərəcədir?",
+            options: ["A) 62°", "B) 142°", "C) 42°", "D) 52°"],
+            answer: "D) 52°",
+            explain: "Düz bucaq 90°-dir; 90° - 38° = 52°."
+          },
+          {
+            q: "24. 12, 18 və 15 ədədlərinin ədədi ortasını tapın:",
+            options: ["A) 45", "B) 15", "C) 16", "D) 14"],
+            answer: "B) 15",
+            explain: "(12 + 18 + 15) : 3 = 45 : 3 = 15."
+          },
+          {
+            q: "25. Avtomobil 60 km/saat sürətlə 4 saat yol getdi. Avtomobilin getdiyi yolu tapın:",
+            options: ["A) 15 km", "B) 240 km", "C) 64 km", "D) 180 km"],
+            answer: "B) 240 km",
+            explain: "S = v · t = 60 · 4 = 240 km."
+          }
+        ]
+      },
+      {
         id: "buraxilis-1",
         num: "№1",
         title: "Buraxılış Fənləri Üzrə (X–XI) Sınaq İmtahanı №1 — Riyaziyyat",
