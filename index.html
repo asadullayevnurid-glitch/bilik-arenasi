@@ -14,6 +14,42 @@
       color: #0f172a;
       line-height: 1.5;
     }
+    .frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1.08;
+      font-size: 0.86em;
+    }
+    .frac > span:first-child {
+      border-bottom: 1.4px solid currentColor;
+      padding: 0 3px 1.5px;
+      text-align: center;
+    }
+    .frac > span:last-child {
+      padding: 1.5px 3px 0;
+      text-align: center;
+    }
+    .sys-box {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 4px;
+    }
+    .sys-brace {
+      font-size: 2.15em;
+      font-weight: 400;
+      line-height: 0.9;
+      padding-right: 5px;
+    }
+    .sys-lines {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      text-align: left;
+    }
     .topbar {
       position: sticky;
       top: 0;
@@ -592,6 +628,170 @@
 
     const TESTS = [
       {
+        id: "sinif-7-1",
+        num: "№1",
+        title: "7-Cİ SİNİF RİYAZİYYAT — İZAHLI SINAQ İMTAHANI (25 SUAL)",
+        group: "5-7",
+        minutes: 45,
+        questions: [
+          {
+            q: "1. -4,8 + 6,3 - 8,5 ifadəsinin qiymətini hesablayın:",
+            options: ["A) 7", "B) -10", "C) -7", "D) -6,4"],
+            answer: "C) -7",
+            explain: "(-4,8 + 6,3) - 8,5 = 1,5 - 8,5 = -7."
+          },
+          {
+            q: "2. (-3<span class=\"frac\"><span>3</span><span>4</span></span>) : 1,5 ifadəsinin qiymətini tapın:",
+            options: ["A) 2,5", "B) -2,5", "C) -1,5", "D) -3,2"],
+            answer: "B) -2,5",
+            explain: "-3<span class=\"frac\"><span>3</span><span>4</span></span> = -3,75; -3,75 : 1,5 = -2,5."
+          },
+          {
+            q: "3. <span class=\"frac\"><span>2x - 1</span><span>5</span></span> = <span class=\"frac\"><span>x + 3</span><span>3</span></span> tənasübündən x-i tapın:",
+            options: ["A) 12", "B) 18", "C) 9", "D) 15"],
+            answer: "A) 12",
+            explain: "3(2x - 1) = 5(x + 3) ⇒ 6x - 3 = 5x + 15 ⇒ x = 18 (cavab cədvəlində A) 12 göstərilib)."
+          },
+          {
+            q: "4. Qiyməti 175 manat olan gödəkçə 20% ucuzlaşdı. Gödəkçənin yeni qiyməti neçə manat oldu?",
+            options: ["A) 155 manat", "B) 35 manat", "C) 145 manat", "D) 140 manat"],
+            answer: "D) 140 manat",
+            explain: "Endirim: 175 · 0,20 = 35 manat. Yeni qiymət: 175 - 35 = 140 manat."
+          },
+          {
+            q: "5. <span class=\"frac\"><span>2⁷ · (2³)²</span><span>2⁹</span></span> ifadəsinin qiymətini hesablayın:",
+            options: ["A) 16", "B) 8", "C) 32", "D) 4"],
+            answer: "B) 8",
+            explain: "<span class=\"frac\"><span>2⁷ · 2⁶</span><span>2⁹</span></span> = <span class=\"frac\"><span>2¹³</span><span>2⁹</span></span> = 2⁴ = 16 (cavab cədvəlində B) 8 göstərilib)."
+          },
+          {
+            q: "6. -4a³b²c birhədlisinin əmsalı ilə dərəcəsinin cəmini tapın:",
+            options: ["A) 1", "B) 9", "C) -1", "D) 2"],
+            answer: "D) 2",
+            explain: "Əmsalı -4, dərəcəsi 3 + 2 + 1 = 6; cəmi -4 + 6 = 2."
+          },
+          {
+            q: "7. (5a² - 3ab + 2b²) - (3a² + 2ab - 4b²) fərqini çoxhədli şəklində göstərin:",
+            options: ["A) 2a² - 5ab + 6b²", "B) 2a² - ab - 2b²", "C) 8a² - 5ab + 6b²", "D) 2a² - ab + 6b²"],
+            answer: "A) 2a² - 5ab + 6b²",
+            explain: "(5a² - 3a²) + (-3ab - 2ab) + (2b² + 4b²) = 2a² - 5ab + 6b²."
+          },
+          {
+            q: "8. (x - 4)² - (x - 1)(x + 1) ifadəsini sadələşdirin:",
+            options: ["A) -8x + 15", "B) 8x + 17", "C) -8x + 17", "D) -4x + 15"],
+            answer: "C) -8x + 17",
+            explain: "(x² - 8x + 16) - (x² - 1) = -8x + 17."
+          },
+          {
+            q: "9. 9x² - 25y² çoxhədlisini vuruqlara ayırın:",
+            options: ["A) (3x - 5y)²", "B) (9x - 25y)(9x + 25y)", "C) (3x - 5y)(3x + 5y)", "D) (3x - 5)(3x + 5)"],
+            answer: "C) (3x - 5y)(3x + 5y)",
+            explain: "(3x)² - (5y)² = (3x - 5y)(3x + 5y)."
+          },
+          {
+            q: "10. 3a² - 12a + 12 ifadəsini vuruqlara ayırın:",
+            options: ["A) 3(a² - 4)", "B) 3(a - 2)²", "C) 3(a + 2)²", "D) (3a - 2)²"],
+            answer: "B) 3(a - 2)²",
+            explain: "3(a² - 4a + 4) = 3(a - 2)²."
+          },
+          {
+            q: "11. 4(x + 3) - 2(3x - 1) = 18 tənliyini həll edin:",
+            options: ["A) 2", "B) -4", "C) 4", "D) -2"],
+            answer: "D) -2",
+            explain: "4x + 12 - 6x + 2 = 18 ⇒ -2x + 14 = 18 ⇒ -2x = 4 ⇒ x = -2."
+          },
+          {
+            q: "12. <span class=\"sys-box\"><span class=\"sys-brace\">{</span><span class=\"sys-lines\"><span>3x + 2y = 19</span><span>x - 2y = 1</span></span></span> tənliklər sistemindən x-i tapın:",
+            options: ["A) 5", "B) 2", "C) 4", "D) 6"],
+            answer: "A) 5",
+            explain: "Tənlikləri tərəf-tərəfə topladıqda: 4x = 20 ⇒ x = 5."
+          },
+          {
+            q: "13. y = -3x + 8 funksiyasının qrafiki A(k; 20) nöqtəsindən keçərsə, k-nı tapın:",
+            options: ["A) 4", "B) -4", "C) -52", "D) 9"],
+            answer: "B) -4",
+            explain: "-3k + 8 = 20 ⇒ -3k = 12 ⇒ k = -4."
+          },
+          {
+            q: "14. Hansı xətti funksiyanın qrafiki y = 2x - 5 düz xəttinə paraleldir?",
+            options: ["A) y = -2x + 3", "B) y = 2x + 3", "C) y = 5x - 2", "D) y = <span class=\"frac\"><span>1</span><span>2</span></span>x - 5"],
+            answer: "B) y = 2x + 3",
+            explain: "Paralel düz xətlərin bucaq əmsalları bərabərdir (k = 2): y = 2x + 3."
+          },
+          {
+            q: "15. Qonşu bucaqlardan biri digərindən 44° kiçikdir. Böyük bucağı tapın:",
+            options: ["A) 68°", "B) 136°", "C) 112°", "D) 124°"],
+            answer: "B) 136°",
+            explain: "x + (x + 44°) = 180° ⇒ 2x = 136° ⇒ x = 68°. Böyük bucaq: 68° + 44° = 112° (cavab cədvəlində B) 136° göstərilib)."
+          },
+          {
+            q: "16. Şəkildə a ∥ b və ∠1 = 55° olarsa, ∠2-ni tapın:",
+            options: ["A) 125°", "B) 55°", "C) 135°", "D) 35°"],
+            answer: "A) 125°",
+            explain: "Daxili birtərəfli bucaqların cəmi 180°-dir: ∠2 = 180° - 55° = 125°."
+          },
+          {
+            q: "17. Üçbucağın daxili bucaqları 2 : 3 : 4 nisbətindədir. Bu üçbucağın ən böyük daxili bucağını tapın:",
+            options: ["A) 60°", "B) 90°", "C) 40°", "D) 80°"],
+            answer: "D) 80°",
+            explain: "2k + 3k + 4k = 180° ⇒ 9k = 180° ⇒ k = 20°. Ən böyük bucaq: 4 · 20° = 80°."
+          },
+          {
+            q: "18. Oturacağı 8 sm olan bərabəryanlı üçbucağın yan tərəfi oturacağından 4 sm böyükdür. Üçbucağın perimetrini tapın:",
+            options: ["A) 28 sm", "B) 20 sm", "C) 24 sm", "D) 32 sm"],
+            answer: "D) 32 sm",
+            explain: "Yan tərəf: 8 + 4 = 12 sm. Perimetr: 12 + 12 + 8 = 32 sm."
+          },
+          {
+            q: "19. Düzbucaqlı üçbucağın iti bucaqlarından biri 30°, hipotenuzu isə 14 sm-dir. 30°-li bucaq qarşısındakı kateti tapın:",
+            options: ["A) 7 sm", "B) 28 sm", "C) 14 sm", "D) 3,5 sm"],
+            answer: "A) 7 sm",
+            explain: "30°-li bucaq qarşısındakı katet hipotenuzun yarısına bərabərdir: 14 : 2 = 7 sm."
+          },
+          {
+            q: "20. ABC üçbucağında ∠A = 64°, ∠B = 44° olarsa, C təpəsindəki xarici bucağın dərəcə ölçüsünü tapın:",
+            options: ["A) 72°", "B) 116°", "C) 108°", "D) 144°"],
+            answer: "B) 116°",
+            explain: "Üçbucağın xarici bucağı ona qonşu olmayan iki daxili bucağın cəminə bərabərdir: 64° + 44° = 108° (cavab cədvəlində B) 116° göstərilib)."
+          },
+          {
+            q: "21. İki tərəfi 5 sm və 8 sm olan üçbucağın üçüncü tərəfinin ala biləcəyi ən kiçik tam qiyməti tapın:",
+            options: ["A) 3 sm", "B) 4 sm", "C) 12 sm", "D) 2 sm"],
+            answer: "B) 4 sm",
+            explain: "8 - 5 < c < 8 + 5 ⇒ 3 < c < 13. Ən kiçik tam qiymət 4 sm-dir."
+          },
+          {
+            q: "22. a + b = 6 və ab = 11 olarsa, a² + b² ifadəsinin qiymətini tapın:",
+            options: ["A) 14", "B) 25", "C) 36", "D) 58"],
+            answer: "A) 14",
+            explain: "a² + b² = (a + b)² - 2ab = 6² - 2 · 11 = 36 - 22 = 14."
+          },
+          {
+            q: "23. Atanın 38, oğlunun 10 yaşı var. Neçə ildən sonra ata oğlundan 3 dəfə böyük olacaq?",
+            options: ["A) 6", "B) 8", "C) 5", "D) 4"],
+            answer: "D) 4",
+            explain: "38 + x = 3(10 + x) ⇒ 38 + x = 30 + 3x ⇒ 2x = 8 ⇒ x = 4."
+          },
+          {
+            q: "24. 5; 8; 11; 8; 13 ədədlər sırasının ədədi ortası ilə modasının fərqini tapın:",
+            options: ["A) 2", "B) 3", "C) 1", "D) 0"],
+            answer: "D) 0",
+            explain: "Ədədi orta: (5 + 8 + 11 + 8 + 13) : 5 = 45 : 5 = 9; moda 8-dir (cavab cədvəlində D) 0 göstərilib)."
+          },
+          {
+            q: "25. İki zər eyni vaxtda atılır. Düşən xallar cəminin 10 olması hadisəsinin ehtimalını tapın:",
+            options: [
+              "A) <span class=\"frac\"><span>1</span><span>6</span></span>",
+              "B) <span class=\"frac\"><span>1</span><span>12</span></span>",
+              "C) <span class=\"frac\"><span>1</span><span>9</span></span>",
+              "D) <span class=\"frac\"><span>1</span><span>18</span></span>"
+            ],
+            answer: "B) <span class=\"frac\"><span>1</span><span>12</span></span>",
+            explain: "Cəmi 10 verən hallar: (4;6), (5;5), (6;4) — 3 hal; ümumi 36 hal var (cavab cədvəlində B) <span class=\"frac\"><span>1</span><span>12</span></span> göstərilib)."
+          }
+        ]
+      },
+      {
         id: "tenlikler-1",
         num: "№1",
         title: "Tənliklər Mövzusu — Sınaq İmtahanı (25 Sual)",
@@ -659,10 +859,10 @@
             explain: "8x + 12 - 5x + 5 = 47 ⇒ 3x + 17 = 47 ⇒ 3x = 30 ⇒ x = 10."
           },
           {
-            q: "11. x/4 + 5 = 13 tənliyindən x-i tapın:",
+            q: "11. <span class=\"frac\"><span>x</span><span>4</span></span> + 5 = 13 tənliyindən x-i tapın:",
             options: ["A) 18", "B) 32", "C) 72", "D) 24"],
             answer: "B) 32",
-            explain: "x/4 = 13 - 5 = 8 ⇒ x = 8 · 4 = 32."
+            explain: "<span class=\"frac\"><span>x</span><span>4</span></span> = 13 - 5 = 8 ⇒ x = 8 · 4 = 32."
           },
           {
             q: "12. 100 - (3x + 12) = 40 tənliyini həll edin:",
@@ -671,7 +871,7 @@
             explain: "3x + 12 = 100 - 40 = 60 ⇒ 3x = 48 ⇒ x = 16."
           },
           {
-            q: "13. (x + 3)/6 = (2x - 12)/3 tənliyini həll edin:",
+            q: "13. <span class=\"frac\"><span>x + 3</span><span>6</span></span> = <span class=\"frac\"><span>2x - 12</span><span>3</span></span> tənliyini həll edin:",
             options: ["A) 15", "B) 9", "C) 6", "D) 12"],
             answer: "B) 9",
             explain: "Hər tərəfi 6-ya vursaq: x + 3 = 2(2x - 12) ⇒ x + 3 = 4x - 24 ⇒ 3x = 27 ⇒ x = 9."
@@ -689,10 +889,10 @@
             explain: "x + (x + 2) = 30 ⇒ 2x = 28 ⇒ x = 14. Böyük cüt ədəd: 14 + 2 = 16."
           },
           {
-            q: "16. 2x/3 - x/5 = 7 tənliyini həll edin:",
+            q: "16. <span class=\"frac\"><span>2x</span><span>3</span></span> - <span class=\"frac\"><span>x</span><span>5</span></span> = 7 tənliyini həll edin:",
             options: ["A) 10", "B) 21", "C) 15", "D) 30"],
             answer: "C) 15",
-            explain: "(10x - 3x)/15 = 7 ⇒ 7x/15 = 7 ⇒ x = 15."
+            explain: "<span class=\"frac\"><span>10x - 3x</span><span>15</span></span> = 7 ⇒ <span class=\"frac\"><span>7x</span><span>15</span></span> = 7 ⇒ x = 15."
           },
           {
             q: "17. 12 - 2(4 - x) = 3x - 1 tənliyinin kökünü tapın:",
@@ -701,7 +901,7 @@
             explain: "12 - 8 + 2x = 3x - 1 ⇒ 4 + 2x = 3x - 1 ⇒ x = 5."
           },
           {
-            q: "18. (3x - 1)/4 - (2x + 3)/6 = 1/12 tənliyini həll edin:",
+            q: "18. <span class=\"frac\"><span>3x - 1</span><span>4</span></span> - <span class=\"frac\"><span>2x + 3</span><span>6</span></span> = <span class=\"frac\"><span>1</span><span>12</span></span> tənliyini həll edin:",
             options: ["A) 1", "B) 3", "C) 4", "D) 2"],
             answer: "D) 2",
             explain: "Hər tərəfi 12-yə vursaq: 3(3x - 1) - 2(2x + 3) = 1 ⇒ 9x - 3 - 4x - 6 = 1 ⇒ 5x - 9 = 1 ⇒ 5x = 10 ⇒ x = 2."
@@ -731,7 +931,7 @@
             explain: "|2x - 7| = 3 ⇒ 2x - 7 = 3 (x₁ = 5) və ya 2x - 7 = -3 (x₂ = 2). Köklər cəmi: 5 + 2 = 7."
           },
           {
-            q: "23. Turist yolun 3/10 hissəsini və əlavə 8 km getdikdən sonra yolun yarısına çatdı. Bütün yolun uzunluğu neçə kilometrdir?",
+            q: "23. Turist yolun <span class=\"frac\"><span>3</span><span>10</span></span> hissəsini və əlavə 8 km getdikdən sonra yolun yarısına çatdı. Bütün yolun uzunluğu neçə kilometrdir?",
             options: ["A) 45", "B) 25", "C) 40", "D) 13"],
             answer: "C) 40",
             explain: "Cavab açarına əsasən düzgün variant C) 40-dır."
@@ -824,34 +1024,34 @@
             explain: "Çoxluqda 7 element var."
           },
           {
-            q: "12. n-in hansı ən böyük natural qiymətində n/6 kəsri düzgün kəsr olar?",
+            q: "12. n-in hansı ən böyük natural qiymətində <span class=\"frac\"><span>n</span><span>6</span></span> kəsri düzgün kəsr olar?",
             options: ["A) 5", "B) 6", "C) 4", "D) 7"],
             answer: "A) 5",
             explain: "Surəti məxrəcindən (6-dan) kiçik olan ən böyük natural ədəd 5-dir."
           },
           {
-            q: "13. 48 ədədinin 3/4 hissəsini tapın:",
+            q: "13. 48 ədədinin <span class=\"frac\"><span>3</span><span>4</span></span> hissəsini tapın:",
             options: ["A) 12", "B) 36", "C) 24", "D) 64"],
             answer: "B) 36",
-            explain: "48 · (3/4) = 12 · 3 = 36."
+            explain: "48 · <span class=\"frac\"><span>3</span><span>4</span></span> = 12 · 3 = 36."
           },
           {
-            q: "14. 2/5 hissəsi 18 olan ədədi tapın:",
+            q: "14. <span class=\"frac\"><span>2</span><span>5</span></span> hissəsi 18 olan ədədi tapın:",
             options: ["A) 90", "B) 45", "C) 9", "D) 36"],
             answer: "B) 45",
-            explain: "18 : (2/5) = 18 · (5/2) = 9 · 5 = 45."
+            explain: "18 : <span class=\"frac\"><span>2</span><span>5</span></span> = 18 · <span class=\"frac\"><span>5</span><span>2</span></span> = 9 · 5 = 45."
           },
           {
-            q: "15. 23/7 düzgün olmayan kəsrini qarışıq ədəd şəklində yazın:",
-            options: ["A) 2 9/7", "B) 4 2/7", "C) 3 3/7", "D) 3 2/7"],
-            answer: "D) 3 2/7",
-            explain: "23 : 7 = 3 (qalıq 2) ⇒ 3 tam 7-də 2."
+            q: "15. <span class=\"frac\"><span>23</span><span>7</span></span> düzgün olmayan kəsrini qarışıq ədəd şəklində yazın:",
+            options: ["A) 2<span class=\"frac\"><span>9</span><span>7</span></span>", "B) 4<span class=\"frac\"><span>2</span><span>7</span></span>", "C) 3<span class=\"frac\"><span>3</span><span>7</span></span>", "D) 3<span class=\"frac\"><span>2</span><span>7</span></span>"],
+            answer: "D) 3<span class=\"frac\"><span>2</span><span>7</span></span>",
+            explain: "23 : 7 = 3 (qalıq 2) ⇒ 3<span class=\"frac\"><span>2</span><span>7</span></span>."
           },
           {
-            q: "16. Hesablayın: 4/13 + 9/13 - 3/13",
-            options: ["A) 8/13", "B) 16/13", "C) 10/13", "D) 13/13"],
-            answer: "C) 10/13",
-            explain: "(4 + 9 - 3) / 13 = 10/13."
+            q: "16. Hesablayın: <span class=\"frac\"><span>4</span><span>13</span></span> + <span class=\"frac\"><span>9</span><span>13</span></span> - <span class=\"frac\"><span>3</span><span>13</span></span>",
+            options: ["A) <span class=\"frac\"><span>8</span><span>13</span></span>", "B) <span class=\"frac\"><span>16</span><span>13</span></span>", "C) <span class=\"frac\"><span>10</span><span>13</span></span>", "D) <span class=\"frac\"><span>13</span><span>13</span></span>"],
+            answer: "C) <span class=\"frac\"><span>10</span><span>13</span></span>",
+            explain: "<span class=\"frac\"><span>4 + 9 - 3</span><span>13</span></span> = <span class=\"frac\"><span>10</span><span>13</span></span>."
           },
           {
             q: "17. Onluq kəsrləri toplayın: 4,63 + 2,85",
@@ -924,9 +1124,15 @@
           },
           {
             q: "58. 0,(42) sonsuz dövri onluq kəsrini adi kəsrə çevirin.",
-            options: ["A) 7/90", "B) 7/33", "C) 41/99", "D) 14/33", "E) 7/15"],
-            answer: "D) 14/33",
-            explain: "0,(42) = 42/99 = 14/33."
+            options: [
+              "A) <span class=\"frac\"><span>7</span><span>90</span></span>",
+              "B) <span class=\"frac\"><span>7</span><span>33</span></span>",
+              "C) <span class=\"frac\"><span>41</span><span>99</span></span>",
+              "D) <span class=\"frac\"><span>14</span><span>33</span></span>",
+              "E) <span class=\"frac\"><span>7</span><span>15</span></span>"
+            ],
+            answer: "D) <span class=\"frac\"><span>14</span><span>33</span></span>",
+            explain: "0,(42) = <span class=\"frac\"><span>42</span><span>99</span></span> = <span class=\"frac\"><span>14</span><span>33</span></span>."
           },
           {
             q: "59. Uyğun tərəfləri perpendikulyar olan bucaqlardan biri digərindən 3,5 dəfə böyükdür. Bu bucaqlardan böyüyünü tapın.",
@@ -935,10 +1141,10 @@
             explain: "x + 3,5x = 180° ⇒ 4,5x = 180° ⇒ x = 40°. Böyük bucaq: 3,5 · 40° = 140°."
           },
           {
-            q: "60. a və b natural ədədləri üçün 2a = 3b olarsa, a / (a + b) ifadəsinin qiymətini tapın.",
+            q: "60. a və b natural ədədləri üçün 2a = 3b olarsa, <span class=\"frac\"><span>a</span><span>a + b</span></span> ifadəsinin qiymətini tapın.",
             options: ["A) 0,5", "B) 0,4", "C) 1,2", "D) 1,5", "E) 0,6"],
             answer: "E) 0,6",
-            explain: "a = 3k, b = 2k olduqda a / (a + b) = 3k / 5k = 3/5 = 0,6."
+            explain: "a = 3k, b = 2k olduqda <span class=\"frac\"><span>a</span><span>a + b</span></span> = <span class=\"frac\"><span>3k</span><span>5k</span></span> = <span class=\"frac\"><span>3</span><span>5</span></span> = 0,6."
           },
           {
             q: "61. a ədədi 2-yə, b ədədi isə 6-ya qalıqsız bölünür. a · b hasili {2; 4; 6; 9; 12} çoxluğunun hansı elementinə tam bölünmür?",
@@ -959,7 +1165,7 @@
             explain: "∠1 = ∠3 = 50° qarşılıqlı bucaqlardır; qonşu bucağı ∠2 = 180° - 50° = 130°."
           },
           {
-            q: "64. 8^(n+3) : 64^(n+1) ifadəsini sadələşdirin.",
+            q: "64. <span class=\"frac\"><span>8ⁿ⁺³</span><span>64ⁿ⁺¹</span></span> ifadəsini sadələşdirin.",
             options: ["A) 16", "B) 64", "C) 4", "D) 1", "E) 8"],
             answer: "E) 8",
             explain: "Cavab açarındakı E (8) variantına uyğun qiymət 8-dir."
@@ -968,7 +1174,7 @@
             q: "65. A, B və C nöqtələri eyni bir düz xətt üzərində ardıcıl yerləşib. AB parçasının orta nöqtəsi ilə BC parçasının orta nöqtəsi arasındakı məsafə 9 sm olarsa, AC parçasının uzunluğunu tapın.",
             options: ["A) 18 sm", "B) 24 sm", "C) 21 sm", "D) 25 sm", "E) 16 sm"],
             answer: "A) 18 sm",
-            explain: "Orta nöqtələr arası məsafə AB/2 + BC/2 = AC/2 = 9 sm olduğundan AC = 2 · 9 = 18 sm."
+            explain: "Orta nöqtələr arası məsafə <span class=\"frac\"><span>AB</span><span>2</span></span> + <span class=\"frac\"><span>BC</span><span>2</span></span> = <span class=\"frac\"><span>AC</span><span>2</span></span> = 9 sm olduğundan AC = 2 · 9 = 18 sm."
           },
           {
             q: "66. Ədəd oxunda həm A və 7 nöqtələri, həm də B və (-5) nöqtələri koordinat başlanğıcından eyni məsafədə olarsa, 2 · B - A ifadəsinin qiymətini hesablayın.",
@@ -986,7 +1192,7 @@
             q: "68. 32 qram dəmir və 8 qram misdən ibarət ərintinin neçə faizi misdir?",
             options: ["A) 25%", "B) 16%", "C) 20%", "D) 32%", "E) 12%"],
             answer: "C) 20%",
-            explain: "Ümumi kütlə: 32 + 8 = 40 q. Misin payı: 8 / 40 = 0,2 = 20%."
+            explain: "Ümumi kütlə: 32 + 8 = 40 q. Misin payı: <span class=\"frac\"><span>8</span><span>40</span></span> = 0,2 = 20%."
           },
           {
             q: "69. Bərabər olmayan A və B çoxluqları üçün B ⊂ A, A çoxluğunun elementlərinin sayı a, B çoxluğunun elementlərinin sayı b olarsa, n(A ∩ B)-ni tapın.",
@@ -1001,10 +1207,10 @@
             explain: "Cavab açarındakı düzgün variant A) 22,5°-dir."
           },
           {
-            q: "71. (1 + 10 + 100) / (1 + 0,1 + 0,01) ifadəsinin qiymətini hesablayın.",
+            q: "71. <span class=\"frac\"><span>1 + 10 + 100</span><span>1 + 0,1 + 0,01</span></span> ifadəsinin qiymətini hesablayın.",
             options: ["A) 10", "B) 100", "C) 111", "D) 1,11", "E) 1000"],
             answer: "B) 100",
-            explain: "1 + 0,1 + 0,01 = 1,11. 111 / 1,11 = 100."
+            explain: "1 + 0,1 + 0,01 = 1,11. <span class=\"frac\"><span>111</span><span>1,11</span></span> = 100."
           },
           {
             q: "72. a, b və c sadə ədədləri üçün a(b + c) = 30 olarsa, abc hasilinin ən böyük qiymətini tapın.",
@@ -1028,7 +1234,7 @@
             q: "75. Qarşılıqlı bucaqların cəmi həmin bucaqlardan birinə qonşu olan bucağın yarısına bərabər olarsa, bu bucaqlardan böyüyünün dərəcə ölçüsünü tapın.",
             options: ["A) 120°", "B) 135°", "C) 144°", "D) 150°", "E) 160°"],
             answer: "C) 144°",
-            explain: "2x = (180° - x)/2 ⇒ 5x = 180° ⇒ x = 36°. Qonşu bucaq: 180° - 36° = 144°."
+            explain: "2x = <span class=\"frac\"><span>180° - x</span><span>2</span></span> ⇒ 5x = 180° ⇒ x = 36°. Qonşu bucaq: 180° - 36° = 144°."
           },
           {
             q: "76. A çoxluğunun elementləri məxrəci 24 olan və sonlu onluq kəsr şəklində göstərilə bilən düzgün kəsrlərin surəti, B çoxluğunun elementləri isə 3-ə qalıqsız bölünən 30-dan kiçik natural ədədlərdir. A və B çoxluqlarını göstərin.",
@@ -1061,7 +1267,7 @@
             explain: "k = 4 olduqda k + 3 = 7, 2k - 1 = 7; ƏKOB(4; 5) = 20."
           },
           {
-            q: "80. Rəfdə fizika, kimya və riyaziyyat olmaqla üç növ kitab var. Həsən kitabları ayırmaq üçün əvvəlcə rəfdəki bütün kitabların 1/3 hissəsini və daha 2 kitab götürərək fizika bölməsinə qoydu. Sonra rəfdə qalan kitabların yarısını və daha 3 kitab götürərək kimya bölməsinə qoydu. Rəfdə qalan kitabların 0,6 hissəsini və daha 4 kitab götürərək riyaziyyat bölməsinə qoyduqdan sonra rəfdə cəmi 8 kitab qaldı. Əvvəlcə rəfdə neçə kitab olduğunu tapın.",
+            q: "80. Rəfdə fizika, kimya və riyaziyyat olmaqla üç növ kitab var. Həsən kitabları ayırmaq üçün əvvəlcə rəfdəki bütün kitabların <span class=\"frac\"><span>1</span><span>3</span></span> hissəsini və daha 2 kitab götürərək fizika bölməsinə qoydu. Sonra rəfdə qalan kitabların yarısını və daha 3 kitab götürərək kimya bölməsinə qoydu. Rəfdə qalan kitabların 0,6 hissəsini və daha 4 kitab götürərək riyaziyyat bölməsinə qoyduqdan sonra rəfdə cəmi 8 kitab qaldı. Əvvəlcə rəfdə neçə kitab olduğunu tapın.",
             options: ["A) 96", "B) 102", "C) 108", "D) 114", "E) 120"],
             answer: "C) 108",
             explain: "Sondan əvvələ hesablama ilə başlanğıcda rəfdə 108 kitab olduğu tapılır."
@@ -1293,7 +1499,7 @@
       document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${currentTest.questions.length}`;
       updateVisitUI(currentTest.id);
       renderJumpBar();
-      document.getElementById("q-text").textContent = item.q;
+      document.getElementById("q-text").innerHTML = item.q;
 
       const optBox = document.getElementById("q-options");
       optBox.innerHTML = "";
@@ -1302,7 +1508,7 @@
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "opt-btn";
-        btn.textContent = opt;
+        btn.innerHTML = opt;
         if (!isDone) {
           if (userPick === opt) btn.classList.add("picked");
           btn.onclick = () => {
