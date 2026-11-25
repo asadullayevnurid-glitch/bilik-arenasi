@@ -450,6 +450,25 @@
       color: #b91c1c;
       font-weight: 800;
     }
+    .open-input-wrap {
+      margin: 16px 0;
+    }
+    .open-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 12px 14px;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+      outline: none;
+    }
+    .open-input:focus {
+      border-color: #5b21b6;
+      background: #faf5ff;
+    }
     .explain-box {
       margin-top: 14px;
       padding: 14px;
@@ -636,6 +655,9 @@
       <div><span id="q-point-tag" class="q-point-tag"></span></div>
       <h3 id="q-text" style="margin:8px 0 6px; font-size:1.05rem;"></h3>
       <div class="options-list" id="q-options"></div>
+      <div class="open-input-wrap" id="q-open-wrap" style="display:none;">
+        <input type="text" id="q-open-input" class="open-input" placeholder="Cavabınızı daxil edin..." oninput="onOpenInput(this.value)" />
+      </div>
 
       <button type="button" class="btn-purple" id="btn-confirm" onclick="confirmAnswer()">Cavabı təsdiqlə</button>
 
@@ -679,24 +701,63 @@
     const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
     const COUNTER_PREFIX = "bilik_arenasi_istirak_v3";
 
-    function applyBalancedPoints(questions) {
+    function shuffleArray(arr) {
+      const copy = arr.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function stripOptionPrefix(opt) {
+      return String(opt).replace(/^[A-E]\)\s*/i, "").trim();
+    }
+
+    function prepareShuffledQuestions(questions) {
       const total = questions.length;
-      if (total === 25) {
-        // 10*3 + 10*4 + 5*6 = 100
-        return questions.map((q, i) => ({
-          ...q,
-          points: i < 10 ? 3 : i < 20 ? 4 : 6
+      const shuffledQs = shuffleArray(questions);
+
+      return shuffledQs.map((q, i) => {
+        let pts = q.points || 4;
+        if (total === 25) {
+          pts = i < 10 ? 3 : i < 20 ? 4 : 6;
+        } else if (total === 30) {
+          const pts3 = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 27]);
+          pts = pts3.has(i) ? 3 : 4;
+        }
+
+        if (q.open) {
+          return {
+            ...q,
+            open: true,
+            points: pts,
+            answer: String(q.answer).trim(),
+            accepted: Array.isArray(q.accepted) ? q.accepted.map(a => String(a).trim()) : [String(q.answer).trim()]
+          };
+        }
+
+        const letters = ["A", "B", "C", "D", "E"];
+        const targetBody = stripOptionPrefix(q.answer);
+        const rawOpts = shuffleArray(q.options).map((raw, idx) => ({
+          body: stripOptionPrefix(raw),
+          isCorrect: stripOptionPrefix(raw) === targetBody || raw === q.answer || (idx === 0 && !q.options.some(o => stripOptionPrefix(o) === targetBody))
         }));
-      }
-      if (total === 30) {
-        // 12*3 (36) + 16*4 (64) = 100 (hər sual 3 və ya 4 bal, 0 bal yoxdur)
-        const pts3 = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 27]);
-        return questions.map((q, i) => ({
-          ...q,
-          points: pts3.has(i) ? 3 : 4
+
+        const relabeled = rawOpts.map((item, idx) => ({
+          label: `${letters[idx] || (idx + 1)}) ${item.body}`,
+          isCorrect: item.isCorrect
         }));
-      }
-      return questions.map(q => ({ ...q, points: q.points || 4 }));
+
+        const correctOption = relabeled.find(o => o.isCorrect) || relabeled[0];
+
+        return {
+          ...q,
+          points: pts,
+          options: relabeled.map(o => o.label),
+          answer: correctOption.label
+        };
+      });
     }
 
     const TESTS = [
@@ -706,7 +767,7 @@
         title: "2-Cİ SİNİF RİYAZİYYAT — SINAQ İMTAHANI (25 SUAL)",
         group: "1-4",
         minutes: 40,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. Kubun neçə üzü və neçə təpəsi var?",
             options: ["A) 8 üzü, 6 təpəsi", "B) 6 üzü, 8 təpəsi", "C) 6 üzü, 12 təpəsi", "D) 4 üzü, 8 təpəsi"],
@@ -857,7 +918,7 @@
             answer: "C) 89",
             explain: "99 - 10 = 89."
           }
-        ])
+        ]
       },
       {
         id: "sinif-3-1",
@@ -865,7 +926,7 @@
         title: "3-CÜ SİNİF RİYAZİYYAT — MÜNDƏRİCAT ÜZRƏ SINAQ (25 SUAL)",
         group: "1-4",
         minutes: 40,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. 5 yüzlük, 2 onluq və 7 təklikdən ibarət ədəd hansıdır?",
             options: ["A) 572", "B) 527", "C) 257", "D) 725"],
@@ -1016,7 +1077,182 @@
             answer: "B) 8",
             explain: "x = 64 : 8 = 8."
           }
-        ])
+        ]
+      },
+      {
+        id: "sinif-9-buraxilis-1",
+        num: "№1",
+        title: "9-CU SİNİF BURAXILIŞ — 05.04.2026 | RİYAZİYYAT (25 SUAL)",
+        group: "8-9",
+        minutes: 60,
+        questions: [
+          {
+            q: "1. 30 ha əkin sahəsi artırılıb 42 ha oldu. Əkin sahəsi neçə faiz artdı?",
+            options: ["A) 35", "B) 40", "C) 30", "D) 32", "E) 20"],
+            answer: "B) 40",
+            explain: "Artım 42 - 30 = 12 ha. Faiz artımı: <span class=\"frac\"><span>12</span><span>30</span></span> · 100% = 40%."
+          },
+          {
+            q: "2. <span class=\"frac\"><span>12</span><span>x</span></span> = -<span class=\"frac\"><span>3</span><span>4</span></span> tənliyini həll edin.",
+            options: ["A) -24", "B) -<span class=\"frac\"><span>1</span><span>16</span></span>", "C) -1", "D) -16", "E) -<span class=\"frac\"><span>1</span><span>24</span></span>"],
+            answer: "D) -16",
+            explain: "-3x = 48 ⇒ x = -16."
+          },
+          {
+            q: "3. <span class=\"sys-box\"><span class=\"sys-brace\">{</span><span class=\"sys-lines\"><span>y = 2x</span><span>5x + y = 21</span></span></span> tənliklər sistemini həll edin.",
+            options: ["A) (2; 4)", "B) (5; 1)", "C) (10; 11)", "D) (3; 6)", "E) (8; 12)"],
+            answer: "D) (3; 6)",
+            explain: "5x + 2x = 21 ⇒ 7x = 21 ⇒ x = 3, y = 2 · 3 = 6."
+          },
+          {
+            q: "4. k-nın hansı ən böyük qiymətində 0,4(k) + 0,k(4) cəmi düzgün kəsrdir? (k - rəqəmdir)",
+            options: ["A) 5", "B) 9", "C) 6", "D) 4", "E) 3"],
+            answer: "D) 4",
+            explain: "Cavab açarına əsasən düzgün variant D) 4-dür."
+          },
+          {
+            q: "5. Düz xətdən 4 sm məsafədə yerləşən nöqtədən bu düz xəttə hər birinin uzunluğu 5 sm olan iki mail çəkilmişdir. Maillərin oturacaqları arasındakı məsafəni tapın.",
+            options: ["A) 6 sm", "B) 3 sm", "C) 9 sm", "D) 10 sm", "E) 4 sm"],
+            answer: "A) 6 sm",
+            explain: "Hər mailin proyeksiyası √(5² - 4²) = √9 = 3 sm-dir. Oturacaqlar arası məsafə: 3 + 3 = 6 sm."
+          },
+          {
+            q: "6. ƏBOB(a; b) = 5 və a · b = 75 olarsa, a + b cəmini tapın.",
+            options: ["A) 20", "B) 28", "C) 30", "D) 25", "E) 24"],
+            answer: "A) 20",
+            explain: "a = 5m, b = 5n olsun ((m;n)=1). 25mn = 75 ⇒ mn = 3 ⇒ m=1, n=3. a + b = 5 + 15 = 20."
+          },
+          {
+            q: "7. (2x - 1)(2x + 1) - 4x(x - 3) = 35 tənliyini həll edin.",
+            options: ["A) 0", "B) 3", "C) 1", "D) 2", "E) 4"],
+            answer: "B) 3",
+            explain: "4x² - 1 - 4x² + 12x = 35 ⇒ 12x = 36 ⇒ x = 3."
+          },
+          {
+            q: "8. a = <span class=\"frac\"><span>1</span><span>4</span></span> olarsa, 3⁻²ᵃ · 3⁶ᵃ ifadəsinin qiymətini tapın.",
+            options: ["A) 3<span class=\"frac\"><span>3</span><span>4</span></span>", "B) 3⁻⁴", "C) 3⁴", "D) 3³", "E) 3"],
+            answer: "E) 3",
+            explain: "3⁻²ᵃ⁺⁶ᵃ = 3⁴ᵃ = 3⁴·<span class=\"frac\"><span>1</span><span>4</span></span> = 3¹ = 3."
+          },
+          {
+            q: "9. Dairənin radiusu 5 dəfə artsa, onun sahəsi neçə dəfə artar?",
+            options: ["A) 5", "B) 20", "C) 25", "D) 10", "E) 15"],
+            answer: "C) 25",
+            explain: "S = πR² olduğundan radius 5 dəfə artdıqda sahə 5² = 25 dəfə artar."
+          },
+          {
+            q: "10. AC = 7 sm, CB = 14 sm olarsa, AB-ni tapın.",
+            options: ["A) 21 sm", "B) 16 sm", "C) 28 sm", "D) 25 sm", "E) 19 sm"],
+            answer: "A) 21 sm",
+            explain: "AB = AC + CB = 7 + 14 = 21 sm."
+          },
+          {
+            q: "11. 2√25 - √16 + 2√9 ifadəsinin qiymətini hesablayın.",
+            options: ["A) 10", "B) 14", "C) 12", "D) 5", "E) 2"],
+            answer: "C) 12",
+            explain: "2 · 5 - 4 + 2 · 3 = 10 - 4 + 6 = 12."
+          },
+          {
+            q: "12. ƏBOB(30; 36)-nı tapın.",
+            options: ["A) 4", "B) 180", "C) 12", "D) 120", "E) 6"],
+            answer: "E) 6",
+            explain: "30 və 36 ədədlərinin ən böyük ortaq böləni 6-dır."
+          },
+          {
+            q: "13. y = 5x - 17 funksiyasının qrafiki üzərində yerləşən və ordinatı 3 olan nöqtənin absisini tapın.",
+            options: ["A) -2", "B) -5", "C) -4", "D) 5", "E) 4"],
+            answer: "E) 4",
+            explain: "3 = 5x - 17 ⇒ 5x = 20 ⇒ x = 4."
+          },
+          {
+            q: "14. Kubun neçə tili var?",
+            options: ["A) 6", "B) 16", "C) 8", "D) 10", "E) 12"],
+            answer: "E) 12",
+            explain: "Kubun 12 tili var."
+          },
+          {
+            q: "15. Yalnız Həsən, Əli və Vüqarın olduğu yarışmada Həsənin qazanma ehtimalı Vüqarın qazanma ehtimalının 7 misli, Əlinin qazanma ehtimalının 2 mislidir. Buna görə yarışmanı Əlinin qazanma ehtimalını tapın.",
+            options: [
+              "A) <span class=\"frac\"><span>1</span><span>14</span></span>",
+              "B) <span class=\"frac\"><span>3</span><span>7</span></span>",
+              "C) <span class=\"frac\"><span>2</span><span>23</span></span>",
+              "D) <span class=\"frac\"><span>7</span><span>23</span></span>",
+              "E) <span class=\"frac\"><span>5</span><span>14</span></span>"
+            ],
+            answer: "D) <span class=\"frac\"><span>7</span><span>23</span></span>",
+            explain: "Həsən = 14k, Əli = 7k, Vüqar = 2k; 14k + 7k + 2k = 23k = 1 ⇒ k = <span class=\"frac\"><span>1</span><span>23</span></span> ⇒ Əli = <span class=\"frac\"><span>7</span><span>23</span></span>."
+          },
+          {
+            q: "16. <span class=\"frac\"><span>4 · 12ⁿ</span><span>3ⁿ⁻¹ · 2²ⁿ⁺¹</span></span> kəsrini ixtisar edin.",
+            open: true,
+            answer: "6",
+            accepted: ["6"],
+            explain: "4 · 12ⁿ = 2² · 2²ⁿ · 3ⁿ = 2²ⁿ⁺² · 3ⁿ; məxrəc 3ⁿ⁻¹ · 2²ⁿ⁺¹. İxtisardan sonra 2¹ · 3¹ = 6 alınır."
+          },
+          {
+            q: "17. Diaqramda A və B çoxluqlarının elementlərinin sayı haqqında məlumat verilmişdir. 4 · n(A \\ B) = n(A ∪ B) olarsa, n(B \\ A)-nı tapın.",
+            open: true,
+            answer: "77",
+            accepted: ["77"],
+            explain: "Cavab cədvəlinə əsasən düzgün cavab 77-dir."
+          },
+          {
+            q: "18. ∠B = ∠D, AB = OC = 6 və AO = 5 olarsa, CD-ni tapın.",
+            open: true,
+            answer: "7,2",
+            accepted: ["7,2", "7.2"],
+            explain: "Cavab cədvəlinə əsasən düzgün cavab 7,2-dir."
+          },
+          {
+            q: "19. ABCD düzbucaqlısında AM ⊥ DM, AB = 6 sm, AM = 12 sm-dir. ∠ADM-in dərəcə ölçüsünü tapın.",
+            open: true,
+            answer: "60°",
+            accepted: ["60°", "60"],
+            explain: "Cavab cədvəlinə əsasən düzgün cavab 60°-dir."
+          },
+          {
+            q: "20. Rəhim birinci gün kitabın 40%-ni, ikinci gün 5%-ni, üçüncü gün qalan 110 səhifəni oxuyub qurtardı. Kitabda neçə səhifə olduğunu tapın.",
+            open: true,
+            answer: "200",
+            accepted: ["200"],
+            explain: "İki günə 40% + 5% = 45% oxundu, qaldı 55% (110 səhifə). Tam kitab: 110 : 0,55 = 200 səhifə."
+          },
+          {
+            q: "21. x(3 - √10) < 5,5(3 - √10) bərabərsizliyinin ən kiçik tam həllini tapın.",
+            open: true,
+            answer: "6",
+            accepted: ["6"],
+            explain: "3 - √10 < 0 olduğundan işarə dəyişir: x > 5,5. Ən kiçik tam həll 6-dır."
+          },
+          {
+            q: "22. Düzxətli yol boyunca 85 ağac əkilmişdir. Hər qonşu iki ağac arasındakı məsafə bərabərdir. A və B ağacları arasındakı ağaclardan biri C-dir. A və C ağacları arasındakı məsafənin C və B ağacları arasındakı məsafəyə nisbəti 3 : 4-dür. Buna görə C ağacı A-dan başlayaraq neçənci ağacdır?",
+            open: true,
+            answer: "37",
+            accepted: ["37"],
+            explain: "Cavab cədvəlinə əsasən düzgün cavab 37-dir."
+          },
+          {
+            q: "23. İti bucağının tənböləni trapesiyanı iki oxşar üçbucağa ayırır. Oturacaqlar 7 və 28 olarsa, trapesiyanın perimetrini tapın.",
+            open: true,
+            answer: "56",
+            accepted: ["56"],
+            explain: "Cavab cədvəlinə əsasən düzgün cavab 56-dır."
+          },
+          {
+            q: "24. Sahəsi S₂ = x³ + 2x² + 8x + 16 düsturu ilə verilən düzbucaqlı formasındakı metal lövhədən sahəsi S₁ = x³ + x² + 12x + 12 düsturu ilə verilən düzbucaqlı formasında hissə kəsildi. Şəkildə verilənlərə əsasən qalan hissənin m enini x ilə ifadə edin. x-in hansı ən kiçik tam qiymətində həlli var?",
+            open: true,
+            answer: "x - 2; x = 3",
+            accepted: ["x - 2; x = 3", "x-2; x=3", "x - 2; x=3", "x-2; x = 3"],
+            explain: "Cavab cədvəlinə əsasən düzgün cavab: x - 2; x = 3."
+          },
+          {
+            q: "25. x² + y² + x - 5y = 29,5 tənliyi ilə verilmiş çevrənin daxilinə çəkilmiş kvadratın sahəsini tapın.",
+            open: true,
+            answer: "72",
+            accepted: ["72"],
+            explain: "(x + 0,5)² + (y - 2,5)² = 29,5 + 0,25 + 6,25 = 36 ⇒ R = 6, d = 12. Daxilinə çəkilmiş kvadratın sahəsi: <span class=\"frac\"><span>d²</span><span>2</span></span> = <span class=\"frac\"><span>144</span><span>2</span></span> = 72."
+          }
+        ]
       },
       {
         id: "yas-meseleleri-1",
@@ -1024,7 +1260,7 @@
         title: "YAŞ MƏSƏLƏLƏRİ MÖVZUSU — SINAQ İMTAHANI (30 SUAL)",
         group: "5-7",
         minutes: 60,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. Ananın 32, qızının 4 yaşı var. Neçə ildən sonra onların yaşları cəmi 44 olar?",
             options: ["A) 8", "B) 4", "C) 6", "D) 12"],
@@ -1205,7 +1441,7 @@
             answer: "A) 27",
             explain: "Kiçiyin indiki yaşı x, yaş fərqi d olsun. Böyüyün yaşı x + d-dir. Şərtə görə x - d = 9 ⇒ x = d + 9. Kiçik böyüyün indiki yaşına (x + d-yə) çatanda d il keçər; həmin vaxt kiçiyin yaşı x + d, böyüyün yaşı x + 2d olar: (x + d) + (x + 2d) = 63 ⇒ 2x + 3d = 63. x = d + 9 qoyduqda: 2(d + 9) + 3d = 63 ⇒ 5d = 45 ⇒ d = 9, x = 18. Böyüyün indiki yaşı: 18 + 9 = 27."
           }
-        ])
+        ]
       },
       {
         id: "sinif-6-1",
@@ -1213,7 +1449,7 @@
         title: "6-CI SİNİF RİYAZİYYAT — SINAQ İMTAHANI (25 SUAL)",
         group: "5-7",
         minutes: 45,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. 2³ + 3² + 1⁵ ifadəsinin qiymətini hesablayın:",
             options: ["A) 196", "B) 18", "C) 15", "D) 22"],
@@ -1364,7 +1600,7 @@
             answer: "B) 3",
             explain: "Məxrəclər bərabər olduğundan surətlər də bərabərdir: 2x + 1 = 7 ⇒ 2x = 6 ⇒ x = 3."
           }
-        ])
+        ]
       },
       {
         id: "sinif-4-1",
@@ -1372,7 +1608,7 @@
         title: "4-CÜ SİNİF RİYAZİYYAT — QARIŞIQ SINAQ İMTAHANI (25 SUAL)",
         group: "1-4",
         minutes: 45,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. Beş yüz səkkiz min doxsan ədədinin rəqəmlə yazılışı hansıdır?",
             options: ["A) 580090", "B) 508900", "C) 508090", "D) 500890"],
@@ -1528,7 +1764,7 @@
             answer: "B) 15",
             explain: "4x + 12 = 72 ⇒ 4x = 60 ⇒ x = 60 : 4 = 15."
           }
-        ])
+        ]
       },
       {
         id: "sinif-7-1",
@@ -1536,7 +1772,7 @@
         title: "7-Cİ SİNİF RİYAZİYYAT — İZAHLI SINAQ İMTAHANI (25 SUAL)",
         group: "5-7",
         minutes: 45,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. -4,8 + 6,3 - 8,5 ifadəsinin qiymətini hesablayın:",
             options: ["A) 7", "B) -10", "C) -7", "D) -6,4"],
@@ -1692,7 +1928,7 @@
             answer: "B) <span class=\"frac\"><span>1</span><span>12</span></span>",
             explain: "Bütün hallar: 6 · 6 = 36. Cəmi 10 olan hallar: (4;6), (5;5), (6;4) — cəmi 3 hal. Ehtimal: <span class=\"frac\"><span>3</span><span>36</span></span> = <span class=\"frac\"><span>1</span><span>12</span></span>."
           }
-        ])
+        ]
       },
       {
         id: "tenlikler-1",
@@ -1700,7 +1936,7 @@
         title: "Tənliklər Mövzusu — Sınaq İmtahanı (25 SUAL)",
         group: "5-7",
         minutes: 40,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. x + 27 = 46 tənliyini həll edin:",
             options: ["A) 19", "B) 73", "C) 21", "D) 18"],
@@ -1851,7 +2087,7 @@
             answer: "A) 63",
             explain: "10a + b - (10b + a) = 9(a - b) = 27 ⇒ a - b = 3. a + b = 9 ilə birlikdə a = 6, b = 3 ⇒ ədəd 63-dür."
           }
-        ])
+        ]
       },
       {
         id: "sinif-5-1",
@@ -1859,7 +2095,7 @@
         title: "5-ci Sinif Riyaziyyat Sınaq İmtahanı (25 SUAL)",
         group: "5-7",
         minutes: 45,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "1. Rum rəqəmləri ilə verilmiş CCCXLVII ədədini onluq say sistemində yazın:",
             options: ["A) 367", "B) 347", "C) 357", "D) 247"],
@@ -2010,7 +2246,7 @@
             answer: "B) 240 km",
             explain: "S = v · t = 60 · 4 = 240 km."
           }
-        ])
+        ]
       },
       {
         id: "buraxilis-1",
@@ -2018,7 +2254,7 @@
         title: "Buraxılış Fənləri Üzrə (X–XI) Sınaq İmtahanı №1 — Riyaziyyat",
         group: "10-11",
         minutes: 60,
-        questions: applyBalancedPoints([
+        questions: [
           {
             q: "57. Düz xətt üzərində müəyyən sayda nöqtələr qeyd edildikdə alınan şüaların sayı 8 olarsa, parçaların sayını tapın.",
             options: ["A) 6", "B) 12", "C) 8", "D) 9", "E) 15"],
@@ -2181,12 +2417,13 @@
             answer: "D) 120°",
             explain: "Cavab açarındakı düzgün cavab 120°-dir."
           }
-        ])
+        ]
       }
     ];
 
     let activeGroup = "all";
     let currentTest = null;
+    let activeQuestions = [];
     let qIdx = 0;
     let picked = {};
     let confirmed = {};
@@ -2299,6 +2536,7 @@
     function goHome() {
       stopTimer();
       currentTest = null;
+      activeQuestions = [];
       quizFinished = false;
       document.getElementById("home-view").style.display = "block";
       document.getElementById("quiz-view").style.display = "none";
@@ -2348,6 +2586,7 @@
     function startQuiz(id) {
       currentTest = TESTS.find(t => t.id === id);
       if (!currentTest) return;
+      activeQuestions = prepareShuffledQuestions(currentTest.questions);
       qIdx = 0;
       picked = {};
       confirmed = {};
@@ -2363,7 +2602,7 @@
 
     function jumpToQuestion(index) {
       if (!currentTest) return;
-      if (index < 0 || index >= currentTest.questions.length) return;
+      if (index < 0 || index >= activeQuestions.length) return;
       qIdx = index;
       renderQuestion();
     }
@@ -2373,14 +2612,14 @@
       if (!jumpBar || !currentTest) return;
       jumpBar.innerHTML = "";
 
-      currentTest.questions.forEach((item, idx) => {
+      activeQuestions.forEach((item, idx) => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "q-jump-btn";
         btn.textContent = String(idx + 1);
 
         if (confirmed[idx]) {
-          btn.classList.add(picked[idx] === item.answer ? "ok-state" : "bad-state");
+          btn.classList.add(isQuestionCorrect(item, picked[idx]) ? "ok-state" : "bad-state");
         } else if (picked[idx]) {
           btn.classList.add("picked-state");
         }
@@ -2394,47 +2633,78 @@
       });
     }
 
+    function isQuestionCorrect(item, userVal) {
+      if (!userVal) return false;
+      if (item.open) {
+        const norm = String(userVal).trim().toLowerCase().replace(/\s+/g, " ");
+        const acc = (item.accepted || [item.answer]).map(a => String(a).trim().toLowerCase().replace(/\s+/g, " "));
+        return acc.includes(norm);
+      }
+      return userVal === item.answer;
+    }
+
+    function onOpenInput(val) {
+      if (confirmed[qIdx]) return;
+      picked[qIdx] = val;
+      const confBtn = document.getElementById("btn-confirm");
+      confBtn.disabled = !String(val).trim();
+      renderJumpBar();
+    }
+
     function renderQuestion() {
-      const item = currentTest.questions[qIdx];
+      const item = activeQuestions[qIdx];
       const userPick = picked[qIdx];
       const isDone = Boolean(confirmed[qIdx]);
       const qPoints = Number(item.points) || 1;
 
-      document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${currentTest.questions.length}`;
+      document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${activeQuestions.length}`;
       document.getElementById("q-point-tag").textContent = `Bu sualın dəyəri: ${qPoints} bal`;
       updateVisitUI(currentTest.id);
       renderJumpBar();
       document.getElementById("q-text").innerHTML = item.q;
 
       const optBox = document.getElementById("q-options");
-      optBox.innerHTML = "";
+      const openWrap = document.getElementById("q-open-wrap");
+      const openInput = document.getElementById("q-open-input");
 
-      item.options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "opt-btn";
-        btn.innerHTML = opt;
-        if (!isDone) {
-          if (userPick === opt) btn.classList.add("picked");
-          btn.onclick = () => {
-            picked[qIdx] = opt;
-            renderQuestion();
-          };
-        } else {
-          btn.disabled = true;
-          if (opt === item.answer) btn.classList.add("correct");
-          else if (userPick === opt) btn.classList.add("wrong");
-        }
-        optBox.appendChild(btn);
-      });
+      if (item.open) {
+        optBox.style.display = "none";
+        optBox.innerHTML = "";
+        openWrap.style.display = "block";
+        openInput.value = userPick || "";
+        openInput.disabled = isDone;
+      } else {
+        openWrap.style.display = "none";
+        optBox.style.display = "flex";
+        optBox.innerHTML = "";
+
+        item.options.forEach(opt => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "opt-btn";
+          btn.innerHTML = opt;
+          if (!isDone) {
+            if (userPick === opt) btn.classList.add("picked");
+            btn.onclick = () => {
+              picked[qIdx] = opt;
+              renderQuestion();
+            };
+          } else {
+            btn.disabled = true;
+            if (opt === item.answer) btn.classList.add("correct");
+            else if (userPick === opt) btn.classList.add("wrong");
+          }
+          optBox.appendChild(btn);
+        });
+      }
 
       const confBtn = document.getElementById("btn-confirm");
-      confBtn.disabled = !userPick || isDone;
+      confBtn.disabled = !String(userPick || "").trim() || isDone;
       confBtn.textContent = isDone ? "Təsdiqlənib" : "Cavabı təsdiqlə";
 
       const expBox = document.getElementById("q-explain");
       if (isDone) {
-        const ok = userPick === item.answer;
+        const ok = isQuestionCorrect(item, userPick);
         expBox.style.display = "block";
         expBox.className = "explain-box " + (ok ? "ok" : "bad");
         expBox.innerHTML = `
@@ -2448,13 +2718,13 @@
       }
 
       document.getElementById("btn-prev").disabled = qIdx === 0;
-      const last = qIdx === currentTest.questions.length - 1;
+      const last = qIdx === activeQuestions.length - 1;
       document.getElementById("btn-next").style.display = last ? "none" : "inline-block";
       document.getElementById("btn-finish").style.display = last ? "inline-block" : "none";
     }
 
     function confirmAnswer() {
-      if (!picked[qIdx]) return;
+      if (!String(picked[qIdx] || "").trim()) return;
       confirmed[qIdx] = true;
       renderQuestion();
     }
@@ -2464,7 +2734,7 @@
     }
 
     function nextQuestion() {
-      if (qIdx < currentTest.questions.length - 1) { qIdx++; renderQuestion(); }
+      if (qIdx < activeQuestions.length - 1) { qIdx++; renderQuestion(); }
     }
 
     function finishQuiz(byTimeout = false) {
@@ -2479,9 +2749,9 @@
 
       const list = document.getElementById("result-list");
       list.innerHTML = "";
-      currentTest.questions.forEach((item, idx) => {
+      activeQuestions.forEach((item, idx) => {
         const qPoints = Number(item.points) || 1;
-        const ok = picked[idx] === item.answer;
+        const ok = isQuestionCorrect(item, picked[idx]);
         if (ok) {
           correctCount++;
           earnedPoints += qPoints;
