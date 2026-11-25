@@ -644,7 +644,7 @@
           </div>
         </div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-          <div id="q-timer" class="timer-pill">⏱ 40:00</div>
+          <div id="q-timer" class="timer-pill">⏱ 45:00</div>
           <div id="q-visits" style="background:#f3e8ff; color:#4c1d95; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
           <div id="q-progress" style="background:#ede9fe; color:#2e1065; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
         </div>
@@ -720,7 +720,9 @@
 
       return shuffledQs.map((q, i) => {
         let pts = q.points || 4;
-        if (total === 25) {
+        if (total === 20) {
+          pts = 5;
+        } else if (total === 25) {
           pts = i < 10 ? 3 : i < 20 ? 4 : 6;
         } else if (total === 30) {
           const pts3 = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 27]);
@@ -761,6 +763,135 @@
     }
 
     const TESTS = [
+      {
+        id: "sinif-8-1",
+        num: "№1",
+        title: "8-Cİ SİNİF RİYAZİYYAT — ÜMUMİ SINAQ İMTAHANI (20 SUAL)",
+        group: "8-9",
+        minutes: 45,
+        questions: [
+          {
+            q: "1. Natural n ədədini 5-ə böldükdə qalıqda 2 alınır. n² + 3n ədədini 5-ə böldükdə qalıqda neçə alınar?",
+            options: ["A) 4", "B) 2", "C) 3", "D) 0"],
+            answer: "D) 0",
+            explain: "n ədədini 5-ə böldükdə qalıq 2 alınırsa, qalığın özünü (n = 2) ifadədə yerinə yaza bilərik: 2² + 3 · 2 = 4 + 6 = 10. 10 ədədi 5-ə qalıqsız bölündüyü üçün qalıq 0 olur."
+          },
+          {
+            q: "2. 45 · 24 hasilinin neçə müxtəlif sadə vuruğu var?",
+            options: ["A) 3", "B) 2", "C) 5", "D) 4"],
+            answer: "A) 3",
+            explain: "Ədədləri sadə vuruqlara ayıraq: 45 = 3² · 5 və 24 = 2³ · 3. Hasilin tərkibindəki müxtəlif sadə vuruqlar 2, 3 və 5-dir (cəmi 3 dənə)."
+          },
+          {
+            q: "3. <span class=\"frac\"><span>21</span><span>63</span></span> kəsrini onluq kəsr şəklində göstərin:",
+            options: ["A) 0,(3)", "B) 0,(2)", "C) 0,25", "D) 0,3"],
+            answer: "A) 0,(3)",
+            explain: "<span class=\"frac\"><span>21</span><span>63</span></span> kəsrinin sürət və məxrəcini 21-ə ixtisar etsək <span class=\"frac\"><span>1</span><span>3</span></span> alınır. 1-i 3-ə böldükdə sonsuz dövri onluq kəsr olan 0,(3) alınır."
+          },
+          {
+            q: "4. İki ardıcıl cüt natural ədədin cəmi 3,6; 4,8 və 9,6 ədədlərinin cəminə bərabərdir. Böyük ədədi tapın:",
+            options: ["A) 6", "B) 8", "C) 10", "D) 12"],
+            answer: "C) 10",
+            explain: "Əvvəlcə verilən onluq kəsrləri toplayaq: 3,6 + 4,8 + 9,6 = 18. Cəmi 18 olan iki ardıcıl cüt natural ədəd 8 və 10-dur. Onlardan böyüyü 10-dur."
+          },
+          {
+            q: "5. Kvadratın tərəfi 10% artarsa, sahəsi neçə faiz artar?",
+            options: ["A) 10%", "B) 21%", "C) 20%", "D) 44%"],
+            answer: "B) 21%",
+            explain: "Kvadratın tərəfini 10 sm qəbul etsək, sahəsi 10 × 10 = 100 sm² olar. Tərəf 10% artıb 11 sm olduqda, yeni sahə 11 × 11 = 121 sm² olur. Sahə 121 - 100 = 21% artar."
+          },
+          {
+            q: "6. Fəhlənin gündəlik qazancı 50 manatdan artıb 65 manat oldu. Qazanc neçə faiz artdı?",
+            options: ["A) 15%", "B) 30%", "C) 25%", "D) 35%"],
+            answer: "B) 30%",
+            explain: "Qazanc 65 - 50 = 15 manat artıb. Artım faizini tapmaq üçün artımı ilkin məbləğə bölüb 100%-ə vururuq: <span class=\"frac\"><span>15</span><span>50</span></span> × 100% = 30%."
+          },
+          {
+            q: "7. M = {x, y, 3, 7, 9} çoxluğunun ikielementli altçoxluqlarının sayını tapın:",
+            options: ["A) 5", "B) 8", "C) 10", "D) 12"],
+            answer: "C) 10",
+            explain: "M çoxluğunun 5 elementi var. İkielementli altçoxluqların sayı kombinezon düsturu ilə tapılır: C₅² = <span class=\"frac\"><span>5 × 4</span><span>1 × 2</span></span> = 10."
+          },
+          {
+            q: "8. n(A ∩ B) = 5 və n(B \\ A) = 14 olarsa, n(B)-ni hesablayın:",
+            options: ["A) 9", "B) 14", "C) 24", "D) 19"],
+            answer: "D) 19",
+            explain: "B çoxluğunun elementlərinin sayı yalnız B-yə aid olanlar ilə ortaq elementlərin cəminə bərabərdir: n(B) = n(B \\ A) + n(A ∩ B) = 14 + 5 = 19."
+          },
+          {
+            q: "9. Şəkildə a ∥ b olarsa, 3x-i tapın:",
+            options: ["A) 54°", "B) 72°", "C) 36°", "D) 60°"],
+            answer: "A) 54°",
+            explain: "a ∥ b olduğundan daxili birtərəfli bucaqların cəmi 180°-dir: 4x + 6x = 180° ⇒ 10x = 180° ⇒ x = 18°. Bizdən 3x soruşulur: 3 × 18° = 54°."
+          },
+          {
+            q: "10. Uyğun tərəfləri paralel olan bucaqlardan biri o birindən 36° böyükdür. Kiçik bucağı tapın:",
+            options: ["A) 108°", "B) 54°", "C) 72°", "D) 64°"],
+            answer: "C) 72°",
+            explain: "Uyğun tərəfləri paralel olan bucaqlar bərabər deyilsə, onların cəmi 180° olur. Kiçik bucağı x, böyüyünü x + 36° götürsək: x + x + 36° = 180° ⇒ 2x = 144° ⇒ x = 72°."
+          },
+          {
+            q: "11. x = 2 olduqda <span class=\"frac\"><span>bx - 3</span><span>b + x</span></span> kəsrinin qiyməti 1-ə bərabərdir. b-ni tapın:",
+            options: ["A) 1", "B) 5", "C) 3", "D) -5"],
+            answer: "B) 5",
+            explain: "İfadədə x = 2 yazsaq: <span class=\"frac\"><span>2b - 3</span><span>b + 2</span></span> = 1. Buradan sürət məxrəcə bərabər olmalıdır: 2b - 3 = b + 2 ⇒ b = 5."
+          },
+          {
+            q: "12. 24x² : <span class=\"frac\"><span>6x²</span><span>x - y</span></span> ifadəsinə ekvivalent olan ifadəni göstərin:",
+            options: ["A) 4x⁴", "B) <span class=\"frac\"><span>4</span><span>x - y</span></span>", "C) 18(x - y)", "D) 4(x - y)"],
+            answer: "D) 4(x - y)",
+            explain: "Kəsrə bölmək üçün birinci ifadəni ikinci kəsrin tərsinə vururuq: 24x² · <span class=\"frac\"><span>x - y</span><span>6x²</span></span>. Burada x²-lar ixtisar gedir, 24 ÷ 6 = 4 qalır. Cavab: 4(x - y)."
+          },
+          {
+            q: "13. Paraleloqramın tərəfləri nisbəti 3 : 5 kimi, perimetri isə 64 sm-dir. Paraleloqramın böyük tərəfini tapın:",
+            options: ["A) 20 sm", "B) 24 sm", "C) 12 sm", "D) 40 sm"],
+            answer: "A) 20 sm",
+            explain: "Tərəfləri 3k və 5k qəbul edək. Perimetr düsturuna görə: 2(3k + 5k) = 64 ⇒ 16k = 64 ⇒ k = 4. Böyük tərəf 5k = 5 × 4 = 20 sm."
+          },
+          {
+            q: "14. Trapesiyanın orta xətti 24 sm, oturacaqlarının nisbəti 1 : 2 kimidir. Trapesiyanın böyük oturacağını tapın:",
+            options: ["A) 16 sm", "B) 48 sm", "C) 32 sm", "D) 24 sm"],
+            answer: "C) 32 sm",
+            explain: "Oturacaqları x və 2x götürsək, orta xətt onların yarısına bərabərdir: <span class=\"frac\"><span>x + 2x</span><span>2</span></span> = 24 ⇒ 3x = 48 ⇒ x = 16. Böyük oturacaq 2x = 2 × 16 = 32 sm."
+          },
+          {
+            q: "15. √(13 + √(7 + √(2 + √4))) ifadəsinin qiymətini tapın:",
+            options: ["A) 4", "B) 5", "C) 2", "D) 3"],
+            answer: "A) 4",
+            explain: "Kökləri ən içəridən başlayaraq ardıcıl hesablayaq: √4 = 2; √(2 + 2) = √4 = 2; √(7 + 2) = √9 = 3; √(13 + 3) = √16 = 4."
+          },
+          {
+            q: "16. 2√7 ədədi ardıcıl a və b tam ədədləri arasında yerləşir. a və b-nin ədədi ortasını tapın:",
+            options: ["A) 6,5", "B) 5", "C) 6", "D) 5,5"],
+            answer: "D) 5,5",
+            explain: "2 vuruğunu kökün altına salaq: 2√7 = √(2² · 7) = √28. √28 ədədi √25 = 5 və √36 = 6 tam ədədləri arasında yerləşir. 5 və 6-nın ədədi ortası: <span class=\"frac\"><span>5 + 6</span><span>2</span></span> = 5,5."
+          },
+          {
+            q: "17. Katetləri nisbəti 3 : 4, hipotenuzu 25 sm olan düzbucaqlı üçbucağın perimetrini tapın:",
+            options: ["A) 48 sm", "B) 60 sm", "C) 72 sm", "D) 50 sm"],
+            answer: "B) 60 sm",
+            explain: "Katetləri 3k və 4k qəbul etsək, Pifaqor teoreminə görə (3k)² + (4k)² = 25² ⇒ 25k² = 625 ⇒ k = 5. Katetlər 15 sm və 20 sm-dir. Perimetr: P = 15 + 20 + 25 = 60 sm."
+          },
+          {
+            q: "18. İki ardıcıl tək natural ədədin hasili 143-ə bərabər olarsa, kiçik ədədi tapın:",
+            options: ["A) 9", "B) 13", "C) 11", "D) 7"],
+            answer: "C) 11",
+            explain: "Hasili 143 olan iki ardıcıl tək natural ədəd 11 və 13-dür (11 × 13 = 143). Onlardan kiçiyi 11-dir."
+          },
+          {
+            q: "19. x² - 6x + 5 = 0 tənliyinin kökləri x₁ və x₂ olduqda, <span class=\"frac\"><span>x₁</span><span>x₂</span></span> + <span class=\"frac\"><span>x₂</span><span>x₁</span></span> cəmini tapın:",
+            options: ["A) 5,2", "B) 4,8", "C) 7,2", "D) 6,4"],
+            answer: "A) 5,2",
+            explain: "Viyet teoreminə görə cəmi 6, hasili 5 olan ədədlər x₁ = 1 və x₂ = 5-dir. İfadədə yerinə yazaq: <span class=\"frac\"><span>1</span><span>5</span></span> + 5 = 0,2 + 5 = 5,2."
+          },
+          {
+            q: "20. x² - 10x + 9 = 0 tənliyinin kökləri x₁ və x₂ olduqda, √x₁ + √x₂ ifadəsinin qiymətini tapın:",
+            options: ["A) 6", "B) 3", "C) 10", "D) 4"],
+            answer: "D) 4",
+            explain: "Viyet teoreminə görə cəmi 10, hasili 9 olan köklər x₁ = 1 və x₂ = 9-dur. İfadədə yerinə yazaq: √1 + √9 = 1 + 3 = 4."
+          }
+        ]
+      },
       {
         id: "sinif-2-1",
         num: "№1",
@@ -923,7 +1054,7 @@
       {
         id: "sinif-3-1",
         num: "№1",
-        title: "3-CÜ SİNİF RİYAZİYYAT — MÜNDƏRİCAT ÜZRƏ SINAQ (25 SUAL)",
+        title: "3-CÜ SİNİF RİYAZİYYAT —  SINAQ (25 SUAL)",
         group: "1-4",
         minutes: 40,
         questions: [
