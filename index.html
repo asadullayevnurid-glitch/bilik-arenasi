@@ -625,7 +625,7 @@
           </div>
         </div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-          <div id="q-timer" class="timer-pill">⏱ 60:00</div>
+          <div id="q-timer" class="timer-pill">⏱ 40:00</div>
           <div id="q-visits" style="background:#f3e8ff; color:#4c1d95; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
           <div id="q-progress" style="background:#ede9fe; color:#2e1065; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:800;"></div>
         </div>
@@ -700,6 +700,324 @@
     }
 
     const TESTS = [
+      {
+        id: "sinif-2-1",
+        num: "№1",
+        title: "2-Cİ SİNİF RİYAZİYYAT — SINAQ İMTAHANI (25 SUAL)",
+        group: "1-4",
+        minutes: 40,
+        questions: applyBalancedPoints([
+          {
+            q: "1. Kubun neçə üzü və neçə təpəsi var?",
+            options: ["A) 8 üzü, 6 təpəsi", "B) 6 üzü, 8 təpəsi", "C) 6 üzü, 12 təpəsi", "D) 4 üzü, 8 təpəsi"],
+            answer: "B) 6 üzü, 8 təpəsi",
+            explain: "Kubun 6 üzü, 8 təpəsi və 12 tili var."
+          },
+          {
+            q: "2. Cəmi hesablayın: 47 + 8",
+            options: ["A) 55", "B) 45", "C) 56", "D) 54"],
+            answer: "A) 55",
+            explain: "47 + 3 = 50; 50 + 5 = 55."
+          },
+          {
+            q: "3. Toplamanı yerinə yetirin: 38 + 26",
+            options: ["A) 54", "B) 62", "C) 64", "D) 66"],
+            answer: "C) 64",
+            explain: "38 + 20 = 58; 58 + 6 = 64."
+          },
+          {
+            q: "4. Əlverişli üsulla hesablayın: 17 + 25 + 13",
+            options: ["A) 45", "B) 65", "C) 50", "D) 55"],
+            answer: "D) 55",
+            explain: "(17 + 13) + 25 = 30 + 25 = 55."
+          },
+          {
+            q: "5. Fərqi tapın: 63 - 7",
+            options: ["A) 56", "B) 64", "C) 54", "D) 57"],
+            answer: "A) 56",
+            explain: "63 - 3 = 60; 60 - 4 = 56."
+          },
+          {
+            q: "6. Çıxmanı yerinə yetirin: 82 - 35",
+            options: ["A) 57", "B) 53", "C) 47", "D) 45"],
+            answer: "C) 47",
+            explain: "82 - 30 = 52; 52 - 5 = 47."
+          },
+          {
+            q: "7. Səbətdə bir neçə alma var idi. Səbətə 18 alma da qoyduqdan sonra cəmi 45 alma oldu. Əvvəlcə səbətdə neçə alma var idi?",
+            options: ["A) 63", "B) 33", "C) 28", "D) 27"],
+            answer: "D) 27",
+            explain: "45 - 18 = 27 alma var idi."
+          },
+          {
+            q: "8. İfadənin qiymətini tapın: 70 - (24 + 16)",
+            options: ["A) 62", "B) 30", "C) 40", "D) 20"],
+            answer: "B) 30",
+            explain: "Əvvəlcə mötərizənin içi: 24 + 16 = 40. Sonra 70 - 40 = 30."
+          },
+          {
+            q: "9. 4 + 4 + 4 + 4 + 4 cəmini vurma əməli ilə necə yazmaq olar?",
+            options: ["A) 5 · 4", "B) 4 · 4", "C) 5 + 4", "D) 4 · 6"],
+            answer: "A) 5 · 4",
+            explain: "4 ədədi 5 dəfə toplanıb, buna görə 5 · 4 kimi yazılır."
+          },
+          {
+            q: "10. İfadənin qiymətini hesablayın: 3 · 7 + 2 · 8",
+            options: ["A) 35", "B) 39", "C) 37", "D) 31"],
+            answer: "C) 37",
+            explain: "3 · 7 = 21 və 2 · 8 = 16; cəmi 21 + 16 = 37."
+          },
+          {
+            q: "11. Müqayisə edin: 5 · 6 [ ? ] 4 · 8",
+            options: ["A) >", "B) =", "C) <", "D) +"],
+            answer: "C) <",
+            explain: "5 · 6 = 30 və 4 · 8 = 32. 30 < 32 olduğundan '<' işarəsi qoyulur."
+          },
+          {
+            q: "12. 32 : 4 = ? misalının cavabını hansı vurma misalı ilə yoxlamaq olar?",
+            options: ["A) 4 · 8 = 32", "B) 32 · 4 = 128", "C) 4 · 7 = 28", "D) 4 · 9 = 36"],
+            answer: "A) 4 · 8 = 32",
+            explain: "32 : 4 = 8 olduğundan yoxlama 4 · 8 = 32 hasili ilə aparılır."
+          },
+          {
+            q: "13. 27 karandaşı 3 qutuya bərabər sayda yığdılar. Hər qutuda neçə karandaş oldu?",
+            options: ["A) 8", "B) 9", "C) 7", "D) 24"],
+            answer: "B) 9",
+            explain: "27 : 3 = 9 karandaş."
+          },
+          {
+            q: "14. 50-50 irəli saydıqda 250-dən sonra hansı ədəd gəlir?",
+            options: ["A) 255", "B) 350", "C) 200", "D) 300"],
+            answer: "D) 300",
+            explain: "250 + 50 = 300."
+          },
+          {
+            q: "15. 4 yüzlük, 0 onluq və 7 təklikdən ibarət olan ədəd hansıdır?",
+            options: ["A) 470", "B) 407", "C) 704", "D) 47"],
+            answer: "B) 407",
+            explain: "4 yüzlük = 400, 0 onluq = 0, 7 təklik = 7; ədəd 407-dir."
+          },
+          {
+            q: "16. İki 50 qəpiklik və üç 10 qəpiklik birlikdə neçə qəpik edər?",
+            options: ["A) 80 qəpik", "B) 103 qəpik", "C) 130 qəpik", "D) 150 qəpik"],
+            answer: "C) 130 qəpik",
+            explain: "2 · 50 + 3 · 10 = 100 + 30 = 130 qəpik."
+          },
+          {
+            q: "17. Aynurun 20 manat pulu var idi. O, qiyməti 6 manat olan 2 kitab aldı. Aynurun neçə manat pulu qaldı?",
+            options: ["A) 8 manat", "B) 14 manat", "C) 12 manat", "D) 6 manat"],
+            answer: "A) 8 manat",
+            explain: "2 kitabın qiyməti: 6 · 2 = 12 manat. Qalan pul: 20 - 12 = 8 manat."
+          },
+          {
+            q: "18. 3 m 45 sm neçə santimetrdir?",
+            options: ["A) 3450 sm", "B) 345 sm", "C) 48 sm", "D) 3045 sm"],
+            answer: "B) 345 sm",
+            explain: "1 m = 100 sm olduğundan 3 m = 300 sm; 300 + 45 = 345 sm."
+          },
+          {
+            q: "19. Tərəzinin bir gözündə 5 kq-lıq, digər gözündə isə 2 kq-lıq daş var. Tərəzinin tarazlaşması üçün ikinci gözə daha neçə kiloqram daş qoymaq lazımdır?",
+            options: ["A) 7 kq", "B) 2 kq", "C) 3 kq", "D) 4 kq"],
+            answer: "C) 3 kq",
+            explain: "5 - 2 = 3 kq daş əlavə etmək lazımdır."
+          },
+          {
+            q: "20. 15 litr suyu 3 litrlik bankalara doldursaq, neçə banka lazım olar?",
+            options: ["A) 4", "B) 12", "C) 6", "D) 5"],
+            answer: "D) 5",
+            explain: "15 : 3 = 5 banka."
+          },
+          {
+            q: "21. Muncuqlar bu ardıcıllıqla düzülüb: qırmızı, sarı, göy, qırmızı, sarı, göy... 8-ci muncuq hansı rəngdə olacaq?",
+            options: ["A) sarı", "B) qırmızı", "C) göy", "D) yaşıl"],
+            answer: "A) sarı",
+            explain: "Ardıcıllıq 3 rəngdən bir təkrarlanır: 1-qırmızı, 2-sarı, 3-göy, 4-qırmızı, 5-sarı, 6-göy, 7-qırmızı, 8-sarı."
+          },
+          {
+            q: "22. 3 həftə və 4 gün birlikdə neçə gün edər?",
+            options: ["A) 24 gün", "B) 25 gün", "C) 19 gün", "D) 21 gün"],
+            answer: "B) 25 gün",
+            explain: "1 həftə = 7 gün; 3 həftə = 3 · 7 = 21 gün. 21 + 4 = 25 gün."
+          },
+          {
+            q: "23. Saat 14:20-ni göstərir. 40 dəqiqədən sonra saat neçə olacaq?",
+            options: ["A) 14:60", "B) 15:20", "C) 15:00", "D) 14:40"],
+            answer: "C) 15:00",
+            explain: "14:20 + 40 dəqiqə = 14:60 = 15:00."
+          },
+          {
+            q: "24. Cədvəldə şagirdlərin oxuduğu kitab sayı verilib (★ = 2 kitab). Səbinə Cəfərdən neçə kitab çox oxuyub?",
+            options: ["A) 2", "B) 4", "C) 6", "D) 8"],
+            answer: "B) 4",
+            explain: "Səbinə 4 ★ oxuyub (4 · 2 = 8 kitab), Cəfər 2 ★ oxuyub (2 · 2 = 4 kitab). Fərq: 8 - 4 = 4 kitab."
+          },
+          {
+            q: "25. Ən böyük ikirəqəmli ədədlə ən kiçik ikirəqəmli ədədin fərqi neçədir?",
+            options: ["A) 90", "B) 88", "C) 89", "D) 99"],
+            answer: "C) 89",
+            explain: "99 - 10 = 89."
+          }
+        ])
+      },
+      {
+        id: "sinif-3-1",
+        num: "№1",
+        title: "3-CÜ SİNİF RİYAZİYYAT — MÜNDƏRİCAT ÜZRƏ SINAQ (25 SUAL)",
+        group: "1-4",
+        minutes: 40,
+        questions: applyBalancedPoints([
+          {
+            q: "1. 5 yüzlük, 2 onluq və 7 təklikdən ibarət ədəd hansıdır?",
+            options: ["A) 572", "B) 527", "C) 257", "D) 725"],
+            answer: "B) 527",
+            explain: "500 + 20 + 7 = 527."
+          },
+          {
+            q: "2. 800 + 40 + 9 mərtəbə qiymətlərinin cəmi şəklində verilmiş ədədi tapın:",
+            options: ["A) 894", "B) 489", "C) 809", "D) 849"],
+            answer: "D) 849",
+            explain: "800 + 40 + 9 = 849."
+          },
+          {
+            q: "3. 648, 684, 486, 846 ədədlərindən ən böyüyü ilə ən kiçiyinin fərqini tapın:",
+            options: ["A) 198", "B) 398", "C) 360", "D) 260"],
+            answer: "C) 360",
+            explain: "Ən böyük ədəd 846, ən kiçik ədəd 486-dır. Fərq: 846 - 486 = 360."
+          },
+          {
+            q: "4. 673 ədədini yüzlüklərə qədər yuvarlaqlaşdırdıqda neçə alınar?",
+            options: ["A) 700", "B) 600", "C) 670", "D) 680"],
+            answer: "A) 700",
+            explain: "Onluq mərtəbəsindəki rəqəm 7 (5-dən böyük) olduğundan 673 yüzlüklərə qədər 700-ə yuvarlaqlaşır."
+          },
+          {
+            q: "5. Cəmi hesablayın: 437 + 248",
+            options: ["A) 685", "B) 675", "C) 695", "D) 585"],
+            answer: "A) 685",
+            explain: "437 + 248 = 685."
+          },
+          {
+            q: "6. Toplamanı yerinə yetirin: 382 + 264",
+            options: ["A) 546", "B) 646", "C) 636", "D) 556"],
+            answer: "B) 646",
+            explain: "382 + 264 = 646."
+          },
+          {
+            q: "7. Cəmi tapın: 568 + 279",
+            options: ["A) 747", "B) 837", "C) 857", "D) 847"],
+            answer: "D) 847",
+            explain: "568 + 279 = 847."
+          },
+          {
+            q: "8. Əlverişli üsulla hesablayın: 145 + 230 + 155",
+            options: ["A) 520", "B) 430", "C) 530", "D) 630"],
+            answer: "C) 530",
+            explain: "(145 + 155) + 230 = 300 + 230 = 530."
+          },
+          {
+            q: "9. Fərqi tapın: 682 - 247",
+            options: ["A) 445", "B) 435", "C) 425", "D) 335"],
+            answer: "B) 435",
+            explain: "682 - 247 = 435."
+          },
+          {
+            q: "10. Çıxmanı yerinə yetirin: 729 - 364",
+            options: ["A) 365", "B) 465", "C) 345", "D) 375"],
+            answer: "A) 365",
+            explain: "729 - 364 = 365."
+          },
+          {
+            q: "11. Fərqi hesablayın: 814 - 458",
+            options: ["A) 456", "B) 366", "C) 356", "D) 346"],
+            answer: "C) 356",
+            explain: "814 - 458 = 356."
+          },
+          {
+            q: "12. Toplananları yüzlüklərə qədər yuvarlaqlaşdırmaqla 389 + 214 cəmini təqribi hesablayın:",
+            options: ["A) 500", "B) 700", "C) 590", "D) 600"],
+            answer: "D) 600",
+            explain: "389 ≈ 400 və 214 ≈ 200; cəmi 400 + 200 = 600."
+          },
+          {
+            q: "13. İfadənin qiymətini hesablayın: 6 · 8 + 7 · 5",
+            options: ["A) 73", "B) 83", "C) 93", "D) 81"],
+            answer: "B) 83",
+            explain: "6 · 8 = 48 və 7 · 5 = 35; cəmi 48 + 35 = 83."
+          },
+          {
+            q: "14. 9 · 7 hasili 8 · 6 hasilindən neçə vahid böyükdür?",
+            options: ["A) 15", "B) 17", "C) 13", "D) 25"],
+            answer: "A) 15",
+            explain: "9 · 7 = 63 və 8 · 6 = 48. Fərq: 63 - 48 = 15."
+          },
+          {
+            q: "15. Bağban 7 səbətin hər birinə 9 kq alma yığdı. Cəmi neçə kiloqram alma yığıldı?",
+            options: ["A) 56 kq", "B) 72 kq", "C) 63 kq", "D) 16 kq"],
+            answer: "C) 63 kq",
+            explain: "7 · 9 = 63 kq alma."
+          },
+          {
+            q: "16. Qismətlərin cəmini tapın: 36 : 4 + 45 : 5",
+            options: ["A) 17", "B) 19", "C) 16", "D) 18"],
+            answer: "D) 18",
+            explain: "36 : 4 = 9 və 45 : 5 = 9; cəmi 9 + 9 = 18."
+          },
+          {
+            q: "17. 54 karandaşı 6 qutuya bərabər sayda böldülər. Hər qutuda neçə karandaş oldu?",
+            options: ["A) 7", "B) 8", "C) 9", "D) 6"],
+            answer: "C) 9",
+            explain: "54 : 6 = 9 karandaş."
+          },
+          {
+            q: "18. Hesablayın: 72 : 8 + 81 : 9",
+            options: ["A) 17", "B) 18", "C) 19", "D) 16"],
+            answer: "B) 18",
+            explain: "72 : 8 = 9 və 81 : 9 = 9; cəmi 9 + 9 = 18."
+          },
+          {
+            q: "19. Hansı ədədi 7-yə böldükdə qismətdə 8 alınar?",
+            options: ["A) 56", "B) 49", "C) 63", "D) 15"],
+            answer: "A) 56",
+            explain: "8 · 7 = 56; 56 : 7 = 8."
+          },
+          {
+            q: "20. 9 · [ ? ] = 72 bərabərliyində sual işarəsinin yerinə hansı ədəd yazılmalıdır?",
+            options: ["A) 9", "B) 6", "C) 7", "D) 8"],
+            answer: "D) 8",
+            explain: "72 : 9 = 8."
+          },
+          {
+            q: "21. İfadənin qiymətini tapın: 64 - (24 + 18) : 6",
+            options: ["A) 56", "B) 57", "C) 7", "D) 58"],
+            answer: "B) 57",
+            explain: "24 + 18 = 42; 42 : 6 = 7; 64 - 7 = 57."
+          },
+          {
+            q: "22. Hesablayın: 5 · 9 - 32 : 4",
+            options: ["A) 41", "B) 35", "C) 37", "D) 3"],
+            answer: "C) 37",
+            explain: "5 · 9 = 45 və 32 : 4 = 8; fərq 45 - 8 = 37."
+          },
+          {
+            q: "23. a = 8 olduqda 6 · a + 17 ifadəsinin qiymətini hesablayın:",
+            options: ["A) 65", "B) 48", "C) 55", "D) 31"],
+            answer: "A) 65",
+            explain: "6 · 8 + 17 = 48 + 17 = 65."
+          },
+          {
+            q: "24. x - 38 = 47 tənliyini həll edin:",
+            options: ["A) 9", "B) 75", "C) 95", "D) 85"],
+            answer: "D) 85",
+            explain: "x = 47 + 38 = 85."
+          },
+          {
+            q: "25. 8 · x = 64 tənliyinin kökünü tapın:",
+            options: ["A) 7", "B) 8", "C) 9", "D) 56"],
+            answer: "B) 8",
+            explain: "x = 64 : 8 = 8."
+          }
+        ])
+      },
       {
         id: "yas-meseleleri-1",
         num: "№1",
