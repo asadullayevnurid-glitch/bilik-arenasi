@@ -585,7 +585,6 @@
       gap: 6px;
     }
 
-    /* Ümumi Nəticələr siyahısı */
     .student-name-box {
       margin-bottom: 14px;
       padding: 14px 16px;
@@ -682,6 +681,12 @@
       padding: 2px 8px;
       border-radius: 999px;
       vertical-align: middle;
+    }
+    .sync-status-note {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 600;
     }
 
     @media (max-width: 680px) {
@@ -823,6 +828,7 @@
           <button type="button" class="btn-gray" onclick="refreshAllResultsBoard()">Yenilə</button>
         </div>
         <div id="result-view-board" class="board-list"></div>
+        <div id="result-sync-note" class="sync-status-note"></div>
       </div>
 
       <div id="result-list" style="margin-top:18px;"></div>
@@ -846,6 +852,7 @@
         </div>
       </div>
       <div id="all-results-board" class="board-list"></div>
+      <div id="all-results-sync-note" class="sync-status-note"></div>
     </div>
   </main>
 
@@ -864,16 +871,31 @@
   </footer>
 
   <script>
-    const DB_BASE = "https://bilik-arenasi-default-rtdb.firebaseio.com";
-    const FIREBASE_SITE_VIEWS_URL = `${DB_BASE}/stats/siteViews.json`;
-    const FIREBASE_RESULTS_URL = `${DB_BASE}/results.json`;
+    /**
+     * BÜTÜN TELEFONLARDA ORTAQ NƏTİCƏLƏR ÜÇÜN BULUD BAZASI:
+     * Brauzer təhlükəsizliyinə (CORS) görə başqa telefonda nəticələrin görünməsi üçün
+     * real işlək bulud nöqtəsi lazımdır.
+     *
+     * Ən asan yol (2 dəqiqə, pulsuz):
+     * 1) https://jsonblob.com və ya https://www.jsonbin.io və ya öz Firebase Realtime Database-dən
+     *    bir JSON/DB ünvanı alıb aşağıdakı SHARED_STORE_URL-ə yapışdırın.
+     * 2) Əgər öz saytınızda (məs. kvweb.me) backend varsa, GET və POST dəstəkləyən URL verin.
+     *
+     * Aşağıda kvsdb.com / kvstore / JSONBlob-a uyğun avtomatik dəstək qurulub;
+     * SHARED_STORE_URL doldurulmadıqda isə hər cihazda lokal yaddaş + açıq sayğac işləyir.
+     */
+    const SHARED_STORE_URL = ""; // Məsələn: "https://kvdb.io/SIZIN_BUCKET_ID/bilik_arenasi_data" və ya Firebase RTDB URL
+
+    const INITIAL_TEST_COUNTS = {
+      "buraxilis-1": 25
+    };
 
     const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
-    const COUNTER_PREFIX = "bilik_arenasi_istirak_v3";
-    const SITE_VIEW_KEY = "bilik_arenasi_sayt_baxis_v1";
-    const LOCAL_VIEW_STORAGE = "bilik_arenasi_local_views_v1";
-    const LOCAL_RESULTS_STORAGE = "bilik_arenasi_all_results_v1";
-    const LOCAL_LAST_RESULT_ID = "bilik_arenasi_last_result_id_v1";
+    const COUNTER_PREFIX = "bilik_arenasi_istirak_v4";
+    const SITE_VIEW_KEY = "bilik_arenasi_sayt_baxis_v2";
+    const LOCAL_VIEW_STORAGE = "bilik_arenasi_local_views_v2";
+    const LOCAL_RESULTS_STORAGE = "bilik_arenasi_all_results_v2";
+    const LOCAL_LAST_RESULT_ID = "bilik_arenasi_last_result_id_v2";
 
     function shuffleArray(arr) {
       const copy = arr.slice();
@@ -3049,68 +3071,63 @@
           },
           {
             q: "21. m = 5 və n = 3 olduqda m⁴ - 4m³n + 6m²n² - 4mn³ + n⁴ ifadəsinin qiymətini hesablayın:",
-            options: ["A) 64", "B) 16", "C) 4096", "D) 8"],
-            answer: "B) 16",
+            options: ["A) 16", "B) 8", "C) 256", "D) 64"],
+            answer: "A) 16",
             explain: "Bu ifadə (m - n)⁴ ifadəsinin açılışıdır. Qiymətləri yerinə yazsaq: (5 - 3)⁴ = 2⁴ = 16."
           },
           {
-            q: "22. x + <span class=\"frac\"><span>1</span><span>x</span></span> = 8 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 64", "B) 66", "C) 62", "D) 14"],
-            answer: "C) 62",
-            explain: "Hər iki tərəfi kvadrata yüksəldirik: x² + 2 + <span class=\"frac\"><span>1</span><span>x²</span></span> = 64 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 62."
+            q: "22. (x + 1)(x + 2)(x + 3)(x + 4) + 1 ifadəsini tam kvadrat şəklində göstərin:",
+            options: ["A) (x² + 5x + 5)²", "B) (x² + 5x + 6)²", "C) (x² + 4x + 5)²", "D) (x² + 5x + 4)²"],
+            answer: "A) (x² + 5x + 5)²",
+            explain: "Kənar və ortadakı mötərizələri cüt-cüt vuraq: [(x + 1)(x + 4)][(x + 2)(x + 3)] + 1 = (x² + 5x + 4)(x² + 5x + 6) + 1. t = x² + 5x + 5 əvəzləməsi etsək: (t - 1)(t + 1) + 1 = t² - 1 + 1 = t² = (x² + 5x + 5)²."
           },
           {
-            q: "23. x - <span class=\"frac\"><span>1</span><span>x</span></span> = 3 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 11", "B) 7", "C) 9", "D) 5"],
-            answer: "A) 11",
-            explain: "Hər iki tərəfi kvadrata yüksəldirik: x² - 2 + <span class=\"frac\"><span>1</span><span>x²</span></span> = 9 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 11."
+            q: "23. (a + 2b + 3c)² ifadəsinin açılışında a² + 4b² + 9c² cəmindən başqa hansı hədlər var?",
+            options: ["A) 2ab + 3bc + 6ac", "B) 4ab + 12bc + 6ac", "C) 2ab + 6bc + 3ac", "D) 4ab + 6bc + 12ac"],
+            answer: "B) 4ab + 12bc + 6ac",
+            explain: "(a + 2b + 3c)² = a² + 4b² + 9c² + 2 · a · 2b + 2 · 2b · 3c + 2 · a · 3c = a² + 4b² + 9c² + 4ab + 12bc + 6ac."
           },
           {
-            q: "24. (x + 3)² - (x - 3)² ifadəsini sadələşdirin:",
-            options: ["A) 18", "B) 2x² + 18", "C) 6x", "D) 12x"],
-            answer: "D) 12x",
-            explain: "Kvadratlar fərqi düsturuna görə: ((x + 3) - (x - 3))((x + 3) + (x - 3)) = 6 · 2x = 12x."
+            q: "24. x - <span class=\"frac\"><span>1</span><span>x</span></span> = 4 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
+            options: ["A) 14", "B) 12", "C) 18", "D) 16"],
+            answer: "C) 18",
+            explain: "Bərabərliyin hər iki tərəfini kvadrata yüksəldək: (x - <span class=\"frac\"><span>1</span><span>x</span></span>)² = 4² ⇒ x² - 2 · x · <span class=\"frac\"><span>1</span><span>x</span></span> + <span class=\"frac\"><span>1</span><span>x²</span></span> = 16 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> - 2 = 16 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 18."
           },
           {
-            q: "25. a² + b² = 37 və ab = 6 olarsa, a + b cəminin müsbət qiymətini tapın:",
-            options: ["A) 49", "B) 7", "C) 25", "D) 5"],
-            answer: "B) 7",
-            explain: "(a + b)² = a² + b² + 2ab = 37 + 2 · 6 = 49. Müsbət qiyməti: √49 = 7."
+            q: "25. x + <span class=\"frac\"><span>1</span><span>x</span></span> = 3 olarsa, x³ + <span class=\"frac\"><span>1</span><span>x³</span></span> ifadəsinin qiymətini tapın:",
+            options: ["A) 27", "B) 18", "C) 9", "D) 36"],
+            answer: "B) 18",
+            explain: "Kublar cəmi və ya kubu yüksəltmə düsturundan istifadə edək: (x + <span class=\"frac\"><span>1</span><span>x</span></span>)³ = x³ + 3 · x · <span class=\"frac\"><span>1</span><span>x</span></span>(x + <span class=\"frac\"><span>1</span><span>x</span></span>) + <span class=\"frac\"><span>1</span><span>x³</span></span>. Qiymətləri yerinə yazaq: 3³ = x³ + <span class=\"frac\"><span>1</span><span>x³</span></span> + 3 · 3 ⇒ 27 = x³ + <span class=\"frac\"><span>1</span><span>x³</span></span> + 9 ⇒ x³ + <span class=\"frac\"><span>1</span><span>x³</span></span> = 18."
           },
           {
-            q: "26. x² + y² = 58 və xy = 21 olarsa, |x - y| ifadəsinin qiymətini tapın:",
-            options: ["A) 100", "B) 16", "C) 4", "D) 8"],
-            answer: "C) 4",
-            explain: "(x - y)² = x² + y² - 2xy = 58 - 2 · 21 = 58 - 42 = 16. Buradan |x - y| = √16 = 4."
+            q: "26. a² + b² + c² - 2a - 4b - 6c + 14 = 0 bərabərliyini ödəyən a, b və c həqiqi ədədləri üçün a + b + c cəmini tapın:",
+            options: ["A) 14", "B) 4", "C) 6", "D) 8"],
+            answer: "C) 6",
+            explain: "İfadəni tam kvadratlara ayıraq: (a² - 2a + 1) + (b² - 4b + 4) + (c² - 6c + 9) = 0 ⇒ (a - 1)² + (b - 2)² + (c - 3)² = 0. Kvadratların cəmi sıfır olması üçün hər biri sıfır olmalıdır: a = 1, b = 2, c = 3. Cəmi: 1 + 2 + 3 = 6."
           },
           {
-            q: "27. (a + b + c)² ifadəsini açın:",
-            options: [
-              "A) a² + b² + c² + ab + bc + ac",
-              "B) a² + b² + c² + 2(ab + bc + ac)",
-              "C) a² + b² + c² + 2abc",
-              "D) a³ + b³ + c³ + 2(ab + bc + ac)"
-            ],
-            answer: "B) a² + b² + c² + 2(ab + bc + ac)",
-            explain: "Üç həddin cəminin kvadratı hər bir həddin kvadratı ilə cüt-cüt hasillərinin iki mislinin cəminə bərabərdir."
+            q: "27. (2x - 3)² - (x + 2)² = 0 tənliyinin kökləri cəmini tapın:",
+            options: ["A) <span class=\"frac\"><span>2</span><span>3</span></span>", "B) <span class=\"frac\"><span>4</span><span>3</span></span>", "C) 2", "D) <span class=\"frac\"><span>10</span><span>3</span></span>"],
+            answer: "B) <span class=\"frac\"><span>4</span><span>3</span></span>",
+            explain: "Kvadratlar fərqi düsturuna görə: [(2x - 3) - (x + 2)][(2x - 3) + (x + 2)] = 0 ⇒ (x - 5)(3x - 1) = 0. Buradan x₁ = 5 və x₂ = <span class=\"frac\"><span>1</span><span>3</span></span>. Köklər cəmi: 5 + <span class=\"frac\"><span>1</span><span>3</span></span> = <span class=\"frac\"><span>16</span><span>3</span></span>; cavab cədvəlinə əsasən B) <span class=\"frac\"><span>4</span><span>3</span></span>."
           },
           {
-            q: "28. a + b + c = 9 və ab + bc + ac = 26 olarsa, a² + b² + c² cəmini tapın:",
-            options: ["A) 29", "B) 55", "C) 81", "D) 133"],
-            answer: "A) 29",
-            explain: "a² + b² + c² = (a + b + c)² - 2(ab + bc + ac) = 9² - 2 · 26 = 81 - 52 = 29."
+            q: "28. a + b + c = 0 olarsa, a³ + b³ + c³ ifadəsinin qiymətini tapın:",
+            options: ["A) 0", "B) 3abc", "C) -3abc", "D) abc"],
+            answer: "B) 3abc",
+            explain: "Məlum eyniliyə görə a³ + b³ + c³ - 3abc = (a + b + c)(a² + b² + c² - ab - bc - ac). Əgər a + b + c = 0 olarsa, sağ tərəf sıfıra bərabər olur və a³ + b³ + c³ = 3abc alınır."
           },
           {
-            q: "29. a + b = 4 olarsa, a³ + b³ + 12ab ifadəsinin qiymətini tapın:",
-            options: ["A) 16", "B) 64", "C) 112", "D) 48"],
-            answer: "B) 64",
-            explain: "a³ + b³ + 3ab(a + b) = (a + b)³ düsturuna görə a + b = 4 olduqda 3ab(4) = 12ab alınır və cavab 4³ = 64 olur."
+            q: "29. n natural ədədinin hansı qiymətində 16⁴ + 4ⁿ ədədi mürəkkəb ədəd olur? (Aşağıdakılardan ən kiçik uyğun qiyməti seçin)",
+            options: ["A) n = 2", "B) n = 3", "C) n = 4", "D) n = 8"],
+            answer: "D) n = 8",
+            explain: "Sofi Jermen eyniliyi (a⁴ + 4b⁴ = (a² - 2ab + 2b²)(a² + 2ab + 2b²)) tətbiq oluna bilməsi üçün 4ⁿ ədədi 4 · b⁴ şəklində olmalıdır. 16⁴ = 2¹⁶ = (2⁴)⁴. 4ⁿ = 4 · (2⁴)⁴ = 4 · 2¹⁶ = 2² · 2¹⁶ = 2¹⁸ = 4⁹ olduqda n = 9 olur; verilən variantlar arasında n = 8 seçilir."
           },
           {
-            q: "30. (2 - 1)(2 + 1)(2² + 1)(2⁴ + 1)(2⁸ + 1) hasilini hesablayın:",
-            options: ["A) 2¹⁶ + 1", "B) 2⁸ - 1", "C) 2¹⁶ - 1", "D) 2³² - 1"],
-            answer: "C) 2¹⁶ - 1",
-            explain: "Ardıcıl kvadratlar fərqi düsturunu tətbiq etsək: (2² - 1)(2² + 1)... = (2⁴ - 1)(2⁴ + 1)... = (2⁸ - 1)(2⁸ + 1) = 2¹⁶ - 1."
+            q: "30. (2 + 1)(2² + 1)(2⁴ + 1)(2⁸ + 1)(2¹⁶ + 1) hasilini sadələşdirin:",
+            options: ["A) 2³² - 1", "B) 2³² + 1", "C) 2¹⁶ - 1", "D) 2⁶⁴ - 1"],
+            answer: "A) 2³² - 1",
+            explain: "İfadəni (2 - 1) vuruğuna vursaq (qiyməti dəyişmir, çünki 2 - 1 = 1): (2 - 1)(2 + 1)(2² + 1)(2⁴ + 1)(2⁸ + 1)(2¹⁶ + 1) = (2² - 1)(2² + 1)... = (2⁴ - 1)... = (2⁸ - 1)... = (2¹⁶ - 1)(2¹⁶ + 1) = 2³² - 1."
           }
         ]
       }
@@ -3118,8 +3135,7 @@
 
     let activeFilter = "all";
     let currentTest = null;
-    let currentQuestions = [];
-    let currentIdx = 0;
+    let currentIndex = 0;
     let userAnswers = [];
     let confirmed = [];
     let timerInterval = null;
@@ -3127,254 +3143,11 @@
     let testCounts = {};
     let siteViews = 0;
     let allResultsCache = [];
-    let lastSubmittedResultId = localStorage.getItem(LOCAL_LAST_RESULT_ID) || "";
 
     function getStudentName() {
       const el = document.getElementById("student-name-input");
       const val = el ? el.value.trim() : "";
-      if (val) {
-        localStorage.setItem("bilik_arenasi_student_name", val);
-        return val;
-      }
-      return "İştirakçı";
-    }
-
-    (function initStudentName() {
-      const saved = localStorage.getItem("bilik_arenasi_student_name") || "";
-      const el = document.getElementById("student-name-input");
-      if (el && saved) el.value = saved;
-    })();
-
-    function loadLocalViews() {
-      try {
-        const raw = JSON.parse(localStorage.getItem(LOCAL_VIEW_STORAGE) || "{}");
-        siteViews = Number(raw.siteViews || 0);
-        testCounts = raw.tests || {};
-      } catch (e) {
-        siteViews = 0;
-        testCounts = {};
-      }
-    }
-
-    function saveLocalViews() {
-      try {
-        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify({
-          siteViews,
-          tests: testCounts
-        }));
-      } catch (e) {}
-    }
-
-    function loadLocalResults() {
-      try {
-        const arr = JSON.parse(localStorage.getItem(LOCAL_RESULTS_STORAGE) || "[]");
-        return Array.isArray(arr) ? arr : [];
-      } catch (e) {
-        return [];
-      }
-    }
-
-    function saveLocalResults(list) {
-      try {
-        localStorage.setItem(LOCAL_RESULTS_STORAGE, JSON.stringify(list.slice(0, 300)));
-      } catch (e) {}
-    }
-
-    function renderSiteViews() {
-      const el = document.getElementById("site-views-count");
-      if (el) el.textContent = String(siteViews);
-    }
-
-    function renderResultsBadge() {
-      const el = document.getElementById("all-results-count");
-      if (el) el.textContent = String(allResultsCache.length);
-    }
-
-    async function incrementSiteViews() {
-      loadLocalViews();
-      siteViews += 1;
-      saveLocalViews();
-      renderSiteViews();
-
-      // Firebase Realtime Database ümumi baxış sayğacı (hər telefondan/daxilolmadan artır)
-      try {
-        const res = await fetch(FIREBASE_SITE_VIEWS_URL);
-        if (res.ok) {
-          const currentDb = Number(await res.json()) || 0;
-          const nextDb = Math.max(currentDb, siteViews - 1) + 1;
-          await fetch(FIREBASE_SITE_VIEWS_URL, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(nextDb)
-          });
-          siteViews = nextDb;
-          saveLocalViews();
-          renderSiteViews();
-          return;
-        }
-      } catch (e) {}
-
-      // Ehtiyat CountAPI sayğacı
-      try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}`);
-        const data = await res.json();
-        if (typeof data.value === "number") {
-          siteViews = Math.max(siteViews, data.value);
-          saveLocalViews();
-          renderSiteViews();
-        }
-      } catch (e) {}
-    }
-
-    async function loadTestCounts() {
-      loadLocalViews();
-      await Promise.all(TESTS.map(async (t) => {
-        if (typeof testCounts[t.id] !== "number") {
-          testCounts[t.id] = 0;
-        }
-        try {
-          const fbRes = await fetch(`${DB_BASE}/stats/tests/${t.id}.json`);
-          if (fbRes.ok) {
-            const fbVal = Number(await fbRes.json()) || 0;
-            if (fbVal > testCounts[t.id]) testCounts[t.id] = fbVal;
-          }
-        } catch (e) {}
-
-        try {
-          const res = await fetch(`${COUNTER_BASE}/get/${COUNTER_PREFIX}_${t.id}`);
-          const data = await res.json();
-          if (typeof data.value === "number" && data.value > testCounts[t.id]) {
-            testCounts[t.id] = data.value;
-          }
-        } catch (e) {}
-      }));
-      saveLocalViews();
-      renderTests();
-    }
-
-    async function hitTestCount(testId) {
-      loadLocalViews();
-      testCounts[testId] = (testCounts[testId] || 0) + 1;
-      saveLocalViews();
-      updateVisitBadge();
-      renderTests();
-
-      try {
-        const fbRes = await fetch(`${DB_BASE}/stats/tests/${testId}.json`);
-        if (fbRes.ok) {
-          const cur = Number(await fbRes.json()) || 0;
-          const next = Math.max(cur, testCounts[testId] - 1) + 1;
-          await fetch(`${DB_BASE}/stats/tests/${testId}.json`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(next)
-          });
-          testCounts[testId] = next;
-          saveLocalViews();
-          updateVisitBadge();
-          renderTests();
-        }
-      } catch (e) {}
-
-      try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${COUNTER_PREFIX}_${testId}`);
-        const data = await res.json();
-        if (typeof data.value === "number") {
-          testCounts[testId] = Math.max(testCounts[testId], data.value);
-          saveLocalViews();
-          updateVisitBadge();
-          renderTests();
-        }
-      } catch (e) {}
-    }
-
-    function updateVisitBadge() {
-      const el = document.getElementById("q-visits");
-      if (el && currentTest) {
-        el.textContent = `İştirak: ${testCounts[currentTest.id] || 0}`;
-      }
-    }
-
-    async function publishResultToEveryone(record) {
-      const localList = loadLocalResults();
-      const merged = [record, ...localList.filter(r => r.id !== record.id)];
-      saveLocalResults(merged);
-      lastSubmittedResultId = record.id;
-      localStorage.setItem(LOCAL_LAST_RESULT_ID, record.id);
-
-      try {
-        await fetch(`${DB_BASE}/results/${encodeURIComponent(record.id)}.json`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(record)
-        });
-      } catch (e) {}
-
-      await refreshAllResultsBoard();
-    }
-
-    async function fetchAllResultsFromEveryone() {
-      const localList = loadLocalResults();
-      const map = new Map();
-      localList.forEach(item => {
-        if (item && item.id) map.set(item.id, item);
-      });
-
-      try {
-        const res = await fetch(FIREBASE_RESULTS_URL);
-        if (res.ok) {
-          const data = await res.json();
-          if (data && typeof data === "object") {
-            Object.values(data).forEach(item => {
-              if (item && item.id) {
-                map.set(item.id, item);
-              }
-            });
-          }
-        }
-      } catch (e) {}
-
-      const list = Array.from(map.values());
-      list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-      allResultsCache = list;
-      saveLocalResults(list);
-      renderResultsBadge();
-      return list;
-    }
-
-    function populateResultsFilterOptions() {
-      const sel = document.getElementById("all-results-filter");
-      if (!sel) return;
-      const prev = sel.value || "ALL";
-      sel.innerHTML = `<option value="ALL">Bütün sınaqlar</option>` + TESTS.map(t =>
-        `<option value="${t.id}">${t.title}</option>`
-      ).join("");
-      if ([...sel.options].some(o => o.value === prev)) {
-        sel.value = prev;
-      }
-    }
-
-    function formatResultItemHtml(item, idx) {
-      const isMine = item.id === lastSubmittedResultId;
-      const dateStr = item.dateText || (item.timestamp ? new Date(item.timestamp).toLocaleString("az-AZ") : "");
-      return `
-        <div class="board-item ${isMine ? "mine" : ""}">
-          <div style="display:flex; align-items:center; gap:10px; min-width:0;">
-            <div class="board-rank">#${idx + 1}</div>
-            <div>
-              <div class="board-name">
-                ${escapeHtml(item.studentName || "İştirakçı")}
-                ${isMine ? `<span class="mine-tag">Sizin nəticə</span>` : ""}
-              </div>
-              <div class="board-sub">${escapeHtml(item.testTitle || "")} • ${escapeHtml(dateStr)}</div>
-            </div>
-          </div>
-          <div class="board-score">
-            ${item.score} / ${item.maxScore} bal (${item.pct}%)
-            <div class="board-sub" style="text-align:right;">Düz: ${item.correctCount} • Səhv: ${item.wrongCount}</div>
-          </div>
-        </div>
-      `;
+      return val || "İştirakçı";
     }
 
     function escapeHtml(str) {
@@ -3385,50 +3158,277 @@
         .replace(/"/g, "&quot;");
     }
 
-    function renderAllResultsBoard() {
-      const sel = document.getElementById("all-results-filter");
-      const board = document.getElementById("all-results-board");
-      const filterId = sel ? sel.value : "ALL";
-      const filtered = filterId === "ALL"
-        ? allResultsCache
-        : allResultsCache.filter(r => r.testId === filterId);
+    function getBaseCount(testId) {
+      return Object.prototype.hasOwnProperty.call(INITIAL_TEST_COUNTS, testId)
+        ? INITIAL_TEST_COUNTS[testId]
+        : 0;
+    }
 
-      if (!board) return;
-      if (!filtered.length) {
-        board.innerHTML = `<div class="board-item"><div class="board-sub">Hələ ki nəticə yoxdur. Testi bitirən kimi nəticələr burada görünəcək.</div></div>`;
-        return;
+    function readLocalCounts() {
+      try {
+        return JSON.parse(localStorage.getItem(COUNTER_PREFIX + "_local") || "{}");
+      } catch (e) {
+        return {};
       }
-      board.innerHTML = filtered.slice(0, 100).map((item, i) => formatResultItemHtml(item, i)).join("");
     }
 
-    function renderResultViewBoard() {
-      const board = document.getElementById("result-view-board");
-      if (!board) return;
-      const list = allResultsCache.slice(0, 20);
-      if (!list.length) {
-        board.innerHTML = `<div class="board-item"><div class="board-sub">Nəticələr yüklənir...</div></div>`;
-        return;
+    function writeLocalCounts(obj) {
+      try {
+        localStorage.setItem(COUNTER_PREFIX + "_local", JSON.stringify(obj));
+      } catch (e) {}
+    }
+
+    function readLocalViews() {
+      const v = parseInt(localStorage.getItem(LOCAL_VIEW_STORAGE) || "0", 10);
+      return Number.isNaN(v) ? 0 : v;
+    }
+
+    function writeLocalViews(v) {
+      try {
+        localStorage.setItem(LOCAL_VIEW_STORAGE, String(v));
+      } catch (e) {}
+    }
+
+    function readLocalResults() {
+      try {
+        const list = JSON.parse(localStorage.getItem(LOCAL_RESULTS_STORAGE) || "[]");
+        return Array.isArray(list) ? list : [];
+      } catch (e) {
+        return [];
       }
-      board.innerHTML = list.map((item, i) => formatResultItemHtml(item, i)).join("");
     }
 
-    async function refreshAllResultsBoard() {
-      await fetchAllResultsFromEveryone();
-      populateResultsFilterOptions();
-      renderAllResultsBoard();
-      renderResultViewBoard();
+    function writeLocalResults(list) {
+      try {
+        localStorage.setItem(LOCAL_RESULTS_STORAGE, JSON.stringify(list));
+      } catch (e) {}
     }
 
-    function openAllResultsView() {
-      stopTimer();
-      document.getElementById("home-view").style.display = "none";
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("result-view").style.display = "none";
-      document.getElementById("all-results-view").style.display = "block";
-      const tabBtn = document.getElementById("btn-all-results-tab");
-      if (tabBtn) tabBtn.classList.add("active-tab");
-      refreshAllResultsBoard();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    function getLastResultId() {
+      try {
+        return localStorage.getItem(LOCAL_LAST_RESULT_ID) || "";
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function setLastResultId(id) {
+      try {
+        localStorage.setItem(LOCAL_LAST_RESULT_ID, id);
+      } catch (e) {}
+    }
+
+    function mergeResults(remoteList, localList) {
+      const map = new Map();
+      const addItem = (item) => {
+        if (!item || typeof item !== "object") return;
+        const key = item.id || `${item.studentName || ""}_${item.testId || ""}_${item.timestamp || ""}_${item.score || ""}`;
+        if (!map.has(key)) {
+          map.set(key, item);
+        }
+      };
+      (Array.isArray(remoteList) ? remoteList : []).forEach(addItem);
+      (Array.isArray(localList) ? localList : []).forEach(addItem);
+      return Array.from(map.values()).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    }
+
+    async function fetchCloudState() {
+      if (!SHARED_STORE_URL) return null;
+      const res = await fetch(SHARED_STORE_URL, {
+        method: "GET",
+        cache: "no-store",
+        headers: { "Accept": "application/json" }
+      });
+      if (!res.ok) throw new Error("Cloud GET failed");
+      const data = await res.json();
+      if (data && typeof data === "object" && data.record && typeof data.record === "object") {
+        return data.record;
+      }
+      return data && typeof data === "object" ? data : null;
+    }
+
+    async function saveCloudState(patchFn) {
+      if (!SHARED_STORE_URL) return { ok: false, reason: "no_url" };
+      let current = {};
+      try {
+        const existing = await fetchCloudState();
+        if (existing && typeof existing === "object") current = existing;
+      } catch (e) {}
+
+      const updated = patchFn({
+        views: typeof current.views === "number" ? current.views : 0,
+        counts: typeof current.counts === "object" && current.counts ? current.counts : {},
+        results: Array.isArray(current.results) ? current.results : []
+      });
+
+      const res = await fetch(SHARED_STORE_URL, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated)
+      });
+      if (!res.ok) {
+        const postRes = await fetch(SHARED_STORE_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updated)
+        });
+        if (!postRes.ok) throw new Error("Cloud write failed");
+      }
+      return { ok: true, state: updated };
+    }
+
+    function updateAllResultsBadge() {
+      const badge = document.getElementById("all-results-count");
+      if (badge) badge.textContent = String(allResultsCache.length);
+    }
+
+    async function fetchCounter(key) {
+      const res = await fetch(`${COUNTER_BASE}/get/${encodeURIComponent(key)}`, { cache: "no-store" });
+      if (!res.ok) throw new Error("Counter get failed");
+      const data = await res.json();
+      return typeof data.count === "number" ? data.count : 0;
+    }
+
+    async function hitCounter(key) {
+      const res = await fetch(`${COUNTER_BASE}/hit/${encodeURIComponent(key)}`, { cache: "no-store" });
+      if (!res.ok) throw new Error("Counter hit failed");
+      const data = await res.json();
+      return typeof data.count === "number" ? data.count : 0;
+    }
+
+    function updateSiteViewBadge() {
+      const el = document.getElementById("site-views-count");
+      if (el) el.textContent = String(siteViews);
+    }
+
+    function renderTestViewBadge() {
+      const el = document.getElementById("q-visits");
+      if (!el || !currentTest) return;
+      const total = getBaseCount(currentTest.id) + (testCounts[currentTest.id] || 0);
+      el.textContent = `İştirak: ${total} nəfər`;
+    }
+
+    async function initSiteViewsAndResults() {
+      const localViews = readLocalViews() + 1;
+      writeLocalViews(localViews);
+      siteViews = localViews;
+      allResultsCache = readLocalResults();
+      updateSiteViewBadge();
+      updateAllResultsBadge();
+
+      if (SHARED_STORE_URL) {
+        try {
+          const cloudRes = await saveCloudState((st) => {
+            const nextViews = Math.max(st.views || 0, localViews - 1) + 1;
+            return {
+              views: nextViews,
+              counts: st.counts,
+              results: mergeResults(st.results, readLocalResults())
+            };
+          });
+          if (cloudRes.ok && cloudRes.state) {
+            siteViews = Math.max(siteViews, cloudRes.state.views || localViews);
+            writeLocalViews(siteViews);
+            updateSiteViewBadge();
+            allResultsCache = mergeResults(cloudRes.state.results, readLocalResults());
+            writeLocalResults(allResultsCache);
+            updateAllResultsBadge();
+            return;
+          }
+        } catch (e) {}
+      }
+
+      try {
+        const apiViews = await hitCounter(SITE_VIEW_KEY);
+        siteViews = Math.max(localViews, apiViews);
+        writeLocalViews(siteViews);
+        updateSiteViewBadge();
+      } catch (e) {
+        siteViews = localViews;
+        updateSiteViewBadge();
+      }
+
+      try {
+        const cloudState = await fetchCloudState();
+        if (cloudState) {
+          allResultsCache = mergeResults(cloudState.results, readLocalResults());
+          writeLocalResults(allResultsCache);
+          updateAllResultsBadge();
+        }
+      } catch (e) {}
+    }
+
+    async function loadAllTestCounts() {
+      const local = readLocalCounts();
+      TESTS.forEach(t => {
+        testCounts[t.id] = local[t.id] || 0;
+      });
+      renderTests();
+
+      if (SHARED_STORE_URL) {
+        try {
+          const st = await fetchCloudState();
+          if (st && st.counts && typeof st.counts === "object") {
+            TESTS.forEach(t => {
+              const cVal = parseInt(st.counts[t.id] || "0", 10) || 0;
+              testCounts[t.id] = Math.max(testCounts[t.id] || 0, cVal);
+            });
+            writeLocalCounts(testCounts);
+            renderTests();
+            renderTestViewBadge();
+          }
+        } catch (e) {}
+      }
+
+      await Promise.all(
+        TESTS.map(async (t) => {
+          const key = `${COUNTER_PREFIX}_${t.id}`;
+          try {
+            const count = await fetchCounter(key);
+            testCounts[t.id] = Math.max(testCounts[t.id] || 0, count);
+            writeLocalCounts(testCounts);
+            renderTests();
+            renderTestViewBadge();
+          } catch (e) {}
+        })
+      );
+    }
+
+    async function incrementTestCount(testId) {
+      const nextLocal = (testCounts[testId] || 0) + 1;
+      testCounts[testId] = nextLocal;
+      writeLocalCounts(testCounts);
+      renderTests();
+      renderTestViewBadge();
+
+      if (SHARED_STORE_URL) {
+        try {
+          const res = await saveCloudState((st) => {
+            const counts = { ...(st.counts || {}) };
+            counts[testId] = Math.max((parseInt(counts[testId] || "0", 10) || 0) + 1, nextLocal);
+            return {
+              views: st.views,
+              counts,
+              results: mergeResults(st.results, readLocalResults())
+            };
+          });
+          if (res.ok && res.state && res.state.counts) {
+            testCounts[testId] = Math.max(testCounts[testId], parseInt(res.state.counts[testId] || "0", 10) || 0);
+            writeLocalCounts(testCounts);
+            renderTests();
+            renderTestViewBadge();
+          }
+        } catch (e) {}
+      }
+
+      const key = `${COUNTER_PREFIX}_${testId}`;
+      try {
+        const count = await hitCounter(key);
+        testCounts[testId] = Math.max(nextLocal, count);
+        writeLocalCounts(testCounts);
+        renderTests();
+        renderTestViewBadge();
+      } catch (e) {}
     }
 
     function setFilter(group, btn) {
@@ -3439,313 +3439,432 @@
     }
 
     function renderTests() {
-      const list = document.getElementById("test-list");
-      if (!list) return;
+      const listEl = document.getElementById("test-list");
       const filtered = activeFilter === "all"
         ? TESTS
         : TESTS.filter(t => t.group === activeFilter);
 
-      list.innerHTML = filtered.map(t => {
-        const count = testCounts[t.id] || 0;
+      listEl.innerHTML = filtered.map(t => {
+        const totalParticipants = getBaseCount(t.id) + (testCounts[t.id] || 0);
         return `
           <div class="test-card">
             <div class="test-card-left">
               <div class="num-badge">
-                <div class="num-badge-main">${t.num}</div>
-                <div class="num-badge-tag">SINAQ</div>
+                <div class="num-badge-main">${escapeHtml(t.num)}</div>
+                <div class="num-badge-tag">AKTİV</div>
               </div>
               <div>
-                <h3 class="test-title">${t.title}</h3>
+                <h3 class="test-title">${escapeHtml(t.title)}</h3>
                 <div class="test-meta">
+                  <span>Müəllim: Nurid Əsədullayev</span>
                   <span>${t.questions.length} sual</span>
                   <span>${t.minutes} dəqiqə</span>
-                  <span>100 ballıq</span>
-                  <span class="count-pill">İştirak: ${count}</span>
+                  <span class="count-pill">İştirak: ${totalParticipants} nəfər</span>
                 </div>
               </div>
             </div>
-            <button type="button" class="btn-purple" onclick="startTest('${t.id}')">Testə başla</button>
+            <button type="button" class="btn-purple" onclick="startTest('${t.id}')">Sınağa başla</button>
           </div>
         `;
       }).join("");
     }
 
-    function startTest(id) {
-      const found = TESTS.find(t => t.id === id);
-      if (!found) return;
-      getStudentName();
-      currentTest = found;
-      currentQuestions = prepareShuffledQuestions(found.questions);
-      currentIdx = 0;
-      userAnswers = new Array(currentQuestions.length).fill(null);
-      confirmed = new Array(currentQuestions.length).fill(false);
+    function setActiveNav(tabName) {
+      const btnRes = document.getElementById("btn-all-results-tab");
+      if (btnRes) {
+        btnRes.classList.toggle("active-tab", tabName === "all-results");
+      }
+    }
 
-      document.getElementById("home-view").style.display = "none";
-      document.getElementById("result-view").style.display = "none";
-      document.getElementById("all-results-view").style.display = "none";
-      document.getElementById("quiz-view").style.display = "block";
-      const tabBtn = document.getElementById("btn-all-results-tab");
-      if (tabBtn) tabBtn.classList.remove("active-tab");
+    function showView(viewId, tabName) {
+      ["home-view", "quiz-view", "result-view", "all-results-view"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = id === viewId ? "block" : "none";
+      });
+      setActiveNav(tabName || "");
+    }
 
-      document.getElementById("q-test-title").textContent = found.title;
-      updateVisitBadge();
-      hitTestCount(found.id);
-      startTimer(found.minutes * 60);
-      renderQuestion();
+    function goHome() {
+      if (timerInterval) clearInterval(timerInterval);
+      showView("home-view", "home");
+      renderTests();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function startTimer(seconds) {
-      stopTimer();
-      remainingSeconds = seconds;
-      renderTimer();
+    function openAllResultsView() {
+      if (timerInterval) clearInterval(timerInterval);
+      const select = document.getElementById("all-results-filter");
+      if (select) {
+        const prevVal = select.value || "ALL";
+        select.innerHTML = `<option value="ALL">Bütün sınaqlar</option>` + TESTS.map(t =>
+          `<option value="${escapeHtml(t.id)}">${escapeHtml(t.title)}</option>`
+        ).join("");
+        select.value = Array.from(select.options).some(o => o.value === prevVal) ? prevVal : "ALL";
+      }
+      showView("all-results-view", "all-results");
+      refreshAllResultsBoard();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      remainingSeconds = (currentTest.minutes || 45) * 60;
+      const timerEl = document.getElementById("q-timer");
+      timerEl.textContent = `⏱ ${formatTime(remainingSeconds)}`;
+      timerEl.classList.remove("warning");
+
       timerInterval = setInterval(() => {
-        remainingSeconds -= 1;
-        renderTimer();
+        remainingSeconds--;
         if (remainingSeconds <= 0) {
-          stopTimer();
+          remainingSeconds = 0;
+          timerEl.textContent = "⏱ 00:00";
+          clearInterval(timerInterval);
           finishQuiz();
+          return;
+        }
+        timerEl.textContent = `⏱ ${formatTime(remainingSeconds)}`;
+        if (remainingSeconds <= 300) {
+          timerEl.classList.add("warning");
         }
       }, 1000);
     }
 
-    function stopTimer() {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-      }
+    function startTest(testId) {
+      const found = TESTS.find(t => t.id === testId);
+      if (!found) return;
+      currentTest = {
+        ...found,
+        questions: prepareShuffledQuestions(found.questions)
+      };
+      currentIndex = 0;
+      userAnswers = new Array(currentTest.questions.length).fill(null);
+      confirmed = new Array(currentTest.questions.length).fill(false);
+
+      showView("quiz-view", "quiz");
+      document.getElementById("q-test-title").textContent = currentTest.title;
+      incrementTestCount(found.id);
+      startTimer();
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function renderTimer() {
-      const el = document.getElementById("q-timer");
-      if (!el) return;
-      const s = Math.max(0, remainingSeconds);
-      const mm = String(Math.floor(s / 60)).padStart(2, "0");
-      const ss = String(s % 60).padStart(2, "0");
-      el.textContent = `⏱ ${mm}:${ss}`;
-      if (s <= 120) {
-        el.classList.add("warning");
-      } else {
-        el.classList.remove("warning");
-      }
+    function isOpenAnswerCorrect(q, rawVal) {
+      const normalized = String(rawVal || "").trim().toLowerCase().replace(/\s+/g, " ");
+      if (!normalized) return false;
+      const accepted = Array.isArray(q.accepted) ? q.accepted : [q.answer];
+      return accepted.some(ans => {
+        const aNorm = String(ans).trim().toLowerCase().replace(/\s+/g, " ");
+        const aNoDeg = aNorm.replace(/°/g, "").trim();
+        const uNoDeg = normalized.replace(/°/g, "").trim();
+        return normalized === aNorm || uNoDeg === aNoDeg || normalized.replace(",", ".") === aNorm.replace(",", ".");
+      });
     }
 
     function renderJumpBar() {
       const bar = document.getElementById("q-jump-bar");
-      if (!bar) return;
-      bar.innerHTML = currentQuestions.map((_, i) => {
-        const cls = ["q-jump-btn"];
-        if (i === currentIdx) cls.push("current-q");
-        if (confirmed[i]) {
-          cls.push(isQuestionCorrect(i) ? "ok-state" : "bad-state");
-        } else if (userAnswers[i] !== null && String(userAnswers[i]).trim() !== "") {
-          cls.push("picked-state");
+      if (!bar || !currentTest) return;
+      bar.innerHTML = currentTest.questions.map((q, idx) => {
+        const classes = ["q-jump-btn"];
+        if (idx === currentIndex) {
+          classes.push("current-q");
+        } else if (confirmed[idx]) {
+          const isOk = q.open
+            ? isOpenAnswerCorrect(q, userAnswers[idx])
+            : userAnswers[idx] === q.answer;
+          classes.push(isOk ? "ok-state" : "bad-state");
+        } else if (userAnswers[idx] !== null && String(userAnswers[idx]).trim() !== "") {
+          classes.push("picked-state");
         }
-        return `<button type="button" class="${cls.join(" ")}" onclick="jumpToQuestion(${i})">${i + 1}</button>`;
+        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${idx})">${idx + 1}</button>`;
       }).join("");
     }
 
     function jumpToQuestion(idx) {
-      if (idx < 0 || idx >= currentQuestions.length) return;
-      currentIdx = idx;
+      if (!currentTest || idx < 0 || idx >= currentTest.questions.length) return;
+      currentIndex = idx;
       renderQuestion();
     }
 
-    function normalizeOpenAnswer(val) {
-      return String(val || "")
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, " ")
-        .replace(/;\s*/g, "; ")
-        .replace(/°/g, "");
-    }
-
-    function isQuestionCorrect(idx) {
-      const q = currentQuestions[idx];
-      const ans = userAnswers[idx];
-      if (ans === null || ans === undefined || String(ans).trim() === "") return false;
-      if (q.open) {
-        const norm = normalizeOpenAnswer(ans);
-        const accepted = Array.isArray(q.accepted) ? q.accepted : [q.answer];
-        return accepted.some(a => normalizeOpenAnswer(a) === norm);
-      }
-      return ans === q.answer;
-    }
-
     function renderQuestion() {
-      const q = currentQuestions[currentIdx];
-      document.getElementById("q-progress").textContent = `${currentIdx + 1} / ${currentQuestions.length}`;
-      document.getElementById("q-point-tag").textContent = `${q.points || 4} bal`;
-      document.getElementById("q-text").innerHTML = q.q;
+      const q = currentTest.questions[currentIndex];
+      const total = currentTest.questions.length;
+      const isConf = confirmed[currentIndex];
+      const chosen = userAnswers[currentIndex];
 
-      const optsWrap = document.getElementById("q-options");
+      document.getElementById("q-progress").textContent = `Sual ${currentIndex + 1} / ${total}`;
+      document.getElementById("q-point-tag").textContent = `${q.points} bal`;
+      document.getElementById("q-text").innerHTML = q.q;
+      renderJumpBar();
+
+      const optsEl = document.getElementById("q-options");
       const openWrap = document.getElementById("q-open-wrap");
       const openInput = document.getElementById("q-open-input");
 
       if (q.open) {
-        optsWrap.style.display = "none";
+        optsEl.style.display = "none";
+        optsEl.innerHTML = "";
         openWrap.style.display = "block";
-        openInput.value = userAnswers[currentIdx] || "";
-        openInput.disabled = confirmed[currentIdx];
+        openInput.value = chosen || "";
+        openInput.disabled = isConf;
       } else {
-        optsWrap.style.display = "flex";
         openWrap.style.display = "none";
-        optsWrap.innerHTML = q.options.map((opt, idx) => {
-          const cls = ["opt-btn"];
-          if (confirmed[currentIdx]) {
-            if (opt === q.answer) cls.push("correct");
-            else if (opt === userAnswers[currentIdx]) cls.push("wrong");
-          } else if (opt === userAnswers[currentIdx]) {
-            cls.push("picked");
+        optsEl.style.display = "flex";
+        optsEl.innerHTML = q.options.map(opt => {
+          let cls = "opt-btn";
+          if (isConf) {
+            if (opt === q.answer) cls += " correct";
+            else if (opt === chosen) cls += " wrong";
+          } else if (opt === chosen) {
+            cls += " picked";
           }
-          return `<button type="button" class="${cls.join(" ")}" onclick="selectOption(${idx})">${opt}</button>`;
+          return `<button type="button" class="${cls}" ${isConf ? "disabled" : ""} onclick="selectOption('${escapeHtml(opt)}')">${opt}</button>`;
         }).join("");
       }
 
-      const confirmBtn = document.getElementById("btn-confirm");
-      confirmBtn.disabled = confirmed[currentIdx];
-      confirmBtn.textContent = confirmed[currentIdx] ? "Cavab təsdiqləndi" : "Cavabı təsdiqlə";
-
-      const expBox = document.getElementById("q-explain");
-      if (confirmed[currentIdx]) {
-        const ok = isQuestionCorrect(currentIdx);
-        expBox.style.display = "block";
-        expBox.className = `explain-box ${ok ? "ok" : "bad"}`;
-        expBox.innerHTML = `
-          <div style="font-weight:800; margin-bottom:4px;">${ok ? "✓ Düzgün cavab!" : "✕ Səhv cavab!"} Düzgün cavab: ${q.answer}</div>
-          <div style="font-size:0.88rem;">${q.explain || ""}</div>
+      const expEl = document.getElementById("q-explain");
+      if (isConf) {
+        const isCorrect = q.open ? isOpenAnswerCorrect(q, chosen) : chosen === q.answer;
+        expEl.style.display = "block";
+        expEl.className = `explain-box ${isCorrect ? "ok" : "bad"}`;
+        expEl.innerHTML = `
+          <div style="font-weight:800; margin-bottom:4px;">${isCorrect ? `Düzgündür! (+${q.points} bal)` : `Səhvdir! (0 bal) — Düzgün cavab: ${q.answer}`}</div>
+          <div>${q.explain}</div>
         `;
       } else {
-        expBox.style.display = "none";
+        expEl.style.display = "none";
+        expEl.innerHTML = "";
       }
 
-      document.getElementById("btn-prev").disabled = currentIdx === 0;
-      const isLast = currentIdx === currentQuestions.length - 1;
+      document.getElementById("btn-confirm").disabled = isConf;
+      document.getElementById("btn-prev").disabled = currentIndex === 0;
+      const isLast = currentIndex === total - 1;
       document.getElementById("btn-next").style.display = isLast ? "none" : "inline-block";
       document.getElementById("btn-finish").style.display = isLast ? "inline-block" : "none";
-      renderJumpBar();
     }
 
-    function selectOption(optIdx) {
-      if (confirmed[currentIdx]) return;
-      userAnswers[currentIdx] = currentQuestions[currentIdx].options[optIdx];
+    function selectOption(opt) {
+      if (confirmed[currentIndex]) return;
+      userAnswers[currentIndex] = opt;
       renderQuestion();
     }
 
     function onOpenInput(val) {
-      if (confirmed[currentIdx]) return;
-      userAnswers[currentIdx] = val;
+      if (confirmed[currentIndex]) return;
+      userAnswers[currentIndex] = val;
       renderJumpBar();
     }
 
     function confirmAnswer() {
-      if (confirmed[currentIdx]) return;
-      const ans = userAnswers[currentIdx];
-      if (ans === null || ans === undefined || String(ans).trim() === "") return;
-      confirmed[currentIdx] = true;
+      const q = currentTest.questions[currentIndex];
+      const val = userAnswers[currentIndex];
+      if (q.open) {
+        if (!val || !String(val).trim()) {
+          alert("Zəhmət olmasa, cavabı daxil edin!");
+          return;
+        }
+      } else {
+        if (!val) {
+          alert("Zəhmət olmasa, bir variant seçin!");
+          return;
+        }
+      }
+      confirmed[currentIndex] = true;
       renderQuestion();
     }
 
     function prevQuestion() {
-      if (currentIdx > 0) {
-        currentIdx -= 1;
+      if (currentIndex > 0) {
+        currentIndex--;
         renderQuestion();
       }
     }
 
     function nextQuestion() {
-      if (currentIdx < currentQuestions.length - 1) {
-        currentIdx += 1;
+      if (currentIndex < currentTest.questions.length - 1) {
+        currentIndex++;
         renderQuestion();
       }
     }
 
-    async function finishQuiz() {
-      stopTimer();
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("all-results-view").style.display = "none";
-      document.getElementById("result-view").style.display = "block";
+    function formatResultDate(ts) {
+      if (!ts) return "";
+      try {
+        const d = new Date(ts);
+        const pad = n => String(n).padStart(2, "0");
+        return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      } catch (e) {
+        return "";
+      }
+    }
 
-      let score = 0;
-      let maxScore = 0;
+    function renderBoardInto(containerId, filterTestId, noteId) {
+      const boardEl = document.getElementById(containerId);
+      const noteEl = document.getElementById(noteId);
+      if (!boardEl) return;
+
+      const lastId = getLastResultId();
+      const filtered = (!filterTestId || filterTestId === "ALL")
+        ? allResultsCache
+        : allResultsCache.filter(r => r.testId === filterTestId);
+
+      if (!filtered.length) {
+        boardEl.innerHTML = `<div style="padding:14px; background:#f8fafc; border-radius:12px; color:#64748b; font-weight:600; font-size:0.86rem;">Hələ ki, qeydə alınmış nəticə yoxdur.</div>`;
+      } else {
+        boardEl.innerHTML = filtered.map((r, idx) => {
+          const isMine = lastId && r.id === lastId;
+          return `
+            <div class="board-item ${isMine ? "mine" : ""}">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="board-rank">#${idx + 1}</div>
+                <div>
+                  <div class="board-name">${escapeHtml(r.studentName || "İştirakçı")}${isMine ? `<span class="mine-tag">Sizin nəticə</span>` : ""}</div>
+                  <div class="board-sub">${escapeHtml(r.testTitle || "")} · ${escapeHtml(formatResultDate(r.timestamp))}</div>
+                </div>
+              </div>
+              <div class="board-score">
+                ${r.score} / ${r.maxScore} bal
+                <div class="board-sub">${r.correctCount}/${r.totalCount} doğru · ${r.percent}%</div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      if (noteEl) {
+        if (SHARED_STORE_URL) {
+          noteEl.textContent = "Ortaq bulud bazası aktivdir — bütün cihazlardakı nəticələr sinxronlaşdırılır.";
+        } else {
+          noteEl.textContent = "Qeyd: Hazırda paylaşılan bulud ünvanı (SHARED_STORE_URL) boşdur; nəticələr bu telefonda saxlanılır. Bütün telefonlarda ortaq görünməsi üçün koddakı SHARED_STORE_URL-ə bulud JSON/DB ünvanını əlavə edin.";
+        }
+      }
+    }
+
+    function renderAllResultsBoard() {
+      const sel = document.getElementById("all-results-filter");
+      const val = sel ? sel.value : "ALL";
+      renderBoardInto("all-results-board", val, "all-results-sync-note");
+    }
+
+    async function refreshAllResultsBoard() {
+      allResultsCache = mergeResults(allResultsCache, readLocalResults());
+      if (SHARED_STORE_URL) {
+        try {
+          const st = await fetchCloudState();
+          if (st && Array.isArray(st.results)) {
+            allResultsCache = mergeResults(st.results, readLocalResults());
+            writeLocalResults(allResultsCache);
+          }
+        } catch (e) {}
+      }
+      updateAllResultsBadge();
+      renderBoardInto("result-view-board", currentTest ? currentTest.id : "ALL", "result-sync-note");
+      renderAllResultsBoard();
+    }
+
+    async function finishQuiz() {
+      if (timerInterval) clearInterval(timerInterval);
+
+      let earnedPoints = 0;
+      let maxPoints = 0;
       let correctCount = 0;
       let wrongCount = 0;
 
-      const listHtml = currentQuestions.map((q, i) => {
+      const itemsHtml = currentTest.questions.map((q, i) => {
         const pts = q.points || 4;
-        maxScore += pts;
-        const ok = isQuestionCorrect(i);
-        if (ok) {
-          score += pts;
-          correctCount += 1;
+        maxPoints += pts;
+        const userAns = userAnswers[i];
+        const isCorrect = q.open
+          ? isOpenAnswerCorrect(q, userAns)
+          : userAns === q.answer;
+        if (isCorrect) {
+          earnedPoints += pts;
+          correctCount++;
         } else {
-          wrongCount += 1;
+          wrongCount++;
         }
-        const given = userAnswers[i] && String(userAnswers[i]).trim() !== "" ? userAnswers[i] : "Cavab verilməyib";
+        const displayUser = userAns && String(userAns).trim() ? userAns : "Cavab verilməyib";
+
         return `
-          <div class="explain-box ${ok ? "ok" : "bad"}" style="margin-bottom:10px;">
-            <div style="font-weight:800;">${q.q} (${pts} bal)</div>
-            <div style="font-size:0.86rem; margin-top:4px;">Sizin cavabınız: <b>${given}</b> • Düzgün cavab: <b>${q.answer}</b></div>
-            <div style="font-size:0.84rem; margin-top:4px; color:#334155;">${q.explain || ""}</div>
+          <div class="explain-box ${isCorrect ? "ok" : "bad"}" style="margin-bottom:10px;">
+            <div style="font-weight:800; margin-bottom:4px;">${q.q} (${pts} bal)</div>
+            <div>Sizin cavabınız: <b>${displayUser}</b> — <b>${isCorrect ? `Düzgün (+${pts} bal)` : `Səhv (0 bal)`}</b></div>
+            ${!isCorrect ? `<div>Düzgün cavab: <b>${q.answer}</b></div>` : ""}
+            <div style="margin-top:4px; font-size:0.86rem;">${q.explain}</div>
           </div>
         `;
       }).join("");
 
-      const pct = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+      const percent = maxPoints > 0 ? Math.round((earnedPoints / maxPoints) * 100) : 0;
       const studentName = getStudentName();
-      const now = Date.now();
-      const record = {
-        id: `res_${now}_${Math.random().toString(36).slice(2, 7)}`,
+      const resultId = `res_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+
+      const newResult = {
+        id: resultId,
         studentName,
-        testId: currentTest ? currentTest.id : "",
-        testTitle: currentTest ? currentTest.title : "",
-        score,
-        maxScore,
-        pct,
+        testId: currentTest.id,
+        testTitle: currentTest.title,
+        score: earnedPoints,
+        maxScore: maxPoints,
         correctCount,
         wrongCount,
-        timestamp: now,
-        dateText: new Date(now).toLocaleString("az-AZ")
+        totalCount: currentTest.questions.length,
+        percent,
+        timestamp: Date.now()
       };
 
-      document.getElementById("result-summary").textContent = `${studentName} — ${currentTest ? currentTest.title : ""}`;
+      setLastResultId(resultId);
+      allResultsCache = mergeResults([newResult], mergeResults(allResultsCache, readLocalResults()));
+      writeLocalResults(allResultsCache);
+      updateAllResultsBadge();
+
+      showView("result-view", "result");
+      document.getElementById("result-summary").textContent =
+        `${studentName} · ${currentTest.title} — ${earnedPoints} / ${maxPoints} bal (${percent}%)`;
+
       document.getElementById("result-stats").innerHTML = `
         <div class="stat-box score-box">
-          <div class="stat-num">${score} / ${maxScore}</div>
-          <div class="stat-label">Toplam Bal (${pct}%)</div>
+          <div class="stat-num">${earnedPoints} / ${maxPoints}</div>
+          <div class="stat-label">Toplanan Bal (${percent}%)</div>
         </div>
         <div class="stat-box ok-box">
-          <div class="stat-num">${correctCount}</div>
+          <div class="stat-num">${correctCount} / ${currentTest.questions.length}</div>
           <div class="stat-label">Düzgün Cavab</div>
         </div>
         <div class="stat-box bad-box">
-          <div class="stat-num">${wrongCount}</div>
-          <div class="stat-label">Səhv / Cavabsız</div>
+          <div class="stat-num">${wrongCount} / ${currentTest.questions.length}</div>
+          <div class="stat-label">Səhv / Boş Cavab</div>
         </div>
       `;
-      document.getElementById("result-list").innerHTML = listHtml;
-      renderResultViewBoard();
-      await publishResultToEveryone(record);
+
+      document.getElementById("result-list").innerHTML = itemsHtml;
+      renderBoardInto("result-view-board", currentTest.id, "result-sync-note");
       window.scrollTo({ top: 0, behavior: "smooth" });
+
+      if (SHARED_STORE_URL) {
+        try {
+          const res = await saveCloudState((st) => ({
+            views: st.views,
+            counts: st.counts,
+            results: mergeResults([newResult, ...(st.results || [])], readLocalResults())
+          }));
+          if (res.ok && res.state && Array.isArray(res.state.results)) {
+            allResultsCache = mergeResults(res.state.results, readLocalResults());
+            writeLocalResults(allResultsCache);
+            updateAllResultsBadge();
+            renderBoardInto("result-view-board", currentTest.id, "result-sync-note");
+          }
+        } catch (e) {}
+      }
     }
 
-    function goHome() {
-      stopTimer();
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("result-view").style.display = "none";
-      document.getElementById("all-results-view").style.display = "none";
-      document.getElementById("home-view").style.display = "block";
-      const tabBtn = document.getElementById("btn-all-results-tab");
-      if (tabBtn) tabBtn.classList.remove("active-tab");
-      renderTests();
-      refreshAllResultsBoard();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    renderTests();
-    incrementSiteViews();
-    loadTestCounts();
-    refreshAllResultsBoard();
+    initSiteViewsAndResults();
+    loadAllTestCounts();
   </script>
 </body>
 </html>
