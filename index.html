@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bilik Arenası — Onlayn Sınaq Platforması</title>
+  <title>Bilik Arenası — Ödənişsiz Onlayn Sınaq Platforması</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
@@ -122,6 +122,16 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
     }
+    .free-badge {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #15803d;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      user-select: none;
+    }
     .eye-badge {
       background: #f3e8ff;
       border: 1px solid #d8b4fe;
@@ -198,7 +208,7 @@
       color: #fde047;
     }
     .hero-motto {
-      max-width: 440px;
+      max-width: 480px;
       margin: 12px auto 18px;
       padding: 8px 16px;
       border-radius: 999px;
@@ -293,7 +303,7 @@
       display: inline-block;
       background: #22c55e;
       color: #ffffff;
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 800;
       padding: 2px 6px;
       border-radius: 999px;
@@ -314,6 +324,13 @@
     .count-pill {
       color: #4c1d95;
       background: #f3e8ff;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+    .free-tag-pill {
+      color: #15803d;
+      background: #dcfce7;
       padding: 2px 9px;
       border-radius: 999px;
       font-weight: 800;
@@ -596,10 +613,11 @@
         <div class="brand-icon">BA</div>
         <div>
           <div class="brand-title">BİLİK ARENASI</div>
-          <div class="brand-sub">Onlayn Sınaq Platforması</div>
+          <div class="brand-sub">Ödənişsiz Onlayn Sınaq Platforması</div>
         </div>
       </div>
       <div class="nav-actions">
+        <div class="free-badge">✓ ÖDƏNİŞSİZ</div>
         <div class="eye-badge" id="site-views-badge" title="Sayta ümumi baxış sayı">
           <svg class="eye-svg" viewBox="0 0 24 24" fill="none" stroke="#4c1d95" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -629,19 +647,19 @@
       <div class="hero-card">
         <div class="hero-title-box">
           <h1 class="hero-main-title">BİLİK ARENASI</h1>
-          <div class="hero-sub-line">ONLAYN SINAQ PLATFORMASI</div>
+          <div class="hero-sub-line">ÖDƏNİŞSİZ ONLAYN SINAQ PLATFORMASI</div>
         </div>
-        <div class="hero-motto">Biliklərini sına, nəticəni gör, uğura doğru irəlilə!</div>
+        <div class="hero-motto">Tam ödənişsiz: biliklərini sına, nəticəni gör, uğura doğru irəlilə!</div>
         <div class="hero-features">
           <div class="hero-pill">1–11 Siniflər</div>
-          <div class="hero-pill">Müxtəlif Sınaqlar</div>
+          <div class="hero-pill">Tam Ödənişsiz</div>
           <div class="hero-pill">100 Ballıq Şkala</div>
           <div class="hero-pill">Uğur Səninlədir!</div>
         </div>
       </div>
 
       <h2 class="section-title">Sınaqlar</h2>
-      <p class="section-sub">1–11-ci siniflər üzrə riyaziyyat sınaq imtahanları</p>
+      <p class="section-sub">1–11-ci siniflər üzrə ödənişsiz riyaziyyat sınaq imtahanları</p>
 
       <div class="filter-row">
         <button type="button" class="filter-btn active" onclick="setFilter('all', this)">Hamısı</button>
@@ -658,7 +676,7 @@
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding-bottom:12px; border-bottom:1px solid #e2e8f0;">
         <div>
           <div id="q-test-title" style="font-weight:800; font-size:1rem;"></div>
-          <div style="font-size:0.78rem; color:#64748b; font-weight:600;">Müəllim: Nurid Əsədullayev</div>
+          <div style="font-size:0.78rem; color:#64748b; font-weight:600;">Müəllim: Nurid Əsədullayev • Ödənişsiz</div>
           <div class="quiz-contact-links">
             <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">
               <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
@@ -711,7 +729,7 @@
   </main>
 
   <footer class="site-footer">
-    <div>Müəllim: Nurid Əsədullayev — Bilik Arenası</div>
+    <div>Müəllim: Nurid Əsədullayev — Bilik Arenası (Ödənişsiz)</div>
     <div class="footer-links">
       <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">
         <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
@@ -2794,343 +2812,438 @@
         ]
       },
       {
-        id: "buraxilis-1",
+        id: "sinif-9-buraxilis-1",
         num: "№1",
-        title: "Buraxılış Fənləri Üzrə (X–XI) Sınaq İmtahanı №1 — Riyaziyyat",
-        group: "10-11",
+        title: "9-CU SİNİF BURAXILIŞ — 05.04.2026 | RİYAZİYYAT (25 SUAL)",
+        group: "8-9",
         minutes: 60,
         questions: [
           {
-            q: "57. Düz xətt üzərində müəyyən sayda nöqtələr qeyd edildikdə alınan şüaların sayı 8 olarsa, parçaların sayını tapın.",
-            options: ["A) 6", "B) 12", "C) 8", "D) 9", "E) 15"],
-            answer: "A) 6",
-            explain: "Düz xətt üzərində n nöqtə qeyd edildikdə 2n şüa alınır: 2n = 8 ⇒ n = 4 nöqtə. 4 nöqtədən C(4,2) = 6 parça alınır."
+            q: "1. 30 ha əkin sahəsi artırılıb 42 ha oldu. Əkin sahəsi neçə faiz artdı?",
+            options: ["A) 35", "B) 40", "C) 30", "D) 32", "E) 20"],
+            answer: "B) 40",
+            explain: "Artım miqdarı 42 - 30 = 12 ha təşkil edir. Artım faizini tapmaq üçün artımı ilkin sahəyə bölüb 100%-ə vururuq: <span class=\"frac\"><span>12</span><span>30</span></span> × 100% = 40%."
           },
           {
-            q: "58. 0,(42) sonsuz dövri onluq kəsrini adi kəsrə çevirin.",
+            q: "2. <span class=\"frac\"><span>12</span><span>x</span></span> = -<span class=\"frac\"><span>3</span><span>4</span></span> tənliyini həll edin.",
+            options: ["A) -24", "B) -<span class=\"frac\"><span>1</span><span>16</span></span>", "C) -1", "D) -16", "E) -<span class=\"frac\"><span>1</span><span>24</span></span>"],
+            answer: "D) -16",
+            explain: "Tənasübün xassəsinə görə kənar hədlərin hasili orta hədlərin hasilinə bərabərdir: -3x = 12 × 4 ⇒ -3x = 48 ⇒ x = -16."
+          },
+          {
+            q: "3. <span class=\"sys-box\"><span class=\"sys-brace\">{</span><span class=\"sys-lines\"><span>y = 2x</span><span>5x + y = 21</span></span></span> tənliklər sistemini həll edin.",
+            options: ["A) (2; 4)", "B) (5; 1)", "C) (10; 11)", "D) (3; 6)", "E) (8; 12)"],
+            answer: "D) (3; 6)",
+            explain: "İkinci tənlikdə y-in yerinə 2x yazsaq: 5x + 2x = 21 ⇒ 7x = 21 ⇒ x = 3. Buradan y = 2 × 3 = 6 alınır."
+          },
+          {
+            q: "4. k-nın hansı ən böyük qiymətində 0,4(k) + 0,k(4) cəmi düzgün kəsrdir? (k - rəqəmdir)",
+            options: ["A) 5", "B) 9", "C) 6", "D) 4", "E) 3"],
+            answer: "D) 4",
+            explain: "Qarışıq dövri onluq kəsrləri adi kəsrə çevirək: 0,4(k) = <span class=\"frac\"><span>40 + k - 4</span><span>90</span></span> = <span class=\"frac\"><span>36 + k</span><span>90</span></span> və 0,k(4) = <span class=\"frac\"><span>10k + 4 - k</span><span>90</span></span> = <span class=\"frac\"><span>9k + 4</span><span>90</span></span>. Cəmi: <span class=\"frac\"><span>10k + 40</span><span>90</span></span>. Düzgün kəsr olması üçün sürət məxrəcdən kiçik olmalıdır: 10k + 40 < 90 ⇒ 10k < 50 ⇒ k < 5. Ən böyük rəqəm 4-dür."
+          },
+          {
+            q: "5. Düz xətdən 4 sm məsafədə yerləşən nöqtədən bu düz xəttə hər birinin uzunluğu 5 sm olan iki mail çəkilmişdir. Maillərin oturacaqları arasındakı məsafəni tapın.",
+            options: ["A) 6 sm", "B) 3 sm", "C) 9 sm", "D) 10 sm", "E) 4 sm"],
+            answer: "A) 6 sm",
+            explain: "Perpendikulyar (4 sm) və mail (5 sm) düzbucaqlı üçbucaq əmələ gətirir. Pifaqor teoreminə görə hər bir mailin proyeksiyası √(5² - 4²) = 3 sm-dir. Maillər perpendikulyarın əks tərəflərində yerləşdiyindən oturacaqlar arasındakı məsafə 3 + 3 = 6 sm olur."
+          },
+          {
+            q: "6. ƏBOB(a; b) = 5 və a · b = 75 olarsa, a + b cəmini tapın.",
+            options: ["A) 20", "B) 28", "C) 30", "D) 25", "E) 24"],
+            answer: "A) 20",
+            explain: "ƏKOB(a; b) = <span class=\"frac\"><span>a · b</span><span>ƏBOB(a; b)</span></span> = <span class=\"frac\"><span>75</span><span>5</span></span> = 15. a = 5m və b = 5n yazsaq, m · n = <span class=\"frac\"><span>15</span><span>5</span></span> = 3 alınır. Qarşılıqlı sadə vuruqlar 1 və 3 olduğu üçün ədədlər 5 və 15-dir; cəmi 5 + 15 = 20."
+          },
+          {
+            q: "7. (2x - 1)(2x + 1) - 4x(x - 3) = 35 tənliyini həll edin.",
+            options: ["A) 0", "B) 3", "C) 1", "D) 2", "E) 4"],
+            answer: "B) 3",
+            explain: "Mötərizələri açaq: (4x² - 1) - (4x² - 12x) = 35 ⇒ 4x² - 1 - 4x² + 12x = 35 ⇒ 12x = 36 ⇒ x = 3."
+          },
+          {
+            q: "8. a = <span class=\"frac\"><span>1</span><span>4</span></span> olarsa, 3⁻²ᵃ · 3⁶ᵃ ifadəsinin qiymətini tapın.",
+            options: ["A) 3<span class=\"frac\"><span>3</span><span>4</span></span>", "B) 3⁻⁴", "C) 3⁴", "D) 3³", "E) 3"],
+            answer: "E) 3",
+            explain: "Əsasları eyni olan qüvvətləri vurduqda üstlər toplanır: 3⁻²ᵃ · 3⁶ᵃ = 3⁴ᵃ. a = <span class=\"frac\"><span>1</span><span>4</span></span> qiymətini yerinə yazsaq: 3⁴·<span class=\"frac\"><span>1</span><span>4</span></span> = 3¹ = 3."
+          },
+          {
+            q: "9. Dairənin radiusu 5 dəfə artsa, onun sahəsi neçə dəfə artar?",
+            options: ["A) 5", "B) 20", "C) 25", "D) 10", "E) 15"],
+            answer: "C) 25",
+            explain: "Dairənin sahəsi S = πR² düsturu ilə hesablanır. Radius 5 dəfə artdıqda sahə 5² = 25 dəfə artar."
+          },
+          {
+            q: "10. AC = 7 sm, CB = 14 sm olarsa, AB-ni tapın.",
+            options: ["A) 21 sm", "B) 16 sm", "C) 28 sm", "D) 25 sm", "E) 19 sm"],
+            answer: "A) 21 sm",
+            explain: "C nöqtəsi A və B nöqtələri arasında yerləşdiyindən AB = AC + CB = 7 + 14 = 21 sm."
+          },
+          {
+            q: "11. 2√25 - √16 + 2√9 ifadəsinin qiymətini hesablayın.",
+            options: ["A) 10", "B) 14", "C) 12", "D) 5", "E) 2"],
+            answer: "C) 12",
+            explain: "Kökləri hesablayaq: 2 × 5 - 4 + 2 × 3 = 10 - 4 + 6 = 12."
+          },
+          {
+            q: "12. ƏBOB(30; 36)-nı tapın.",
+            options: ["A) 4", "B) 180", "C) 12", "D) 120", "E) 6"],
+            answer: "E) 6",
+            explain: "30 = 2 × 3 × 5 və 36 = 2² × 3² olduğundan ortaq vuruqların hasili ƏBOB(30; 36) = 2 × 3 = 6-dır."
+          },
+          {
+            q: "13. y = 5x - 17 funksiyasının qrafiki üzərində yerləşən və ordinatı 3 olan nöqtənin absisini tapın.",
+            options: ["A) -2", "B) -5", "C) -4", "D) 5", "E) 4"],
+            answer: "E) 4",
+            explain: "Ordinat y = 3 olduğu üçün tənlikdə yerinə yazaq: 3 = 5x - 17 ⇒ 5x = 20 ⇒ x = 4."
+          },
+          {
+            q: "14. Kubun neçə tili var?",
+            options: ["A) 6", "B) 16", "C) 8", "D) 10", "E) 12"],
+            answer: "E) 12",
+            explain: "Kubun 12 tili, 6 üzü və 8 təpə nöqtəsi var."
+          },
+          {
+            q: "15. Yalnız Həsən, Əli və Vüqarın olduğu yarışmada Həsənin qazanma ehtimalı Vüqarın qazanma ehtimalının 7 misli, Əlinin qazanma ehtimalının 2 mislidir. Buna görə yarışmanı Əlinin qazanma ehtimalını tapın.",
             options: [
-              "A) <span class=\"frac\"><span>7</span><span>90</span></span>",
-              "B) <span class=\"frac\"><span>7</span><span>33</span></span>",
-              "C) <span class=\"frac\"><span>41</span><span>99</span></span>",
-              "D) <span class=\"frac\"><span>14</span><span>33</span></span>",
-              "E) <span class=\"frac\"><span>7</span><span>15</span></span>"
+              "A) <span class=\"frac\"><span>1</span><span>14</span></span>",
+              "B) <span class=\"frac\"><span>3</span><span>7</span></span>",
+              "C) <span class=\"frac\"><span>2</span><span>23</span></span>",
+              "D) <span class=\"frac\"><span>7</span><span>23</span></span>",
+              "E) <span class=\"frac\"><span>5</span><span>14</span></span>"
             ],
-            answer: "D) <span class=\"frac\"><span>14</span><span>33</span></span>",
-            explain: "0,(42) = <span class=\"frac\"><span>42</span><span>99</span></span> = <span class=\"frac\"><span>14</span><span>33</span></span>."
+            answer: "D) <span class=\"frac\"><span>7</span><span>23</span></span>",
+            explain: "Vüqarın qazanma ehtimalı x olarsa, Həsəninki 7x, Əlininki isə <span class=\"frac\"><span>7x</span><span>2</span></span> = 3,5x olar. Tam ehtimal 1-ə bərabərdir: x + 7x + 3,5x = 1 ⇒ 11,5x = 1 ⇒ x = <span class=\"frac\"><span>2</span><span>23</span></span>. Əlinin ehtimalı: 3,5 × <span class=\"frac\"><span>2</span><span>23</span></span> = <span class=\"frac\"><span>7</span><span>23</span></span>."
           },
           {
-            q: "59. Uyğun tərəfləri perpendikulyar olan bucaqlardan biri digərindən 3,5 dəfə böyükdür. Bu bucaqlardan böyüyünü tapın.",
-            options: ["A) 135°", "B) 120°", "C) 150°", "D) 140°", "E) 105°"],
-            answer: "D) 140°",
-            explain: "x + 3,5x = 180° ⇒ 4,5x = 180° ⇒ x = 40°. Böyük bucaq: 3,5 · 40° = 140°."
+            q: "16. <span class=\"frac\"><span>4 · 12ⁿ</span><span>3ⁿ⁻¹ · 2²ⁿ⁺¹</span></span> kəsrini ixtisar edin.",
+            open: true,
+            answer: "6",
+            accepted: ["6"],
+            explain: "Kəsrin sürət və məxrəcini vuruqlara ayıraq: <span class=\"frac\"><span>4 · 12ⁿ</span><span>3ⁿ⁻¹ · 2²ⁿ⁺¹</span></span> = <span class=\"frac\"><span>4 · 3ⁿ · 4ⁿ</span><span>3ⁿ · 3⁻¹ · 4ⁿ · 2</span></span> = <span class=\"frac\"><span>4</span><span><span class=\"frac\"><span>1</span><span>3</span></span> · 2</span></span> = <span class=\"frac\"><span>4</span><span><span class=\"frac\"><span>2</span><span>3</span></span></span></span> = 6."
           },
           {
-            q: "60. a və b natural ədədləri üçün 2a = 3b olarsa, <span class=\"frac\"><span>a</span><span>a + b</span></span> ifadəsinin qiymətini tapın.",
-            options: ["A) 0,5", "B) 0,4", "C) 1,2", "D) 1,5", "E) 0,6"],
-            answer: "E) 0,6",
-            explain: "a = 3k, b = 2k olduqda <span class=\"frac\"><span>a</span><span>a + b</span></span> = <span class=\"frac\"><span>3k</span><span>5k</span></span> = <span class=\"frac\"><span>3</span><span>5</span></span> = 0,6."
+            q: "17. A və B çoxluqları üçün yalnız A-ya aid elementlərin sayı 2x + 8, kəsişmələrinin elementlərinin sayı 3x + 1, yalnız B-yə aid elementlərin sayı isə 4x + 5-dir. 4 · n(A \\ B) = n(A ∪ B) olarsa, n(B \\ A)-nı tapın.",
+            open: true,
+            answer: "77",
+            accepted: ["77"],
+            explain: "Verilənlərə əsasən n(A \\ B) = 2x + 8 və n(A ∪ B) = (2x + 8) + (3x + 1) + (4x + 5) = 9x + 14. Şərtə görə: 4(2x + 8) = 9x + 14 ⇒ 8x + 32 = 9x + 14 ⇒ x = 18. Buradan n(B \\ A) = 4x + 5 = 4(18) + 5 = 77."
           },
           {
-            q: "61. a ədədi 2-yə, b ədədi isə 6-ya qalıqsız bölünür. a · b hasili {2; 4; 6; 9; 12} çoxluğunun hansı elementinə tam bölünmür?",
-            options: ["A) 12", "B) 4", "C) 2", "D) 6", "E) 9"],
-            answer: "E) 9",
-            explain: "a · b = 12mn hasilinin 9-a bölünməsi həmişə məcburi deyil."
+            q: "18. ∠B = ∠D, AB = OC = 6 və AO = 5 olarsa, CD-ni tapın.",
+            open: true,
+            answer: "7,2",
+            accepted: ["7,2", "7.2"],
+            explain: "∠B = ∠D və qarşılıqlı bucaqlar bərabər (∠AOB = ∠COD) olduğu üçün △AOB ~ △COD. Uyğun tərəflərin nisbətindən: <span class=\"frac\"><span>AB</span><span>CD</span></span> = <span class=\"frac\"><span>AO</span><span>CO</span></span> ⇒ <span class=\"frac\"><span>6</span><span>CD</span></span> = <span class=\"frac\"><span>5</span><span>6</span></span> ⇒ 5 · CD = 36 ⇒ CD = 7,2."
           },
           {
-            q: "62. -5,4 ədədi ilə 5,7 ədədi arasında yerləşən tam ədədlərin sayını tapın.",
-            options: ["A) 9", "B) 10", "C) 11", "D) 8", "E) 12"],
-            answer: "C) 11",
-            explain: "Aralıqdakı tam ədədlər: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 — cəmi 11 ədəd."
+            q: "19. ABCD düzbucaqlısında AM ⊥ DM, AB = 6 sm, AM = 12 sm-dir. ∠ADM-in dərəcə ölçüsünü tapın.",
+            open: true,
+            answer: "60°",
+            accepted: ["60°", "60"],
+            explain: "Düzbucaqlı △ABM-də (∠B = 90°) katet AB = 6 sm hipotenuz AM = 12 sm-in yarısıdır. Bu o deməkdir ki, ∠AMB = 30°-dir. BC ∥ AD olduğu üçün daxili çarpaz bucaqlar bərabərdir: ∠MAD = ∠AMB = 30°. Şərtə görə ∠AMD = 90° olduğundan, düzbucaqlı △AMD-də ∠ADM = 90° - 30° = 60°."
           },
           {
-            q: "63. Kəsişən a və b düz xətlərinin əmələ gətirdiyi qarşılıqlı bucaqlardan ikisinin cəmi 100°-dir. Həmin bucaqlardan birinə qonşu olan bucağı tapın.",
-            options: ["A) 150°", "B) 130°", "C) 105°", "D) 135°", "E) 120°"],
-            answer: "B) 130°",
-            explain: "Qarşılıqlı bucaqlar bərabər olduğundan hər biri 100° : 2 = 50°-dir; qonşu bucağı 180° - 50° = 130°."
+            q: "20. Rəhim birinci gün kitabın 40%-ni, ikinci gün 5%-ni, üçüncü gün qalan 110 səhifəni oxuyub qurtardı. Kitabda neçə səhifə olduğunu tapın.",
+            open: true,
+            answer: "200",
+            accepted: ["200"],
+            explain: "Rəhim ilk iki gündə kitabın 40% + 5% = 45%-ni oxuyub. Üçüncü günə 100% - 45% = 55% hissə qalıb. 55%-i 110 səhifə olan kitabın ümumi səhifə sayı: <span class=\"frac\"><span>110 × 100</span><span>55</span></span> = 200."
           },
           {
-            q: "64. <span class=\"frac\"><span>8ⁿ⁺³</span><span>64ⁿ⁺¹</span></span> ifadəsini sadələşdirin.",
-            options: ["A) 16", "B) 64", "C) 4", "D) 1", "E) 8"],
-            answer: "E) 8",
-            explain: "Cavab açarındakı E (8) variantına uyğun qiymət 8-dir."
+            q: "21. x(3 - √10) < 5,5(3 - √10) bərabərsizliyinin ən kiçik tam həllini tapın.",
+            open: true,
+            answer: "6",
+            accepted: ["6"],
+            explain: "3 = √9 < √10 olduğu üçün 3 - √10 ifadəsi mənfidir. Bərabərsizliyin hər iki tərəfini mənfi ədədə böldükdə işarə əksinə dəyişir: x > 5,5. Bu şərti ödəyən ən kiçik tam ədəd 6-dır."
           },
           {
-            q: "65. A, B və C nöqtələri eyni bir düz xətt üzərində ardıcıl yerləşib. AB parçasının orta nöqtəsi ilə BC parçasının orta nöqtəsi arasındakı məsafə 9 sm olarsa, AC parçasının uzunluğunu tapın.",
-            options: ["A) 18 sm", "B) 24 sm", "C) 21 sm", "D) 25 sm", "E) 16 sm"],
-            answer: "A) 18 sm",
-            explain: "Orta nöqtələr arası məsafə <span class=\"frac\"><span>AB</span><span>2</span></span> + <span class=\"frac\"><span>BC</span><span>2</span></span> = <span class=\"frac\"><span>AC</span><span>2</span></span> = 9 sm olduğundan AC = 2 · 9 = 18 sm."
+            q: "22. Düzxətli yol boyunca 85 ağac əkilmişdir. Hər qonşu iki ağac arasındakı məsafə bərabərdir. A və B ağacları arasındakı ağaclardan biri C-dir. A və C ağacları arasındakı məsafənin C və B ağacları arasındakı məsafəyə nisbəti 3 : 4-dür. Buna görə C ağacı A-dan başlayaraq neçənci ağacdır?",
+            open: true,
+            answer: "37",
+            accepted: ["37"],
+            explain: "85 ağac arasında 85 - 1 = 84 bərabər aralıq var. 3 : 4 nisbətinə görə ümumi məsafə 3 + 4 = 7 hissəyə bölünür: 84 ÷ 7 = 12 aralıq. A və C ağacları arasında 3 × 12 = 36 aralıq yerləşir. Ağacların sıra nömrəsi aralıq sayından 1 vahid çox olduğundan C ağacı 36 + 1 = 37-ci ağacdır."
           },
           {
-            q: "66. Ədəd oxunda həm A və 7 nöqtələri, həm də B və (-5) nöqtələri koordinat başlanğıcından eyni məsafədə olarsa, 2 · B - A ifadəsinin qiymətini hesablayın.",
-            options: ["A) 5", "B) 18", "C) 12", "D) 3", "E) 17"],
-            answer: "E) 17",
-            explain: "Cavab açarına əsasən düzgün variant E (17)-dir."
+            q: "23. İti bucağının tənböləni trapesiyanı iki oxşar üçbucağa ayırır. Oturacaqlar 7 və 28 olarsa, trapesiyanın perimetrini tapın.",
+            open: true,
+            answer: "56",
+            accepted: ["56"],
+            explain: "İti bucağının tənböləni trapesiyanı iki oxşar üçbucağa ayırırsa, iti bucaq yanındakı yan tərəf kiçik oturacağa bərabərdir (7). Diaqonal (d) oturacaqların həndəsi ortasıdır: d = √(7 × 28) = 14. Oxşarlıq nisbətindən digər yan tərəf (c) tapılır: <span class=\"frac\"><span>7</span><span>14</span></span> = <span class=\"frac\"><span>c</span><span>28</span></span> ⇒ c = 14. Trapesiyanın perimetri: P = 7 + 28 + 7 + 14 = 56."
           },
           {
-            q: "67. A ⊂ B və B = {1; 2; 3} olarsa, A çoxluğu hansı ola bilməz?",
-            options: ["A) {3}", "B) {1; 2}", "C) ∅", "D) {1; 2; 3; 4}", "E) {1; 2; 3}"],
-            answer: "D) {1; 2; 3; 4}",
-            explain: "4 elementi B çoxluğuna daxil deyil, ona görə {1; 2; 3; 4} altçoxluq ola bilməz."
+            q: "24. Sahəsi S₂ = x³ + 2x² + 8x + 16 olan düzbucaqlı formasındakı metal lövhədən sahəsi S₁ = x³ + x² + 12x + 12 olan düzbucaqlı formasında hissə kəsildi. Qalan hissə (x - 2) hündürlüklü düzbucaqlı şəklindədir; onun eni m-i x ilə ifadə edin və x-in hansı ən kiçik tam qiymətində həlli var?",
+            open: true,
+            answer: "m = x - 2; ən kiçik tam qiymət: 3",
+            accepted: [
+              "m = x - 2; ən kiçik tam qiymət: 3",
+              "m=x-2; ən kiçik tam qiymət: 3",
+              "x - 2; x = 3",
+              "x-2; x=3",
+              "x - 2; x=3",
+              "x-2; x = 3"
+            ],
+            explain: "Qalan hissənin sahəsi: S_qalan = S₂ - S₁ = (x³ + 2x² + 8x + 16) - (x³ + x² + 12x + 12) = x² - 4x + 4 = (x - 2)². Düzbucaqlının hündürlüyü x - 2 olduğu üçün eni: m = <span class=\"frac\"><span>(x - 2)²</span><span>x - 2</span></span> = x - 2. Fiqurun ölçüsü müsbət olmalıdır: x - 2 > 0 ⇒ x > 2. Ən kiçik tam qiymət 3-dür."
           },
           {
-            q: "68. 32 qram dəmir və 8 qram misdən ibarət ərintinin neçə faizi misdir?",
-            options: ["A) 25%", "B) 16%", "C) 20%", "D) 32%", "E) 12%"],
-            answer: "C) 20%",
-            explain: "Ümumi kütlə: 32 + 8 = 40 q. Misin payı: <span class=\"frac\"><span>8</span><span>40</span></span> = 0,2 = 20%."
-          },
+            q: "25. x² + y² + x - 5y = 29,5 tənliyi ilə verilmiş çevrənin daxilinə çəkilmiş kvadratın sahəsini tapın.",
+            open: true,
+            answer: "72",
+            accepted: ["72"],
+            explain: "Çevrənin tənliyini tam kvadrata ayıraq: (x + 0,5)² - 0,25 + (y - 2,5)² - 6,25 = 29,5 ⇒ (x + 0,5)² + (y - 2,5)² = 36. Buradan radius R = √36 = 6, diametr isə d = 12-dir. Çevrə daxilinə çəkilmiş kvadratın diaqonalı çevrənin diametrinə bərabər olduğundan sahəsi: S = <span class=\"frac\"><span>d²</span><span>2</span></span> = <span class=\"frac\"><span>12²</span><span>2</span></span> = 72."
+          }
+        ]
+      },
+      {
+        id: "sinif-10-11-1",
+        num: "№1",
+        title: "10–11-Cİ SİNİF RİYAZİYYAT — SINAQ İMTAHANI (20 SUAL)",
+        group: "10-11",
+        minutes: 50,
+        questions: [
           {
-            q: "69. Bərabər olmayan A və B çoxluqları üçün B ⊂ A, A çoxluğunun elementlərinin sayı a, B çoxluğunun elementlərinin sayı b olarsa, n(A ∩ B)-ni tapın.",
-            options: ["A) a - b", "B) a", "C) a + b", "D) ab", "E) b"],
-            answer: "E) b",
-            explain: "B ⊂ A olduğundan A ∩ B = B və n(A ∩ B) = b."
-          },
-          {
-            q: "70. a ∥ b və b ⊥ c düz xətləri verilib; a və c düz xətlərini kəsən düz xəttin əmələ gətirdiyi daxili birtərəfli bucaqlar 4x və 4x-dir. x-in dərəcə ölçüsünü tapın.",
-            options: ["A) 22,5°", "B) 18°", "C) 25°", "D) 30°", "E) 15°"],
-            answer: "A) 22,5°",
-            explain: "Cavab açarındakı düzgün variant A) 22,5°-dir."
-          },
-          {
-            q: "71. <span class=\"frac\"><span>1 + 10 + 100</span><span>1 + 0,1 + 0,01</span></span> ifadəsinin qiymətini hesablayın.",
-            options: ["A) 10", "B) 100", "C) 111", "D) 1,11", "E) 1000"],
-            answer: "B) 100",
-            explain: "1 + 0,1 + 0,01 = 1,11. <span class=\"frac\"><span>111</span><span>1,11</span></span> = 100."
-          },
-          {
-            q: "72. a, b və c sadə ədədləri üçün a(b + c) = 30 olarsa, abc hasilinin ən böyük qiymətini tapın.",
-            options: ["A) 30", "B) 78", "C) 60", "D) 90", "E) 105"],
-            answer: "B) 78",
-            explain: "a = 2, b = 3, c = 13 olduqda 2 · 3 · 13 = 78 alınır."
-          },
-          {
-            q: "73. |3x + 6| + |2y - 12| = 0 olarsa, x + y cəmini tapın.",
-            options: ["A) 2", "B) 4", "C) 6", "D) 8", "E) 10"],
-            answer: "B) 4",
-            explain: "3x + 6 = 0 ⇒ x = -2 və 2y - 12 = 0 ⇒ y = 6. x + y = -2 + 6 = 4."
-          },
-          {
-            q: "74. x, y, z müsbət həqiqi ədədləri üçün 2x = 3y = 5z və x + y - z = 38 olarsa, z-i tapın.",
-            options: ["A) 10", "B) 12", "C) 15", "D) 18", "E) 20"],
-            answer: "B) 12",
-            explain: "2x = 3y = 5z = 30k ⇒ x = 15k, y = 10k, z = 6k. 15k + 10k - 6k = 19k = 38 ⇒ k = 2 ⇒ z = 12."
-          },
-          {
-            q: "75. Qarşılıqlı bucaqların cəmi həmin bucaqlardan birinə qonşu olan bucağın yarısına bərabər olarsa, bu bucaqlardan böyüyünün dərəcə ölçüsünü tapın.",
-            options: ["A) 120°", "B) 135°", "C) 144°", "D) 150°", "E) 160°"],
-            answer: "C) 144°",
-            explain: "2x = <span class=\"frac\"><span>180° - x</span><span>2</span></span> ⇒ 5x = 180° ⇒ x = 36°. Qonşu bucaq: 180° - 36° = 144°."
-          },
-          {
-            q: "76. A çoxluğunun elementləri məxrəci 24 olan və sonlu onluq kəsr şəklində göstərilə bilən düzgün kəsrlərin surəti, B çoxluğunun elementləri isə 3-ə qalıqsız bölünən 30-dan kiçik natural ədədlərdir. A və B çoxluqlarını göstərin.",
+            q: "1. sin(x) = <span class=\"frac\"><span>3</span><span>5</span></span> və <span class=\"frac\"><span>π</span><span>2</span></span> < x < π olarsa, cos(x) ifadəsinin qiymətini tapın:",
             options: [
-              "A) A={3,6,9,12,15,18,21}; B={3,6,9,12,15,18,21,24,27}",
-              "B) A={1,2,3,4}; B={3,6,9,12}",
-              "C) A={6,12,18}; B={3,6,9,15}",
-              "D) A={3,6,12,24}; B={3,9,18,27}",
-              "E) A={2,4,6,8}; B={6,12,18,24}"
+              "A) -<span class=\"frac\"><span>4</span><span>5</span></span>",
+              "B) <span class=\"frac\"><span>4</span><span>5</span></span>",
+              "C) -<span class=\"frac\"><span>3</span><span>5</span></span>",
+              "D) <span class=\"frac\"><span>3</span><span>4</span></span>"
             ],
-            answer: "A) A={3,6,9,12,15,18,21}; B={3,6,9,12,15,18,21,24,27}",
-            explain: "Cavab cədvəlinə əsasən A={3,6,9,12,15,18,21} və B={3,6,9,12,15,18,21,24,27}."
+            answer: "A) -<span class=\"frac\"><span>4</span><span>5</span></span>",
+            explain: "II rübdə kosinus mənfidir: cos(x) = -√(1 - sin²(x)) = -√(1 - <span class=\"frac\"><span>9</span><span>25</span></span>) = -<span class=\"frac\"><span>4</span><span>5</span></span>."
           },
           {
-            q: "77. AB ∥ DC, AB ∥ EF, BC ∥ DE və ∠ABC bucağının dərəcə ölçüsü ∠CDE bucağının dərəcə ölçüsündən 20° kiçik olarsa, ∠DEF bucağının dərəcə ölçüsünü tapın.",
-            options: ["A) 90°", "B) 100°", "C) 110°", "D) 120°", "E) 130°"],
-            answer: "B) 100°",
-            explain: "Cavab açarındakı düzgün cavab 100°-dir."
+            q: "2. Hesablayın: sin(30°) + cos(60°) - tg(45°)",
+            options: ["A) 1", "B) 0", "C) -<span class=\"frac\"><span>1</span><span>2</span></span>", "D) <span class=\"frac\"><span>1</span><span>2</span></span>"],
+            answer: "B) 0",
+            explain: "<span class=\"frac\"><span>1</span><span>2</span></span> + <span class=\"frac\"><span>1</span><span>2</span></span> - 1 = 1 - 1 = 0."
           },
           {
-            q: "78. 40%-li duz məhlulunun 20%-i götürülüb, yerinə eyni qədər su əlavə etdikdə alınan məhlulun duzluluq faizini tapın.",
-            options: ["A) 24%", "B) 28%", "C) 30%", "D) 32%", "E) 36%"],
-            answer: "D) 32%",
-            explain: "Məhlulun 20%-i götürüldükdə duzun da 20%-i azalır: 40% · (1 - 0,2) = 32%."
+            q: "3. log₂(32) + log₃(9) - log₅(25) ifadəsinin qiymətini hesablayın:",
+            options: ["A) 7", "B) 9", "C) 5", "D) 3"],
+            answer: "C) 5",
+            explain: "log₂(32) = 5, log₃(9) = 2, log₅(25) = 2; 5 + 2 - 2 = 5."
           },
           {
-            q: "79. k natural ədədi üçün ƏBOB((k - 3)(k + 3); k + 3) = 2k - 1 olarsa, ƏKOB(k; k + 1) ifadəsinin qiymətini tapın.",
-            options: ["A) 12", "B) 15", "C) 20", "D) 24", "E) 30"],
-            answer: "C) 20",
-            explain: "k = 4 olduqda k + 3 = 7, 2k - 1 = 7; ƏKOB(4; 5) = 20."
+            q: "4. 2^(x+1) = 16 üstlü tənliyini həll edin:",
+            options: ["A) 4", "B) 2", "C) 5", "D) 3"],
+            answer: "D) 3",
+            explain: "2^(x+1) = 2⁴ ⇒ x + 1 = 4 ⇒ x = 3."
           },
           {
-            q: "80. Rəfdə fizika, kimya və riyaziyyat olmaqla üç növ kitab var. Həsən kitabları ayırmaq üçün əvvəlcə rəfdəki bütün kitabların <span class=\"frac\"><span>1</span><span>3</span></span> hissəsini və daha 2 kitab götürərək fizika bölməsinə qoydu. Sonra rəfdə qalan kitabların yarısını və daha 3 kitab götürərək kimya bölməsinə qoydu. Rəfdə qalan kitabların 0,6 hissəsini və daha 4 kitab götürərək riyaziyyat bölməsinə qoyduqdan sonra rəfdə cəmi 8 kitab qaldı. Əvvəlcə rəfdə neçə kitab olduğunu tapın.",
-            options: ["A) 96", "B) 102", "C) 108", "D) 114", "E) 120"],
-            answer: "C) 108",
-            explain: "Sondan əvvələ hesablama ilə başlanğıcda rəfdə 108 kitab olduğu tapılır."
+            q: "5. log₃(2x - 1) = 2 loqarifmik tənliyinin kökünü tapın:",
+            options: ["A) 5", "B) 3,5", "C) 4", "D) 4,5"],
+            answer: "A) 5",
+            explain: "2x - 1 = 3² = 9 ⇒ 2x = 10 ⇒ x = 5."
           },
           {
-            q: "81. AB ∥ CD ∥ EF düz xətləri kəsənlərlə kəsişir; ∠BED : ∠DEF = 2 : 3 və ∠CDE = ∠BED + 12° olarsa, ∠ABE-ni tapın.",
-            options: ["A) 90°", "B) 100°", "C) 110°", "D) 120°", "E) 130°"],
-            answer: "D) 120°",
-            explain: "Cavab açarındakı düzgün cavab 120°-dir."
+            q: "6. f(x) = 3x⁴ - 2x³ + 5x - 7 funksiyasının törəməsini tapın:",
+            options: ["A) 12x³ - 6x² + 5x", "B) 12x³ - 6x² + 5", "C) 3x³ - 2x² + 5", "D) 12x³ - 3x² + 5"],
+            answer: "B) 12x³ - 6x² + 5",
+            explain: "(xⁿ)' = n·x^(n-1) qaydasına görə: f'(x) = 12x³ - 6x² + 5."
+          },
+          {
+            q: "7. f(x) = x³ - 3x² + 2 funksiyasının x₀ = 2 nöqtəsində törəməsinin qiymətini tapın:",
+            options: ["A) 2", "B) -2", "C) 0", "D) 4"],
+            answer: "C) 0",
+            explain: "f'(x) = 3x² - 6x. x₀ = 2 qoyduqda: f'(2) = 3·4 - 6·2 = 12 - 12 = 0."
+          },
+          {
+            q: "8. ∫ (4x³ + 6x) dx inteqralını tapın:",
+            options: ["A) 12x² + 6 + C", "B) x⁴ + 6x² + C", "C) x⁴ + 2x³ + C", "D) x⁴ + 3x² + C"],
+            answer: "D) x⁴ + 3x² + C",
+            explain: "∫ 4x³ dx = x⁴ və ∫ 6x dx = 3x²; ümumi cavab: x⁴ + 3x² + C."
+          },
+          {
+            q: "9. Ədədi silsilədə a₁ = 5 və d = 3 olarsa, 10-cu həddi (a₁₀) tapın:",
+            options: ["A) 32", "B) 35", "C) 29", "D) 38"],
+            answer: "A) 32",
+            explain: "a₁₀ = a₁ + 9d = 5 + 9·3 = 5 + 27 = 32."
+          },
+          {
+            q: "10. Həndəsi silsilədə b₁ = 2 və q = 3 olarsa, 4-cü həddi (b₄) hesablayın:",
+            options: ["A) 24", "B) 18", "C) 162", "D) 54"],
+            answer: "D) 54",
+            explain: "b₄ = b₁ · q³ = 2 · 3³ = 2 · 27 = 54."
+          },
+          {
+            q: "11. i²⁴ ifadəsinin qiymətini tapın (i — xəyali vahiddir):",
+            options: ["A) -1", "B) i", "C) 1", "D) -i"],
+            answer: "C) 1",
+            explain: "24 ədədi 4-ə tam bölündüyündən i²⁴ = (i⁴)⁶ = 1⁶ = 1."
+          },
+          {
+            q: "12. 5! : 3! ifadəsinin qiymətini hesablayın:",
+            options: ["A) 20", "B) 15", "C) 10", "D) 60"],
+            answer: "A) 20",
+            explain: "<span class=\"frac\"><span>1·2·3·4·5</span><span>1·2·3</span></span> = 4 · 5 = 20."
+          },
+          {
+            q: "13. 6 nəfərdən ibarət qrupdan 2 nəfərlik nümayəndə heyəti neçə müxtəlif üsulla seçilə bilər?",
+            options: ["A) 30", "B) 15", "C) 12", "D) 20"],
+            answer: "B) 15",
+            explain: "C₆² = <span class=\"frac\"><span>6·5</span><span>1·2</span></span> = 15."
+          },
+          {
+            q: "14. Kubun tilinin uzunluğu 4 sm-dir. Kubun tam səthinin sahəsini tapın:",
+            options: ["A) 64 sm²", "B) 48 sm²", "C) 16 sm²", "D) 96 sm²"],
+            answer: "D) 96 sm²",
+            explain: "S_tam = 6a² = 6 · 4² = 6 · 16 = 96 sm²."
+          },
+          {
+            q: "15. Oturacağının radiusu 3 sm, hündürlüyü 10 sm olan silindrin həcmini π ilə ifadə edin:",
+            options: ["A) 90π sm³", "B) 30π sm³", "C) 60π sm³", "D) 13π sm³"],
+            answer: "A) 90π sm³",
+            explain: "V = πR²h = π · 3² · 10 = 90π sm³."
+          },
+          {
+            q: "16. A(2; 5) və B(6; 1) nöqtələri arasındakı məsafəni tapın:",
+            options: ["A) 8", "B) √32", "C) 4√2", "D) 4"],
+            answer: "C) 4√2",
+            explain: "AB = √((6-2)² + (1-5)²) = √(16 + 16) = √32 = 4√2."
+          },
+          {
+            q: "17. x² + 5x + 6 > 0 bərabərsizliyinin tam olmayan həllər çoxluğunu göstərin:",
+            options: [
+              "A) (-3; -2)",
+              "B) (-∞; -3) ∪ (-2; +∞)",
+              "C) (-∞; -2) ∪ (-3; +∞)",
+              "D) (-2; 3)"
+            ],
+            answer: "B) (-∞; -3) ∪ (-2; +∞)",
+            explain: "(x + 2)(x + 3) > 0 şərti sıfırları -3 və -2 olan aralıqlardan kənarda ödənilir."
+          },
+          {
+            q: "18. 2cos(x) - 1 = 0 tənliyinin [0; π] parçasındakı kökünü tapın:",
+            options: [
+              "A) <span class=\"frac\"><span>π</span><span>6</span></span>",
+              "B) <span class=\"frac\"><span>π</span><span>3</span></span>",
+              "C) <span class=\"frac\"><span>2π</span><span>3</span></span>",
+              "D) <span class=\"frac\"><span>π</span><span>2</span></span>"
+            ],
+            answer: "B) <span class=\"frac\"><span>π</span><span>3</span></span>",
+            explain: "cos(x) = <span class=\"frac\"><span>1</span><span>2</span></span> ⇒ x = <span class=\"frac\"><span>π</span><span>3</span></span>."
+          },
+          {
+            q: "19. y = x² - 4x + 7 parabolası təpə nöqtəsinin ordinatını tapın:",
+            options: ["A) 3", "B) 2", "C) 7", "D) -3"],
+            answer: "A) 3",
+            explain: "x₀ = <span class=\"frac\"><span>4</span><span>2</span></span> = 2; y₀ = 2² - 4·2 + 7 = 4 - 8 + 7 = 3."
+          },
+          {
+            q: "20. Bərabərtərəfli konusun doğuranı 8 sm-dir. Konusun ox kəsiyinin sahəsini tapın:",
+            options: ["A) 32 sm²", "B) 64 sm²", "C) 8√3 sm²", "D) 16√3 sm²"],
+            answer: "D) 16√3 sm²",
+            explain: "Bərabərtərəfli konusun ox kəsiyi tərəfi l = 8 sm olan bərabərtərəfli üçbucaqdır: S = <span class=\"frac\"><span>l²√3</span><span>4</span></span> = <span class=\"frac\"><span>64√3</span><span>4</span></span> = 16√3 sm²."
           }
         ]
       }
     ];
 
-    let activeGroup = "all";
+    function getUniqueTests() {
+      const seen = new Set();
+      return TESTS.filter(t => {
+        if (seen.has(t.id)) return false;
+        seen.add(t.id);
+        return true;
+      });
+    }
+
+    const UNIQUE_TESTS = getUniqueTests();
+
+    let currentFilter = "all";
     let currentTest = null;
-    let activeQuestions = [];
-    let qIdx = 0;
-    let picked = {};
-    let confirmed = {};
-    let visitCounts = {};
-    let siteViewCount = 0;
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let userAnswers = [];
+    let confirmed = [];
+    let totalScore = 0;
     let remainingSeconds = 0;
     let timerInterval = null;
-    let quizFinished = false;
+    const visitCounts = {};
+
+    function formatEyeNumber(n) {
+      const num = Math.max(0, Number(n) || 0);
+      return num.toLocaleString("az-AZ");
+    }
 
     function readLocalViews() {
       try {
         const raw = localStorage.getItem(LOCAL_VIEW_STORAGE);
         return raw ? JSON.parse(raw) : {};
-      } catch (_) {
+      } catch (e) {
         return {};
       }
     }
 
-    function writeLocalViews(obj) {
+    function writeLocalViews(map) {
       try {
-        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(obj));
-      } catch (_) {}
+        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(map));
+      } catch (e) {}
     }
 
-    function updateSiteViewUI() {
+    function renderSiteViewsCount(val) {
       const el = document.getElementById("site-views-count");
-      if (el) {
-        el.textContent = String(Math.max(0, Number(siteViewCount) || 0));
-      }
+      if (el) el.textContent = formatEyeNumber(val);
     }
 
-    async function trackSiteView() {
+    async function fetchCountApiValue(key, increment) {
+      const endpoint = increment ? "hit" : "get";
+      const url = `${COUNTER_BASE}/${endpoint}/${COUNTER_PREFIX}/${encodeURIComponent(key)}`;
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("CountAPI error");
+      const data = await res.json();
+      if (typeof data.value === "number") return data.value;
+      throw new Error("Invalid count value");
+    }
+
+    async function trackAndShowSiteViews() {
       const localMap = readLocalViews();
-      const nextLocal = (Number(localMap[SITE_VIEW_KEY]) || 0) + 1;
-      localMap[SITE_VIEW_KEY] = nextLocal;
+      const prevLocal = Number(localMap[SITE_VIEW_KEY] || 0) + 1;
+      localMap[SITE_VIEW_KEY] = prevLocal;
       writeLocalViews(localMap);
-      siteViewCount = nextLocal;
-      updateSiteViewUI();
+      renderSiteViewsCount(prevLocal);
 
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          siteViewCount = Math.max(num, nextLocal);
-          localMap[SITE_VIEW_KEY] = siteViewCount;
-          writeLocalViews(localMap);
-          updateSiteViewUI();
-        }
-      } catch (_) {}
-    }
-
-    function stopTimer() {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
+        const globalVal = await fetchCountApiValue(SITE_VIEW_KEY, true);
+        const bestVal = Math.max(globalVal, prevLocal);
+        localMap[SITE_VIEW_KEY] = bestVal;
+        writeLocalViews(localMap);
+        renderSiteViewsCount(bestVal);
+      } catch (e) {
+        renderSiteViewsCount(prevLocal);
       }
     }
 
-    function formatTime(sec) {
-      const safeSec = Math.max(0, Number(sec) || 0);
-      const mins = Math.floor(safeSec / 60);
-      const secs = safeSec % 60;
-      return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-    }
-
-    function updateTimerUI() {
-      const el = document.getElementById("q-timer");
-      if (!el) return;
-      el.textContent = `⏱ ${formatTime(remainingSeconds)}`;
-      if (remainingSeconds <= 300) {
-        el.classList.add("warning");
-      } else {
-        el.classList.remove("warning");
-      }
-    }
-
-    function startTimer(minutes) {
-      stopTimer();
-      remainingSeconds = Math.max(1, Number(minutes) || 60) * 60;
-      updateTimerUI();
-
-      timerInterval = setInterval(() => {
-        if (remainingSeconds > 0) {
-          remainingSeconds -= 1;
-          updateTimerUI();
-        }
-        if (remainingSeconds <= 0) {
-          stopTimer();
-          if (!quizFinished && currentTest) {
-            finishQuiz(true);
-          }
-        }
-      }, 1000);
-    }
-
-    function counterKey(testId) {
-      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
-    }
-
-    function getCountValue(testId) {
-      return typeof visitCounts[testId] === "number" ? visitCounts[testId] : 0;
-    }
-
-    function updateVisitUI(testId) {
-      const val = getCountValue(testId);
-      const badgeEl = document.getElementById(`count-${testId}`);
-      if (badgeEl) badgeEl.textContent = `👥 ${val} iştirak`;
-
-      const quizEl = document.getElementById("q-visits");
-      if (quizEl && currentTest && currentTest.id === testId) {
-        quizEl.textContent = `👥 ${val} iştirak`;
-      }
-    }
-
-    async function fetchCount(testId) {
+    async function trackAndShowTestVisits(testId) {
       const localMap = readLocalViews();
-      const k = counterKey(testId);
-      const localVal = Number(localMap[k]) || 0;
-      visitCounts[testId] = localVal;
-      updateVisitUI(testId);
-
-      try {
-        const res = await fetch(`${COUNTER_BASE}/get/${k}?t=${Date.now()}`, { cache: "no-store" });
-        if (!res.ok) return;
-        const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          visitCounts[testId] = Math.max(num, localVal);
-          updateVisitUI(testId);
-        }
-      } catch (_) {}
-    }
-
-    async function incrementCount(testId) {
-      const localMap = readLocalViews();
-      const k = counterKey(testId);
-      const nextLocal = (Number(localMap[k]) || 0) + 1;
-      localMap[k] = nextLocal;
+      const prevLocal = Number(localMap[testId] || 0) + 1;
+      localMap[testId] = prevLocal;
       writeLocalViews(localMap);
-      visitCounts[testId] = nextLocal;
-      updateVisitUI(testId);
+      visitCounts[testId] = prevLocal;
+      updateVisitsBadge();
 
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${k}?t=${Date.now()}`, { cache: "no-store" });
-        if (!res.ok) return;
-        const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          visitCounts[testId] = Math.max(num, nextLocal);
-          localMap[k] = visitCounts[testId];
-          writeLocalViews(localMap);
-          updateVisitUI(testId);
-        }
-      } catch (_) {}
+        const globalVal = await fetchCountApiValue(testId, true);
+        const bestVal = Math.max(globalVal, prevLocal);
+        localMap[testId] = bestVal;
+        writeLocalViews(localMap);
+        visitCounts[testId] = bestVal;
+        updateVisitsBadge();
+      } catch (e) {
+        visitCounts[testId] = prevLocal;
+        updateVisitsBadge();
+      }
+    }
+
+    function updateVisitsBadge() {
+      const el = document.getElementById("q-visits");
+      if (!el || !currentTest) return;
+      const count = visitCounts[currentTest.id] || 1;
+      el.textContent = `İştirak: ${formatEyeNumber(count)}`;
     }
 
     function setFilter(group, btn) {
-      activeGroup = group;
+      currentFilter = group;
       document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
       if (btn) btn.classList.add("active");
       renderTests();
@@ -3138,53 +3251,75 @@
 
     function renderTests() {
       const list = document.getElementById("test-list");
-      const filtered = activeGroup === "all" ? TESTS : TESTS.filter(t => t.group === activeGroup);
+      const filtered = currentFilter === "all"
+        ? UNIQUE_TESTS
+        : UNIQUE_TESTS.filter(t => t.group === currentFilter);
 
       list.innerHTML = filtered.map(t => `
         <div class="test-card">
           <div class="test-card-left">
             <div class="num-badge">
               <div class="num-badge-main">${t.num}</div>
-              <div class="num-badge-tag">YENİ</div>
+              <div class="num-badge-tag">ÖDƏNİŞSİZ</div>
             </div>
             <div>
               <h3 class="test-title">${t.title}</h3>
               <div class="test-meta">
-                <span>⏱ ${t.minutes} dəqiqə</span>
-                <span>• ${t.questions.length} sual</span>
-                <span>• 100 bal</span>
-                <span class="count-pill" id="count-${t.id}">👥 ${getCountValue(t.id)} iştirak</span>
+                <span>Müəllim: Nurid Əsədullayev</span>
+                <span class="count-pill">${t.questions.length} SUAL</span>
+                <span>${t.minutes} dəqiqə</span>
+                <span class="free-tag-pill">Ödənişsiz</span>
               </div>
             </div>
           </div>
           <button type="button" class="btn-purple" onclick="startTest('${t.id}')">Sınağa başla</button>
         </div>
       `).join("");
-
-      filtered.forEach(t => fetchCount(t.id));
     }
 
-    function startTest(id) {
-      const found = TESTS.find(t => t.id === id);
+    function startTest(testId) {
+      const found = UNIQUE_TESTS.find(t => t.id === testId);
       if (!found) return;
-
       currentTest = found;
-      activeQuestions = prepareShuffledQuestions(found.questions);
-      qIdx = 0;
-      picked = {};
-      confirmed = {};
-      quizFinished = false;
-
-      incrementCount(found.id);
-      startTimer(found.minutes);
+      currentQuestions = prepareShuffledQuestions(found.questions);
+      currentIndex = 0;
+      userAnswers = new Array(currentQuestions.length).fill(null);
+      confirmed = new Array(currentQuestions.length).fill(false);
+      totalScore = 0;
+      remainingSeconds = found.minutes * 60;
 
       document.getElementById("home-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
-      document.getElementById("q-test-title").textContent = found.title;
+      document.getElementById("q-test-title").textContent = currentTest.title;
 
+      updateVisitsBadge();
+      trackAndShowTestVisits(currentTest.id);
+      startTimer();
       renderQuestion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        remainingSeconds--;
+        updateTimerDisplay();
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          finishQuiz();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const el = document.getElementById("q-timer");
+      if (!el) return;
+      const safeSec = Math.max(0, remainingSeconds);
+      const mins = Math.floor(safeSec / 60);
+      const secs = safeSec % 60;
+      el.textContent = `⏱ ${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+      el.classList.toggle("warning", safeSec <= 300);
     }
 
     function normalizeOpenAnswer(val) {
@@ -3192,11 +3327,11 @@
         .trim()
         .toLowerCase()
         .replace(/\s+/g, " ")
-        .replace(/°/g, "");
+        .replace(/,/g, ".");
     }
 
-    function isQuestionCorrect(q, userVal) {
-      if (userVal === undefined || userVal === null || String(userVal).trim() === "") return false;
+    function isAnswerCorrect(q, userVal) {
+      if (userVal === null || userVal === undefined || String(userVal).trim() === "") return false;
       if (q.open) {
         const normUser = normalizeOpenAnswer(userVal);
         const list = Array.isArray(q.accepted) ? q.accepted : [q.answer];
@@ -3209,200 +3344,193 @@
       const bar = document.getElementById("q-jump-bar");
       if (!bar) return;
 
-      bar.innerHTML = activeQuestions.map((q, i) => {
+      bar.innerHTML = currentQuestions.map((q, idx) => {
         const classes = ["q-jump-btn"];
-        if (i === qIdx) classes.push("current-q");
+        const ans = userAnswers[idx];
+        const hasAns = ans !== null && ans !== undefined && String(ans).trim() !== "";
 
-        const hasVal = picked[i] !== undefined && String(picked[i]).trim() !== "";
-        if (confirmed[i]) {
-          classes.push(isQuestionCorrect(q, picked[i]) ? "ok-state" : "bad-state");
-        } else if (hasVal) {
+        if (confirmed[idx]) {
+          classes.push(isAnswerCorrect(q, ans) ? "ok-state" : "bad-state");
+        } else if (hasAns) {
           classes.push("picked-state");
         }
 
-        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${i})">${i + 1}</button>`;
+        if (idx === currentIndex) {
+          classes.push("current-q");
+        }
+
+        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${idx})">${idx + 1}</button>`;
       }).join("");
     }
 
-    function jumpToQuestion(targetIdx) {
-      if (targetIdx < 0 || targetIdx >= activeQuestions.length) return;
-      qIdx = targetIdx;
+    function jumpToQuestion(idx) {
+      if (idx < 0 || idx >= currentQuestions.length) return;
+      currentIndex = idx;
       renderQuestion();
     }
 
     function renderQuestion() {
-      const q = activeQuestions[qIdx];
-      const isConf = !!confirmed[qIdx];
+      const q = currentQuestions[currentIndex];
+      const isConf = confirmed[currentIndex];
 
-      document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${activeQuestions.length}`;
-      document.getElementById("q-point-tag").textContent = `⭐ ${q.points} bal`;
-      document.getElementById("q-text").innerHTML = q.q;
-      updateVisitUI(currentTest.id);
-      updateTimerUI();
       renderJumpBar();
 
-      const optsDiv = document.getElementById("q-options");
+      document.getElementById("q-progress").textContent = `Sual ${currentIndex + 1} / ${currentQuestions.length}`;
+      document.getElementById("q-point-tag").textContent = `${q.points || 4} BAL`;
+      document.getElementById("q-text").innerHTML = q.q;
+
+      const optsBox = document.getElementById("q-options");
       const openWrap = document.getElementById("q-open-wrap");
       const openInput = document.getElementById("q-open-input");
 
       if (q.open) {
-        optsDiv.style.display = "none";
-        optsDiv.innerHTML = "";
+        optsBox.style.display = "none";
         openWrap.style.display = "block";
-        openInput.value = picked[qIdx] || "";
+        openInput.value = userAnswers[currentIndex] || "";
         openInput.disabled = isConf;
       } else {
         openWrap.style.display = "none";
-        optsDiv.style.display = "flex";
-
-        optsDiv.innerHTML = q.options.map(opt => {
+        optsBox.style.display = "flex";
+        optsBox.innerHTML = q.options.map(opt => {
           let cls = "opt-btn";
           if (isConf) {
             if (opt === q.answer) cls += " correct";
-            else if (opt === picked[qIdx]) cls += " wrong";
-          } else if (opt === picked[qIdx]) {
+            else if (opt === userAnswers[currentIndex]) cls += " wrong";
+          } else if (opt === userAnswers[currentIndex]) {
             cls += " picked";
           }
-          const safeOpt = opt.replace(/"/g, "&quot;");
-          return `<button type="button" class="${cls}" data-opt="${safeOpt}" ${isConf ? "disabled" : ""} onclick="selectOptFromEl(this)">${opt}</button>`;
+          return `<button type="button" class="${cls}" ${isConf ? "disabled" : ""} onclick="selectOption('${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
         }).join("");
       }
 
-      const confirmBtn = document.getElementById("btn-confirm");
-      const hasAnswer = picked[qIdx] !== undefined && String(picked[qIdx]).trim() !== "";
-      confirmBtn.disabled = isConf || !hasAnswer;
-      confirmBtn.textContent = isConf ? "Cavab təsdiqləndi" : "Cavabı təsdiqlə";
+      document.getElementById("btn-confirm").disabled = isConf;
+      document.getElementById("btn-prev").disabled = currentIndex === 0;
 
       const expBox = document.getElementById("q-explain");
       if (isConf) {
-        const ok = isQuestionCorrect(q, picked[qIdx]);
+        const ok = isAnswerCorrect(q, userAnswers[currentIndex]);
         expBox.style.display = "block";
-        expBox.className = `explain-box ${ok ? "ok" : "bad"}`;
+        expBox.className = "explain-box " + (ok ? "ok" : "bad");
         expBox.innerHTML = `
-          <div style="font-weight:800; margin-bottom:4px;">
-            ${ok ? `✓ Doğru cavab! (+${q.points} bal)` : `✕ Yanlış cavab (0 bal) — Doğru cavab: ${q.answer}`}
-          </div>
-          <div>${q.explain || ""}</div>
+          <div style="font-weight:800; margin-bottom:4px;">${ok ? `✓ Doğru cavab! (+${q.points || 4} bal)` : `✗ Səhv cavab! Düzgün cavab: ${q.answer}`}</div>
+          <div>${q.explain}</div>
         `;
       } else {
         expBox.style.display = "none";
-        expBox.innerHTML = "";
       }
 
-      document.getElementById("btn-prev").disabled = qIdx === 0;
-      const isLast = qIdx === activeQuestions.length - 1;
+      const isLast = currentIndex === currentQuestions.length - 1;
       document.getElementById("btn-next").style.display = isLast ? "none" : "inline-block";
       document.getElementById("btn-finish").style.display = isLast ? "inline-block" : "none";
     }
 
-    function selectOptFromEl(el) {
-      if (confirmed[qIdx]) return;
-      picked[qIdx] = el.getAttribute("data-opt");
+    function selectOption(opt) {
+      if (confirmed[currentIndex]) return;
+      userAnswers[currentIndex] = opt;
       renderQuestion();
     }
 
     function onOpenInput(val) {
-      if (confirmed[qIdx]) return;
-      picked[qIdx] = val;
-      const confirmBtn = document.getElementById("btn-confirm");
-      confirmBtn.disabled = String(val || "").trim() === "";
+      if (confirmed[currentIndex]) return;
+      userAnswers[currentIndex] = val;
       renderJumpBar();
     }
 
     function confirmAnswer() {
-      const hasAnswer = picked[qIdx] !== undefined && String(picked[qIdx]).trim() !== "";
-      if (!hasAnswer) return;
-      confirmed[qIdx] = true;
+      if (confirmed[currentIndex]) return;
+      const q = currentQuestions[currentIndex];
+      const ans = userAnswers[currentIndex];
+      if (ans === null || ans === undefined || String(ans).trim() === "") {
+        alert(q.open ? "Zəhmət olmasa cavabınızı yazın!" : "Zəhmət olmasa bir variant seçin!");
+        return;
+      }
+      confirmed[currentIndex] = true;
+      if (isAnswerCorrect(q, ans)) {
+        totalScore += (q.points || 4);
+      }
       renderQuestion();
     }
 
     function prevQuestion() {
-      if (qIdx > 0) {
-        qIdx--;
+      if (currentIndex > 0) {
+        currentIndex--;
         renderQuestion();
       }
     }
 
     function nextQuestion() {
-      if (qIdx < activeQuestions.length - 1) {
-        qIdx++;
+      if (currentIndex < currentQuestions.length - 1) {
+        currentIndex++;
         renderQuestion();
       }
     }
 
-    function finishQuiz(isTimeout = false) {
-      if (quizFinished) return;
-      quizFinished = true;
-      stopTimer();
-
-      let earned = 0;
-      let totalPts = 0;
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      let finalScore = 0;
       let correctCount = 0;
       let wrongCount = 0;
 
-      const itemsHtml = activeQuestions.map((q, idx) => {
-        totalPts += q.points;
-        const userAns = picked[idx];
-        const answered = userAns !== undefined && String(userAns).trim() !== "";
-        const ok = isQuestionCorrect(q, userAns);
-        if (ok) {
-          earned += q.points;
-          correctCount++;
-        } else {
-          wrongCount++;
+      currentQuestions.forEach((q, idx) => {
+        const ans = userAnswers[idx];
+        const pts = q.points || 4;
+        if (ans !== null && ans !== undefined && String(ans).trim() !== "") {
+          if (isAnswerCorrect(q, ans)) {
+            finalScore += pts;
+            correctCount++;
+          } else {
+            wrongCount++;
+          }
         }
+      });
 
-        const displayUserAns = answered ? userAns : "Cavabsız";
-
-        return `
-          <div style="padding:12px; border:1px solid #e2e8f0; border-radius:12px; margin-top:10px; background:${ok ? "#f0fdf4" : "#fef2f2"};">
-            <div style="font-weight:800;">${idx + 1}. ${q.q} (${q.points} bal)</div>
-            <div style="font-size:0.86rem; margin-top:4px;">Sizin cavabınız: <b>${displayUserAns}</b></div>
-            <div style="font-size:0.86rem; color:#15803d; font-weight:700;">Doğru cavab: ${q.answer}</div>
-            <div style="font-size:0.84rem; color:#334155; margin-top:4px;">${q.explain || ""}</div>
-          </div>
-        `;
-      }).join("");
-
-      const scaledScore = totalPts > 0 ? Math.round((earned / totalPts) * 100) : 0;
+      const maxScore = currentQuestions.reduce((acc, q) => acc + (q.points || 4), 0);
+      const scaled100 = maxScore > 0 ? Math.round((finalScore / maxScore) * 100) : 0;
 
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "block";
-      document.getElementById("result-summary").textContent = isTimeout
-        ? `${currentTest.title} — Vaxt bitdi! Toplam balınız: ${scaledScore} / 100`
-        : `${currentTest.title} — Toplam balınız: ${scaledScore} / 100`;
+      document.getElementById("result-summary").textContent =
+        `${currentTest.title} — Xam bal: ${finalScore} / ${maxScore}`;
 
       document.getElementById("result-stats").innerHTML = `
         <div class="stat-box score-box">
-          <div class="stat-num">${scaledScore} / 100</div>
-          <div class="stat-label">Yekun Bal</div>
+          <div class="stat-num">${scaled100} / 100</div>
+          <div class="stat-label">Yekun Bal (100 ballıq şkala)</div>
         </div>
         <div class="stat-box ok-box">
           <div class="stat-num">${correctCount}</div>
-          <div class="stat-label">✓ Doğru Cavab</div>
+          <div class="stat-label">Doğru Cavab</div>
         </div>
         <div class="stat-box bad-box">
           <div class="stat-num">${wrongCount}</div>
-          <div class="stat-label">✕ Səhv / Cavabsız</div>
+          <div class="stat-label">Səhv Cavab</div>
         </div>
       `;
 
-      document.getElementById("result-list").innerHTML = itemsHtml;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.getElementById("result-list").innerHTML = currentQuestions.map((q, i) => {
+        const ans = userAnswers[i];
+        const hasAns = ans !== null && ans !== undefined && String(ans).trim() !== "";
+        const ok = hasAns && isAnswerCorrect(q, ans);
+        return `
+          <div class="explain-box ${ok ? "ok" : "bad"}">
+            <div style="font-weight:800;">${q.q} (${q.points || 4} bal)</div>
+            <div>Sizin cavabınız: <b>${hasAns ? ans : "Cavab verilməyib"}</b> | Düzgün cavab: <b>${q.answer}</b></div>
+            <div style="margin-top:4px; font-size:0.88rem;">${q.explain}</div>
+          </div>
+        `;
+      }).join("");
     }
 
     function goHome() {
-      stopTimer();
-      quizFinished = false;
-      currentTest = null;
+      clearInterval(timerInterval);
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("home-view").style.display = "block";
       renderTests();
     }
 
-    trackSiteView();
     renderTests();
+    trackAndShowSiteViews();
   </script>
 </body>
 </html>
