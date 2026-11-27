@@ -318,6 +318,202 @@
       border-radius: 999px;
       font-weight: 800;
     }
+    .leaderboard-card {
+      margin-top: 28px;
+      background: #ffffff;
+      border: 1px solid #e9d5ff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 22px rgba(76, 29, 149, 0.05);
+    }
+    .lb-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .lb-title {
+      margin: 0;
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: #2e1065;
+    }
+    .lb-select {
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1.5px solid #ddd6fe;
+      background: #faf5ff;
+      color: #2e1065;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      outline: none;
+      max-width: 100%;
+    }
+    .lb-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .lb-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid #ede9fe;
+      background: #faf8ff;
+    }
+    .lb-row.rank-1 {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-color: #f59e0b;
+    }
+    .lb-row.rank-2 {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border-color: #94a3b8;
+    }
+    .lb-row.rank-3 {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-color: #fb923c;
+    }
+    .lb-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .lb-rank-medal {
+      font-size: 1.25rem;
+      width: 30px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .lb-rank-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: #ede9fe;
+      color: #4c1d95;
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .lb-student-name {
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: #0f172a;
+    }
+    .lb-topic {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-top: 2px;
+    }
+    .lb-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .lb-score-badge {
+      display: inline-block;
+      background: #4c1d95;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.84rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .lb-date {
+      font-size: 0.7rem;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .lb-empty {
+      padding: 18px;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.86rem;
+      font-weight: 600;
+      background: #f8fafc;
+      border-radius: 14px;
+      border: 1px dashed #cbd5e1;
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+      border: 1px solid #e9d5ff;
+    }
+    .modal-title {
+      margin: 0 0 4px;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #2e1065;
+    }
+    .modal-sub {
+      margin: 0 0 16px;
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .field-group {
+      margin-bottom: 12px;
+    }
+    .field-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 5px;
+    }
+    .field-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      outline: none;
+    }
+    .field-input:focus {
+      border-color: #5b21b6;
+      background: #faf5ff;
+    }
+    .field-error {
+      color: #b91c1c;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      min-height: 18px;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
     .btn-purple {
       background: #5b21b6;
       color: #ffffff;
@@ -345,6 +541,16 @@
       border: 1px solid #ddd6fe;
       border-radius: 18px;
       padding: 20px;
+    }
+    .student-chip {
+      display: inline-block;
+      margin-top: 4px;
+      background: #f3e8ff;
+      color: #4c1d95;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
     }
     .q-jump-bar {
       margin-top: 14px;
@@ -586,6 +792,8 @@
       .btn-purple { width: 100%; }
       .topbar-inner { justify-content: center; }
       .nav-actions { justify-content: center; }
+      .lb-row { flex-direction: column; align-items: flex-start; }
+      .lb-right { text-align: left; }
     }
   </style>
 </head>
@@ -652,6 +860,19 @@
       </div>
 
       <div class="test-list" id="test-list"></div>
+
+      <section class="leaderboard-card" id="leaderboard-section">
+        <div class="lb-header">
+          <div>
+            <h2 class="lb-title">Nəticələr və Sıralama</h2>
+            <p class="section-sub" style="margin:2px 0 0;">1-ci yer 🥇, 2-ci yer 🥈, 3-cü yer 🥉, digərləri isə 4, 5... sıra ilə göstərilir</p>
+          </div>
+          <select id="lb-test-filter" class="lb-select" onchange="renderLeaderboard()">
+            <option value="all">Bütün sınaqlar / mövzular</option>
+          </select>
+        </div>
+        <div class="lb-list" id="lb-list"></div>
+      </section>
     </div>
 
     <div id="quiz-view" class="quiz-card" style="display:none;">
@@ -659,6 +880,7 @@
         <div>
           <div id="q-test-title" style="font-weight:800; font-size:1rem;"></div>
           <div style="font-size:0.78rem; color:#64748b; font-weight:600;">Müəllim: Nurid Əsədullayev</div>
+          <div id="q-student-chip" class="student-chip"></div>
           <div class="quiz-contact-links">
             <a href="https://whatsapp.com/channel/0029VbDf98435fLtiu31MM13" target="_blank" rel="noopener">
               <svg class="wa-svg" viewBox="0 0 32 32" fill="#16a34a" aria-hidden="true"><path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.71-1.71A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.98 1.01 1.06-3.88-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.82-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/></svg>
@@ -703,12 +925,40 @@
       <h2 style="margin:0 0 6px;">İmtahan Nəticəsi</h2>
       <div id="result-summary" style="font-size:0.96rem; font-weight:700; color:#475569;"></div>
       <div class="result-stats-grid" id="result-stats"></div>
+
+      <div style="margin:18px 0; padding:16px; border-radius:16px; background:#faf5ff; border:1px solid #e9d5ff;">
+        <h3 style="margin:0 0 8px; font-size:1rem; color:#2e1065;">Sıralama və Nəticələr</h3>
+        <div class="lb-list" id="result-leaderboard-list"></div>
+      </div>
+
       <div id="result-list"></div>
       <div style="margin-top:16px;">
         <button type="button" class="btn-purple" onclick="goHome()">Ana səhifəyə qayıt</button>
       </div>
     </div>
   </main>
+
+  <div class="modal-backdrop" id="student-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <h3 class="modal-title" id="modal-title">Sınağa başlamaq üçün məlumatları yazın</h3>
+      <p class="modal-sub" id="modal-test-name">Ad və soyad nəticələr cədvəlində və sıralamada göstəriləcək.</p>
+      <form id="student-form" onsubmit="submitStudentModal(event)">
+        <div class="field-group">
+          <label class="field-label" for="student-first-name">Ad *</label>
+          <input type="text" id="student-first-name" class="field-input" placeholder="Məsələn: Aysel" required />
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="student-last-name">Soyad *</label>
+          <input type="text" id="student-last-name" class="field-input" placeholder="Məsələn: Məmmədova" required />
+        </div>
+        <div class="field-error" id="student-error"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn-gray" onclick="closeStudentModal()">Ləğv et</button>
+          <button type="submit" class="btn-purple">Sınağa başla</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div>Müəllim: Nurid Əsədullayev — Bilik Arenası</div>
@@ -729,6 +979,8 @@
     const COUNTER_PREFIX = "bilik_arenasi_istirak_v3";
     const SITE_VIEW_KEY = "bilik_arenasi_sayt_baxis_v1";
     const LOCAL_VIEW_STORAGE = "bilik_arenasi_local_views_v1";
+    const RESULTS_STORAGE_KEY = "bilik_arenasi_neticeler_v1";
+    const STUDENT_STORAGE_KEY = "bilik_arenasi_sagird_v1";
 
     function shuffleArray(arr) {
       const copy = arr.slice();
@@ -2882,85 +3134,90 @@
             q: "17. <span class=\"frac\"><span>63³ + 37³</span><span>63² - 63 · 37 + 37²</span></span> ifadəsinin qiymətini hesablayın:",
             options: ["A) 26", "B) 1000", "C) 100", "D) 63"],
             answer: "C) 100",
-            explain: "Surəti kublar cəmi düsturu ilə açdıqda məxrəclə eyni olan vuruq ixtisar gedir və 63 + 37 = 100 qalır."
+            explain: "Surəti kublar cəmi düsturu ilə açdıqda məxrəclə eyni olan (63² - 63 · 37 + 37²) vuruğu ixtisar gedir və qalır: 63 + 37 = 100."
           },
           {
-            q: "18. <span class=\"frac\"><span>87³ - 47³</span><span>87² + 87 · 47 + 47²</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 40", "B) 134", "C) 400", "D) 4"],
-            answer: "A) 40",
-            explain: "Surəti kublar fərqi düsturu ilə açdıqda məxrəclə eyni olan vuruq ixtisar gedir və 87 - 47 = 40 qalır."
+            q: "18. <span class=\"frac\"><span>78³ - 28³</span><span>78² + 78 · 28 + 28²</span></span> ifadəsinin qiymətini tapın:",
+            options: ["A) 106", "B) 50", "C) 2500", "D) 52"],
+            answer: "B) 50",
+            explain: "Surəti kublar fərqi düsturu ilə açdıqda məxrəclə eyni vuruq ixtisar gedir və qalır: 78 - 28 = 50."
           },
           {
-            q: "19. x⁴ - 16 çoxhədlisini vuruqlara tam ayırın:",
-            options: ["A) (x² - 4)²", "B) (x - 2)²(x + 2)²", "C) (x - 4)(x + 4)(x² + 4)", "D) (x - 2)(x + 2)(x² + 4)"],
-            answer: "D) (x - 2)(x + 2)(x² + 4)",
-            explain: "Ardıcıl kvadratlar fərqi düsturunu tətbiq edirik: (x² - 4)(x² + 4) = (x - 2)(x + 2)(x² + 4)."
+            q: "19. (a + b + c)² ifadəsini açın:",
+            options: [
+              "A) a² + b² + c² + 2ab + 2bc + 2ac",
+              "B) a² + b² + c² + ab + bc + ac",
+              "C) a² + b² + c²",
+              "D) a² + b² + c² + 3abc"
+            ],
+            answer: "A) a² + b² + c² + 2ab + 2bc + 2ac",
+            explain: "Üç ifadənin cəminin kvadratı düsturuna görə: (a + b + c)² = a² + b² + c² + 2ab + 2bc + 2ac."
           },
           {
-            q: "20. x = 2 və y = 1 olarsa, x⁴ + 4x³y + 6x²y² + 4xy³ + y⁴ ifadəsinin qiymətini tapın:",
-            options: ["A) 16", "B) 81", "C) 27", "D) 1"],
-            answer: "B) 81",
-            explain: "Bu ifadə (x + y)⁴ ifadəsinin açılışıdır. Qiymətləri yerinə yazsaq: (2 + 1)⁴ = 3⁴ = 81."
+            q: "20. x + y + z = 7 və xy + xz + yz = 14 olarsa, x² + y² + z² ifadəsinin qiymətini hesablayın:",
+            options: ["A) 35", "B) 63", "C) 21", "D) 49"],
+            answer: "C) 21",
+            explain: "x² + y² + z² = (x + y + z)² - 2(xy + xz + yz) düsturuna görə: 7² - 2 · 14 = 49 - 28 = 21."
           },
           {
-            q: "21. m = 5 və n = 3 olduqda m⁴ - 4m³n + 6m²n² - 4mn³ + n⁴ ifadəsinin qiymətini hesablayın:",
-            options: ["A) 64", "B) 16", "C) 4096", "D) 8"],
-            answer: "B) 16",
-            explain: "Bu ifadə (m - n)⁴ ifadəsinin açılışıdır. Qiymətləri yerinə yazsaq: (5 - 3)⁴ = 2⁴ = 16."
+            q: "21. (x + 3)² - (x - 2)(x + 2) ifadəsini sadələşdirin:",
+            options: ["A) 6x + 5", "B) 6x + 13", "C) 2x² + 6x + 5", "D) 6x - 13"],
+            answer: "B) 6x + 13",
+            explain: "(x² + 6x + 9) - (x² - 4) = x² + 6x + 9 - x² + 4 = 6x + 13."
           },
           {
-            q: "22. x + <span class=\"frac\"><span>1</span><span>x</span></span> = 8 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 64", "B) 66", "C) 62", "D) 14"],
-            answer: "C) 62",
-            explain: "Hər iki tərəfi kvadrata yüksəldirik: x² + 2 + <span class=\"frac\"><span>1</span><span>x²</span></span> = 64 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 62."
+            q: "22. (2x - 5)² - (2x + 5)² fərqini tapın:",
+            options: ["A) 0", "B) 40x", "C) -40x", "D) -20x"],
+            answer: "C) -40x",
+            explain: "Kvadratlar fərqi düsturuna görə: [(2x - 5) - (2x + 5)][(2x - 5) + (2x + 5)] = (-10)(4x) = -40x."
           },
           {
-            q: "23. x - <span class=\"frac\"><span>1</span><span>x</span></span> = 3 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 11", "B) 7", "C) 9", "D) 5"],
-            answer: "A) 11",
-            explain: "Hər iki tərəfi kvadrata yüksəldirik: x² - 2 + <span class=\"frac\"><span>1</span><span>x²</span></span> = 9 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 11."
+            q: "23. 102 · 98 hasilini müxtəsər vurma düsturu ilə hesablayın:",
+            options: ["A) 9996", "B) 10004", "C) 9994", "D) 9984"],
+            answer: "A) 9996",
+            explain: "(100 + 2)(100 - 2) = 100² - 2² = 10000 - 4 = 9996."
           },
           {
-            q: "24. (x + 3)² - (x - 3)² ifadəsini sadələşdirin:",
-            options: ["A) 18", "B) 2x² + 18", "C) 6x", "D) 12x"],
-            answer: "D) 12x",
-            explain: "Kvadratlar fərqi düsturuna görə: ((x + 3) - (x - 3))((x + 3) + (x - 3)) = 6 · 2x = 12x."
+            q: "24. x² + 6x + 13 ifadəsinin ən kiçik qiymətini tapın:",
+            options: ["A) 13", "B) 9", "C) 4", "D) -4"],
+            answer: "C) 4",
+            explain: "Tam kvadrata ayıraq: (x² + 6x + 9) + 4 = (x + 3)² + 4. (x + 3)² ≥ 0 olduğundan ən kiçik qiymət 0 + 4 = 4-dür."
           },
           {
-            q: "25. (x - 5)² - x² ifadəsini sadələşdirin:",
-            options: ["A) -10x + 25", "B) 25", "C) 10x + 25", "D) -10x - 25"],
-            answer: "A) -10x + 25",
-            explain: "Mötərizəni açırıq: x² - 10x + 25 - x² = -10x + 25."
+            q: "25. a² + b² + 4a - 6b + 13 = 0 bərabərliyindən a + b cəmini tapın:",
+            options: ["A) -1", "B) 1", "C) 5", "D) -5"],
+            answer: "B) 1",
+            explain: "Tam kvadratlara ayıraq: (a² + 4a + 4) + (b² - 6b + 9) = 0 ⇒ (a + 2)² + (b - 3)² = 0. Hər iki kvadrat 0 olmalıdır: a = -2, b = 3. Cəm: -2 + 3 = 1."
           },
           {
-            q: "26. Müxtəsər vurma düsturunu tətbiq edərək 103 · 97 hasilini hesablayın:",
-            options: ["A) 10009", "B) 9981", "C) 9991", "D) 9999"],
-            answer: "C) 9991",
-            explain: "(100 + 3)(100 - 3) = 100² - 3² = 10000 - 9 = 9991."
+            q: "26. (x + 1)(x² - x + 1) - (x - 1)(x² + x + 1) ifadəsini sadələşdirin:",
+            options: ["A) 0", "B) 2x³", "C) 2", "D) -2"],
+            answer: "C) 2",
+            explain: "(x³ + 1) - (x³ - 1) = x³ + 1 - x³ + 1 = 2."
           },
           {
-            q: "27. (a + 3)(a² - 3a + 9) - a³ ifadəsinin qiymətini tapın:",
-            options: ["A) 9", "B) -27", "C) 18", "D) 27"],
-            answer: "D) 27",
-            explain: "İlk iki vuruğun hasili kublar cəmi düsturudur: (a³ + 27) - a³ = 27."
+            q: "27. a - b = 4 olarsa, a³ - b³ - 12ab ifadəsinin qiymətini tapın:",
+            options: ["A) 16", "B) 64", "C) 112", "D) 48"],
+            answer: "B) 64",
+            explain: "a³ - b³ = (a - b)³ + 3ab(a - b) = 4³ + 3ab · 4 = 64 + 12ab. Yerində yazsaq: (64 + 12ab) - 12ab = 64."
           },
           {
-            q: "28. 9x² - 24x + k ifadəsinin ikihədlinin kvadratı olması üçün k neçə olmalıdır?",
-            options: ["A) 8", "B) 16", "C) 4", "D) 64"],
-            answer: "B) 16",
-            explain: "(3x)² - 2 · 3x · 4 + k şəklində yazdıqda k = 4² = 16 alınır."
+            q: "28. x + <span class=\"frac\"><span>1</span><span>x</span></span> = 3 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
+            options: ["A) 9", "B) 6", "C) 7", "D) 11"],
+            answer: "C) 7",
+            explain: "Hər iki tərəfi kvadrata yüksəldək: (x + <span class=\"frac\"><span>1</span><span>x</span></span>)² = 3² ⇒ x² + 2 · x · <span class=\"frac\"><span>1</span><span>x</span></span> + <span class=\"frac\"><span>1</span><span>x²</span></span> = 9 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 9 - 2 = 7."
           },
           {
-            q: "29. (x - 4)(x + 4) - (x - 2)² = 32 tənliyinin kökünü tapın:",
-            options: ["A) 11", "B) 15", "C) 13", "D) 9"],
-            answer: "C) 13",
-            explain: "Mötərizələri açırıq: x² - 16 - (x² - 4x + 4) = 32 ⇒ 4x - 20 = 32 ⇒ 4x = 52 ⇒ x = 13."
+            q: "29. 2² + 1 = 5, 2⁴ + 1 = 17, 2⁸ + 1 = 257 olarsa, (2 + 1)(2² + 1)(2⁴ + 1)(2⁸ + 1) hasilini tapın:",
+            options: ["A) 2¹⁶ - 1", "B) 2¹⁶ + 1", "C) 2³² - 1", "D) 2¹⁵ - 1"],
+            answer: "A) 2¹⁶ - 1",
+            explain: "Əvvəlinə (2 - 1) = 1 vuruğunu əlavə etsək, ardıcıl kvadratlar fərqi düsturu işləyir: (2 - 1)(2 + 1) = 2² - 1; (2² - 1)(2² + 1) = 2⁴ - 1; ... ⇒ 2¹⁶ - 1."
           },
           {
-            q: "30. <span class=\"frac\"><span>49² - 21²</span><span>42² - 28²</span></span> kəsrinin qiymətini hesablayın:",
-            options: ["A) 2", "B) 1,4", "C) 4", "D) 2,5"],
-            answer: "A) 2",
-            explain: "Həm sürəti, həm də məxrəci kvadratlar fərqi düsturu ilə vuruqlara ayırırıq: <span class=\"frac\"><span>(49 - 21)(49 + 21)</span><span>(42 - 28)(42 + 28)</span></span> = <span class=\"frac\"><span>28 · 70</span><span>14 · 70</span></span>. 70-lər ixtisar gedir və <span class=\"frac\"><span>28</span><span>14</span></span> = 2 qalır."
+            q: "30. x + y = 5 və x³ + y³ = 35 olarsa, x² + y² cəmini hesablayın:",
+            options: ["A) 13", "B) 25", "C) 15", "D) 17"],
+            answer: "A) 13",
+            explain: "x³ + y³ = (x + y)³ - 3xy(x + y) ⇒ 35 = 5³ - 3xy · 5 ⇒ 35 = 125 - 15xy ⇒ 15xy = 90 ⇒ xy = 6. İndi x² + y² = (x + y)² - 2xy = 5² - 2 · 6 = 25 - 12 = 13."
           }
         ]
       }
@@ -2968,21 +3225,165 @@
 
     let activeGroup = "all";
     let currentTest = null;
-    let activeQuestions = [];
-    let qIdx = 0;
-    let picked = {};
+    let currentQuestions = [];
+    let pendingTest = null;
+    let studentInfo = loadStudentInfo();
+    let currentIdx = 0;
+    let userAnswers = {};
     let confirmed = {};
-    let visitCounts = {};
-    let siteViewCount = 0;
-    let remainingSeconds = 0;
-    let timerInterval = null;
-    let quizFinished = false;
+    let timeLeft = 0;
+    let timerId = null;
+    const visitCounts = {};
+    let totalSiteViews = 0;
+
+    function loadStudentInfo() {
+      try {
+        const raw = localStorage.getItem(STUDENT_STORAGE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.firstName && parsed.lastName) {
+          return {
+            firstName: String(parsed.firstName).trim(),
+            lastName: String(parsed.lastName).trim()
+          };
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    function saveStudentInfo(firstName, lastName) {
+      const info = { firstName: firstName.trim(), lastName: lastName.trim() };
+      studentInfo = info;
+      try {
+        localStorage.setItem(STUDENT_STORAGE_KEY, JSON.stringify(info));
+      } catch (e) {}
+      updateStudentChip();
+    }
+
+    function updateStudentChip() {
+      const chip = document.getElementById("q-student-chip");
+      if (!chip) return;
+      if (studentInfo) {
+        chip.textContent = `Şagird: ${studentInfo.firstName} ${studentInfo.lastName}`;
+      } else {
+        chip.textContent = "";
+      }
+    }
+
+    function loadStoredResults() {
+      try {
+        const raw = localStorage.getItem(RESULTS_STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveResultEntry(entry) {
+      const list = loadStoredResults();
+      list.push(entry);
+      try {
+        localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    function formatNowDate() {
+      const d = new Date();
+      const dd = String(d.getDate()).padStart(2, "0");
+      const mm = String(d.getMonth() + 1).padStart(2, "0");
+      const yyyy = d.getFullYear();
+      const hh = String(d.getHours()).padStart(2, "0");
+      const min = String(d.getMinutes()).padStart(2, "0");
+      return `${dd}.${mm}.${yyyy} ${hh}:${min}`;
+    }
+
+    function getSortedResults(testIdFilter) {
+      const all = loadStoredResults();
+      const filtered = (!testIdFilter || testIdFilter === "all")
+        ? all.slice()
+        : all.filter(item => item.testId === testIdFilter);
+
+      return filtered.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (b.correctCount !== a.correctCount) return b.correctCount - a.correctCount;
+        return (a.timestamp || 0) - (b.timestamp || 0);
+      });
+    }
+
+    function buildLeaderboardHtml(testIdFilter, maxItems) {
+      const rows = getSortedResults(testIdFilter);
+      const visibleRows = typeof maxItems === "number" ? rows.slice(0, maxItems) : rows;
+
+      if (!visibleRows.length) {
+        return `<div class="lb-empty">Hələ bu bölmə üzrə nəticə qeyd olunmayıb. Sınağı bitirdikdə nəticələr burada sıralanacaq.</div>`;
+      }
+
+      const medals = { 1: "🥇", 2: "🥈", 3: "🥉" };
+
+      return visibleRows.map((item, idx) => {
+        const rank = idx + 1;
+        const rankClass = rank <= 3 ? ` rank-${rank}` : "";
+        const rankBadge = rank <= 3
+          ? `<div class="lb-rank-medal" title="${rank}-ci yer">${medals[rank]}</div>`
+          : `<div class="lb-rank-num">${rank}.</div>`;
+
+        return `
+          <div class="lb-row${rankClass}">
+            <div class="lb-left">
+              ${rankBadge}
+              <div>
+                <div class="lb-student-name">${escapeHtml(item.studentName)}</div>
+                <div class="lb-topic">Mövzu / Sınaq: ${escapeHtml(item.testTitle)}</div>
+              </div>
+            </div>
+            <div class="lb-right">
+              <span class="lb-score-badge">${item.score} bal (${item.correctCount}/${item.totalCount})</span>
+              <div class="lb-date">${escapeHtml(item.dateText || "")}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function populateLeaderboardSelect() {
+      const sel = document.getElementById("lb-test-filter");
+      if (!sel) return;
+      const prevVal = sel.value || "all";
+      sel.innerHTML = `<option value="all">Bütün sınaqlar / mövzular</option>` +
+        TESTS.map(t => `<option value="${t.id}">${escapeHtml(t.title)}</option>`).join("");
+      if ([...sel.options].some(o => o.value === prevVal)) {
+        sel.value = prevVal;
+      }
+    }
+
+    function renderLeaderboard() {
+      const sel = document.getElementById("lb-test-filter");
+      const filterVal = sel ? sel.value : "all";
+      const lbList = document.getElementById("lb-list");
+      if (lbList) {
+        lbList.innerHTML = buildLeaderboardHtml(filterVal, 20);
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function getCounterKey(testId) {
+      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_-]/g, "_")}`;
+    }
 
     function readLocalViews() {
       try {
         const raw = localStorage.getItem(LOCAL_VIEW_STORAGE);
         return raw ? JSON.parse(raw) : {};
-      } catch (_) {
+      } catch (e) {
         return {};
       }
     }
@@ -2990,174 +3391,131 @@
     function writeLocalViews(obj) {
       try {
         localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(obj));
-      } catch (_) {}
+      } catch (e) {}
     }
 
-    function updateSiteViewUI() {
+    function getLocalViewCount(key) {
+      const obj = readLocalViews();
+      return Number(obj[key] || 0);
+    }
+
+    function setLocalViewCount(key, val) {
+      const obj = readLocalViews();
+      obj[key] = Math.max(Number(obj[key] || 0), Number(val || 0));
+      writeLocalViews(obj);
+    }
+
+    function incrementLocalViewCount(key) {
+      const obj = readLocalViews();
+      const next = Number(obj[key] || 0) + 1;
+      obj[key] = next;
+      writeLocalViews(obj);
+      return next;
+    }
+
+    function renderVisitCount(testId) {
+      const val = Number(visitCounts[testId] || 0);
+      const badge = document.getElementById(`badge-count-${testId}`);
+      if (badge) badge.textContent = `${val} iştirak`;
+      const qVisits = document.getElementById("q-visits");
+      if (qVisits && currentTest && currentTest.id === testId) {
+        qVisits.textContent = `${val} iştirak`;
+      }
+    }
+
+    function renderSiteViews() {
       const el = document.getElementById("site-views-count");
-      if (el) {
-        el.textContent = String(Math.max(0, Number(siteViewCount) || 0));
-      }
+      if (el) el.textContent = String(Number(totalSiteViews || 0));
     }
 
-    async function trackSiteView() {
-      const localMap = readLocalViews();
-      const nextLocal = (Number(localMap[SITE_VIEW_KEY]) || 0) + 1;
-      localMap[SITE_VIEW_KEY] = nextLocal;
-      writeLocalViews(localMap);
-      siteViewCount = nextLocal;
-      updateSiteViewUI();
-
+    async function fetchSiteViews() {
+      const localVal = getLocalViewCount(SITE_VIEW_KEY);
+      totalSiteViews = localVal;
+      renderSiteViews();
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
+        const res = await fetch(`${COUNTER_BASE}/get/${SITE_VIEW_KEY}`, { cache: "no-store" });
         const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          siteViewCount = Math.max(num, nextLocal);
-          localMap[SITE_VIEW_KEY] = siteViewCount;
-          writeLocalViews(localMap);
-          updateSiteViewUI();
-        }
-      } catch (_) {}
+        const remoteVal = Number(data && typeof data.count === "number" ? data.count : 0);
+        totalSiteViews = Math.max(remoteVal, localVal);
+        setLocalViewCount(SITE_VIEW_KEY, totalSiteViews);
+      } catch (e) {
+        totalSiteViews = localVal;
+      }
+      renderSiteViews();
     }
 
-    function stopTimer() {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
+    async function incrementSiteViews() {
+      const nextLocal = incrementLocalViewCount(SITE_VIEW_KEY);
+      totalSiteViews = nextLocal;
+      renderSiteViews();
+      try {
+        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}`, { cache: "no-store" });
+        const data = await res.json();
+        if (data && typeof data.count === "number") {
+          totalSiteViews = Math.max(Number(data.count), nextLocal);
+          setLocalViewCount(SITE_VIEW_KEY, totalSiteViews);
+          renderSiteViews();
+        }
+      } catch (e) {
+        totalSiteViews = nextLocal;
+        renderSiteViews();
       }
     }
 
-    function formatTime(sec) {
-      const safeSec = Math.max(0, Number(sec) || 0);
-      const mins = Math.floor(safeSec / 60);
-      const secs = safeSec % 60;
-      return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-    }
-
-    function updateTimerUI() {
-      const el = document.getElementById("q-timer");
-      if (!el) return;
-      el.textContent = `⏱ ${formatTime(remainingSeconds)}`;
-      if (remainingSeconds <= 300) {
-        el.classList.add("warning");
-      } else {
-        el.classList.remove("warning");
+    async function fetchVisitCount(testId) {
+      const key = getCounterKey(testId);
+      const localVal = getLocalViewCount(key);
+      visitCounts[testId] = localVal;
+      renderVisitCount(testId);
+      try {
+        const res = await fetch(`${COUNTER_BASE}/get/${key}`, { cache: "no-store" });
+        const data = await res.json();
+        const remoteVal = Number(data && typeof data.count === "number" ? data.count : 0);
+        visitCounts[testId] = Math.max(remoteVal, localVal);
+        setLocalViewCount(key, visitCounts[testId]);
+      } catch (e) {
+        visitCounts[testId] = localVal;
       }
-    }
-
-    function startTimer(minutes) {
-      stopTimer();
-      remainingSeconds = Math.max(1, Number(minutes) || 60) * 60;
-      updateTimerUI();
-
-      timerInterval = setInterval(() => {
-        if (remainingSeconds > 0) {
-          remainingSeconds -= 1;
-          updateTimerUI();
-        }
-        if (remainingSeconds <= 0) {
-          stopTimer();
-          if (!quizFinished && currentTest) {
-            finishQuiz(true);
-          }
-        }
-      }, 1000);
-    }
-
-    function counterKey(testId) {
-      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
-    }
-
-    function getVisitCount(testId) {
-      return Number(visitCounts[testId]) || 0;
-    }
-
-    function updateVisitBadgeUI() {
-      const qVisitsEl = document.getElementById("q-visits");
-      if (qVisitsEl && currentTest) {
-        qVisitsEl.textContent = `İştirak: ${getVisitCount(currentTest.id)}`;
-      }
-    }
-
-    async function fetchAllVisitCounts() {
-      const localMap = readLocalViews();
-      await Promise.all(
-        TESTS.map(async (t) => {
-          const key = counterKey(t.id);
-          const localVal = Number(localMap[key]) || 0;
-          try {
-            const res = await fetch(`${COUNTER_BASE}/get/${key}?t=${Date.now()}`, {
-              cache: "no-store"
-            });
-            if (!res.ok) {
-              visitCounts[t.id] = localVal;
-              return;
-            }
-            const data = await res.json();
-            const val = Number(data.value);
-            visitCounts[t.id] = Number.isFinite(val) ? Math.max(val, localVal) : localVal;
-          } catch (_) {
-            visitCounts[t.id] = localVal;
-          }
-        })
-      );
-      renderTests();
-      updateVisitBadgeUI();
+      renderVisitCount(testId);
     }
 
     async function incrementVisitCount(testId) {
-      const localMap = readLocalViews();
-      const key = counterKey(testId);
-      const nextLocal = (Number(localMap[key]) || 0) + 1;
-      localMap[key] = nextLocal;
-      writeLocalViews(localMap);
-
-      visitCounts[testId] = Math.max((Number(visitCounts[testId]) || 0) + 1, nextLocal);
-      renderTests();
-      updateVisitBadgeUI();
-
+      const key = getCounterKey(testId);
+      const nextLocal = incrementLocalViewCount(key);
+      visitCounts[testId] = nextLocal;
+      renderVisitCount(testId);
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${key}?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
+        const res = await fetch(`${COUNTER_BASE}/hit/${key}`, { cache: "no-store" });
         const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          visitCounts[testId] = Math.max(num, nextLocal);
-          localMap[key] = visitCounts[testId];
-          writeLocalViews(localMap);
-          renderTests();
-          updateVisitBadgeUI();
+        if (data && typeof data.count === "number") {
+          visitCounts[testId] = Math.max(Number(data.count), nextLocal);
+          setLocalViewCount(key, visitCounts[testId]);
+          renderVisitCount(testId);
         }
-      } catch (_) {}
+      } catch (e) {
+        visitCounts[testId] = nextLocal;
+        renderVisitCount(testId);
+      }
     }
 
     function setFilter(group, btn) {
       activeGroup = group;
-      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
       if (btn) btn.classList.add("active");
       renderTests();
     }
 
     function renderTests() {
-      const listEl = document.getElementById("test-list");
-      const filtered = activeGroup === "all"
-        ? TESTS
-        : TESTS.filter((t) => t.group === activeGroup);
-
-      listEl.innerHTML = filtered.map((t) => {
-        const count = getVisitCount(t.id);
+      const list = document.getElementById("test-list");
+      const filtered = activeGroup === "all" ? TESTS : TESTS.filter(t => t.group === activeGroup);
+      list.innerHTML = filtered.map(t => {
+        const count = Number(visitCounts[t.id] || 0);
         return `
           <div class="test-card">
             <div class="test-card-left">
               <div class="num-badge">
                 <div class="num-badge-main">${t.num}</div>
-                <div class="num-badge-tag">AKTİV</div>
+                <div class="num-badge-tag">YENİ</div>
               </div>
               <div>
                 <h3 class="test-title">${t.title}</h3>
@@ -3165,256 +3523,353 @@
                   <span>Müəllim: Nurid Əsədullayev</span>
                   <span>${t.questions.length} sual</span>
                   <span>${t.minutes} dəqiqə</span>
-                  <span class="count-pill">İştirak: ${count}</span>
+                  <span class="count-pill" id="badge-count-${t.id}">${count} iştirak</span>
                 </div>
               </div>
             </div>
-            <button type="button" class="btn-purple" onclick="startTest('${t.id}')">Testə başla</button>
+            <button type="button" class="btn-purple" onclick="requestStartTest('${t.id}')">Testə başla</button>
           </div>
         `;
       }).join("");
     }
 
-    function startTest(id) {
-      currentTest = TESTS.find((t) => t.id === id);
-      if (!currentTest) return;
+    function requestStartTest(testId) {
+      const found = TESTS.find(t => t.id === testId);
+      if (!found) return;
+      pendingTest = found;
+      openStudentModal(found);
+    }
 
-      activeQuestions = prepareShuffledQuestions(currentTest.questions);
-      qIdx = 0;
-      picked = {};
+    function openStudentModal(testObj) {
+      const modal = document.getElementById("student-modal");
+      const subEl = document.getElementById("modal-test-name");
+      const firstInput = document.getElementById("student-first-name");
+      const lastInput = document.getElementById("student-last-name");
+      const errEl = document.getElementById("student-error");
+
+      subEl.textContent = `Sınaq: ${testObj.title}`;
+      errEl.textContent = "";
+      firstInput.value = studentInfo ? studentInfo.firstName : "";
+      lastInput.value = studentInfo ? studentInfo.lastName : "";
+
+      modal.classList.add("open");
+      setTimeout(() => firstInput.focus(), 40);
+    }
+
+    function closeStudentModal() {
+      const modal = document.getElementById("student-modal");
+      modal.classList.remove("open");
+      pendingTest = null;
+    }
+
+    function submitStudentModal(event) {
+      event.preventDefault();
+      const firstInput = document.getElementById("student-first-name");
+      const lastInput = document.getElementById("student-last-name");
+      const errEl = document.getElementById("student-error");
+
+      const firstName = firstInput.value.trim();
+      const lastName = lastInput.value.trim();
+
+      if (!firstName || !lastName) {
+        errEl.textContent = "Zəhmət olmasa, həm Ad, həm də Soyad xanəsini doldurun.";
+        return;
+      }
+
+      saveStudentInfo(firstName, lastName);
+      const testToStart = pendingTest;
+      closeStudentModal();
+      if (testToStart) {
+        startTest(testToStart.id);
+      }
+    }
+
+    function startTest(testId) {
+      if (!studentInfo || !studentInfo.firstName || !studentInfo.lastName) {
+        requestStartTest(testId);
+        return;
+      }
+
+      currentTest = TESTS.find(t => t.id === testId);
+      if (!currentTest) return;
+      currentQuestions = prepareShuffledQuestions(currentTest.questions);
+      currentIdx = 0;
+      userAnswers = {};
       confirmed = {};
-      quizFinished = false;
+      timeLeft = currentTest.minutes * 60;
 
       document.getElementById("home-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
       document.getElementById("q-test-title").textContent = currentTest.title;
+      updateStudentChip();
 
-      startTimer(currentTest.minutes);
       incrementVisitCount(currentTest.id);
+      renderVisitCount(currentTest.id);
+      startTimer();
       renderQuestion();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function normalizeOpenAnswer(val) {
-      return String(val || "")
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, " ")
-        .replace(/\s*;\s*/g, "; ");
+    function startTimer() {
+      clearInterval(timerId);
+      updateTimerDisplay();
+      timerId = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(timerId);
+          finishQuiz();
+        }
+      }, 1000);
     }
 
-    function isQuestionCorrect(q, idx) {
-      const userVal = picked[idx];
-      if (!userVal) return false;
-      if (q.open) {
-        const normUser = normalizeOpenAnswer(userVal);
-        const acceptedList = Array.isArray(q.accepted) ? q.accepted : [q.answer];
-        return acceptedList.some(acc => normalizeOpenAnswer(acc) === normUser);
-      }
-      return userVal === q.answer;
+    function updateTimerDisplay() {
+      const el = document.getElementById("q-timer");
+      if (!el) return;
+      const safe = Math.max(0, timeLeft);
+      const mins = Math.floor(safe / 60);
+      const secs = safe % 60;
+      el.textContent = `⏱ ${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+      el.classList.toggle("warning", safe <= 120);
     }
 
     function renderJumpBar() {
       const bar = document.getElementById("q-jump-bar");
-      if (!bar || !activeQuestions.length) return;
-
-      bar.innerHTML = activeQuestions.map((q, idx) => {
-        const isCurrent = idx === qIdx;
-        const isConf = Boolean(confirmed[idx]);
-        const hasPick = Boolean(picked[idx] && String(picked[idx]).trim());
-
-        let stateClass = "";
-        if (isConf) {
-          stateClass = isQuestionCorrect(q, idx) ? "ok-state" : "bad-state";
-        } else if (hasPick) {
-          stateClass = "picked-state";
+      if (!bar || !currentQuestions.length) return;
+      bar.innerHTML = currentQuestions.map((q, i) => {
+        const classes = ["q-jump-btn"];
+        if (i === currentIdx) classes.push("current-q");
+        if (confirmed[i]) {
+          classes.push(isAnswerCorrect(q, userAnswers[i]) ? "ok-state" : "bad-state");
+        } else if (hasAnswerValue(q, userAnswers[i])) {
+          classes.push("picked-state");
         }
-
-        const currentClass = isCurrent ? "current-q" : "";
-        return `<button type="button" class="q-jump-btn ${stateClass} ${currentClass}" onclick="jumpToQuestion(${idx})">${idx + 1}</button>`;
+        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${i})">${i + 1}</button>`;
       }).join("");
     }
 
-    function jumpToQuestion(targetIdx) {
-      if (targetIdx < 0 || targetIdx >= activeQuestions.length) return;
-      qIdx = targetIdx;
+    function jumpToQuestion(idx) {
+      if (idx < 0 || idx >= currentQuestions.length) return;
+      currentIdx = idx;
       renderQuestion();
     }
 
+    function hasAnswerValue(q, val) {
+      if (q.open) return typeof val === "string" && val.trim().length > 0;
+      return typeof val === "string" && val.length > 0;
+    }
+
+    function normalizeOpenAnswer(s) {
+      return String(s || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .replace(/\s*;\s*/g, "; ")
+        .replace(/,/g, ".");
+    }
+
+    function isAnswerCorrect(q, val) {
+      if (!hasAnswerValue(q, val)) return false;
+      if (q.open) {
+        const normVal = normalizeOpenAnswer(val);
+        const list = Array.isArray(q.accepted) ? q.accepted : [q.answer];
+        return list.some(acc => normalizeOpenAnswer(acc) === normVal);
+      }
+      return val === q.answer;
+    }
+
     function renderQuestion() {
-      const q = activeQuestions[qIdx];
-      const isConf = Boolean(confirmed[qIdx]);
+      const q = currentQuestions[currentIdx];
+      const isConf = Boolean(confirmed[currentIdx]);
+      const chosen = userAnswers[currentIdx] || "";
 
       renderJumpBar();
-      document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${activeQuestions.length}`;
+      document.getElementById("q-progress").textContent = `Sual ${currentIdx + 1} / ${currentQuestions.length}`;
       document.getElementById("q-point-tag").textContent = `Qiymətləndirmə: ${q.points} bal`;
       document.getElementById("q-text").innerHTML = q.q;
-      updateVisitBadgeUI();
 
-      const optsEl = document.getElementById("q-options");
+      const optsDiv = document.getElementById("q-options");
       const openWrap = document.getElementById("q-open-wrap");
       const openInput = document.getElementById("q-open-input");
 
       if (q.open) {
-        optsEl.style.display = "none";
-        optsEl.innerHTML = "";
+        optsDiv.style.display = "none";
+        optsDiv.innerHTML = "";
         openWrap.style.display = "block";
-        openInput.value = picked[qIdx] || "";
+        openInput.value = chosen;
         openInput.disabled = isConf;
       } else {
         openWrap.style.display = "none";
-        optsEl.style.display = "flex";
-        optsEl.innerHTML = q.options.map((opt) => {
+        optsDiv.style.display = "flex";
+        optsDiv.innerHTML = q.options.map(opt => {
           let cls = "opt-btn";
-          if (!isConf && picked[qIdx] === opt) cls += " picked";
           if (isConf) {
             if (opt === q.answer) cls += " correct";
-            else if (picked[qIdx] === opt) cls += " wrong";
+            else if (opt === chosen) cls += " wrong";
+          } else if (opt === chosen) {
+            cls += " picked";
           }
-          return `<button type="button" class="${cls}" ${isConf ? "disabled" : ""} onclick="selectOption('${encodeURIComponent(opt)}')">${opt}</button>`;
+          return `<button type="button" class="${cls}" ${isConf ? "disabled" : ""} onclick="selectOption('${opt.replace(/'/g, "&#39;")}')">${opt}</button>`;
         }).join("");
       }
 
-      const expEl = document.getElementById("q-explain");
+      const confirmBtn = document.getElementById("btn-confirm");
+      confirmBtn.style.display = isConf ? "none" : "inline-block";
+      confirmBtn.disabled = !hasAnswerValue(q, chosen);
+
+      const expBox = document.getElementById("q-explain");
       if (isConf) {
-        const ok = isQuestionCorrect(q, qIdx);
-        expEl.style.display = "block";
-        expEl.className = "explain-box " + (ok ? "ok" : "bad");
-        expEl.innerHTML = `
-          <div style="font-weight:800; margin-bottom:6px;">
-            ${ok ? `✓ Doğru cavab (+${q.points} bal)` : `✕ Yanlış cavab (0 bal) — Doğru cavab: ${q.answer}`}
-          </div>
-          <div style="font-size:0.9rem;">${q.explain}</div>
+        const ok = isAnswerCorrect(q, chosen);
+        expBox.style.display = "block";
+        expBox.className = "explain-box " + (ok ? "ok" : "bad");
+        expBox.innerHTML = `
+          <div style="font-weight:800; margin-bottom:4px;">${ok ? "✓ Doğru cavab!" : "✗ Yanlış cavab"} · Düzgün cavab: ${q.answer}</div>
+          <div>${q.explain}</div>
         `;
       } else {
-        expEl.style.display = "none";
-        expEl.innerHTML = "";
+        expBox.style.display = "none";
+        expBox.innerHTML = "";
       }
 
-      document.getElementById("btn-confirm").style.display = isConf ? "none" : "inline-block";
-      document.getElementById("btn-prev").disabled = qIdx === 0;
-
-      const isLast = qIdx === activeQuestions.length - 1;
+      document.getElementById("btn-prev").disabled = currentIdx === 0;
+      const isLast = currentIdx === currentQuestions.length - 1;
       document.getElementById("btn-next").style.display = isLast ? "none" : "inline-block";
       document.getElementById("btn-finish").style.display = isLast ? "inline-block" : "none";
     }
 
-    function selectOption(encodedOpt) {
-      if (confirmed[qIdx]) return;
-      picked[qIdx] = decodeURIComponent(encodedOpt);
+    function selectOption(opt) {
+      if (confirmed[currentIdx]) return;
+      userAnswers[currentIdx] = opt;
       renderQuestion();
     }
 
     function onOpenInput(val) {
-      if (confirmed[qIdx]) return;
-      picked[qIdx] = val;
+      if (confirmed[currentIdx]) return;
+      userAnswers[currentIdx] = val;
+      document.getElementById("btn-confirm").disabled = !hasAnswerValue(currentQuestions[currentIdx], val);
       renderJumpBar();
     }
 
     function confirmAnswer() {
-      const q = activeQuestions[qIdx];
-      if (!picked[qIdx] || !String(picked[qIdx]).trim()) {
-        alert(q.open ? "Zəhmət olmasa, cavabı yazın!" : "Zəhmət olmasa, bir variant seçin!");
-        return;
-      }
-      confirmed[qIdx] = true;
+      const q = currentQuestions[currentIdx];
+      if (!hasAnswerValue(q, userAnswers[currentIdx])) return;
+      confirmed[currentIdx] = true;
       renderQuestion();
     }
 
-    function prevQuestion() {
-      if (qIdx > 0) {
-        qIdx--;
-        renderQuestion();
-      }
-    }
-
     function nextQuestion() {
-      if (qIdx < activeQuestions.length - 1) {
-        qIdx++;
+      if (currentIdx < currentQuestions.length - 1) {
+        currentIdx++;
         renderQuestion();
       }
     }
 
-    function finishQuiz(autoByTime = false) {
-      if (quizFinished) return;
-      quizFinished = true;
-      stopTimer();
+    function prevQuestion() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        renderQuestion();
+      }
+    }
 
-      activeQuestions.forEach((q, idx) => {
-        if (picked[idx] && String(picked[idx]).trim()) {
-          confirmed[idx] = true;
-        }
-      });
-
-      let totalScore = 0;
+    function finishQuiz() {
+      clearInterval(timerId);
       let correctCount = 0;
-      let wrongCount = 0;
+      let earnedPoints = 0;
+      let maxPoints = 0;
 
-      activeQuestions.forEach((q, idx) => {
-        const hasAnswered = Boolean(picked[idx] && String(picked[idx]).trim());
-        if (hasAnswered && isQuestionCorrect(q, idx)) {
+      const itemsHtml = currentQuestions.map((q, idx) => {
+        const picked = userAnswers[idx] || "Cavab verilməyib";
+        const ok = isAnswerCorrect(q, userAnswers[idx]);
+        maxPoints += q.points;
+        if (ok) {
           correctCount++;
-          totalScore += (q.points || 0);
-        } else {
-          wrongCount++;
+          earnedPoints += q.points;
         }
-      });
-
-      const roundedScore = Number(totalScore.toFixed(1));
-      const totalQ = activeQuestions.length;
-
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("result-view").style.display = "block";
-
-      document.getElementById("result-summary").textContent = autoByTime
-        ? `Vaxt bitdi! ${currentTest.title} — Yekun nəticəniz:`
-        : `${currentTest.title} — Yekun nəticəniz:`;
-
-      document.getElementById("result-stats").innerHTML = `
-        <div class="stat-box score-box">
-          <div class="stat-num">${roundedScore} / 100</div>
-          <div class="stat-label">Toplam Bal</div>
-        </div>
-        <div class="stat-box ok-box">
-          <div class="stat-num">${correctCount} / ${totalQ}</div>
-          <div class="stat-label">Doğru Cavab</div>
-        </div>
-        <div class="stat-box bad-box">
-          <div class="stat-num">${wrongCount} / ${totalQ}</div>
-          <div class="stat-label">Yanlış / Cavabsız</div>
-        </div>
-      `;
-
-      document.getElementById("result-list").innerHTML = activeQuestions.map((q, idx) => {
-        const userAns = picked[idx] && String(picked[idx]).trim() ? picked[idx] : "Cavab verilməyib";
-        const ok = isQuestionCorrect(q, idx);
-        const earned = ok ? q.points : 0;
         return `
-          <div class="explain-box ${ok ? "ok" : "bad"}" style="margin-bottom:10px;">
-            <div style="font-weight:800;">${ok ? "✓" : "✕"} ${q.q} <span style="opacity:0.85;">(${earned} / ${q.points} bal)</span></div>
-            <div style="font-size:0.86rem; margin-top:4px;">Sizin cavabınız: <b>${userAns}</b> | Doğru cavab: <b>${q.answer}</b></div>
-            <div style="font-size:0.86rem; margin-top:4px;">${q.explain}</div>
+          <div style="padding:12px; border:1px solid #e2e8f0; border-radius:12px; margin-bottom:10px; background:${ok ? "#f0fdf4" : "#fef2f2"};">
+            <div style="font-weight:800; margin-bottom:4px;">${q.q} <span style="font-size:0.78rem; color:#475569;">(${ok ? `+${q.points}` : `0`} / ${q.points} bal)</span></div>
+            <div style="font-size:0.86rem;">Sizin cavabınız: <b>${picked}</b></div>
+            <div style="font-size:0.86rem; color:#15803d;">Düzgün cavab: <b>${q.answer}</b></div>
+            <div style="font-size:0.82rem; color:#475569; margin-top:4px;">${q.explain}</div>
           </div>
         `;
       }).join("");
 
+      const wrongCount = currentQuestions.length - correctCount;
+      const scaledScore = maxPoints > 0 ? Math.round((earnedPoints / maxPoints) * 100) : 0;
+      const fullName = studentInfo ? `${studentInfo.firstName} ${studentInfo.lastName}` : "Şagird";
+
+      saveResultEntry({
+        id: `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+        timestamp: Date.now(),
+        dateText: formatNowDate(),
+        studentName: fullName,
+        testId: currentTest.id,
+        testTitle: currentTest.title,
+        score: scaledScore,
+        earnedPoints,
+        maxPoints,
+        correctCount,
+        wrongCount,
+        totalCount: currentQuestions.length
+      });
+
+      document.getElementById("quiz-view").style.display = "none";
+      document.getElementById("result-view").style.display = "block";
+      document.getElementById("result-summary").textContent =
+        `${fullName} · ${currentTest.title} — ${correctCount} / ${currentQuestions.length} doğru cavab (${earnedPoints} / ${maxPoints} xam bal)`;
+      document.getElementById("result-stats").innerHTML = `
+        <div class="stat-box score-box">
+          <div class="stat-num">${scaledScore} / 100</div>
+          <div class="stat-label">Toplam Bal</div>
+        </div>
+        <div class="stat-box ok-box">
+          <div class="stat-num">${correctCount}</div>
+          <div class="stat-label">Doğru Cavab</div>
+        </div>
+        <div class="stat-box bad-box">
+          <div class="stat-num">${wrongCount}</div>
+          <div class="stat-label">Səhv / Cavabsız</div>
+        </div>
+      `;
+
+      document.getElementById("result-leaderboard-list").innerHTML = buildLeaderboardHtml("all", 15);
+      renderLeaderboard();
+
+      document.getElementById("result-list").innerHTML = itemsHtml;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function goHome() {
-      stopTimer();
-      quizFinished = false;
+      clearInterval(timerId);
+      closeStudentModal();
+      currentTest = null;
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("home-view").style.display = "block";
       renderTests();
+      renderLeaderboard();
+      TESTS.forEach(t => fetchVisitCount(t.id));
+      fetchSiteViews();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        const modal = document.getElementById("student-modal");
+        if (modal && modal.classList.contains("open")) {
+          closeStudentModal();
+        }
+      }
+    });
+
+    populateLeaderboardSelect();
     renderTests();
-    trackSiteView();
-    fetchAllVisitCounts();
+    renderLeaderboard();
+    TESTS.forEach(t => fetchVisitCount(t.id));
+    fetchSiteViews();
+    incrementSiteViews();
   </script>
 </body>
 </html>
