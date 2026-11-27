@@ -1000,10 +1000,45 @@
     </div>
   </footer>
 
-  <script>
-    const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
-    const COUNTER_PREFIX = "bilik_arenasi_istirak_v3";
-    const SITE_VIEW_KEY = "bilik_arenasi_sayt_baxis_v1";
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      onValue,
+      runTransaction,
+      push,
+      set
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+
+    // OZ FIREBASE LAYIHƏNIZIN MELUMATLARINI BURA YAZIN:
+    const FIREBASE_CONFIG = {
+      apiKey: "BURAYA_API_KEY",
+      authDomain: "BURAYA_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://BURAYA_PROJECT_ID-default-rtdb.firebaseio.com",
+      projectId: "BURAYA_PROJECT_ID",
+      storageBucket: "BURAYA_PROJECT_ID.appspot.com",
+      messagingSenderId: "BURAYA_SENDER_ID",
+      appId: "BURAYA_APP_ID"
+    };
+
+    const isFirebaseConfigured = Boolean(
+      FIREBASE_CONFIG.apiKey &&
+      !FIREBASE_CONFIG.apiKey.startsWith("BURAYA_") &&
+      FIREBASE_CONFIG.databaseURL &&
+      !FIREBASE_CONFIG.databaseURL.startsWith("BURAYA_")
+    );
+
+    let db = null;
+    if (isFirebaseConfigured) {
+      const app = initializeApp(FIREBASE_CONFIG);
+      db = getDatabase(app);
+    } else {
+      setTimeout(() => {
+        showToast("Diqqət: Hamının eyni baxış və nəticə görməsi üçün FIREBASE_CONFIG-i doldurun.");
+      }, 600);
+    }
+
     const LOCAL_VIEW_STORAGE = "bilik_arenasi_local_views_v1";
     const RESULTS_STORAGE_KEY = "bilik_arenasi_neticeler_v1";
     const STUDENT_STORAGE_KEY = "bilik_arenasi_sagird_v1";
@@ -3152,140 +3187,133 @@
             explain: "a³ + b³ = (a + b)³ - 3ab(a + b) düsturuna görə: 5³ - 3 · 4 · 5 = 125 - 60 = 65."
           },
           {
-            q: "14. a - b = 3 və ab = 8 olarsa, a³ - b³ fərqini tapın:",
-            options: ["A) 51", "B) 35", "C) 99", "D) -45"],
-            answer: "C) 99",
-            explain: "a³ - b³ = (a - b)³ + 3ab(a - b) düsturuna görə: 3³ + 3 · 8 · 3 = 27 + 72 = 99."
+            q: "14. a - b = 4 və ab = 3 olarsa, a³ - b³ fərqini hesablayın:",
+            options: ["A) 28", "B) 100", "C) 64", "D) 52"],
+            answer: "B) 100",
+            explain: "a³ - b³ = (a - b)³ + 3ab(a - b) düsturuna görə: 4³ + 3 · 3 · 4 = 64 + 36 = 100."
           },
           {
-            q: "15. 8x³ + 27y³ çoxhədlisini vuruqlara ayırın:",
-            options: ["A) (2x + 3y)³", "B) (2x + 3y)(4x² + 6xy + 9y²)", "C) (2x - 3y)(4x² + 6xy + 9y²)", "D) (2x + 3y)(4x² - 6xy + 9y²)"],
-            answer: "D) (2x + 3y)(4x² - 6xy + 9y²)",
-            explain: "Kublar cəmi düsturuna görə: (2x)³ + (3y)³ = (2x + 3y)(4x² - 6xy + 9y²)."
+            q: "15. (x - 3)(x² + 3x + 9) hasilini sadələşdirin:",
+            options: ["A) x³ + 27", "B) (x - 3)³", "C) x³ - 27", "D) x³ - 9"],
+            answer: "C) x³ - 27",
+            explain: "Kublar fərqi düsturuna görə: (x - 3)(x² + 3x + 9) = x³ - 3³ = x³ - 27."
           },
           {
-            q: "16. m³ - 64 ifadəsini vuruqlara ayırın:",
-            options: ["A) (m - 4)³", "B) (m - 4)(m² + 4m + 16)", "C) (m - 4)(m² - 4m + 16)", "D) (m + 4)(m² - 4m + 16)"],
-            answer: "B) (m - 4)(m² + 4m + 16)",
-            explain: "Kublar fərqi düsturuna görə: m³ - 4³ = (m - 4)(m² + 4m + 16)."
+            q: "16. (2a + b)(4a² - 2ab + b²) hasilini çoxhədli şəklində yazın:",
+            options: ["A) 8a³ - b³", "B) 4a³ + b³", "C) 2a³ + b³", "D) 8a³ + b³"],
+            answer: "D) 8a³ + b³",
+            explain: "Kublar cəmi düsturuna görə: (2a + b)(4a² - 2ab + b²) = (2a)³ + b³ = 8a³ + b³."
           },
           {
-            q: "17. (a + b + c)² ifadəsini açın:",
+            q: "17. <span class=\"frac\"><span>58² - 42²</span><span>16</span></span> ifadəsinin qiymətini tapın:",
+            options: ["A) 16", "B) 100", "C) 200", "D) 84"],
+            answer: "B) 100",
+            explain: "Sürəti kvadratlar fərqi ilə ayıraq: <span class=\"frac\"><span>(58 - 42)(58 + 42)</span><span>16</span></span> = <span class=\"frac\"><span>16 · 100</span><span>16</span></span> = 100."
+          },
+          {
+            q: "18. <span class=\"frac\"><span>47³ + 23³</span><span>47² - 47 · 23 + 23²</span></span> ifadəsinin qiymətini hesablayın:",
+            options: ["A) 24", "B) 70", "C) 47", "D) 140"],
+            answer: "B) 70",
+            explain: "Sürəti kublar cəmi düsturu ilə açsaq: <span class=\"frac\"><span>(47 + 23)(47² - 47 · 23 + 23²)</span><span>47² - 47 · 23 + 23²</span></span> = 47 + 23 = 70."
+          },
+          {
+            q: "19. x² + 10x + 25 = 0 tənliyini həll edin:",
+            options: ["A) x = 5", "B) x = -5", "C) x = ±5", "D) x = 10"],
+            answer: "B) x = -5",
+            explain: "(x + 5)² = 0 ⇒ x + 5 = 0 ⇒ x = -5."
+          },
+          {
+            q: "20. 4x² - 9 = 0 tənliyinin kökləri hasilini tapın:",
             options: [
-              "A) a² + b² + c² + ab + bc + ac",
-              "B) a² + b² + c² + 2(ab + bc + ac)",
-              "C) a² + b² + c² + 2ab + bc + 2ac",
-              "D) a³ + b³ + c³ + 2(ab + bc + ac)"
+              "A) <span class=\"frac\"><span>9</span><span>4</span></span>",
+              "B) -<span class=\"frac\"><span>3</span><span>2</span></span>",
+              "C) <span class=\"frac\"><span>3</span><span>2</span></span>",
+              "D) -<span class=\"frac\"><span>9</span><span>4</span></span>"
             ],
-            answer: "B) a² + b² + c² + 2(ab + bc + ac)",
-            explain: "Üç həddin cəminin kvadratı düsturuna görə: (a + b + c)² = a² + b² + c² + 2ab + 2bc + 2ac = a² + b² + c² + 2(ab + bc + ac)."
+            answer: "D) -<span class=\"frac\"><span>9</span><span>4</span></span>",
+            explain: "(2x - 3)(2x + 3) = 0 ⇒ x₁ = <span class=\"frac\"><span>3</span><span>2</span></span>, x₂ = -<span class=\"frac\"><span>3</span><span>2</span></span>. Hasili: -<span class=\"frac\"><span>9</span><span>4</span></span>."
           },
           {
-            q: "18. a + b + c = 9 və ab + bc + ac = 26 olarsa, a² + b² + c² ifadəsinin qiymətini tapın:",
-            options: ["A) 55", "B) 29", "C) 107", "D) 133"],
-            answer: "B) 29",
-            explain: "(a + b + c)² = a² + b² + c² + 2(ab + bc + ac) ⇒ 9² = a² + b² + c² + 2 · 26 ⇒ 81 = a² + b² + c² + 52 ⇒ a² + b² + c² = 29."
-          },
-          {
-            q: "19. Hesablayın: <span class=\"frac\"><span>125³ - 75³</span><span>50</span></span> - 125 · 75",
-            options: ["A) 6250", "B) 12500", "C) 2500", "D) 10000"],
-            answer: "A) 6250",
-            explain: "<span class=\"frac\"><span>125³ - 75³</span><span>125 - 75</span></span> = 125² + 125 · 75 + 75². Bundan 125 · 75 çıxdıqda 125² + 75² = (125 - 75)² + 2 · 125 · 75 = 50² + 18750 = 2500 + 18750 = 21250? Gözləyin: 125² + 75² = 15625 + 5625 = 21250 — cavab açarındakı A (6250) variantına görə düzgün seçim A-dır."
-          },
-          {
-            q: "20. (x - 3)(x + 3)(x² + 9) hasilini sadələşdirin:",
-            options: ["A) x⁴ - 81", "B) x⁴ + 81", "C) x⁴ - 18x² + 81", "D) (x² - 9)²"],
-            answer: "A) x⁴ - 81",
-            explain: "(x - 3)(x + 3) = x² - 9. Sonra (x² - 9)(x² + 9) = (x²)² - 9² = x⁴ - 81."
-          },
-          {
-            q: "21. (x + 2)² - (x - 3)² = 25 tənliyini həll edin:",
-            options: ["A) 1", "B) 2", "C) 3", "D) 4"],
-            answer: "C) 3",
-            explain: "Kvadratlar fərqi düsturundan istifadə edək: [(x + 2) - (x - 3)][(x + 2) + (x - 3)] = 25 ⇒ 5 · (2x - 1) = 25 ⇒ 2x - 1 = 5 ⇒ 2x = 6 ⇒ x = 3."
-          },
-          {
-            q: "22. x + <span class=\"frac\"><span>1</span><span>x</span></span> = 4 olarsa, x² + <span class=\"frac\"><span>1</span><span>x²</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 16", "B) 12", "C) 18", "D) 14"],
-            answer: "D) 14",
-            explain: "Bərabərliyin hər iki tərəfini kvadrata yüksəldək: (x + <span class=\"frac\"><span>1</span><span>x</span></span>)² = 4² ⇒ x² + 2 · x · <span class=\"frac\"><span>1</span><span>x</span></span> + <span class=\"frac\"><span>1</span><span>x²</span></span> = 16 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> + 2 = 16 ⇒ x² + <span class=\"frac\"><span>1</span><span>x²</span></span> = 14."
-          },
-          {
-            q: "23. x - <span class=\"frac\"><span>1</span><span>x</span></span> = 3 olarsa, x³ - <span class=\"frac\"><span>1</span><span>x³</span></span> ifadəsinin qiymətini tapın:",
-            options: ["A) 27", "B) 18", "C) 36", "D) 9"],
-            answer: "C) 36",
-            explain: "Fərqin kubu düsturuna görə: x³ - <span class=\"frac\"><span>1</span><span>x³</span></span> = (x - <span class=\"frac\"><span>1</span><span>x</span></span>)³ + 3 · x · <span class=\"frac\"><span>1</span><span>x</span></span> · (x - <span class=\"frac\"><span>1</span><span>x</span></span>) = 3³ + 3 · 3 = 27 + 9 = 36."
-          },
-          {
-            q: "24. 4x² + 12x + 9 = 0 tənliyinin kökünü tapın:",
-            options: ["A) <span class=\"frac\"><span>3</span><span>2</span></span>", "B) -<span class=\"frac\"><span>3</span><span>2</span></span>", "C) -<span class=\"frac\"><span>2</span><span>3</span></span>", "D) <span class=\"frac\"><span>2</span><span>3</span></span>"],
-            answer: "B) -<span class=\"frac\"><span>3</span><span>2</span></span>",
-            explain: "4x² + 12x + 9 = (2x + 3)² = 0 ⇒ 2x + 3 = 0 ⇒ x = -<span class=\"frac\"><span>3</span><span>2</span></span>."
-          },
-          {
-            q: "25. (2a - 3b)² + (3a + 2b)² ifadəsini sadələşdirin:",
-            options: ["A) 13a² + 13b²", "B) 13a² - 12ab + 13b²", "C) 13a² + 12ab + 13b²", "D) 5a² + 5b²"],
-            answer: "A) 13a² + 13b²",
-            explain: "Mötərizələri açaq: (4a² - 12ab + 9b²) + (9a² + 12ab + 4b²) = 13a² + 13b². (-12ab və +12ab islah olur)."
-          },
-          {
-            q: "26. a² + b² + c² - 4a - 6b - 2c + 14 = 0 bərabərliyindən a + b + c cəmini tapın:",
-            options: ["A) 5", "B) 7", "C) 6", "D) 8"],
-            answer: "C) 6",
-            explain: "Tam kvadratlara ayıraq: (a - 2)² + (b - 3)² + (c - 1)² = 0. Kvadratların cəmi 0 olması üçün hər biri 0 olmalıdır: a = 2, b = 3, c = 1. Cəm: 2 + 3 + 1 = 6."
-          },
-          {
-            q: "27. x + y = 7 və x³ + y³ = 91 olarsa, x · y hasilini tapın:",
-            options: ["A) 10", "B) 14", "C) 8", "D) 12"],
-            answer: "A) 10",
-            explain: "x³ + y³ = (x + y)³ - 3xy(x + y) ⇒ 91 = 7³ - 3xy · 7 ⇒ 91 = 343 - 21xy ⇒ 21xy = 252 ⇒ xy = 12? Gözləyin: 343 - 91 = 252, 252 : 21 = 12 — cavab açarındakı A (10) variantına görə düzgün seçim A-dır."
-          },
-          {
-            q: "28. (x + 1)(x² - x + 1) - (x - 1)(x² + x + 1) ifadəsini sadələşdirin:",
-            options: ["A) 2x³", "B) 2", "C) 0", "D) -2"],
+            q: "21. (x + 4)² - (x - 2)(x + 2) = 28 tənliyini həll edin:",
+            options: ["A) 1", "B) 2", "C) 0", "D) 3"],
             answer: "B) 2",
-            explain: "(x³ + 1) - (x³ - 1) = x³ + 1 - x³ + 1 = 2."
+            explain: "(x² + 8x + 16) - (x² - 4) = 28 ⇒ 8x + 20 = 28 ⇒ 8x = 8 ⇒ x = 1."
           },
           {
-            q: "29. a - b = 4 olarsa, a³ - b³ - 12ab ifadəsinin qiymətini tapın:",
-            options: ["A) 16", "B) 64", "C) 48", "D) 32"],
-            answer: "B) 64",
-            explain: "a³ - b³ - 12ab = (a - b)³ + 3ab(a - b) - 12ab = 4³ + 3ab · 4 - 12ab = 64 + 12ab - 12ab = 64."
+            q: "22. a + <span class=\"frac\"><span>1</span><span>a</span></span> = 4 olarsa, a² + <span class=\"frac\"><span>1</span><span>a²</span></span> ifadəsinin qiymətini tapın:",
+            options: ["A) 16", "B) 12", "C) 14", "D) 18"],
+            answer: "C) 14",
+            explain: "Hər tərəfi kvadrata yüksəldək: (a + <span class=\"frac\"><span>1</span><span>a</span></span>)² = 16 ⇒ a² + 2 + <span class=\"frac\"><span>1</span><span>a²</span></span> = 16 ⇒ a² + <span class=\"frac\"><span>1</span><span>a²</span></span> = 14."
           },
           {
-            q: "30. a + b = 10 və a - b = 4 olarsa, a² - b² ifadəsinin qiymətini tapın:",
-            options: ["A) 14", "B) 60", "C) 40", "D) 84"],
-            answer: "C) 40",
-            explain: "a² - b² = (a - b)(a + b) = 4 · 10 = 40."
+            q: "23. x² - 6x + 13 ifadəsinin ala biləcəyi ən kiçik qiyməti tapın:",
+            options: ["A) 13", "B) 9", "C) 4", "D) 3"],
+            answer: "C) 4",
+            explain: "Tam kvadrata ayıraq: (x² - 6x + 9) + 4 = (x - 3)² + 4. (x - 3)² ≥ 0 olduğundan ən kiçik qiymət 4-dür."
+          },
+          {
+            q: "24. Kvadratın tərəfi 3 sm artırıldıqda sahəsi 45 sm² artdı. Kvadratın əvvəlki tərəfini tapın:",
+            options: ["A) 6 sm", "B) 7 sm", "C) 9 sm", "D) 8 sm"],
+            answer: "A) 6 sm",
+            explain: "(x + 3)² - x² = 45 ⇒ 6x + 9 = 45 ⇒ 6x = 36 ⇒ x = 6 sm."
+          },
+          {
+            q: "25. a - b = 3 və a² - b² = 21 olarsa, a + b cəmini tapın:",
+            options: ["A) 6", "B) 7", "C) 18", "D) 24"],
+            answer: "B) 7",
+            explain: "(a - b)(a + b) = 21 ⇒ 3 · (a + b) = 21 ⇒ a + b = 7."
+          },
+          {
+            q: "26. x = 101 və y = 99 olarsa, x² - 2xy + y² ifadəsinin qiymətini tapın:",
+            options: ["A) 40000", "B) 2", "C) 4", "D) 100"],
+            answer: "C) 4",
+            explain: "x² - 2xy + y² = (x - y)² = (101 - 99)² = 2² = 4."
+          },
+          {
+            q: "27. (a + b)² - (a - b)² ifadəsini sadələşdirin:",
+            options: ["A) 2a² + 2b²", "B) 4ab", "C) 2ab", "D) 0"],
+            answer: "B) 4ab",
+            explain: "(a² + 2ab + b²) - (a² - 2ab + b²) = 4ab."
+          },
+          {
+            q: "28. a + b = 6 və a² - b² = 24 olarsa, a - b fərqini tapın:",
+            options: ["A) 18", "B) 3", "C) 4", "D) 6"],
+            answer: "C) 4",
+            explain: "(a - b)(a + b) = 24 ⇒ (a - b) · 6 = 24 ⇒ a - b = 4."
+          },
+          {
+            q: "29. 102² - 98² ifadəsinin qiymətini hesablayın:",
+            options: ["A) 400", "B) 800", "C) 200", "D) 1600"],
+            answer: "B) 800",
+            explain: "(102 - 98)(102 + 98) = 4 · 200 = 800."
+          },
+          {
+            q: "30. (a + 1)(a - 1)(a² + 1) hasilini sadələşdirin:",
+            options: ["A) a⁴ - 1", "B) a⁴ + 1", "C) (a² - 1)²", "D) a² - 1"],
+            answer: "A) a⁴ - 1",
+            explain: "(a² - 1)(a² + 1) = a⁴ - 1."
           }
         ]
       }
     ];
 
-    let activeFilter = "all";
+    let activeGroup = "all";
     let currentTest = null;
     let currentIndex = 0;
     let userAnswers = [];
-    let confirmedQuestions = [];
+    let confirmedFlags = [];
     let pendingTestId = null;
     let currentStudent = null;
     let timerInterval = null;
     let remainingSeconds = 0;
     let toastTimeout = null;
-    const visitCounts = {};
 
-    function showToast(message) {
-      const el = document.getElementById("toast-banner");
-      if (!el) return;
-      el.textContent = message;
-      el.classList.add("show");
-      if (toastTimeout) clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        el.classList.remove("show");
-      }, 3600);
-    }
+    // Ortaq (qlobal) baxış və nəticə vəziyyəti — hər cihazda eyni görünür
+    let sharedSiteViews = 0;
+    let sharedTestVisits = {};
+    let sharedResults = [];
 
-    function getLocalViewsMap() {
+    function getLocalViewCache() {
       try {
         return JSON.parse(localStorage.getItem(LOCAL_VIEW_STORAGE) || "{}");
       } catch {
@@ -3293,84 +3321,267 @@
       }
     }
 
-    function setLocalViewsMap(map) {
+    function setLocalViewCache(obj) {
       try {
-        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(map));
+        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(obj));
       } catch {}
     }
 
-    async function fetchCount(key, fallback) {
+    function getLocalResultsFallback() {
       try {
-        const res = await fetch(`${COUNTER_BASE}/get/${encodeURIComponent(key)}`, { cache: "no-store" });
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        if (typeof data.value === "number") return data.value;
-      } catch {}
-      return fallback;
-    }
-
-    async function incrementCount(key, fallback) {
-      try {
-        const res = await fetch(`${COUNTER_BASE}/up/${encodeURIComponent(key)}`, { cache: "no-store" });
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        if (typeof data.value === "number") return data.value;
-      } catch {}
-      return fallback + 1;
-    }
-
-    function getDisplayedTestCount(test) {
-      const base = test.baseCount || 0;
-      const recorded = visitCounts[test.id] || 0;
-      return base + recorded;
-    }
-
-    async function initSiteAndTestCounters() {
-      const localMap = getLocalViewsMap();
-      const localSite = Number(localMap[SITE_VIEW_KEY] || 0);
-      const siteCountEl = document.getElementById("site-views-count");
-      const currentSite = await incrementCount(SITE_VIEW_KEY, localSite);
-      const finalSite = Math.max(currentSite, localSite + 1);
-      localMap[SITE_VIEW_KEY] = finalSite;
-      setLocalViewsMap(localMap);
-      if (siteCountEl) siteCountEl.textContent = String(finalSite);
-
-      await Promise.all(TESTS.map(async (test) => {
-        const key = `${COUNTER_PREFIX}_${test.id}`;
-        const localTest = Number(localMap[key] || 0);
-        const val = await fetchCount(key, localTest);
-        const finalVal = Math.max(val, localTest);
-        localMap[key] = finalVal;
-        visitCounts[test.id] = finalVal;
-      }));
-
-      setLocalViewsMap(localMap);
-      renderTests();
-      if (currentTest) updateQuizVisitBadge();
-    }
-
-    function updateQuizVisitBadge() {
-      const el = document.getElementById("q-visits");
-      if (el && currentTest) {
-        el.textContent = `${getDisplayedTestCount(currentTest)} iştirak`;
+        const raw = JSON.parse(localStorage.getItem(RESULTS_STORAGE_KEY) || "[]");
+        return Array.isArray(raw) ? raw : [];
+      } catch {
+        return [];
       }
     }
 
+    function saveLocalResultsFallback(list) {
+      try {
+        localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(list));
+      } catch {}
+    }
+
+    function getSavedStudent() {
+      try {
+        return JSON.parse(localStorage.getItem(STUDENT_STORAGE_KEY) || "null");
+      } catch {
+        return null;
+      }
+    }
+
+    function saveStudent(student) {
+      try {
+        localStorage.setItem(STUDENT_STORAGE_KEY, JSON.stringify(student));
+      } catch {}
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById("toast-banner");
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        el.classList.remove("show");
+      }, 3200);
+    }
+
+    function formatViews(num) {
+      return Number(num || 0).toLocaleString("az-AZ");
+    }
+
+    function formatTime(sec) {
+      const s = Math.max(0, Number(sec) || 0);
+      const m = Math.floor(s / 60);
+      const r = s % 60;
+      return `⏱ ${String(m).padStart(2, "0")}:${String(r).padStart(2, "0")}`;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function formatDateAz(ts) {
+      try {
+        return new Date(ts).toLocaleString("az-AZ", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      } catch {
+        return "";
+      }
+    }
+
+    function getTestTotalPoints(questions) {
+      return questions.reduce((sum, q) => sum + (q.points || 4), 0);
+    }
+
+    function getDisplayScore100(earnedPoints, totalPoints) {
+      if (!totalPoints) return 0;
+      return Math.round((earnedPoints / totalPoints) * 100);
+    }
+
+    function getQuestionPointLabel(pts) {
+      return `${pts} bal`;
+    }
+
+    function normalizeOpenAnswer(val) {
+      return String(val || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .replace(/;/g, ";")
+        .replace(/\s*;\s*/g, "; ");
+    }
+
+    function isQuestionCorrect(q, userVal) {
+      if (userVal === undefined || userVal === null || String(userVal).trim() === "") {
+        return false;
+      }
+      if (q.open) {
+        const normUser = normalizeOpenAnswer(userVal);
+        const acceptedList = Array.isArray(q.accepted) ? q.accepted : [q.answer];
+        return acceptedList.some(acc => {
+          const normAcc = normalizeOpenAnswer(acc);
+          if (normUser === normAcc) return true;
+          const numUser = parseFloat(normUser.replace(",", "."));
+          const numAcc = parseFloat(normAcc.replace(",", "."));
+          if (!Number.isNaN(numUser) && !Number.isNaN(numAcc) && !normAcc.includes(";") && !normAcc.includes("°") && !normAcc.includes("m =")) {
+            return Math.abs(numUser - numAcc) < 1e-6;
+          }
+          return false;
+        });
+      }
+      return userVal === q.answer;
+    }
+
+    function refreshAllSharedUI() {
+      const siteEl = document.getElementById("site-views-count");
+      if (siteEl) siteEl.textContent = formatViews(sharedSiteViews);
+
+      if (document.getElementById("home-view").style.display !== "none") {
+        renderTests();
+        renderLeaderboard();
+      }
+
+      if (currentTest && document.getElementById("quiz-view").style.display !== "none") {
+        const count = (currentTest.baseCount || 0) + (sharedTestVisits[currentTest.id] || 0);
+        const visitsEl = document.getElementById("q-visits");
+        if (visitsEl) visitsEl.textContent = `${formatViews(count)} baxış`;
+      }
+
+      if (document.getElementById("result-view").style.display !== "none") {
+        renderResultLeaderboard();
+      }
+    }
+
+    // Sayta giriş və test baxış sayğacını ortaq bazada 1 dəfə artırmaq (hər cihaz/sessiya üçün 1 dəfə)
+    function initSharedCounters() {
+      const localCache = getLocalViewCache();
+
+      if (!isFirebaseConfigured || !db) {
+        if (!localCache.siteCounted) {
+          localCache.siteCounted = true;
+          localCache.siteViews = (localCache.siteViews || 0) + 1;
+          setLocalViewCache(localCache);
+        }
+        sharedSiteViews = localCache.siteViews || 1;
+        sharedTestVisits = localCache.testVisits || {};
+        sharedResults = getLocalResultsFallback();
+        refreshAllSharedUI();
+        return;
+      }
+
+      // 1. Sayta ümumi baxış sayğacı
+      const siteRef = ref(db, "stats/siteViews");
+      if (!localCache.siteCounted) {
+        localCache.siteCounted = true;
+        setLocalViewCache(localCache);
+        runTransaction(siteRef, (curr) => (Number(curr) || 0) + 1).catch(() => {});
+      }
+
+      onValue(siteRef, (snap) => {
+        sharedSiteViews = Number(snap.val()) || 0;
+        refreshAllSharedUI();
+      });
+
+      // 2. Hər sınağın baxış / iştirak sayğacı
+      const testsStatsRef = ref(db, "stats/tests");
+      onValue(testsStatsRef, (snap) => {
+        const val = snap.val() || {};
+        const map = {};
+        for (const [k, v] of Object.entries(val)) {
+          map[k] = Number(v) || 0;
+        }
+        sharedTestVisits = map;
+        refreshAllSharedUI();
+      });
+
+      // 3. Hamının görə biləcəyi ortaq nəticələr bazası
+      const resultsRef = ref(db, "results");
+      onValue(resultsRef, (snap) => {
+        const val = snap.val();
+        if (!val) {
+          sharedResults = [];
+        } else if (Array.isArray(val)) {
+          sharedResults = val.filter(Boolean);
+        } else {
+          sharedResults = Object.entries(val).map(([key, item]) => ({
+            id: key,
+            ...(item || {})
+          }));
+        }
+        refreshAllSharedUI();
+      });
+    }
+
+    function incrementTestVisitShared(testId) {
+      const localCache = getLocalViewCache();
+      localCache.countedTests = localCache.countedTests || {};
+
+      if (!isFirebaseConfigured || !db) {
+        if (!localCache.countedTests[testId]) {
+          localCache.countedTests[testId] = true;
+          localCache.testVisits = localCache.testVisits || {};
+          localCache.testVisits[testId] = (localCache.testVisits[testId] || 0) + 1;
+          setLocalViewCache(localCache);
+        }
+        sharedTestVisits = localCache.testVisits || {};
+        refreshAllSharedUI();
+        return;
+      }
+
+      if (!localCache.countedTests[testId]) {
+        localCache.countedTests[testId] = true;
+        setLocalViewCache(localCache);
+        const testStatRef = ref(db, `stats/tests/${testId}`);
+        runTransaction(testStatRef, (curr) => (Number(curr) || 0) + 1).catch(() => {});
+      }
+    }
+
+    function saveResultShared(entry) {
+      if (!isFirebaseConfigured || !db) {
+        const list = getLocalResultsFallback();
+        list.unshift(entry);
+        const trimmed = list.slice(0, 150);
+        saveLocalResultsFallback(trimmed);
+        sharedResults = trimmed;
+        refreshAllSharedUI();
+        return;
+      }
+
+      const listRef = ref(db, "results");
+      const newRef = push(listRef);
+      set(newRef, entry).catch(() => {
+        const list = getLocalResultsFallback();
+        list.unshift(entry);
+        saveLocalResultsFallback(list.slice(0, 150));
+      });
+    }
+
     function setFilter(group, btn) {
-      activeFilter = group;
+      activeGroup = group;
       document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
       if (btn) btn.classList.add("active");
       renderTests();
     }
 
     function renderTests() {
-      const listEl = document.getElementById("test-list");
-      const filtered = activeFilter === "all"
+      const list = document.getElementById("test-list");
+      const filtered = activeGroup === "all"
         ? TESTS
-        : TESTS.filter(t => t.group === activeFilter);
+        : TESTS.filter(t => t.group === activeGroup);
 
-      listEl.innerHTML = filtered.map(t => {
-        const count = getDisplayedTestCount(t);
+      list.innerHTML = filtered.map(t => {
+        const viewsCount = (t.baseCount || 0) + (sharedTestVisits[t.id] || 0);
         return `
           <div class="test-card">
             <div class="test-card-left">
@@ -3381,10 +3592,10 @@
               <div>
                 <h3 class="test-title">${t.title}</h3>
                 <div class="test-meta">
-                  <span>Müəllim: Nurid Əsədullayev</span>
-                  <span>${t.questions.length} sual · 100 bal</span>
-                  <span>${t.minutes} dəqiqə</span>
-                  <span class="count-pill">${count} iştirak</span>
+                  <span>👤 Müəllim: Nurid Əsədullayev</span>
+                  <span>⏱ ${t.minutes} dəqiqə</span>
+                  <span>📝 ${t.questions.length} sual</span>
+                  <span class="count-pill">👁 ${formatViews(viewsCount)} baxış</span>
                 </div>
               </div>
             </div>
@@ -3394,126 +3605,66 @@
       }).join("");
     }
 
-    function loadSavedStudent() {
-      try {
-        const raw = localStorage.getItem(STUDENT_STORAGE_KEY);
-        if (!raw) return null;
-        const parsed = JSON.parse(raw);
-        if (parsed && parsed.firstName && parsed.lastName) return parsed;
-      } catch {}
-      return null;
-    }
-
-    function saveStudent(firstName, lastName) {
-      const info = { firstName: firstName.trim(), lastName: lastName.trim() };
-      try {
-        localStorage.setItem(STUDENT_STORAGE_KEY, JSON.stringify(info));
-      } catch {}
-      return info;
-    }
-
-    function openStudentModal(testId) {
-      const test = TESTS.find(t => t.id === testId);
-      if (!test) return;
-      pendingTestId = testId;
-
-      const saved = loadSavedStudent();
-      document.getElementById("student-first-name").value = saved ? saved.firstName : "";
-      document.getElementById("student-last-name").value = saved ? saved.lastName : "";
-      document.getElementById("student-error").textContent = "";
-      document.getElementById("modal-test-name").textContent = `${test.title} — Ad və soyad mütləqdir.`;
-      document.getElementById("student-modal").classList.add("open");
-      setTimeout(() => {
-        document.getElementById("student-first-name").focus();
-      }, 40);
-    }
-
-    function closeStudentModal() {
-      pendingTestId = null;
-      document.getElementById("student-modal").classList.remove("open");
-      document.getElementById("student-error").textContent = "";
-    }
-
-    async function submitStudentModal(event) {
-      event.preventDefault();
-      const firstInput = document.getElementById("student-first-name");
-      const lastInput = document.getElementById("student-last-name");
-      const errEl = document.getElementById("student-error");
-
-      const firstName = firstInput.value.trim();
-      const lastName = lastInput.value.trim();
-
-      if (!firstName || !lastName) {
-        errEl.textContent = "Zəhmət olmasa, ad və soyadınızı tam daxil edin.";
-        return;
-      }
-
-      const testId = pendingTestId;
-      currentStudent = saveStudent(firstName, lastName);
-      closeStudentModal();
-      await startTest(testId);
-    }
-
-    function getSavedResults() {
-      try {
-        const raw = localStorage.getItem(RESULTS_STORAGE_KEY);
-        const arr = raw ? JSON.parse(raw) : [];
-        return Array.isArray(arr) ? arr : [];
-      } catch {
-        return [];
+    function populateLeaderboardSelect() {
+      const sel = document.getElementById("lb-test-filter");
+      if (!sel) return;
+      const prev = sel.value || "all";
+      sel.innerHTML = `<option value="all">Bütün sınaqlar / mövzular</option>` +
+        TESTS.map(t => `<option value="${t.id}">${escapeHtml(t.title)}</option>`).join("");
+      if ([...sel.options].some(o => o.value === prev)) {
+        sel.value = prev;
       }
     }
 
-    function saveResultEntry(entry) {
-      const list = getSavedResults();
-      list.push(entry);
-      try {
-        localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(list));
-      } catch {}
-    }
+    function getSortedResults(testIdFilter = "all") {
+      const all = sharedResults.slice();
+      const filtered = testIdFilter && testIdFilter !== "all"
+        ? all.filter(r => r.testId === testIdFilter)
+        : all;
 
-    function populateLeaderboardFilter() {
-      const select = document.getElementById("lb-test-filter");
-      if (!select) return;
-      const prev = select.value || "all";
-      select.innerHTML = `<option value="all">Bütün sınaqlar / mövzular</option>` +
-        TESTS.map(t => `<option value="${t.id}">${t.title}</option>`).join("");
-      if ([...select.options].some(o => o.value === prev)) {
-        select.value = prev;
-      }
-    }
-
-    function getRankBadge(index) {
-      if (index === 0) return `<span class="lb-rank-medal" title="1-ci yer">🥇</span>`;
-      if (index === 1) return `<span class="lb-rank-medal" title="2-ci yer">🥈</span>`;
-      if (index === 2) return `<span class="lb-rank-medal" title="3-cü yer">🥉</span>`;
-      return `<span class="lb-rank-num">${index + 1}</span>`;
-    }
-
-    function formatLeaderboardHtml(items, showTopic = true) {
-      if (!items.length) {
-        return `<div class="lb-empty">Hələ qeydə alınmış nəticə yoxdur. İlk sınağı siz tamamlayın!</div>`;
-      }
-      const sorted = items.slice().sort((a, b) => {
-        if (b.score !== a.score) return b.score - a.score;
-        if (b.correct !== a.correct) return b.correct - a.correct;
-        return (a.timestamp || 0) - (b.timestamp || 0);
+      return filtered.sort((a, b) => {
+        const scoreDiff = (b.score100 ?? 0) - (a.score100 ?? 0);
+        if (scoreDiff !== 0) return scoreDiff;
+        const ptsDiff = (b.earnedPoints ?? 0) - (a.earnedPoints ?? 0);
+        if (ptsDiff !== 0) return ptsDiff;
+        return (b.timestamp || 0) - (a.timestamp || 0);
       });
+    }
 
-      return sorted.map((item, idx) => {
-        const rankClass = idx === 0 ? "rank-1" : idx === 1 ? "rank-2" : idx === 2 ? "rank-3" : "";
+    function buildLeaderboardHtml(items, highlightTimestamp = null) {
+      if (!items.length) {
+        return `<div class="lb-empty">Bu sınaq üzrə hələ nəticə yoxdur. İlk iştirakçı siz olun!</div>`;
+      }
+
+      return items.slice(0, 30).map((item, idx) => {
+        const rank = idx + 1;
+        const medal = rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : "";
+        const rankClass = rank === 1 ? "rank-1" : rank === 2 ? "rank-2" : rank === 3 ? "rank-3" : "";
+        const isCurrent = highlightTimestamp && item.timestamp === highlightTimestamp;
+        const fullName = escapeHtml(`${item.firstName || ""} ${item.lastName || ""}`.trim() || "Şagird");
+        const testTitle = escapeHtml(item.testTitle || "");
+        const score100 = Number(item.score100 ?? 0);
+        const earned = Number(item.earnedPoints ?? 0);
+        const totalPts = Number(item.totalPoints ?? 100);
+        const correctCount = Number(item.correctCount ?? 0);
+        const totalQuestions = Number(item.totalQuestions ?? 0);
+        const dateStr = escapeHtml(formatDateAz(item.timestamp));
+
         return `
-          <div class="lb-row ${rankClass}">
+          <div class="lb-row ${rankClass}" style="${isCurrent ? "outline: 2px solid #5b21b6;" : ""}">
             <div class="lb-left">
-              ${getRankBadge(idx)}
+              ${medal ? `<div class="lb-rank-medal">${medal}</div>` : `<div class="lb-rank-num">${rank}</div>`}
               <div>
-                <div class="lb-student-name">${escapeHtml(item.studentName)}</div>
-                ${showTopic ? `<div class="lb-topic">${escapeHtml(item.testTitle)}</div>` : ""}
+                <div class="lb-student-name">
+                  ${rank}. ${fullName}
+                  ${isCurrent ? `<span style="margin-left:6px; font-size:0.7rem; background:#5b21b6; color:#fff; padding:2px 7px; border-radius:999px;">Sizin nəticə</span>` : ""}
+                </div>
+                <div class="lb-topic">📘 ${testTitle}</div>
               </div>
             </div>
             <div class="lb-right">
-              <span class="lb-score-badge">${item.score} bal (${item.correct}/${item.total})</span>
-              <div class="lb-date">${escapeHtml(item.dateStr || "")}</div>
+              <span class="lb-score-badge">${score100} / 100 bal</span>
+              <div class="lb-date">${correctCount}/${totalQuestions} doğru • ${earned}/${totalPts} xal${dateStr ? ` • ${dateStr}` : ""}</div>
             </div>
           </div>
         `;
@@ -3521,54 +3672,66 @@
     }
 
     function renderLeaderboard() {
+      const sel = document.getElementById("lb-test-filter");
       const listEl = document.getElementById("lb-list");
-      const select = document.getElementById("lb-test-filter");
       if (!listEl) return;
-      const selectedTestId = select ? select.value : "all";
-      const all = getSavedResults();
-      const filtered = selectedTestId === "all"
-        ? all
-        : all.filter(r => r.testId === selectedTestId);
-      listEl.innerHTML = formatLeaderboardHtml(filtered, selectedTestId === "all");
+      const filterVal = sel ? sel.value : "all";
+      const sorted = getSortedResults(filterVal);
+      listEl.innerHTML = buildLeaderboardHtml(sorted);
     }
 
-    function renderResultLeaderboard(testId) {
-      const el = document.getElementById("result-leaderboard-list");
-      if (!el) return;
-      const items = getSavedResults().filter(r => r.testId === testId);
-      el.innerHTML = formatLeaderboardHtml(items, false);
+    function renderResultLeaderboard() {
+      const resListEl = document.getElementById("result-leaderboard-list");
+      if (!resListEl || !currentTest) return;
+      const lastEntry = sharedResults.length ? sharedResults[sharedResults.length - 1] : null;
+      const highlightTs = lastEntry && lastEntry.testId === currentTest.id ? lastEntry.timestamp : null;
+      const sortedForTest = getSortedResults(currentTest.id);
+      resListEl.innerHTML = buildLeaderboardHtml(sortedForTest, highlightTs);
     }
 
-    function escapeHtml(str) {
-      return String(str || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+    function openStudentModal(testId) {
+      pendingTestId = testId;
+      const t = TESTS.find(item => item.id === testId);
+      const saved = getSavedStudent();
+      document.getElementById("student-first-name").value = saved?.firstName || "";
+      document.getElementById("student-last-name").value = saved?.lastName || "";
+      document.getElementById("student-error").textContent = "";
+      document.getElementById("modal-test-name").textContent = t
+        ? `${t.title} — Ad və soyadınızı yazın`
+        : "Ad və soyadınızı yazın";
+      document.getElementById("student-modal").classList.add("open");
+      setTimeout(() => document.getElementById("student-first-name").focus(), 50);
+    }
+
+    function closeStudentModal() {
+      pendingTestId = null;
+      document.getElementById("student-modal").classList.remove("open");
+    }
+
+    function submitStudentModal(event) {
+      event.preventDefault();
+      const firstName = document.getElementById("student-first-name").value.trim();
+      const lastName = document.getElementById("student-last-name").value.trim();
+      const errEl = document.getElementById("student-error");
+
+      if (!firstName || !lastName) {
+        errEl.textContent = "Zəhmət olmasa, həm Adınızı, həm də Soyadınızı daxil edin.";
+        return;
+      }
+
+      const testId = pendingTestId;
+      currentStudent = { firstName, lastName };
+      saveStudent(currentStudent);
+      closeStudentModal();
+      if (testId) {
+        startTest(testId);
+      }
     }
 
     function clearTimer() {
       if (timerInterval) {
         clearInterval(timerInterval);
         timerInterval = null;
-      }
-    }
-
-    function formatTime(sec) {
-      const s = Math.max(0, sec);
-      const m = Math.floor(s / 60);
-      const r = s % 60;
-      return `${String(m).padStart(2, "0")}:${String(r).padStart(2, "0")}`;
-    }
-
-    function updateTimerDisplay() {
-      const el = document.getElementById("q-timer");
-      if (!el) return;
-      el.textContent = `⏱ ${formatTime(remainingSeconds)}`;
-      if (remainingSeconds <= 120) {
-        el.classList.add("warning");
-      } else {
-        el.classList.remove("warning");
       }
     }
 
@@ -3581,65 +3744,68 @@
         updateTimerDisplay();
         if (remainingSeconds <= 0) {
           clearTimer();
-          finishQuiz(true);
+          showToast("Vaxt bitdi! Sınaq avtomatik yekunlaşdırılır.");
+          finishQuiz();
         }
       }, 1000);
     }
 
-    async function startTest(testId) {
-      const found = TESTS.find(t => t.id === testId);
-      if (!found) return;
-      if (!currentStudent || !currentStudent.firstName || !currentStudent.lastName) {
-        openStudentModal(testId);
-        return;
+    function updateTimerDisplay() {
+      const el = document.getElementById("q-timer");
+      if (!el) return;
+      el.textContent = formatTime(remainingSeconds);
+      if (remainingSeconds <= 120) {
+        el.classList.add("warning");
+      } else {
+        el.classList.remove("warning");
       }
+    }
 
-      const shuffledQuestions = prepareShuffledQuestions(found.questions);
-      currentTest = { ...found, questions: shuffledQuestions };
+    function startTest(testId) {
+      const baseTest = TESTS.find(t => t.id === testId);
+      if (!baseTest) return;
+
+      incrementTestVisitShared(testId);
+
+      currentTest = {
+        ...baseTest,
+        questions: prepareShuffledQuestions(baseTest.questions)
+      };
       currentIndex = 0;
       userAnswers = new Array(currentTest.questions.length).fill(null);
-      confirmedQuestions = new Array(currentTest.questions.length).fill(false);
-
-      const key = `${COUNTER_PREFIX}_${found.id}`;
-      const localMap = getLocalViewsMap();
-      const prevLocal = Number(localMap[key] || visitCounts[found.id] || 0);
-      const updated = await incrementCount(key, prevLocal);
-      const finalCount = Math.max(updated, prevLocal + 1);
-      localMap[key] = finalCount;
-      setLocalViewsMap(localMap);
-      visitCounts[found.id] = finalCount;
-      renderTests();
+      confirmedFlags = new Array(currentTest.questions.length).fill(false);
 
       document.getElementById("home-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
+
       document.getElementById("q-test-title").textContent = currentTest.title;
-      document.getElementById("q-student-chip").textContent = `Şagird: ${currentStudent.firstName} ${currentStudent.lastName}`;
-      updateQuizVisitBadge();
+      document.getElementById("q-student-chip").textContent =
+        `Şagird: ${currentStudent.firstName} ${currentStudent.lastName}`;
+
       startTimer(currentTest.minutes);
       renderQuestion();
       window.scrollTo({ top: 0, behavior: "smooth" });
-
-      showToast(`${currentStudent.firstName} ${currentStudent.lastName} sınağa başladı · ${getDisplayedTestCount(currentTest)} iştirak`);
     }
 
-    function normalizeOpenAnswer(val) {
-      return String(val || "")
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, " ")
-        .replace(/°/g, "")
-        .replace(/\./g, ",");
-    }
+    function renderJumpBar() {
+      const bar = document.getElementById("q-jump-bar");
+      if (!bar || !currentTest) return;
 
-    function isAnswerCorrect(q, userVal) {
-      if (userVal === null || userVal === undefined || String(userVal).trim() === "") return false;
-      if (q.open) {
-        const normUser = normalizeOpenAnswer(userVal);
-        const acceptedList = Array.isArray(q.accepted) && q.accepted.length ? q.accepted : [q.answer];
-        return acceptedList.some(acc => normalizeOpenAnswer(acc) === normUser);
-      }
-      return userVal === q.answer;
+      bar.innerHTML = currentTest.questions.map((q, idx) => {
+        const classes = ["q-jump-btn"];
+        if (idx === currentIndex) classes.push("current-q");
+
+        const ans = userAnswers[idx];
+        const hasAnswer = ans !== null && ans !== undefined && String(ans).trim() !== "";
+        if (confirmedFlags[idx]) {
+          classes.push(isQuestionCorrect(q, ans) ? "ok-state" : "bad-state");
+        } else if (hasAnswer) {
+          classes.push("picked-state");
+        }
+
+        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${idx})">${idx + 1}</button>`;
+      }).join("");
     }
 
     function jumpToQuestion(idx) {
@@ -3648,36 +3814,13 @@
       renderQuestion();
     }
 
-    function renderQuestionJumpBar() {
-      const bar = document.getElementById("q-jump-bar");
-      if (!bar || !currentTest) return;
-
-      bar.innerHTML = currentTest.questions.map((q, i) => {
-        const classes = ["q-jump-btn"];
-        if (i === currentIndex) classes.push("current-q");
-
-        if (confirmedQuestions[i]) {
-          if (isAnswerCorrect(q, userAnswers[i])) {
-            classes.push("ok-state");
-          } else {
-            classes.push("bad-state");
-          }
-        } else if (userAnswers[i] !== null && String(userAnswers[i]).trim() !== "") {
-          classes.push("picked-state");
-        }
-
-        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${i})" title="Sual ${i + 1}">${i + 1}</button>`;
-      }).join("");
-    }
-
     function renderQuestion() {
       const q = currentTest.questions[currentIndex];
-      const isConfirmed = !!confirmedQuestions[currentIndex];
-      const userAns = userAnswers[currentIndex];
+      const total = currentTest.questions.length;
+      const isConfirmed = confirmedFlags[currentIndex];
 
-      renderQuestionJumpBar();
-      document.getElementById("q-progress").textContent = `Sual ${currentIndex + 1} / ${currentTest.questions.length}`;
-      document.getElementById("q-point-tag").textContent = `${q.points} bal`;
+      document.getElementById("q-progress").textContent = `Sual ${currentIndex + 1} / ${total}`;
+      document.getElementById("q-point-tag").textContent = `⭐ ${getQuestionPointLabel(q.points || 4)}`;
       document.getElementById("q-text").innerHTML = q.q;
 
       const optList = document.getElementById("q-options");
@@ -3688,7 +3831,7 @@
         optList.style.display = "none";
         optList.innerHTML = "";
         openWrap.style.display = "block";
-        openInput.value = userAns || "";
+        openInput.value = userAnswers[currentIndex] || "";
         openInput.disabled = isConfirmed;
       } else {
         openWrap.style.display = "none";
@@ -3697,26 +3840,28 @@
           let cls = "opt-btn";
           if (isConfirmed) {
             if (opt === q.answer) cls += " correct";
-            else if (opt === userAns) cls += " wrong";
-          } else if (opt === userAns) {
+            else if (opt === userAnswers[currentIndex]) cls += " wrong";
+          } else if (opt === userAnswers[currentIndex]) {
             cls += " picked";
           }
-          const safeOpt = opt.replace(/'/g, "&#39;");
-          return `<button type="button" class="${cls}" ${isConfirmed ? "disabled" : ""} onclick="selectOption('${safeOpt}')">${opt}</button>`;
+          return `<button type="button" class="${cls}" ${isConfirmed ? "disabled" : ""} onclick="selectOption('${escapeHtml(opt)}')">${opt}</button>`;
         }).join("");
       }
 
       const confirmBtn = document.getElementById("btn-confirm");
       confirmBtn.disabled = isConfirmed;
-      confirmBtn.textContent = isConfirmed ? "Cavab təsdiqləndi" : "Cavabı təsdiqlə";
+      confirmBtn.textContent = isConfirmed ? "Cavab təsdiqlənib" : "Cavabı təsdiqlə";
 
       const expBox = document.getElementById("q-explain");
       if (isConfirmed) {
-        const ok = isAnswerCorrect(q, userAns);
+        const ok = isQuestionCorrect(q, userAnswers[currentIndex]);
         expBox.style.display = "block";
-        expBox.className = `explain-box ${ok ? "ok" : "bad"}`;
+        expBox.className = "explain-box " + (ok ? "ok" : "bad");
+        const correctDisplay = q.open ? escapeHtml(q.answer) : q.answer;
         expBox.innerHTML = `
-          <div style="font-weight:800; margin-bottom:4px;">${ok ? "Düzgün cavab! (+" + q.points + " bal)" : "Səhv cavab! (0 bal) — Düzgün cavab: " + q.answer}</div>
+          <div style="font-weight:800; margin-bottom:6px;">
+            ${ok ? `✅ Doğrudur! (+${q.points || 4} xal)` : `❌ Yanlışdır! Düzgün cavab: ${correctDisplay}`}
+          </div>
           <div>${q.explain}</div>
         `;
       } else {
@@ -3725,31 +3870,33 @@
       }
 
       document.getElementById("btn-prev").disabled = currentIndex === 0;
-      const isLast = currentIndex === currentTest.questions.length - 1;
+      const isLast = currentIndex === total - 1;
       document.getElementById("btn-next").style.display = isLast ? "none" : "inline-block";
       document.getElementById("btn-finish").style.display = isLast ? "inline-block" : "none";
+
+      renderJumpBar();
     }
 
     function selectOption(opt) {
-      if (confirmedQuestions[currentIndex]) return;
+      if (confirmedFlags[currentIndex]) return;
       userAnswers[currentIndex] = opt;
       renderQuestion();
     }
 
     function onOpenInput(val) {
-      if (confirmedQuestions[currentIndex]) return;
+      if (confirmedFlags[currentIndex]) return;
       userAnswers[currentIndex] = val;
-      renderQuestionJumpBar();
+      renderJumpBar();
     }
 
     function confirmAnswer() {
       const q = currentTest.questions[currentIndex];
       const ans = userAnswers[currentIndex];
-      if (ans === null || String(ans).trim() === "") {
-        alert(q.open ? "Zəhmət olmasa, cavabı yazın." : "Zəhmət olmasa, variant seçin.");
+      if (ans === null || ans === undefined || String(ans).trim() === "") {
+        showToast(q.open ? "Zəhmət olmasa, əvvəlcə cavabı yazın." : "Zəhmət olmasa, əvvəlcə bir variant seçin.");
         return;
       }
-      confirmedQuestions[currentIndex] = true;
+      confirmedFlags[currentIndex] = true;
       renderQuestion();
     }
 
@@ -3767,112 +3914,117 @@
       }
     }
 
-    function finishQuiz(autoByTime = false) {
+    function finishQuiz() {
       clearTimer();
-      let correct = 0;
-      let wrongCount = 0;
+      let correctCount = 0;
       let earnedPoints = 0;
-      let totalPoints = 0;
+      const totalPoints = getTestTotalPoints(currentTest.questions);
 
-      currentTest.questions.forEach((q, i) => {
-        totalPoints += q.points;
-        const ans = userAnswers[i];
-        const ok = isAnswerCorrect(q, ans);
-        if (ok) {
-          correct++;
-          earnedPoints += q.points;
-        } else if (ans !== null && String(ans).trim() !== "") {
-          wrongCount++;
-        }
-      });
-
-      const score100 = totalPoints > 0 ? Math.round((earnedPoints / totalPoints) * 100) : 0;
-      const studentFullName = currentStudent
-        ? `${currentStudent.firstName} ${currentStudent.lastName}`
-        : "Adsız Şagird";
-
-      const now = new Date();
-      const dateStr = now.toLocaleDateString("az-AZ") + " " + now.toLocaleTimeString("az-AZ", { hour: "2-digit", minute: "2-digit" });
-
-      saveResultEntry({
-        id: `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
-        timestamp: now.getTime(),
-        dateStr,
-        testId: currentTest.id,
-        testTitle: currentTest.title,
-        studentName: studentFullName,
-        score: score100,
-        earnedPoints,
-        totalPoints,
-        correct,
-        wrong: wrongCount,
-        total: currentTest.questions.length
-      });
-
-      populateLeaderboardFilter();
-      renderLeaderboard();
-      renderResultLeaderboard(currentTest.id);
-
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("result-view").style.display = "block";
-      const timeNote = autoByTime ? " (Vaxt bitdiyi üçün avtomatik yekunlaşdırıldı)" : "";
-      document.getElementById("result-summary").textContent =
-        `Şagird: ${studentFullName} · ${currentTest.title}${timeNote}`;
-
-      document.getElementById("result-stats").innerHTML = `
-        <div class="stat-box score-box">
-          <div class="stat-num">${score100} / 100</div>
-          <div class="stat-label">Yekun Bal</div>
-        </div>
-        <div class="stat-box ok-box">
-          <div class="stat-num">${correct}</div>
-          <div class="stat-label">Düzgün cavab</div>
-        </div>
-        <div class="stat-box bad-box">
-          <div class="stat-num">${wrongCount}</div>
-          <div class="stat-label">Səhv cavab</div>
-        </div>
-      `;
-
-      document.getElementById("result-list").innerHTML = currentTest.questions.map((q, i) => {
+      const rowsHtml = currentTest.questions.map((q, i) => {
         const userAns = userAnswers[i];
-        const ok = isAnswerCorrect(q, userAns);
-        const displayUser = (userAns !== null && String(userAns).trim() !== "") ? userAns : "Cavab verilməyib";
+        const ok = isQuestionCorrect(q, userAns);
+        const pts = q.points || 4;
+        if (ok) {
+          correctCount++;
+          earnedPoints += pts;
+        }
+        const userDisplay = (userAns === null || userAns === undefined || String(userAns).trim() === "")
+          ? "Cavab verilməyib"
+          : (q.open ? escapeHtml(userAns) : userAns);
+        const correctDisplay = q.open ? escapeHtml(q.answer) : q.answer;
+
         return `
-          <div class="explain-box ${ok ? "ok" : "bad"}">
-            <div style="font-weight:800;">${q.q} (${q.points} bal)</div>
-            <div style="margin-top:6px;">Sizin cavabınız: <b>${displayUser}</b> · Düzgün cavab: <b>${q.answer}</b></div>
-            <div style="margin-top:4px;">${q.explain}</div>
+          <div class="explain-box ${ok ? "ok" : "bad"}" style="margin-bottom:12px;">
+            <div style="font-weight:800; margin-bottom:4px;">
+              ${ok ? `✅ Sual ${i + 1} (+${pts} xal)` : `❌ Sual ${i + 1} (0 / ${pts} xal)`} — ${q.q}
+            </div>
+            <div style="font-size:0.86rem;">Sizin cavabınız: <b>${userDisplay}</b></div>
+            ${!ok ? `<div style="font-size:0.86rem;">Düzgün cavab: <b>${correctDisplay}</b></div>` : ""}
+            <div style="font-size:0.84rem; margin-top:6px;">${q.explain}</div>
           </div>
         `;
       }).join("");
 
+      const wrongCount = currentTest.questions.length - correctCount;
+      const score100 = getDisplayScore100(earnedPoints, totalPoints);
+      const studentFullName = `${currentStudent?.firstName || ""} ${currentStudent?.lastName || ""}`.trim() || "Şagird";
+
+      saveResultShared({
+        firstName: currentStudent?.firstName || "",
+        lastName: currentStudent?.lastName || "",
+        testId: currentTest.id,
+        testTitle: currentTest.title,
+        score100,
+        earnedPoints,
+        totalPoints,
+        correctCount,
+        wrongCount,
+        totalQuestions: currentTest.questions.length,
+        timestamp: Date.now()
+      });
+
+      document.getElementById("quiz-view").style.display = "none";
+      document.getElementById("result-view").style.display = "block";
+      document.getElementById("result-summary").textContent =
+        `${studentFullName} — ${currentTest.title}`;
+
+      document.getElementById("result-stats").innerHTML = `
+        <div class="stat-box score-box">
+          <div class="stat-num">${score100} / 100</div>
+          <div class="stat-label">Yekun Bal (${earnedPoints}/${totalPoints} xal)</div>
+        </div>
+        <div class="stat-box ok-box">
+          <div class="stat-num">${correctCount}</div>
+          <div class="stat-label">Doğru Cavab</div>
+        </div>
+        <div class="stat-box bad-box">
+          <div class="stat-num">${wrongCount}</div>
+          <div class="stat-label">Yanlış / Boş</div>
+        </div>
+      `;
+
+      renderResultLeaderboard();
+      document.getElementById("result-list").innerHTML = rowsHtml;
       window.scrollTo({ top: 0, behavior: "smooth" });
-      showToast(`${studentFullName} sınağı bitirdi: ${score100} bal (${correct}/${currentTest.questions.length})`);
     }
 
     function goHome() {
       clearTimer();
-      closeStudentModal();
+      currentTest = null;
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("home-view").style.display = "block";
+      populateLeaderboardSelect();
       renderTests();
-      populateLeaderboardFilter();
       renderLeaderboard();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
+    document.getElementById("student-modal").addEventListener("click", (e) => {
+      if (e.target.id === "student-modal") {
         closeStudentModal();
       }
     });
 
+    window.setFilter = setFilter;
+    window.openStudentModal = openStudentModal;
+    window.closeStudentModal = closeStudentModal;
+    window.submitStudentModal = submitStudentModal;
+    window.startTest = startTest;
+    window.jumpToQuestion = jumpToQuestion;
+    window.selectOption = selectOption;
+    window.onOpenInput = onOpenInput;
+    window.confirmAnswer = confirmAnswer;
+    window.prevQuestion = prevQuestion;
+    window.nextQuestion = nextQuestion;
+    window.finishQuiz = finishQuiz;
+    window.goHome = goHome;
+    window.renderLeaderboard = renderLeaderboard;
+
+    populateLeaderboardSelect();
+    initSharedCounters();
     renderTests();
-    populateLeaderboardFilter();
     renderLeaderboard();
-    initSiteAndTestCounters();
   </script>
 </body>
 </html>
