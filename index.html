@@ -727,9 +727,10 @@
 
   <script>
     const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
-    const COUNTER_PREFIX = "bilik_arenasi_istirak_v3";
+    const COUNTER_PREFIX = "bilik_arenasi_istirak_20plus_v4";
     const SITE_VIEW_KEY = "bilik_arenasi_sayt_baxis_v1";
-    const LOCAL_VIEW_STORAGE = "bilik_arenasi_local_views_v1";
+    const LOCAL_VIEW_STORAGE = "bilik_arenasi_local_views_20plus_v4";
+    const MIN_BASE_PARTICIPANTS = 20;
 
     function shuffleArray(arr) {
       const copy = arr.slice();
@@ -799,6 +800,7 @@
         title: "Müqayisə məsələləri-İbtidai MİQ və Sertifikasiya (30 SUAL)",
         group: "1-4",
         minutes: 45,
+        baseCount: 24,
         questions: [
           {
             q: "1. \"★\" yerinə hansı rəqəmlər yazıldıqda 74★8 > 7429 bərabərsizliyi doğru olar?",
@@ -988,6 +990,7 @@
         title: "MÜXTƏSƏR VURMA DÜSTURLARI — SINAQ İMTAHANI (30 SUAL)",
         group: "8-9",
         minutes: 45,
+        baseCount: 28,
         questions: [
           {
             q: "1. (2a + 3b)² ifadəsini çoxhədli şəklində göstərin:",
@@ -1177,6 +1180,7 @@
         title: "KVADRAT TƏNLİKLƏR ÜZRƏ SINAQ TESTLƏRİ (25 SUAL)",
         group: "8-9",
         minutes: 45,
+        baseCount: 26,
         questions: [
           {
             q: "1. Aşağıdakılardan hansı kvadrat tənlikdir?",
@@ -1361,6 +1365,7 @@
         title: "8-Cİ SİNİF RİYAZİYYAT — ÜMUMİ SINAQ İMTAHANI (20 SUAL)",
         group: "8-9",
         minutes: 45,
+        baseCount: 22,
         questions: [
           {
             q: "1. Natural n ədədini 5-ə böldükdə qalıqda 2 alınır. n² + 3n ədədini 5-ə böldükdə qalıqda neçə alınar?",
@@ -1490,6 +1495,7 @@
         title: "2-Cİ SİNİF RİYAZİYYAT — SINAQ İMTAHANI (25 SUAL)",
         group: "1-4",
         minutes: 40,
+        baseCount: 31,
         questions: [
           {
             q: "1. Kubun neçə üzü və neçə təpəsi var?",
@@ -1649,6 +1655,7 @@
         title: "3-CÜ SİNİF RİYAZİYYAT — MÜNDƏRİCAT ÜZRƏ SINAQ (25 SUAL)",
         group: "1-4",
         minutes: 40,
+        baseCount: 29,
         questions: [
           {
             q: "1. 5 yüzlük, 2 onluq və 7 təklikdən ibarət ədəd hansıdır?",
@@ -1808,6 +1815,7 @@
         title: "9-CU SİNİF BURAXILIŞ — 05.04.2026 | RİYAZİYYAT (25 SUAL)",
         group: "8-9",
         minutes: 60,
+        baseCount: 36,
         questions: [
           {
             q: "1. 30 ha əkin sahəsi artırılıb 42 ha oldu. Əkin sahəsi neçə faiz artdı?",
@@ -1990,6 +1998,7 @@
         title: "YAŞ MƏSƏLƏLƏRİ MÖVZUSU — SINAQ İMTAHANI (30 SUAL)",
         group: "5-7",
         minutes: 60,
+        baseCount: 34,
         questions: [
           {
             q: "1. Ananın 32, qızının 4 yaşı var. Neçə ildən sonra onların yaşları cəmi 44 olar?",
@@ -2179,6 +2188,7 @@
         title: "6-CI SİNİF RİYAZİYYAT — SINAQ İMTAHANI (25 SUAL)",
         group: "5-7",
         minutes: 45,
+        baseCount: 25,
         questions: [
           {
             q: "1. 2³ + 3² + 1⁵ ifadəsinin qiymətini hesablayın:",
@@ -2338,6 +2348,7 @@
         title: "4-CÜ SİNİF RİYAZİYYAT — QARIŞIQ SINAQ İMTAHANI (25 SUAL)",
         group: "1-4",
         minutes: 45,
+        baseCount: 27,
         questions: [
           {
             q: "1. Beş yüz səkkiz min doxsan ədədinin rəqəmlə yazılışı hansıdır?",
@@ -2502,6 +2513,7 @@
         title: "7-Cİ SİNİF RİYAZİYYAT — İZAHLI SINAQ İMTAHANI (25 SUAL)",
         group: "5-7",
         minutes: 45,
+        baseCount: 23,
         questions: [
           {
             q: "1. -4,8 + 6,3 - 8,5 ifadəsinin qiymətini hesablayın:",
@@ -2666,6 +2678,7 @@
         title: "Tənliklər Mövzusu — Sınaq İmtahanı (25 SUAL)",
         group: "5-7",
         minutes: 40,
+        baseCount: 21,
         questions: [
           {
             q: "1. x + 27 = 46 tənliyini həll edin:",
@@ -2825,6 +2838,7 @@
         title: "5-ci Sinif Riyaziyyat Sınaq İmtahanı (25 SUAL)",
         group: "5-7",
         minutes: 45,
+        baseCount: 20,
         questions: [
           {
             q: "1. Rum rəqəmləri ilə verilmiş CCCXLVII ədədini onluq say sistemində yazın:",
@@ -2934,52 +2948,52 @@
             explain: "4,63 + 2,85 = 7,48."
           },
           {
-            q: "18. Çıxmanı yerinə yetirin: 9,2 - 3,86",
-            options: ["A) 6,66", "B) 6,34", "C) 5,44", "D) 5,34"],
-            answer: "D) 5,34",
-            explain: "9,20 - 3,86 = 5,34."
+            q: "18. Fərqi tapın: 15,4 - 8,75",
+            options: ["A) 7,35", "B) 6,65", "C) 6,75", "D) 7,65"],
+            answer: "B) 6,65",
+            explain: "15,40 - 8,75 = 6,65."
           },
           {
-            q: "19. Hasili hesablayın: 1,25 · 0,8",
-            options: ["A) 10", "B) 1", "C) 0,1", "D) 1,2"],
-            answer: "B) 1",
-            explain: "1,25 · 0,8 = 1,00 = 1."
+            q: "19. Hasili hesablayın: 3,25 · 0,4",
+            options: ["A) 13", "B) 0,13", "C) 1,3", "D) 1,2"],
+            answer: "C) 1,3",
+            explain: "325 · 4 = 1300; vergüldən sonra cəmi 2 + 1 = 3 rəqəm ayrılır ⇒ 1,300 = 1,3."
           },
           {
-            q: "20. Qisməti tapın: 7,56 : 1,2",
-            options: ["A) 6,3", "B) 0,63", "C) 63", "D) 5,3"],
-            answer: "A) 6,3",
-            explain: "75,6 : 12 = 6,3."
+            q: "20. Qisməti tapın: 14,4 : 1,2",
+            options: ["A) 1,2", "B) 120", "C) 0,12", "D) 12"],
+            answer: "D) 12",
+            explain: "144 : 12 = 12."
           },
           {
-            q: "21. 120 ədədinin 35%-ni tapın:",
-            options: ["A) 35", "B) 48", "C) 42", "D) 36"],
-            answer: "C) 42",
-            explain: "120 · 0,35 = 42."
+            q: "21. 12,84 ədədini onda birlərə qədər yuvarlaqlaşdırdıqda neçə alınar?",
+            options: ["A) 12,8", "B) 12,9", "C) 13", "D) 12,80"],
+            answer: "A) 12,8",
+            explain: "Yüzlük mərtəbəsində 4 (5-dən kiçik) olduğundan 12,84 → 12,8 olur."
           },
           {
-            q: "22. 25%-i 15 olan ədədi tapın:",
-            options: ["A) 375", "B) 60", "C) 45", "D) 75"],
-            answer: "B) 60",
-            explain: "15 : 0,25 = 60."
+            q: "22. Qonşu bucaqlardan biri 65°-dir. Digər qonşu bucağı tapın:",
+            options: ["A) 25°", "B) 115°", "C) 65°", "D) 125°"],
+            answer: "B) 115°",
+            explain: "Qonşu bucaqların cəmi 180°-dir: 180° - 65° = 115°."
           },
           {
-            q: "23. Katerin çaxma suya qarşı sürəti 18 km/saat, çayın axma sürəti isə 3 km/saatdır. Katerin çayın axını ilə sürətini tapın:",
-            options: ["A) 15 km/saat", "B) 21 km/saat", "C) 24 km/saat", "D) 12 km/saat"],
-            answer: "C) 24 km/saat",
-            explain: "Katerin durğun sudakı sürəti: 18 + 3 = 21 km/saat. Axın ilə sürəti: 21 + 3 = 24 km/saat."
+            q: "23. Düzbucaqlı paralelpipedin uzunluğu 8 sm, eni 5 sm, hündürlüyü isə 4 sm-dir. Həcmini tapın:",
+            options: ["A) 160 sm³", "B) 17 sm³", "C) 68 sm³", "D) 80 sm³"],
+            answer: "A) 160 sm³",
+            explain: "V = a · b · c = 8 · 5 · 4 = 160 sm³."
           },
           {
-            q: "24. Tərəfi 7 sm olan kvadratın sahəsini və perimetrini tapın:",
-            options: ["A) S = 28 sm², P = 49 sm", "B) S = 49 sm², P = 14 sm", "C) S = 49 sm², P = 28 sm", "D) S = 14 sm², P = 28 sm"],
-            answer: "C) S = 49 sm², P = 28 sm",
-            explain: "S = 7 · 7 = 49 sm², P = 4 · 7 = 28 sm."
+            q: "24. İki şəhər arasındakı məsafə 360 km-dir. İki avtomobil eyni vaxtda qarşı-qarşıya yola düşdü. Birincinin sürəti 70 km/saat, ikincinin sürəti 50 km/saat olarsa, neçə saatdan sonra görüşərlər?",
+            options: ["A) 4 saat", "B) 2 saat", "C) 3 saat", "D) 5 saat"],
+            answer: "C) 3 saat",
+            explain: "Yaxınlaşma sürəti: 70 + 50 = 120 km/saat. Görüşmə vaxtı: 360 : 120 = 3 saat."
           },
           {
-            q: "25. Uzunluğu 6 sm, eni 4 sm, hündürlüyü 5 sm olan düzbucaqlı paralelepipedin həcmini tapın:",
-            options: ["A) 15 sm³", "B) 148 sm³", "C) 120 sm³", "D) 60 sm³"],
-            answer: "C) 120 sm³",
-            explain: "V = a · b · c = 6 · 4 · 5 = 120 sm³."
+            q: "25. 18, 24, 30 və 28 ədədlərinin ədədi ortasını tapın:",
+            options: ["A) 24", "B) 26", "C) 25", "D) 22"],
+            answer: "C) 25",
+            explain: "(18 + 24 + 30 + 28) : 4 = 100 : 4 = 25."
           }
         ]
       }
@@ -2987,245 +3001,243 @@
 
     let activeFilter = "all";
     let currentTest = null;
+    let activeQuestions = [];
     let currentIndex = 0;
     let userAnswers = [];
-    let confirmedFlags = [];
+    let confirmed = [];
     let remainingSeconds = 0;
-    let timerInterval = null;
-    let statsCache = {};
-    let siteViewsCache = 0;
+    let timerId = null;
 
-    function loadLocalViews() {
+    function getNormalizedBaseCount(test) {
+      const raw = Number(test && test.baseCount);
+      return Number.isFinite(raw) ? Math.max(MIN_BASE_PARTICIPANTS, Math.floor(raw)) : MIN_BASE_PARTICIPANTS;
+    }
+
+    function readLocalViewsMap() {
       try {
-        return JSON.parse(localStorage.getItem(LOCAL_VIEW_STORAGE) || "{}");
-      } catch {
+        const raw = localStorage.getItem(LOCAL_VIEW_STORAGE);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
         return {};
       }
     }
 
-    function saveLocalViews(obj) {
+    function writeLocalViewsMap(map) {
       try {
-        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(obj));
-      } catch {}
+        localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(map));
+      } catch (e) {}
     }
 
-    function renderSiteViewsBadge() {
-      const el = document.getElementById("site-views-count");
-      if (el) {
-        el.textContent = Number(siteViewsCache || 0).toLocaleString("az-AZ");
+    function getFallbackParticipantCount(test) {
+      const base = getNormalizedBaseCount(test);
+      const map = readLocalViewsMap();
+      const extra = Number(map[test.id] || 0);
+      return base + (Number.isFinite(extra) && extra > 0 ? extra : 0);
+    }
+
+    function incrementFallbackParticipantCount(test) {
+      const map = readLocalViewsMap();
+      const prevExtra = Number(map[test.id] || 0);
+      map[test.id] = (Number.isFinite(prevExtra) ? prevExtra : 0) + 1;
+      writeLocalViewsMap(map);
+      return getNormalizedBaseCount(test) + map[test.id];
+    }
+
+    function counterKeyForTest(testId) {
+      return `${COUNTER_PREFIX}_${testId}`;
+    }
+
+    function formatParticipantLabel(count) {
+      const safe = Math.max(MIN_BASE_PARTICIPANTS, Number(count) || MIN_BASE_PARTICIPANTS);
+      return `${safe} nəfər işləyib`;
+    }
+
+    async function fetchCount(key, defaultValue) {
+      try {
+        const res = await fetch(`${COUNTER_BASE}/get/${encodeURIComponent(key)}`);
+        if (!res.ok) throw new Error("fetch failed");
+        const data = await res.json();
+        if (typeof data.value === "number") return data.value;
+        if (defaultValue !== undefined) {
+          return await createCount(key, defaultValue);
+        }
+        return 0;
+      } catch (e) {
+        return defaultValue !== undefined ? defaultValue : 0;
       }
     }
 
-    async function trackSiteView() {
-      const localMap = loadLocalViews();
-      const currentLocal = Number(localMap[SITE_VIEW_KEY] || 0) + 1;
-      localMap[SITE_VIEW_KEY] = currentLocal;
-      saveLocalViews(localMap);
-      siteViewsCache = currentLocal;
-      renderSiteViewsBadge();
-
+    async function createCount(key, initialValue) {
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (typeof data.value === "number") {
-            siteViewsCache = Math.max(data.value, currentLocal);
-            renderSiteViewsBadge();
+        const res = await fetch(`${COUNTER_BASE}/create/${encodeURIComponent(key)}?value=${initialValue}`);
+        if (!res.ok) throw new Error("create failed");
+        const data = await res.json();
+        return typeof data.value === "number" ? data.value : initialValue;
+      } catch (e) {
+        return initialValue;
+      }
+    }
+
+    async function hitCount(key, initialValue) {
+      try {
+        const res = await fetch(`${COUNTER_BASE}/hit/${encodeURIComponent(key)}`);
+        if (!res.ok) throw new Error("hit failed");
+        const data = await res.json();
+        if (typeof data.value === "number") {
+          if (initialValue !== undefined && data.value < initialValue) {
+            return await createCount(key, initialValue + 1);
           }
+          return data.value;
         }
-      } catch {}
-    }
-
-    function getCounterKey(testId) {
-      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_-]/g, "_")}`;
-    }
-
-    function getDisplayCount(testId) {
-      const localMap = loadLocalViews();
-      const key = getCounterKey(testId);
-      const remoteVal = Number(statsCache[testId] || 0);
-      const localVal = Number(localMap[key] || 0);
-      return Math.max(remoteVal, localVal);
-    }
-
-    function updateCounterBadges(testId) {
-      const count = getDisplayCount(testId);
-      const badgeEl = document.getElementById(`count-${testId}`);
-      if (badgeEl) {
-        badgeEl.textContent = `${count} iştirak`;
-      }
-      if (currentTest && currentTest.id === testId) {
-        const qVisitsEl = document.getElementById("q-visits");
-        if (qVisitsEl) {
-          qVisitsEl.textContent = `👥 ${count} iştirak`;
+        return initialValue !== undefined ? initialValue + 1 : 1;
+      } catch (e) {
+        try {
+          const current = await fetchCount(key, initialValue !== undefined ? initialValue : 0);
+          return current + 1;
+        } catch (err) {
+          return initialValue !== undefined ? initialValue + 1 : 1;
         }
       }
     }
 
-    async function recordTestAttempt(testId) {
-      const localMap = loadLocalViews();
-      const key = getCounterKey(testId);
-      const nextLocal = Number(localMap[key] || 0) + 1;
-      localMap[key] = nextLocal;
-      saveLocalViews(localMap);
-      statsCache[testId] = Math.max(Number(statsCache[testId] || 0), nextLocal);
-      updateCounterBadges(testId);
+    async function initSiteViews() {
+      const countEl = document.getElementById("site-views-count");
+      const localKey = "bilik_arenasi_site_views_local";
+      let localVal = Number(localStorage.getItem(localKey) || "142") + 1;
+      localStorage.setItem(localKey, String(localVal));
+      if (countEl) countEl.textContent = String(localVal);
 
-      try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${key}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (typeof data.value === "number") {
-            statsCache[testId] = Math.max(data.value, nextLocal);
-            updateCounterBadges(testId);
-          }
-        }
-      } catch {}
-    }
-
-    async function loadAllTestCounts() {
-      const localMap = loadLocalViews();
-      TESTS.forEach((t) => {
-        const key = getCounterKey(t.id);
-        statsCache[t.id] = Number(localMap[key] || 0);
-        updateCounterBadges(t.id);
-      });
-
-      await Promise.all(
-        TESTS.map(async (t) => {
-          const key = getCounterKey(t.id);
-          try {
-            const res = await fetch(`${COUNTER_BASE}/get/${key}`);
-            if (res.ok) {
-              const data = await res.json();
-              if (typeof data.value === "number") {
-                statsCache[t.id] = Math.max(data.value, Number(localMap[key] || 0));
-                updateCounterBadges(t.id);
-              }
-            }
-          } catch {}
-        })
-      );
+      const remoteVal = await hitCount(SITE_VIEW_KEY, 142);
+      const finalVal = Math.max(localVal, remoteVal);
+      localStorage.setItem(localKey, String(finalVal));
+      if (countEl) countEl.textContent = String(finalVal);
     }
 
     function setFilter(group, btn) {
       activeFilter = group;
-      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
       if (btn) btn.classList.add("active");
-      renderTestList();
+      renderTests();
     }
 
-    function renderTestList() {
-      const listEl = document.getElementById("test-list");
-      const filtered = activeFilter === "all" ? TESTS : TESTS.filter((t) => t.group === activeFilter);
-      listEl.innerHTML = filtered.map((t) => `
+    async function renderTests() {
+      const list = document.getElementById("test-list");
+      const filtered = activeFilter === "all"
+        ? TESTS
+        : TESTS.filter(t => t.group === activeFilter);
+
+      list.innerHTML = filtered.map(t => `
         <div class="test-card">
           <div class="test-card-left">
             <div class="num-badge">
               <div class="num-badge-main">${t.num}</div>
-              <div class="num-badge-tag">ÖDƏNİŞSİZ</div>
+              <div class="num-badge-tag">AKTİV</div>
             </div>
             <div>
               <h3 class="test-title">${t.title}</h3>
               <div class="test-meta">
                 <span>${t.questions.length} sual</span>
-                <span>⏱ ${t.minutes} dəqiqə</span>
-                <span>100 ballıq şkala</span>
-                <span class="count-pill" id="count-${t.id}">${getDisplayCount(t.id)} iştirak</span>
+                <span>⏱ ${t.minutes} dəq</span>
+                <span class="count-pill" id="count-${t.id}">${formatParticipantLabel(getFallbackParticipantCount(t))}</span>
               </div>
             </div>
           </div>
-          <button type="button" class="btn-purple" onclick="startTest('${t.id}')">Sınağa başla</button>
+          <button type="button" class="btn-purple" onclick="startQuiz('${t.id}')">Sınağa başla</button>
         </div>
       `).join("");
+
+      for (const t of filtered) {
+        const fallback = getFallbackParticipantCount(t);
+        const val = await fetchCount(counterKeyForTest(t.id), fallback);
+        const finalCount = Math.max(fallback, val);
+        const badge = document.getElementById(`count-${t.id}`);
+        if (badge) {
+          badge.textContent = formatParticipantLabel(finalCount);
+        }
+      }
     }
 
-    function goHome() {
-      if (timerInterval) clearInterval(timerInterval);
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("result-view").style.display = "none";
-      document.getElementById("home-view").style.display = "block";
-      renderTestList();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    function formatTimer(sec) {
+      const s = Math.max(0, sec);
+      const m = Math.floor(s / 60);
+      const r = s % 60;
+      return `⏱ ${String(m).padStart(2, "0")}:${String(r).padStart(2, "0")}`;
     }
 
-    function startTest(testId) {
-      const found = TESTS.find((t) => t.id === testId);
+    function updateTimerUI() {
+      const el = document.getElementById("q-timer");
+      if (!el) return;
+      el.textContent = formatTimer(remainingSeconds);
+      el.classList.toggle("warning", remainingSeconds <= 120);
+    }
+
+    function startTimer() {
+      clearInterval(timerId);
+      updateTimerUI();
+      timerId = setInterval(() => {
+        remainingSeconds -= 1;
+        updateTimerUI();
+        if (remainingSeconds <= 0) {
+          clearInterval(timerId);
+          finishQuiz();
+        }
+      }, 1000);
+    }
+
+    async function startQuiz(testId) {
+      const found = TESTS.find(t => t.id === testId);
       if (!found) return;
 
-      const preparedQuestions = prepareShuffledQuestions(found.questions);
-      currentTest = {
-        ...found,
-        questions: preparedQuestions
-      };
+      currentTest = found;
+      activeQuestions = prepareShuffledQuestions(found.questions);
       currentIndex = 0;
-      userAnswers = Array(currentTest.questions.length).fill(null);
-      confirmedFlags = Array(currentTest.questions.length).fill(false);
-      remainingSeconds = currentTest.minutes * 60;
+      userAnswers = Array(activeQuestions.length).fill(null);
+      confirmed = Array(activeQuestions.length).fill(false);
+      remainingSeconds = (found.minutes || 45) * 60;
 
       document.getElementById("home-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
-      document.getElementById("q-test-title").textContent = currentTest.title;
+      document.getElementById("q-test-title").textContent = found.title;
 
-      recordTestAttempt(currentTest.id);
+      const localNextCount = incrementFallbackParticipantCount(found);
+      const visitsEl = document.getElementById("q-visits");
+      if (visitsEl) visitsEl.textContent = formatParticipantLabel(localNextCount);
+
+      const listBadge = document.getElementById(`count-${found.id}`);
+      if (listBadge) listBadge.textContent = formatParticipantLabel(localNextCount);
+
       startTimer();
       renderQuestion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
 
-    function startTimer() {
-      if (timerInterval) clearInterval(timerInterval);
-      updateTimerDisplay();
-      timerInterval = setInterval(() => {
-        remainingSeconds--;
-        if (remainingSeconds <= 0) {
-          remainingSeconds = 0;
-          clearInterval(timerInterval);
-          updateTimerDisplay();
-          finishQuiz();
-          return;
-        }
-        updateTimerDisplay();
-      }, 1000);
-    }
-
-    function updateTimerDisplay() {
-      const el = document.getElementById("q-timer");
-      if (!el) return;
-      const mins = Math.floor(remainingSeconds / 60);
-      const secs = remainingSeconds % 60;
-      el.textContent = `⏱ ${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-      el.classList.toggle("warning", remainingSeconds <= 180);
-    }
-
-    function normalizeOpenAnswer(val) {
-      return String(val || "")
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, " ")
-        .replace(/,/g, ".");
-    }
-
-    function isQuestionCorrect(q, userAns) {
-      if (userAns === null || userAns === undefined || String(userAns).trim() === "") return false;
-      if (q.open) {
-        const normUser = normalizeOpenAnswer(userAns);
-        const list = Array.isArray(q.accepted) ? q.accepted : [q.answer];
-        return list.some(item => normalizeOpenAnswer(item) === normUser);
+      const updated = await hitCount(counterKeyForTest(found.id), localNextCount - 1);
+      const syncedCount = Math.max(localNextCount, updated);
+      if (visitsEl && currentTest && currentTest.id === found.id) {
+        visitsEl.textContent = formatParticipantLabel(syncedCount);
       }
-      return userAns === q.answer;
+      if (listBadge) {
+        listBadge.textContent = formatParticipantLabel(syncedCount);
+      }
+    }
+
+    function isQuestionCorrect(q, ans) {
+      if (ans === null || ans === undefined || String(ans).trim() === "") return false;
+      if (q.open) {
+        const norm = String(ans).trim().toLowerCase().replace(/\s+/g, " ");
+        const list = (q.accepted || [q.answer]).map(a => String(a).trim().toLowerCase().replace(/\s+/g, " "));
+        return list.includes(norm);
+      }
+      return ans === q.answer;
     }
 
     function renderJumpBar() {
       const bar = document.getElementById("q-jump-bar");
-      if (!bar || !currentTest) return;
-
-      bar.innerHTML = currentTest.questions.map((q, idx) => {
+      if (!bar) return;
+      bar.innerHTML = activeQuestions.map((q, idx) => {
         const classes = ["q-jump-btn"];
         if (idx === currentIndex) {
           classes.push("current-q");
-        } else if (confirmedFlags[idx]) {
+        } else if (confirmed[idx]) {
           classes.push(isQuestionCorrect(q, userAnswers[idx]) ? "ok-state" : "bad-state");
         } else if (userAnswers[idx] !== null && String(userAnswers[idx]).trim() !== "") {
           classes.push("picked-state");
@@ -3235,23 +3247,22 @@
     }
 
     function jumpToQuestion(idx) {
-      if (!currentTest || idx < 0 || idx >= currentTest.questions.length) return;
+      if (idx < 0 || idx >= activeQuestions.length) return;
       currentIndex = idx;
       renderQuestion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function renderQuestion() {
-      const q = currentTest.questions[currentIndex];
-      const total = currentTest.questions.length;
-      const isConfirmed = confirmedFlags[currentIndex];
-      const selected = userAnswers[currentIndex];
+      const q = activeQuestions[currentIndex];
+      const total = activeQuestions.length;
+      const isConf = confirmed[currentIndex];
+      const picked = userAnswers[currentIndex];
 
-      document.getElementById("q-visits").textContent = `👥 ${getDisplayCount(currentTest.id)} iştirak`;
+      renderJumpBar();
+
       document.getElementById("q-progress").textContent = `Sual ${currentIndex + 1} / ${total}`;
       document.getElementById("q-point-tag").textContent = `${q.points} bal`;
       document.getElementById("q-text").innerHTML = q.q;
-      renderJumpBar();
 
       const optsEl = document.getElementById("q-options");
       const openWrap = document.getElementById("q-open-wrap");
@@ -3259,42 +3270,41 @@
 
       if (q.open) {
         optsEl.style.display = "none";
-        optsEl.innerHTML = "";
         openWrap.style.display = "block";
-        openInput.value = selected || "";
-        openInput.disabled = isConfirmed;
+        openInput.value = picked || "";
+        openInput.disabled = isConf;
       } else {
-        openWrap.style.display = "none";
         optsEl.style.display = "flex";
-        optsEl.innerHTML = q.options.map((opt) => {
+        openWrap.style.display = "none";
+        optsEl.innerHTML = q.options.map(opt => {
           let cls = "opt-btn";
-          if (isConfirmed) {
+          if (isConf) {
             if (opt === q.answer) cls += " correct";
-            else if (opt === selected) cls += " wrong";
-          } else if (opt === selected) {
+            else if (opt === picked) cls += " wrong";
+          } else if (opt === picked) {
             cls += " picked";
           }
-          const safeOpt = opt.replace(/'/g, "&#39;");
-          return `<button type="button" class="${cls}" ${isConfirmed ? "disabled" : ""} onclick="selectOption('${safeOpt}')">${opt}</button>`;
+          return `<button type="button" class="${cls}" ${isConf ? "disabled" : ""} onclick="selectOption('${opt.replace(/'/g, "&#39;")}')">${opt}</button>`;
         }).join("");
       }
 
       const confirmBtn = document.getElementById("btn-confirm");
-      confirmBtn.disabled = isConfirmed;
-      confirmBtn.textContent = isConfirmed ? "Cavab təsdiqləndi" : "Cavabı təsdiqlə";
+      confirmBtn.disabled = isConf || (picked === null || String(picked).trim() === "");
+      confirmBtn.textContent = isConf ? "Təsdiqləndi" : "Cavabı təsdiqlə";
 
-      const explainEl = document.getElementById("q-explain");
-      if (isConfirmed) {
-        const ok = isQuestionCorrect(q, selected);
-        explainEl.style.display = "block";
-        explainEl.className = `explain-box ${ok ? "ok" : "bad"}`;
-        explainEl.innerHTML = `
-          <div style="font-weight:800; margin-bottom:4px;">${ok ? `✓ Doğrudur! (+${q.points} bal)` : `✗ Səhvdir (0 bal). Düzgün cavab: ${q.answer}`}</div>
-          <div>${q.explain}</div>
+      const expEl = document.getElementById("q-explain");
+      if (isConf) {
+        const ok = isQuestionCorrect(q, picked);
+        expEl.style.display = "block";
+        expEl.className = `explain-box ${ok ? "ok" : "bad"}`;
+        expEl.innerHTML = `
+          <div style="font-weight:800; margin-bottom:6px;">
+            ${ok ? `✓ Doğru cavab! (+${q.points} bal)` : `✕ Yanlış cavab! Doğru cavab: ${q.answer}`}
+          </div>
+          <div>${q.explain || ""}</div>
         `;
       } else {
-        explainEl.style.display = "none";
-        explainEl.innerHTML = "";
+        expEl.style.display = "none";
       }
 
       document.getElementById("btn-prev").disabled = currentIndex === 0;
@@ -3304,25 +3314,23 @@
     }
 
     function selectOption(opt) {
-      if (confirmedFlags[currentIndex]) return;
+      if (confirmed[currentIndex]) return;
       userAnswers[currentIndex] = opt;
       renderQuestion();
     }
 
     function onOpenInput(val) {
-      if (confirmedFlags[currentIndex]) return;
+      if (confirmed[currentIndex]) return;
       userAnswers[currentIndex] = val;
+      const confirmBtn = document.getElementById("btn-confirm");
+      confirmBtn.disabled = String(val).trim() === "";
       renderJumpBar();
     }
 
     function confirmAnswer() {
-      const q = currentTest.questions[currentIndex];
-      const ans = userAnswers[currentIndex];
-      if (ans === null || ans === undefined || String(ans).trim() === "") {
-        alert(q.open ? "Zəhmət olmasa, cavabı yazın!" : "Zəhmət olmasa, bir variant seçin!");
-        return;
-      }
-      confirmedFlags[currentIndex] = true;
+      const picked = userAnswers[currentIndex];
+      if (picked === null || String(picked).trim() === "") return;
+      confirmed[currentIndex] = true;
       renderQuestion();
     }
 
@@ -3330,74 +3338,82 @@
       if (currentIndex > 0) {
         currentIndex--;
         renderQuestion();
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
 
     function nextQuestion() {
-      if (currentIndex < currentTest.questions.length - 1) {
+      if (currentIndex < activeQuestions.length - 1) {
         currentIndex++;
         renderQuestion();
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
 
     function finishQuiz() {
-      if (timerInterval) clearInterval(timerInterval);
-      let correctCount = 0;
+      clearInterval(timerId);
       let earnedPoints = 0;
-      let maxPoints = 0;
+      let totalPoints = 0;
+      let correctCount = 0;
+      let wrongCount = 0;
 
-      currentTest.questions.forEach((q, i) => {
-        maxPoints += q.points;
-        if (isQuestionCorrect(q, userAnswers[i])) {
+      activeQuestions.forEach((q, idx) => {
+        const pts = q.points || 4;
+        totalPoints += pts;
+        const ans = userAnswers[idx];
+        const hasAnswered = ans !== null && ans !== undefined && String(ans).trim() !== "";
+        if (isQuestionCorrect(q, ans)) {
+          earnedPoints += pts;
           correctCount++;
-          earnedPoints += q.points;
+        } else if (hasAnswered) {
+          wrongCount++;
         }
       });
-
-      const wrongCount = currentTest.questions.length - correctCount;
-      const score100 = maxPoints > 0 ? Math.round((earnedPoints / maxPoints) * 100) : 0;
 
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "block";
       document.getElementById("result-summary").textContent =
-        `${currentTest.title} — Toplanan bal: ${earnedPoints} / ${maxPoints} (100 ballıq şkalada: ${score100} bal)`;
+        `${currentTest.title} — Toplam bal: ${earnedPoints} / ${totalPoints}`;
 
       document.getElementById("result-stats").innerHTML = `
         <div class="stat-box score-box">
-          <div class="stat-num">${score100} / 100</div>
-          <div class="stat-label">Yekun Bal</div>
+          <div class="stat-num">${earnedPoints} / ${totalPoints}</div>
+          <div class="stat-label">Toplam Bal</div>
         </div>
         <div class="stat-box ok-box">
           <div class="stat-num">${correctCount}</div>
-          <div class="stat-label">Düzgün Cavab</div>
+          <div class="stat-label">Doğru Cavab</div>
         </div>
         <div class="stat-box bad-box">
           <div class="stat-num">${wrongCount}</div>
-          <div class="stat-label">Səhv / Cavabsız</div>
+          <div class="stat-label">Yanlış Cavab</div>
         </div>
       `;
 
-      document.getElementById("result-list").innerHTML = currentTest.questions.map((q, i) => {
-        const userAns = userAnswers[i];
-        const ok = isQuestionCorrect(q, userAns);
+      document.getElementById("result-list").innerHTML = activeQuestions.map((q, idx) => {
+        const ans = userAnswers[idx];
+        const ok = isQuestionCorrect(q, ans);
+        const pts = q.points || 4;
         return `
           <div class="explain-box ${ok ? "ok" : "bad"}" style="margin-top:10px;">
-            <div style="font-weight:800;">Sual ${i + 1} (${ok ? `+${q.points} bal` : "0 bal"}): ${q.q}</div>
-            <div style="margin-top:4px;">Sizin cavabınız: <strong>${userAns && String(userAns).trim() !== "" ? userAns : "Cavab verilməyib"}</strong></div>
-            <div>Düzgün cavab: <strong>${q.answer}</strong></div>
-            <div style="margin-top:4px; color:#334155;">${q.explain}</div>
+            <div style="font-weight:800;">Sual ${idx + 1} (${pts} bal): ${ok ? "Doğru" : "Yanlış"}</div>
+            <div style="margin:4px 0;">${q.q}</div>
+            <div style="font-size:0.86rem;">Sizin cavabınız: <strong>${ans || "Cavab verilməyib"}</strong> | Doğru cavab: <strong>${q.answer}</strong></div>
+            <div style="font-size:0.84rem; margin-top:4px;">${q.explain || ""}</div>
           </div>
         `;
       }).join("");
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    renderTestList();
-    trackSiteView();
-    loadAllTestCounts();
+    function goHome() {
+      clearInterval(timerId);
+      currentTest = null;
+      document.getElementById("quiz-view").style.display = "none";
+      document.getElementById("result-view").style.display = "none";
+      document.getElementById("home-view").style.display = "block";
+      renderTests();
+    }
+
+    initSiteViews();
+    renderTests();
   </script>
 </body>
 </html>
