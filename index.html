@@ -277,11 +277,11 @@
     }
     .num-badge {
       flex-shrink: 0;
-      width: 68px;
+      min-width: 78px;
       border-radius: 14px;
       background: #4c1d95;
       color: #ffffff;
-      padding: 10px 6px;
+      padding: 10px 7px;
       text-align: center;
     }
     .num-badge-main {
@@ -293,10 +293,11 @@
       display: inline-block;
       background: #22c55e;
       color: #ffffff;
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 800;
       padding: 2px 6px;
       border-radius: 999px;
+      letter-spacing: 0.3px;
     }
     .test-title {
       margin: 0 0 6px;
@@ -792,6 +793,195 @@
     }
 
     const TESTS = [
+      {
+        id: "muqayise-meseleleri-miq-sertifikasiya",
+        num: "№1",
+        title: "Müqayisə məsələləri-İbtidai MİQ və Sertifikasiya (30 SUAL)",
+        group: "1-4",
+        minutes: 45,
+        questions: [
+          {
+            q: "1. \"★\" yerinə hansı rəqəmlər yazıldıqda 74★8 > 7429 bərabərsizliyi doğru olar?",
+            options: ["A) 0, 1", "B) 1, 2", "C) 0, 2", "D) 3, 4", "E) heç biri"],
+            answer: "D) 3, 4",
+            explain: "Minliklər (7 = 7) və yüzlüklər (4 = 4) bərabərdir. Təkliklərdə 8 < 9 olduğu üçün onluqlardakı \"★\" rəqəmi 2-dən böyük olmalıdır (3, 4, 5, 6, 7, 8, 9). Variantlarda uyğun rəqəmlər 3, 4-dür."
+          },
+          {
+            q: "2. a + 9 = b + 6 = c + 3 = 21 olarsa, a, b və c ədədlərini artan sıra ilə düzün.",
+            options: ["A) a, b, c", "B) c, b, a", "C) b, a, c", "D) c, a, b", "E) b, c, a"],
+            answer: "A) a, b, c",
+            explain: "Hər bir ifadəni 21-ə bərabər edib məchulları tapaq: a = 21 - 9 = 12; b = 21 - 6 = 15; c = 21 - 3 = 18. Artan sıra (kiçikdən böyüyə): 12 < 15 < 18, yəni a, b, c."
+          },
+          {
+            q: "3. a - 5 = b - 8 = c - 11 = 12 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a < b < c", "B) c < b < a", "C) b < a < c", "D) c < a < b", "E) a < c < b"],
+            answer: "A) a < b < c",
+            explain: "Hər bir ifadəni 12-yə bərabər edək: a = 12 + 5 = 17; b = 12 + 8 = 20; c = 12 + 11 = 23. Müqayisə: 17 < 20 < 23 ⇒ a < b < c."
+          },
+          {
+            q: "4. a : 4 = b : 7 = c : 9 = 5 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a < b < c", "B) c < b < a", "C) b < a < c", "D) a < c < b", "E) b < c < a"],
+            answer: "A) a < b < c",
+            explain: "Bölünəni tapmaq üçün qisməti bölənə vururuq: a = 5 × 4 = 20; b = 5 × 7 = 35; c = 5 × 9 = 45. Müqayisə: 20 < 35 < 45 ⇒ a < b < c."
+          },
+          {
+            q: "5. a - 10 = b - 6 = c - 14 = 15 olarsa, artan sıra hansıdır?",
+            options: ["A) a, b, c", "B) c, b, a", "C) b, c, a", "D) c, a, b", "E) b, a, c"],
+            answer: "E) b, a, c",
+            explain: "Ədədləri hesablayaq: a = 15 + 10 = 25; b = 15 + 6 = 21; c = 15 + 14 = 29. Artan sıra: 21 < 25 < 29, yəni b, a, c."
+          },
+          {
+            q: "6. \"★\" yerinə hansı rəqəmlər yazıldıqda 46★3 < 4682 bərabərsizliyi doğru olar?",
+            options: ["A) yalnız 8", "B) 8 və 9", "C) 0–7", "D) yalnız 9", "E) 0–8"],
+            answer: "C) 0–7",
+            explain: "Minliklər (4 = 4) və yüzlüklər (6 = 6) eynidir. Təkliklərdə 3 > 2 olduğu üçün 46★3 ədədinin kiçik olması üçün onluqlardakı \"★\" rəqəmi 8-dən kiçik olmalıdır (0, 1, 2, 3, 4, 5, 6, 7)."
+          },
+          {
+            q: "7. a + 12 = b + 4 = c + 8 = 25 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a < b < c", "B) c < b < a", "C) b < c < a", "D) a < c < b", "E) b < a < c"],
+            answer: "D) a < c < b",
+            explain: "Ədədləri tapaq: a = 25 - 12 = 13; b = 25 - 4 = 21; c = 25 - 8 = 17. Müqayisə: 13 < 17 < 21 ⇒ a < c < b."
+          },
+          {
+            q: "8. a : 3 = b : 5 = c : 8 = 6 olarsa, a, b və c ədədlərini azalan sıra ilə düzün.",
+            options: ["A) a, b, c", "B) c, b, a", "C) b, a, c", "D) a, c, b", "E) b, c, a"],
+            answer: "B) c, b, a",
+            explain: "Ədədləri tapaq: a = 6 × 3 = 18; b = 6 × 5 = 30; c = 6 × 8 = 48. Azalan sıra (böyükdən kiçiyə): 48 > 30 > 18, yəni c, b, a."
+          },
+          {
+            q: "9. 3a = 6b = 9c = 54 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b > c", "B) c > b > a", "C) b > a > c", "D) a > c > b", "E) b > c > a"],
+            answer: "A) a > b > c",
+            explain: "Hasili məlum vuruğa bölək: a = 54 : 3 = 18; b = 54 : 6 = 9; c = 54 : 9 = 6. Müqayisə: 18 > 9 > 6 ⇒ a > b > c."
+          },
+          {
+            q: "10. 2a + 3 = 2b + 7 = 2c + 11 = 23 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b > c", "B) c > b > a", "C) b > a > c", "D) a > c > b", "E) b > c > a"],
+            answer: "A) a > b > c",
+            explain: "Tənlikləri ayrı-ayrı həll edək: 2a = 23 - 3 = 20 ⇒ a = 10; 2b = 23 - 7 = 16 ⇒ b = 8; 2c = 23 - 11 = 12 ⇒ c = 6. Müqayisə: 10 > 8 > 6 ⇒ a > b > c."
+          },
+          {
+            q: "11. a : 3 = b : 6 = c : 10 = 4 olarsa, a, b və c ədədlərini artan sıra ilə düzün.",
+            options: ["A) b, a, c", "B) c, b, a", "C) a, b, c", "D) a, c, b", "E) b, c, a"],
+            answer: "C) a, b, c",
+            explain: "Ədədləri tapaq: a = 4 × 3 = 12; b = 4 × 6 = 24; c = 4 × 10 = 40. Artan sıra: 12 < 24 < 40, yəni a, b, c."
+          },
+          {
+            q: "12. a + 8 = b + 5 = c + 2 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b > c", "B) c > b > a", "C) b > a > c", "D) a > c > b", "E) b > c > a"],
+            answer: "B) c > b > a",
+            explain: "Toplama əməlində cəmlər bərabərdirsə, böyük ədədin üzərinə kiçik ədəd gəlinir (8 > 5 > 2 olduğu üçün a < b < c, yəni c > b > a). Məsələn, cəmi 10 götürsək: a = 2, b = 5, c = 8."
+          },
+          {
+            q: "13. 4a = 2b = 3c = 48 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b > c", "B) c > b > a", "C) b > a > c", "D) a > c > b", "E) b > c > a"],
+            answer: "E) b > c > a",
+            explain: "Ədədləri hesablayaq: a = 48 : 4 = 12; b = 48 : 2 = 24; c = 48 : 3 = 16. Müqayisə: 24 > 16 > 12 ⇒ b > c > a."
+          },
+          {
+            q: "14. 3a + 4 = 3b + 10 = 3c + 16 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b > c", "B) c > b > a", "C) b > a > c", "D) a > c > b", "E) a > b < c"],
+            answer: "A) a > b > c",
+            explain: "İfadələri 19-a bərabər götürək: 3a + 4 = 19 ⇒ 3a = 15 ⇒ a = 5; 3b + 10 = 19 ⇒ 3b = 9 ⇒ b = 3; 3c + 16 = 19 ⇒ 3c = 3 ⇒ c = 1. Müqayisə: 5 > 3 > 1 ⇒ a > b > c."
+          },
+          {
+            q: "15. \"★\" yerinə hansı rəqəmlər yazıldıqda 83★5 > 8387 bərabərsizliyi doğru olar?",
+            options: ["A) yalnız 8", "B) 8 və 9", "C) yalnız 9", "D) 0–8", "E) heç biri"],
+            answer: "C) yalnız 9",
+            explain: "Minliklər (8 = 8) və yüzlüklər (3 = 3) bərabərdir. Təkliklərdə 5 < 7 olduğu üçün sol tərəfin böyük olması üçün onluqlardakı \"★\" rəqəmi 8-dən böyük olmalıdır. 8-dən böyük yeganə rəqəm 9-dur."
+          },
+          {
+            q: "16. a + 14 = b + 9 = c + 4 olarsa, a, b və c ədədlərini artan sıra ilə düzün.",
+            options: ["A) a, b, c", "B) c, b, a", "C) b, c, a", "D) c, a, b", "E) b, a, c"],
+            answer: "A) a, b, c",
+            explain: "Cəmi 20 götürərək yoxlayaq: a = 20 - 14 = 6; b = 20 - 9 = 11; c = 20 - 4 = 16. Artan sıra: 6 < 11 < 16, yəni a, b, c."
+          },
+          {
+            q: "17. a - 16 = b - 8 = c - 12 = 15 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b < c", "B) c > b > a", "C) a > b > c", "D) a > c > b", "E) b > c > a"],
+            answer: "D) a > c > b",
+            explain: "Hər bir ifadəni 15-ə bərabər edib məchulları tapaq: a = 15 + 16 = 31; b = 15 + 8 = 23; c = 15 + 12 = 27. Müqayisə: 31 > 27 > 23 ⇒ a > c > b."
+          },
+          {
+            q: "18. a : 11 = b : 7 = c : 4 olarsa, a, b və c ədədlərini azalan sıra ilə düzün.",
+            options: ["A) a, b, c", "B) c, b, a", "C) b, a, c", "D) a, c, b", "E) b, c, a"],
+            answer: "A) a, b, c",
+            explain: "Qismətləri 1 qəbul edərək ədədləri hesablayaq: a = 1 × 11 = 11; b = 1 × 7 = 7; c = 1 × 4 = 4. Azalan sıra (böyükdən kiçiyə): 11 > 7 > 4, yəni a, b, c."
+          },
+          {
+            q: "19. 2a - 4 = 2b - 10 = 2c - 2 = 16 olarsa, a, b və c ədədlərini artan sıra ilə düzün.",
+            options: ["A) a, b, c", "B) c, b, a", "C) b, c, a", "D) b, a, c", "E) c, a, b"],
+            answer: "E) c, a, b",
+            explain: "Tənlikləri ayrı-ayrı həll edək: 2a = 16 + 4 = 20 ⇒ a = 10; 2b = 16 + 10 = 26 ⇒ b = 13; 2c = 16 + 2 = 18 ⇒ c = 9. Artan sıra (kiçikdən böyüyə): 9 < 10 < 13, yəni c, a, b."
+          },
+          {
+            q: "20. \"★\" yerinə hansı rəqəmlər yazıldıqda 62★9 < 6214 bərabərsizliyi doğru olar?",
+            options: ["A) 0 və 1", "B) yalnız 0", "C) yalnız 1", "D) 2–9", "E) heç biri"],
+            answer: "B) yalnız 0",
+            explain: "Minliklər (6 = 6) və yüzlüklər (2 = 2) bərabərdir. Təkliklərdə 9 > 4 olduğu üçün sol tərəfin kiçik olması üçün onluqlardakı \"★\" rəqəmi 1-dən kiçik olmalıdır. 1-dən kiçik yeganə rəqəm 0-dır."
+          },
+          {
+            q: "21. a + 7 = b + 11 = c + 3 olarsa, aşağıdakılardan hansı doğrudur?",
+            options: ["A) a > b > c", "B) c > b > a", "C) c > a > b", "D) a > c > b", "E) b > a > c"],
+            answer: "C) c > a > b",
+            explain: "Cəmi 15 götürərək yoxlayaq: a = 15 - 7 = 8; b = 15 - 11 = 4; c = 15 - 3 = 12. Müqayisə: 12 > 8 > 4 ⇒ c > a > b."
+          },
+          {
+            q: "22. «x ədədi y-dən 7 vahid kiçik, z-dən 4 dəfə böyükdür» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) x + 7 = y = 4z", "B) x - 7 = y = z : 4", "C) y - 7 = x = z : 4", "D) y + 7 = x = 4z", "E) x = y + 7 = 4z"],
+            answer: "D) y + 7 = x = 4z",
+            explain: "Şərtləri x ilə əlaqələndirək: x ədədi y-dən 7 vahid kiçikdir ⇒ x = y - 7 (yəni y + 7 = x); x ədədi z-dən 4 dəfə böyükdür ⇒ x = 4z. Buradan y + 7 = x = 4z uyğunluğu alınır."
+          },
+          {
+            q: "23. «a ədədi b-dən 4 dəfə böyük, c-dən 11 vahid kiçikdir» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) a : 4 = b = c - 11", "B) 4a = b = c + 11", "C) a = b : 4 = c + 11", "D) 4a = b = c - 11", "E) a : 4 = b = c + 11"],
+            answer: "A) a : 4 = b = c - 11",
+            explain: "Hər iki şərti a vasitəsilə yazaq: a = 4b ⇒ b = a : 4; a = c - 11. Bu halda a : 4 = b = c - 11 alınır."
+          },
+          {
+            q: "24. «m ədədi n-dən 15 vahid böyük, k-dan 3 dəfə kiçikdir» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) m + 15 = n = 3k", "B) m - 15 = n = k : 3", "C) m - 15 = n = 3k", "D) n + 15 = m = k : 3", "E) m = n + 15 = 3k"],
+            answer: "B) m - 15 = n = k : 3",
+            explain: "Şərtləri m ilə ifadə edək: m = n + 15 ⇒ m - 15 = n; m = k : 3. Bərabərliyi birləşdirsək: m - 15 = n = k : 3."
+          },
+          {
+            q: "25. «p ədədi q-dən 5 dəfə böyük, r-dən 18 vahid kiçikdir» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) p : 5 = q = r - 18", "B) p : 5 = q = r + 18", "C) 5p = q = r - 18", "D) p = q : 5 = r + 18", "E) 5p = q = r + 18"],
+            answer: "A) p : 5 = q = r - 18",
+            explain: "Şərtləri p ilə ifadə edək: p = 5q ⇒ p : 5 = q; p = r - 18. Bərabərliyi birləşdirsək: p : 5 = q = r - 18."
+          },
+          {
+            q: "26. «x ədədi y-dən 8 vahid böyük, z-dən 4 dəfə kiçikdir» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) x - 8 = y = z : 4", "B) y - 8 = x = 4z", "C) x + 8 = y = 4z", "D) x - 8 = y = 4z", "E) x = y + 8 = z : 4"],
+            answer: "A) x - 8 = y = z : 4",
+            explain: "Şərtləri x ilə ifadə edək: x = y + 8 ⇒ x - 8 = y; x = z : 4. Bərabərliyi birləşdirsək: x - 8 = y = z : 4."
+          },
+          {
+            q: "27. «a ədədi b-dən 16 vahid kiçik, c-dən 6 dəfə böyükdür» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) a + 16 = b = 6c", "B) a - 16 = b = 6c", "C) a + 16 = b = c : 6", "D) b + 16 = a = 6c", "E) a = b + 16 = 6c"],
+            answer: "A) a + 16 = b = 6c",
+            explain: "Şərtləri a ilə ifadə edək: a = b - 16 ⇒ a + 16 = b; a = 6c. Bərabərliyi birləşdirsək: a + 16 = b = 6c."
+          },
+          {
+            q: "28. «k ədədi m-dən 13 vahid böyük, n-dən 2 dəfə kiçikdir» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) k + 13 = m = 2n", "B) k - 13 = m = n : 2", "C) m - 13 = k = 2n", "D) k - 13 = m = 2n", "E) k = m + 13 = 2n"],
+            answer: "B) k - 13 = m = n : 2",
+            explain: "Şərtləri k ilə ifadə edək: k = m + 13 ⇒ k - 13 = m; k = n : 2. Bərabərliyi birləşdirsək: k - 13 = m = n : 2."
+          },
+          {
+            q: "29. «x ədədi y-dən 7 dəfə böyük, z-dən 9 vahid böyükdür» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) x : 7 = y = z + 9", "B) x : 7 = y = z - 9", "C) 7x = y = z - 9", "D) x = y : 7 = z - 9", "E) 7x = y = z + 9"],
+            answer: "A) x : 7 = y = z + 9",
+            explain: "Şərtləri x ilə ifadə edək: x = 7y ⇒ x : 7 = y; x = z + 9. Bərabərliyi birləşdirsək: x : 7 = y = z + 9."
+          },
+          {
+            q: "30. «a ədədi b-dən 20 vahid kiçik, c-dən 5 dəfə böyükdür» mülahizəsinə aşağıdakılardan hansı uyğun gəlir?",
+            options: ["A) a - 20 = b = 5c", "B) a + 20 = b = c : 5", "C) b + 20 = a = 5c", "D) a = b + 20 = 5c", "E) a + 20 = b = 5c"],
+            answer: "E) a + 20 = b = 5c",
+            explain: "Şərtləri a ilə ifadə edək: a = b - 20 ⇒ a + 20 = b; a = 5c. Bərabərliyi birləşdirsək: a + 20 = b = 5c."
+          }
+        ]
+      },
       {
         id: "muxteser-vurma-dusturlari-1",
         num: "№1",
@@ -2750,431 +2940,198 @@
             explain: "9,20 - 3,86 = 5,34."
           },
           {
-            q: "19. 12,45 · 100 - 1200 ifadəsinin qiymətini hesablayın:",
-            options: ["A) 45", "B) 124,5", "C) 4,5", "D) 450"],
-            answer: "A) 45",
-            explain: "12,45 · 100 - 1200 = 1245 - 1200 = 45."
+            q: "19. Hasili hesablayın: 1,25 · 0,8",
+            options: ["A) 10", "B) 1", "C) 0,1", "D) 1,2"],
+            answer: "B) 1",
+            explain: "1,25 · 0,8 = 1,00 = 1."
           },
           {
-            q: "20. 5,02; 5,2; 0,52; 5,12 onluq kəsrlərindən ən kiçiyini göstərin:",
-            options: ["A) 5,2", "B) 5,12", "C) 0,52", "D) 5,02"],
-            answer: "C) 0,52",
-            explain: "Tam hissəsi 0 olan yeganə ədəd 0,52-dir və o ən kiçikdir."
+            q: "20. Qisməti tapın: 7,56 : 1,2",
+            options: ["A) 6,3", "B) 0,63", "C) 63", "D) 5,3"],
+            answer: "A) 6,3",
+            explain: "75,6 : 12 = 6,3."
           },
           {
-            q: "21. Eni 8 sm, uzunluğu isə bundan 7 sm böyük olan düzbucaqlının perimetrini tapın:",
-            options: ["A) 23 sm", "B) 46 sm", "C) 120 sm", "D) 30 sm"],
-            answer: "B) 46 sm",
-            explain: "Uzunluq = 8 + 7 = 15 sm. P = 2 · (8 + 15) = 2 · 23 = 46 sm."
+            q: "21. 120 ədədinin 35%-ni tapın:",
+            options: ["A) 35", "B) 48", "C) 42", "D) 36"],
+            answer: "C) 42",
+            explain: "120 · 0,35 = 42."
           },
           {
-            q: "22. Perimetri 32 sm olan kvadratın sahəsini tapın:",
-            options: ["A) 64 sm²", "B) 16 sm²", "C) 32 sm²", "D) 128 sm²"],
-            answer: "A) 64 sm²",
-            explain: "Kvadratın tərəfi: 32 : 4 = 8 sm. Sahəsi: 8 · 8 = 64 sm²."
+            q: "22. 25%-i 15 olan ədədi tapın:",
+            options: ["A) 375", "B) 60", "C) 45", "D) 75"],
+            answer: "B) 60",
+            explain: "15 : 0,25 = 60."
           },
           {
-            q: "23. Düz bucağın bir hissəsi 38° olarsa, digər hissəsi neçə dərəcədir?",
-            options: ["A) 62°", "B) 142°", "C) 42°", "D) 52°"],
-            answer: "D) 52°",
-            explain: "Düz bucaq 90°-dir; 90° - 38° = 52°."
+            q: "23. Katerin çaxma suya qarşı sürəti 18 km/saat, çayın axma sürəti isə 3 km/saatdır. Katerin çayın axını ilə sürətini tapın:",
+            options: ["A) 15 km/saat", "B) 21 km/saat", "C) 24 km/saat", "D) 12 km/saat"],
+            answer: "C) 24 km/saat",
+            explain: "Katerin durğun sudakı sürəti: 18 + 3 = 21 km/saat. Axın ilə sürəti: 21 + 3 = 24 km/saat."
           },
           {
-            q: "24. 12, 18 və 15 ədədlərinin ədədi ortasını tapın:",
-            options: ["A) 45", "B) 15", "C) 16", "D) 14"],
-            answer: "B) 15",
-            explain: "(12 + 18 + 15) : 3 = 45 : 3 = 15."
+            q: "24. Tərəfi 7 sm olan kvadratın sahəsini və perimetrini tapın:",
+            options: ["A) S = 28 sm², P = 49 sm", "B) S = 49 sm², P = 14 sm", "C) S = 49 sm², P = 28 sm", "D) S = 14 sm², P = 28 sm"],
+            answer: "C) S = 49 sm², P = 28 sm",
+            explain: "S = 7 · 7 = 49 sm², P = 4 · 7 = 28 sm."
           },
           {
-            q: "25. Avtomobil 60 km/saat sürətlə 4 saat yol getdi. Avtomobilin getdiyi yolu tapın:",
-            options: ["A) 15 km", "B) 240 km", "C) 64 km", "D) 180 km"],
-            answer: "B) 240 km",
-            explain: "S = v · t = 60 · 4 = 240 km."
-          }
-        ]
-      },
-      {
-        id: "buraxilis-1",
-        num: "№1",
-        title: "Buraxılış Fənləri Üzrə (X–XI) Sınaq İmtahanı №1 — Riyaziyyat",
-        group: "10-11",
-        minutes: 60,
-        questions: [
-          {
-            q: "57. Düz xətt üzərində müəyyən sayda nöqtələr qeyd edildikdə alınan şüaların sayı 8 olarsa, parçaların sayını tapın.",
-            options: ["A) 6", "B) 12", "C) 8", "D) 9", "E) 15"],
-            answer: "A) 6",
-            explain: "Düz xətt üzərində n nöqtə qeyd edildikdə 2n şüa alınır: 2n = 8 ⇒ n = 4 nöqtə. 4 nöqtədən C(4,2) = 6 parça alınır."
-          },
-          {
-            q: "58. 0,(42) sonsuz dövri onluq kəsrini adi kəsrə çevirin.",
-            options: [
-              "A) <span class=\"frac\"><span>7</span><span>90</span></span>",
-              "B) <span class=\"frac\"><span>7</span><span>33</span></span>",
-              "C) <span class=\"frac\"><span>41</span><span>99</span></span>",
-              "D) <span class=\"frac\"><span>14</span><span>33</span></span>",
-              "E) <span class=\"frac\"><span>7</span><span>15</span></span>"
-            ],
-            answer: "D) <span class=\"frac\"><span>14</span><span>33</span></span>",
-            explain: "0,(42) = <span class=\"frac\"><span>42</span><span>99</span></span> = <span class=\"frac\"><span>14</span><span>33</span></span>."
-          },
-          {
-            q: "59. Uyğun tərəfləri perpendikulyar olan bucaqlardan biri digərindən 3,5 dəfə böyükdür. Bu bucaqlardan böyüyünü tapın.",
-            options: ["A) 135°", "B) 120°", "C) 150°", "D) 140°", "E) 105°"],
-            answer: "D) 140°",
-            explain: "x + 3,5x = 180° ⇒ 4,5x = 180° ⇒ x = 40°. Böyük bucaq: 3,5 · 40° = 140°."
-          },
-          {
-            q: "60. a və b natural ədədləri üçün 2a = 3b olarsa, <span class=\"frac\"><span>a</span><span>a + b</span></span> ifadəsinin qiymətini tapın.",
-            options: ["A) 0,5", "B) 0,4", "C) 1,2", "D) 1,5", "E) 0,6"],
-            answer: "E) 0,6",
-            explain: "a = 3k, b = 2k olduqda <span class=\"frac\"><span>a</span><span>a + b</span></span> = <span class=\"frac\"><span>3k</span><span>5k</span></span> = <span class=\"frac\"><span>3</span><span>5</span></span> = 0,6."
-          },
-          {
-            q: "61. a ədədi 2-yə, b ədədi isə 6-ya qalıqsız bölünür. a · b hasili {2; 4; 6; 9; 12} çoxluğunun hansı elementinə tam bölünmür?",
-            options: ["A) 12", "B) 4", "C) 2", "D) 6", "E) 9"],
-            answer: "E) 9",
-            explain: "a · b = 12mn hasilinin 9-a bölünməsi həmişə məcburi deyil."
-          },
-          {
-            q: "62. -5,4 ədədi ilə 5,7 ədədi arasında yerləşən tam ədədlərin sayını tapın.",
-            options: ["A) 9", "B) 10", "C) 11", "D) 8", "E) 12"],
-            answer: "C) 11",
-            explain: "Aralıqdakı tam ədədlər: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 — cəmi 11 ədəd."
-          },
-          {
-            q: "63. Kəsişən a və b düz xətlərinin əmələ gətirdiyi qarşılıqlı bucaqlardan ikisinin cəmi 100°-dir. Həmin bucaqlardan birinə qonşu olan bucağı tapın.",
-            options: ["A) 150°", "B) 130°", "C) 105°", "D) 135°", "E) 120°"],
-            answer: "B) 130°",
-            explain: "Qarşılıqlı bucaqlar bərabər olduğundan hər biri 100° : 2 = 50°-dir; qonşu bucağı 180° - 50° = 130°."
-          },
-          {
-            q: "64. <span class=\"frac\"><span>8ⁿ⁺³</span><span>64ⁿ⁺¹</span></span> ifadəsini sadələşdirin.",
-            options: ["A) 16", "B) 64", "C) 4", "D) 1", "E) 8"],
-            answer: "E) 8",
-            explain: "Cavab açarındakı E (8) variantına uyğun qiymət 8-dir."
-          },
-          {
-            q: "65. A, B və C nöqtələri eyni bir düz xətt üzərində ardıcıl yerləşib. AB parçasının orta nöqtəsi ilə BC parçasının orta nöqtəsi arasındakı məsafə 9 sm olarsa, AC parçasının uzunluğunu tapın.",
-            options: ["A) 18 sm", "B) 24 sm", "C) 21 sm", "D) 25 sm", "E) 16 sm"],
-            answer: "A) 18 sm",
-            explain: "Orta nöqtələr arası məsafə <span class=\"frac\"><span>AB</span><span>2</span></span> + <span class=\"frac\"><span>BC</span><span>2</span></span> = <span class=\"frac\"><span>AC</span><span>2</span></span> = 9 sm olduğundan AC = 2 · 9 = 18 sm."
-          },
-          {
-            q: "66. Ədəd oxunda həm A və 7 nöqtələri, həm də B və (-5) nöqtələri koordinat başlanğıcından eyni məsafədə olarsa, 2 · B - A ifadəsinin qiymətini hesablayın.",
-            options: ["A) 5", "B) 18", "C) 12", "D) 3", "E) 17"],
-            answer: "E) 17",
-            explain: "Cavab açarına əsasən düzgün variant E (17)-dir."
-          },
-          {
-            q: "67. A ⊂ B və B = {1; 2; 3} olarsa, A çoxluğu hansı ola bilməz?",
-            options: ["A) {3}", "B) {1; 2}", "C) ∅", "D) {1; 2; 3; 4}", "E) {1; 2; 3}"],
-            answer: "D) {1; 2; 3; 4}",
-            explain: "4 elementi B çoxluğuna daxil deyil, ona görə {1; 2; 3; 4} altçoxluq ola bilməz."
-          },
-          {
-            q: "68. 32 qram dəmir və 8 qram misdən ibarət ərintinin neçə faizi misdir?",
-            options: ["A) 25%", "B) 16%", "C) 20%", "D) 32%", "E) 12%"],
-            answer: "C) 20%",
-            explain: "Ümumi kütlə: 32 + 8 = 40 q. Misin payı: <span class=\"frac\"><span>8</span><span>40</span></span> = 0,2 = 20%."
-          },
-          {
-            q: "69. Bərabər olmayan A və B çoxluqları üçün B ⊂ A, A çoxluğunun elementlərinin sayı a, B çoxluğunun elementlərinin sayı b olarsa, n(A ∩ B)-ni tapın.",
-            options: ["A) a - b", "B) a", "C) a + b", "D) ab", "E) b"],
-            answer: "E) b",
-            explain: "B ⊂ A olduğundan A ∩ B = B və n(A ∩ B) = b."
-          },
-          {
-            q: "70. a ∥ b və b ⊥ c düz xətləri verilib; a və c düz xətlərini kəsən düz xəttin əmələ gətirdiyi daxili birtərəfli bucaqlar 4x və 4x-dir. x-in dərəcə ölçüsünü tapın.",
-            options: ["A) 22,5°", "B) 18°", "C) 25°", "D) 30°", "E) 15°"],
-            answer: "A) 22,5°",
-            explain: "Cavab açarındakı düzgün variant A) 22,5°-dir."
-          },
-          {
-            q: "71. <span class=\"frac\"><span>1 + 10 + 100</span><span>1 + 0,1 + 0,01</span></span> ifadəsinin qiymətini hesablayın.",
-            options: ["A) 10", "B) 100", "C) 111", "D) 1,11", "E) 1000"],
-            answer: "B) 100",
-            explain: "1 + 0,1 + 0,01 = 1,11. <span class=\"frac\"><span>111</span><span>1,11</span></span> = 100."
-          },
-          {
-            q: "72. a, b və c sadə ədədləri üçün a(b + c) = 30 olarsa, abc hasilinin ən böyük qiymətini tapın.",
-            options: ["A) 30", "B) 78", "C) 60", "D) 90", "E) 105"],
-            answer: "B) 78",
-            explain: "a = 2, b = 3, c = 13 olduqda 2 · 3 · 13 = 78 alınır."
-          },
-          {
-            q: "73. |3x + 6| + |2y - 12| = 0 olarsa, x + y cəmini tapın.",
-            options: ["A) 2", "B) 4", "C) 6", "D) 8", "E) 10"],
-            answer: "B) 4",
-            explain: "3x + 6 = 0 ⇒ x = -2 və 2y - 12 = 0 ⇒ y = 6. x + y = -2 + 6 = 4."
-          },
-          {
-            q: "74. x, y, z müsbət həqiqi ədədləri üçün 2x = 3y = 5z və x + y - z = 38 olarsa, z-i tapın.",
-            options: ["A) 10", "B) 12", "C) 15", "D) 18", "E) 20"],
-            answer: "B) 12",
-            explain: "2x = 3y = 5z = 30k ⇒ x = 15k, y = 10k, z = 6k. 15k + 10k - 6k = 19k = 38 ⇒ k = 2 ⇒ z = 12."
-          },
-          {
-            q: "75. Qarşılıqlı bucaqların cəmi həmin bucaqlardan birinə qonşu olan bucağın yarısına bərabər olarsa, bu bucaqlardan böyüyünün dərəcə ölçüsünü tapın.",
-            options: ["A) 120°", "B) 135°", "C) 144°", "D) 150°", "E) 160°"],
-            answer: "C) 144°",
-            explain: "2x = <span class=\"frac\"><span>180° - x</span><span>2</span></span> ⇒ 5x = 180° ⇒ x = 36°. Qonşu bucaq: 180° - 36° = 144°."
-          },
-          {
-            q: "76. A çoxluğunun elementləri məxrəci 24 olan və sonlu onluq kəsr şəklində göstərilə bilən düzgün kəsrlərin surəti, B çoxluğunun elementləri isə 3-ə qalıqsız bölünən 30-dan kiçik natural ədədlərdir. A və B çoxluqlarını göstərin.",
-            options: [
-              "A) A={3,6,9,12,15,18,21}; B={3,6,9,12,15,18,21,24,27}",
-              "B) A={1,2,3,4}; B={3,6,9,12}",
-              "C) A={6,12,18}; B={3,6,9,15}",
-              "D) A={3,6,12,24}; B={3,9,18,27}",
-              "E) A={2,4,6,8}; B={6,12,18,24}"
-            ],
-            answer: "A) A={3,6,9,12,15,18,21}; B={3,6,9,12,15,18,21,24,27}",
-            explain: "Cavab cədvəlinə əsasən A={3,6,9,12,15,18,21} və B={3,6,9,12,15,18,21,24,27}."
-          },
-          {
-            q: "77. AB ∥ DC, AB ∥ EF, BC ∥ DE və ∠ABC bucağının dərəcə ölçüsü ∠CDE bucağının dərəcə ölçüsündən 20° kiçik olarsa, ∠DEF bucağının dərəcə ölçüsünü tapın.",
-            options: ["A) 90°", "B) 100°", "C) 110°", "D) 120°", "E) 130°"],
-            answer: "B) 100°",
-            explain: "Cavab açarındakı düzgün cavab 100°-dir."
-          },
-          {
-            q: "78. 40%-li duz məhlulunun 20%-i götürülüb, yerinə eyni qədər su əlavə etdikdə alınan məhlulun duzluluq faizini tapın.",
-            options: ["A) 24%", "B) 28%", "C) 30%", "D) 32%", "E) 36%"],
-            answer: "D) 32%",
-            explain: "Məhlulun 20%-i götürüldükdə duzun da 20%-i azalır: 40% · (1 - 0,2) = 32%."
-          },
-          {
-            q: "79. k natural ədədi üçün ƏBOB((k - 3)(k + 3); k + 3) = 2k - 1 olarsa, ƏKOB(k; k + 1) ifadəsinin qiymətini tapın.",
-            options: ["A) 12", "B) 15", "C) 20", "D) 24", "E) 30"],
-            answer: "C) 20",
-            explain: "k = 4 olduqda k + 3 = 7, 2k - 1 = 7; ƏKOB(4; 5) = 20."
-          },
-          {
-            q: "80. Rəfdə fizika, kimya və riyaziyyat olmaqla üç növ kitab var. Həsən kitabları ayırmaq üçün əvvəlcə rəfdəki bütün kitabların <span class=\"frac\"><span>1</span><span>3</span></span> hissəsini və daha 2 kitab götürərək fizika bölməsinə qoydu. Sonra rəfdə qalan kitabların yarısını və daha 3 kitab götürərək kimya bölməsinə qoydu. Rəfdə qalan kitabların 0,6 hissəsini və daha 4 kitab götürərək riyaziyyat bölməsinə qoyduqdan sonra rəfdə cəmi 8 kitab qaldı. Əvvəlcə rəfdə neçə kitab olduğunu tapın.",
-            options: ["A) 96", "B) 102", "C) 108", "D) 114", "E) 120"],
-            answer: "C) 108",
-            explain: "Sondan əvvələ hesablama ilə başlanğıcda rəfdə 108 kitab olduğu tapılır."
-          },
-          {
-            q: "81. AB ∥ CD ∥ EF düz xətləri kəsənlərlə kəsişir; ∠BED : ∠DEF = 2 : 3 və ∠CDE = ∠BED + 12° olarsa, ∠ABE-ni tapın.",
-            options: ["A) 90°", "B) 100°", "C) 110°", "D) 120°", "E) 130°"],
-            answer: "D) 120°",
-            explain: "Cavab açarındakı düzgün cavab 120°-dir."
+            q: "25. Uzunluğu 6 sm, eni 4 sm, hündürlüyü 5 sm olan düzbucaqlı paralelepipedin həcmini tapın:",
+            options: ["A) 15 sm³", "B) 148 sm³", "C) 120 sm³", "D) 60 sm³"],
+            answer: "C) 120 sm³",
+            explain: "V = a · b · c = 6 · 4 · 5 = 120 sm³."
           }
         ]
       }
     ];
 
-    let activeGroup = "all";
+    let activeFilter = "all";
     let currentTest = null;
-    let activeQuestions = [];
-    let qIdx = 0;
-    let picked = {};
-    let confirmed = {};
-    let visitCounts = {};
-    let siteViewCount = 0;
+    let currentIndex = 0;
+    let userAnswers = [];
+    let confirmedFlags = [];
     let remainingSeconds = 0;
     let timerInterval = null;
-    let quizFinished = false;
+    let statsCache = {};
+    let siteViewsCache = 0;
 
-    function readLocalViews() {
+    function loadLocalViews() {
       try {
-        const raw = localStorage.getItem(LOCAL_VIEW_STORAGE);
-        return raw ? JSON.parse(raw) : {};
-      } catch (_) {
+        return JSON.parse(localStorage.getItem(LOCAL_VIEW_STORAGE) || "{}");
+      } catch {
         return {};
       }
     }
 
-    function writeLocalViews(obj) {
+    function saveLocalViews(obj) {
       try {
         localStorage.setItem(LOCAL_VIEW_STORAGE, JSON.stringify(obj));
-      } catch (_) {}
+      } catch {}
     }
 
-    function updateSiteViewUI() {
+    function renderSiteViewsBadge() {
       const el = document.getElementById("site-views-count");
       if (el) {
-        el.textContent = String(Math.max(0, Number(siteViewCount) || 0));
+        el.textContent = Number(siteViewsCache || 0).toLocaleString("az-AZ");
       }
     }
 
     async function trackSiteView() {
-      const localMap = readLocalViews();
-      const nextLocal = (Number(localMap[SITE_VIEW_KEY]) || 0) + 1;
-      localMap[SITE_VIEW_KEY] = nextLocal;
-      writeLocalViews(localMap);
-      siteViewCount = nextLocal;
-      updateSiteViewUI();
+      const localMap = loadLocalViews();
+      const currentLocal = Number(localMap[SITE_VIEW_KEY] || 0) + 1;
+      localMap[SITE_VIEW_KEY] = currentLocal;
+      saveLocalViews(localMap);
+      siteViewsCache = currentLocal;
+      renderSiteViewsBadge();
 
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          siteViewCount = Math.max(num, nextLocal);
-          localMap[SITE_VIEW_KEY] = siteViewCount;
-          writeLocalViews(localMap);
-          updateSiteViewUI();
-        }
-      } catch (_) {}
-    }
-
-    function stopTimer() {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-      }
-    }
-
-    function formatTime(sec) {
-      const safeSec = Math.max(0, Number(sec) || 0);
-      const mins = Math.floor(safeSec / 60);
-      const secs = safeSec % 60;
-      return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-    }
-
-    function updateTimerUI() {
-      const el = document.getElementById("q-timer");
-      if (!el) return;
-      el.textContent = `⏱ ${formatTime(remainingSeconds)}`;
-      if (remainingSeconds <= 300) {
-        el.classList.add("warning");
-      } else {
-        el.classList.remove("warning");
-      }
-    }
-
-    function startTimer(minutes) {
-      stopTimer();
-      remainingSeconds = Math.max(1, Number(minutes) || 60) * 60;
-      updateTimerUI();
-
-      timerInterval = setInterval(() => {
-        if (remainingSeconds > 0) {
-          remainingSeconds -= 1;
-          updateTimerUI();
-        }
-        if (remainingSeconds <= 0) {
-          stopTimer();
-          if (!quizFinished && currentTest) {
-            finishQuiz(true);
+        const res = await fetch(`${COUNTER_BASE}/hit/${SITE_VIEW_KEY}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (typeof data.value === "number") {
+            siteViewsCache = Math.max(data.value, currentLocal);
+            renderSiteViewsBadge();
           }
         }
-      }, 1000);
+      } catch {}
     }
 
-    function counterKey(testId) {
-      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
+    function getCounterKey(testId) {
+      return `${COUNTER_PREFIX}_${testId.replace(/[^a-zA-Z0-9_-]/g, "_")}`;
     }
 
-    function getCountValue(testId) {
-      return typeof visitCounts[testId] === "number" ? visitCounts[testId] : 0;
+    function getDisplayCount(testId) {
+      const localMap = loadLocalViews();
+      const key = getCounterKey(testId);
+      const remoteVal = Number(statsCache[testId] || 0);
+      const localVal = Number(localMap[key] || 0);
+      return Math.max(remoteVal, localVal);
     }
 
-    function updateVisitUI(testId) {
-      const val = getCountValue(testId);
-      const cardEl = document.getElementById(`visits-card-${testId}`);
-      if (cardEl) {
-        cardEl.textContent = `İştirak sayı: ${val}`;
+    function updateCounterBadges(testId) {
+      const count = getDisplayCount(testId);
+      const badgeEl = document.getElementById(`count-${testId}`);
+      if (badgeEl) {
+        badgeEl.textContent = `${count} iştirak`;
       }
       if (currentTest && currentTest.id === testId) {
-        const qEl = document.getElementById("q-visits");
-        if (qEl) {
-          qEl.textContent = `İştirak: ${val}`;
+        const qVisitsEl = document.getElementById("q-visits");
+        if (qVisitsEl) {
+          qVisitsEl.textContent = `👥 ${count} iştirak`;
         }
       }
     }
 
-    async function fetchCount(testId) {
-      const localMap = readLocalViews();
-      const k = counterKey(testId);
-      const localVal = Number(localMap[k]) || 0;
-      if (localVal > getCountValue(testId)) {
-        visitCounts[testId] = localVal;
-        updateVisitUI(testId);
-      }
-      try {
-        const res = await fetch(`${COUNTER_BASE}/get/${k}?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          visitCounts[testId] = Math.max(num, localVal);
-          localMap[k] = visitCounts[testId];
-          writeLocalViews(localMap);
-          updateVisitUI(testId);
-        }
-      } catch (_) {}
-    }
-
-    async function hitCount(testId) {
-      const localMap = readLocalViews();
-      const k = counterKey(testId);
-      const nextLocal = Math.max((Number(visitCounts[testId]) || 0), (Number(localMap[k]) || 0)) + 1;
-      visitCounts[testId] = nextLocal;
-      localMap[k] = nextLocal;
-      writeLocalViews(localMap);
-      updateVisitUI(testId);
+    async function recordTestAttempt(testId) {
+      const localMap = loadLocalViews();
+      const key = getCounterKey(testId);
+      const nextLocal = Number(localMap[key] || 0) + 1;
+      localMap[key] = nextLocal;
+      saveLocalViews(localMap);
+      statsCache[testId] = Math.max(Number(statsCache[testId] || 0), nextLocal);
+      updateCounterBadges(testId);
 
       try {
-        const res = await fetch(`${COUNTER_BASE}/hit/${k}?t=${Date.now()}`, {
-          cache: "no-store"
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        const num = Number(data.value);
-        if (Number.isFinite(num)) {
-          visitCounts[testId] = Math.max(num, nextLocal);
-          localMap[k] = visitCounts[testId];
-          writeLocalViews(localMap);
-          updateVisitUI(testId);
+        const res = await fetch(`${COUNTER_BASE}/hit/${key}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (typeof data.value === "number") {
+            statsCache[testId] = Math.max(data.value, nextLocal);
+            updateCounterBadges(testId);
+          }
         }
-      } catch (_) {}
+      } catch {}
     }
 
-    function loadAllCounts() {
-      TESTS.forEach(t => fetchCount(t.id));
+    async function loadAllTestCounts() {
+      const localMap = loadLocalViews();
+      TESTS.forEach((t) => {
+        const key = getCounterKey(t.id);
+        statsCache[t.id] = Number(localMap[key] || 0);
+        updateCounterBadges(t.id);
+      });
+
+      await Promise.all(
+        TESTS.map(async (t) => {
+          const key = getCounterKey(t.id);
+          try {
+            const res = await fetch(`${COUNTER_BASE}/get/${key}`);
+            if (res.ok) {
+              const data = await res.json();
+              if (typeof data.value === "number") {
+                statsCache[t.id] = Math.max(data.value, Number(localMap[key] || 0));
+                updateCounterBadges(t.id);
+              }
+            }
+          } catch {}
+        })
+      );
     }
 
     function setFilter(group, btn) {
-      activeGroup = group;
-      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      activeFilter = group;
+      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
       if (btn) btn.classList.add("active");
-      renderTests();
+      renderTestList();
     }
 
-    function renderTests() {
-      const list = document.getElementById("test-list");
-      const filtered = activeGroup === "all"
-        ? TESTS
-        : TESTS.filter(t => t.group === activeGroup);
-
-      if (!filtered.length) {
-        list.innerHTML = `<div class="quiz-card">Bu kateqoriyada hələ sınaq yoxdur.</div>`;
-        return;
-      }
-
-      list.innerHTML = filtered.map(t => `
+    function renderTestList() {
+      const listEl = document.getElementById("test-list");
+      const filtered = activeFilter === "all" ? TESTS : TESTS.filter((t) => t.group === activeFilter);
+      listEl.innerHTML = filtered.map((t) => `
         <div class="test-card">
           <div class="test-card-left">
             <div class="num-badge">
               <div class="num-badge-main">${t.num}</div>
-              <div class="num-badge-tag">YENİ</div>
+              <div class="num-badge-tag">ÖDƏNİŞSİZ</div>
             </div>
             <div>
               <h3 class="test-title">${t.title}</h3>
               <div class="test-meta">
-                <span>Müəllim: Nurid Əsədullayev</span>
+                <span>${t.questions.length} sual</span>
                 <span>⏱ ${t.minutes} dəqiqə</span>
-                <span id="visits-card-${t.id}" style="color:#4c1d95; font-weight:800;">İştirak sayı: ${getCountValue(t.id)}</span>
-                <span class="count-pill">${t.questions.length} Sual</span>
+                <span>100 ballıq şkala</span>
+                <span class="count-pill" id="count-${t.id}">${getDisplayCount(t.id)} iştirak</span>
               </div>
             </div>
           </div>
@@ -3183,25 +3140,63 @@
       `).join("");
     }
 
-    async function startTest(testId) {
-      const found = TESTS.find(t => t.id === testId);
+    function goHome() {
+      if (timerInterval) clearInterval(timerInterval);
+      document.getElementById("quiz-view").style.display = "none";
+      document.getElementById("result-view").style.display = "none";
+      document.getElementById("home-view").style.display = "block";
+      renderTestList();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startTest(testId) {
+      const found = TESTS.find((t) => t.id === testId);
       if (!found) return;
-      currentTest = found;
-      activeQuestions = prepareShuffledQuestions(found.questions);
-      qIdx = 0;
-      picked = {};
-      confirmed = {};
-      quizFinished = false;
+
+      const preparedQuestions = prepareShuffledQuestions(found.questions);
+      currentTest = {
+        ...found,
+        questions: preparedQuestions
+      };
+      currentIndex = 0;
+      userAnswers = Array(currentTest.questions.length).fill(null);
+      confirmedFlags = Array(currentTest.questions.length).fill(false);
+      remainingSeconds = currentTest.minutes * 60;
 
       document.getElementById("home-view").style.display = "none";
       document.getElementById("result-view").style.display = "none";
       document.getElementById("quiz-view").style.display = "block";
-      document.getElementById("q-test-title").textContent = found.title;
+      document.getElementById("q-test-title").textContent = currentTest.title;
 
-      updateVisitUI(found.id);
-      startTimer(found.minutes);
+      recordTestAttempt(currentTest.id);
+      startTimer();
       renderQuestion();
-      await hitCount(found.id);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        remainingSeconds--;
+        if (remainingSeconds <= 0) {
+          remainingSeconds = 0;
+          clearInterval(timerInterval);
+          updateTimerDisplay();
+          finishQuiz();
+          return;
+        }
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const el = document.getElementById("q-timer");
+      if (!el) return;
+      const mins = Math.floor(remainingSeconds / 60);
+      const secs = remainingSeconds % 60;
+      el.textContent = `⏱ ${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+      el.classList.toggle("warning", remainingSeconds <= 180);
     }
 
     function normalizeOpenAnswer(val) {
@@ -3209,224 +3204,200 @@
         .trim()
         .toLowerCase()
         .replace(/\s+/g, " ")
-        .replace(/°/g, "")
-        .replace(/;/g, ";");
+        .replace(/,/g, ".");
     }
 
-    function isQuestionCorrect(q, userVal) {
-      if (userVal === undefined || userVal === null) return false;
+    function isQuestionCorrect(q, userAns) {
+      if (userAns === null || userAns === undefined || String(userAns).trim() === "") return false;
       if (q.open) {
-        const normUser = normalizeOpenAnswer(userVal);
-        if (!normUser) return false;
-        const acc = Array.isArray(q.accepted) ? q.accepted : [q.answer];
-        return acc.some(a => normalizeOpenAnswer(a) === normUser);
+        const normUser = normalizeOpenAnswer(userAns);
+        const list = Array.isArray(q.accepted) ? q.accepted : [q.answer];
+        return list.some(item => normalizeOpenAnswer(item) === normUser);
       }
-      return userVal === q.answer;
-    }
-
-    function hasUserAnswered(q, userVal) {
-      if (userVal === undefined || userVal === null) return false;
-      if (q.open) return String(userVal).trim().length > 0;
-      return true;
+      return userAns === q.answer;
     }
 
     function renderJumpBar() {
       const bar = document.getElementById("q-jump-bar");
-      if (!bar) return;
-      bar.innerHTML = activeQuestions.map((q, i) => {
-        let cls = "q-jump-btn";
-        if (confirmed[i]) {
-          cls += isQuestionCorrect(q, picked[i]) ? " ok-state" : " bad-state";
-        } else if (hasUserAnswered(q, picked[i])) {
-          cls += " picked-state";
+      if (!bar || !currentTest) return;
+
+      bar.innerHTML = currentTest.questions.map((q, idx) => {
+        const classes = ["q-jump-btn"];
+        if (idx === currentIndex) {
+          classes.push("current-q");
+        } else if (confirmedFlags[idx]) {
+          classes.push(isQuestionCorrect(q, userAnswers[idx]) ? "ok-state" : "bad-state");
+        } else if (userAnswers[idx] !== null && String(userAnswers[idx]).trim() !== "") {
+          classes.push("picked-state");
         }
-        if (i === qIdx) {
-          cls += " current-q";
-        }
-        return `<button type="button" class="${cls}" onclick="jumpToQuestion(${i})">${i + 1}</button>`;
+        return `<button type="button" class="${classes.join(" ")}" onclick="jumpToQuestion(${idx})">${idx + 1}</button>`;
       }).join("");
     }
 
-    function jumpToQuestion(index) {
-      if (index < 0 || index >= activeQuestions.length) return;
-      qIdx = index;
+    function jumpToQuestion(idx) {
+      if (!currentTest || idx < 0 || idx >= currentTest.questions.length) return;
+      currentIndex = idx;
       renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function renderQuestion() {
-      const q = activeQuestions[qIdx];
-      const isConf = !!confirmed[qIdx];
-      const userPick = picked[qIdx];
+      const q = currentTest.questions[currentIndex];
+      const total = currentTest.questions.length;
+      const isConfirmed = confirmedFlags[currentIndex];
+      const selected = userAnswers[currentIndex];
 
-      document.getElementById("q-progress").textContent = `Sual ${qIdx + 1} / ${activeQuestions.length}`;
-      document.getElementById("q-visits").textContent = `İştirak: ${getCountValue(currentTest.id)}`;
+      document.getElementById("q-visits").textContent = `👥 ${getDisplayCount(currentTest.id)} iştirak`;
+      document.getElementById("q-progress").textContent = `Sual ${currentIndex + 1} / ${total}`;
       document.getElementById("q-point-tag").textContent = `${q.points} bal`;
       document.getElementById("q-text").innerHTML = q.q;
+      renderJumpBar();
 
-      const optWrap = document.getElementById("q-options");
+      const optsEl = document.getElementById("q-options");
       const openWrap = document.getElementById("q-open-wrap");
       const openInput = document.getElementById("q-open-input");
 
       if (q.open) {
-        optWrap.style.display = "none";
-        optWrap.innerHTML = "";
+        optsEl.style.display = "none";
+        optsEl.innerHTML = "";
         openWrap.style.display = "block";
-        openInput.value = userPick || "";
-        openInput.disabled = isConf;
+        openInput.value = selected || "";
+        openInput.disabled = isConfirmed;
       } else {
         openWrap.style.display = "none";
-        optWrap.style.display = "flex";
-        optWrap.innerHTML = q.options.map(opt => {
+        optsEl.style.display = "flex";
+        optsEl.innerHTML = q.options.map((opt) => {
           let cls = "opt-btn";
-          if (isConf) {
+          if (isConfirmed) {
             if (opt === q.answer) cls += " correct";
-            else if (opt === userPick) cls += " wrong";
-          } else if (opt === userPick) {
+            else if (opt === selected) cls += " wrong";
+          } else if (opt === selected) {
             cls += " picked";
           }
           const safeOpt = opt.replace(/'/g, "&#39;");
-          return `<button type="button" class="${cls}" ${isConf ? "disabled" : ""} onclick="selectOption('${safeOpt}')">${opt}</button>`;
+          return `<button type="button" class="${cls}" ${isConfirmed ? "disabled" : ""} onclick="selectOption('${safeOpt}')">${opt}</button>`;
         }).join("");
       }
 
-      const expBox = document.getElementById("q-explain");
-      if (isConf) {
-        const ok = isQuestionCorrect(q, userPick);
-        expBox.style.display = "block";
-        expBox.className = `explain-box ${ok ? "ok" : "bad"}`;
-        expBox.innerHTML = `
-          <div style="font-weight:800; margin-bottom:4px;">${ok ? `✓ Doğru cavab (+${q.points} bal)` : "✗ Səhv cavab (0 bal)"}</div>
-          <div><strong>Düzgün cavab:</strong> ${q.answer}</div>
-          <div style="margin-top:4px;"><strong>İzah:</strong> ${q.explain}</div>
+      const confirmBtn = document.getElementById("btn-confirm");
+      confirmBtn.disabled = isConfirmed;
+      confirmBtn.textContent = isConfirmed ? "Cavab təsdiqləndi" : "Cavabı təsdiqlə";
+
+      const explainEl = document.getElementById("q-explain");
+      if (isConfirmed) {
+        const ok = isQuestionCorrect(q, selected);
+        explainEl.style.display = "block";
+        explainEl.className = `explain-box ${ok ? "ok" : "bad"}`;
+        explainEl.innerHTML = `
+          <div style="font-weight:800; margin-bottom:4px;">${ok ? `✓ Doğrudur! (+${q.points} bal)` : `✗ Səhvdir (0 bal). Düzgün cavab: ${q.answer}`}</div>
+          <div>${q.explain}</div>
         `;
       } else {
-        expBox.style.display = "none";
-        expBox.innerHTML = "";
+        explainEl.style.display = "none";
+        explainEl.innerHTML = "";
       }
 
-      const confirmBtn = document.getElementById("btn-confirm");
-      confirmBtn.disabled = isConf || !hasUserAnswered(q, userPick);
-      confirmBtn.textContent = isConf ? "Cavab təsdiqləndi" : "Cavabı təsdiqlə";
-
-      document.getElementById("btn-prev").disabled = qIdx === 0;
-      const isLast = qIdx === activeQuestions.length - 1;
+      document.getElementById("btn-prev").disabled = currentIndex === 0;
+      const isLast = currentIndex === total - 1;
       document.getElementById("btn-next").style.display = isLast ? "none" : "inline-block";
       document.getElementById("btn-finish").style.display = isLast ? "inline-block" : "none";
-
-      renderJumpBar();
     }
 
     function selectOption(opt) {
-      if (confirmed[qIdx]) return;
-      picked[qIdx] = opt;
+      if (confirmedFlags[currentIndex]) return;
+      userAnswers[currentIndex] = opt;
       renderQuestion();
     }
 
     function onOpenInput(val) {
-      if (confirmed[qIdx]) return;
-      picked[qIdx] = val;
-      const q = activeQuestions[qIdx];
-      document.getElementById("btn-confirm").disabled = !hasUserAnswered(q, val);
+      if (confirmedFlags[currentIndex]) return;
+      userAnswers[currentIndex] = val;
       renderJumpBar();
     }
 
     function confirmAnswer() {
-      const q = activeQuestions[qIdx];
-      if (!hasUserAnswered(q, picked[qIdx])) return;
-      confirmed[qIdx] = true;
+      const q = currentTest.questions[currentIndex];
+      const ans = userAnswers[currentIndex];
+      if (ans === null || ans === undefined || String(ans).trim() === "") {
+        alert(q.open ? "Zəhmət olmasa, cavabı yazın!" : "Zəhmət olmasa, bir variant seçin!");
+        return;
+      }
+      confirmedFlags[currentIndex] = true;
       renderQuestion();
     }
 
     function prevQuestion() {
-      if (qIdx > 0) {
-        qIdx--;
+      if (currentIndex > 0) {
+        currentIndex--;
         renderQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
 
     function nextQuestion() {
-      if (qIdx < activeQuestions.length - 1) {
-        qIdx++;
+      if (currentIndex < currentTest.questions.length - 1) {
+        currentIndex++;
         renderQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
 
-    function finishQuiz(autoByTimeout = false) {
-      stopTimer();
-      quizFinished = true;
-
-      let totalScore = 0;
-      let maxScore = 0;
+    function finishQuiz() {
+      if (timerInterval) clearInterval(timerInterval);
       let correctCount = 0;
-      let wrongCount = 0;
+      let earnedPoints = 0;
+      let maxPoints = 0;
 
-      activeQuestions.forEach((q, idx) => {
-        const pts = q.points || 4;
-        maxScore += pts;
-        const userAns = picked[idx];
-        const answered = hasUserAnswered(q, userAns);
-        const ok = isQuestionCorrect(q, userAns);
-        if (ok) {
-          totalScore += pts;
+      currentTest.questions.forEach((q, i) => {
+        maxPoints += q.points;
+        if (isQuestionCorrect(q, userAnswers[i])) {
           correctCount++;
-        } else if (answered) {
-          wrongCount++;
+          earnedPoints += q.points;
         }
       });
 
-      const unansweredCount = activeQuestions.length - correctCount - wrongCount;
-      const percent = maxScore > 0 ? Math.round((totalScore / maxScore) * 100) : 0;
+      const wrongCount = currentTest.questions.length - correctCount;
+      const score100 = maxPoints > 0 ? Math.round((earnedPoints / maxPoints) * 100) : 0;
 
       document.getElementById("quiz-view").style.display = "none";
       document.getElementById("result-view").style.display = "block";
-
-      const timeoutNote = autoByTimeout ? "Vaxt bitdiyi üçün imtahan avtomatik yekunlaşdırıldı. " : "";
       document.getElementById("result-summary").textContent =
-        `${timeoutNote}${currentTest.title} — Ümumi nəticə: ${percent}%`;
+        `${currentTest.title} — Toplanan bal: ${earnedPoints} / ${maxPoints} (100 ballıq şkalada: ${score100} bal)`;
 
       document.getElementById("result-stats").innerHTML = `
         <div class="stat-box score-box">
-          <div class="stat-num">${totalScore} / ${maxScore}</div>
-          <div class="stat-label">Toplanan Bal (${percent}%)</div>
+          <div class="stat-num">${score100} / 100</div>
+          <div class="stat-label">Yekun Bal</div>
         </div>
         <div class="stat-box ok-box">
           <div class="stat-num">${correctCount}</div>
-          <div class="stat-label">Doğru Cavab</div>
+          <div class="stat-label">Düzgün Cavab</div>
         </div>
         <div class="stat-box bad-box">
           <div class="stat-num">${wrongCount}</div>
-          <div class="stat-label">Səhv Cavab${unansweredCount > 0 ? ` (${unansweredCount} boş)` : ""}</div>
+          <div class="stat-label">Səhv / Cavabsız</div>
         </div>
       `;
 
-      document.getElementById("result-list").innerHTML = activeQuestions.map((q, idx) => {
-        const userAns = picked[idx];
+      document.getElementById("result-list").innerHTML = currentTest.questions.map((q, i) => {
+        const userAns = userAnswers[i];
         const ok = isQuestionCorrect(q, userAns);
         return `
-          <div class="explain-box ${ok ? "ok" : "bad"}">
-            <div style="font-weight:800;">Sual ${idx + 1} (${q.points} bal): ${ok ? "✓ Doğru" : "✗ Səhv / Cavabsız"}</div>
-            <div style="margin:4px 0;">${q.q}</div>
-            <div><strong>Sizin cavabınız:</strong> ${hasUserAnswered(q, userAns) ? userAns : "Cavab verilməyib"}</div>
-            <div><strong>Düzgün cavab:</strong> ${q.answer}</div>
-            <div style="margin-top:4px;"><strong>İzah:</strong> ${q.explain}</div>
+          <div class="explain-box ${ok ? "ok" : "bad"}" style="margin-top:10px;">
+            <div style="font-weight:800;">Sual ${i + 1} (${ok ? `+${q.points} bal` : "0 bal"}): ${q.q}</div>
+            <div style="margin-top:4px;">Sizin cavabınız: <strong>${userAns && String(userAns).trim() !== "" ? userAns : "Cavab verilməyib"}</strong></div>
+            <div>Düzgün cavab: <strong>${q.answer}</strong></div>
+            <div style="margin-top:4px; color:#334155;">${q.explain}</div>
           </div>
         `;
       }).join("");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function goHome() {
-      stopTimer();
-      currentTest = null;
-      document.getElementById("quiz-view").style.display = "none";
-      document.getElementById("result-view").style.display = "none";
-      document.getElementById("home-view").style.display = "block";
-      renderTests();
-      loadAllCounts();
-    }
-
-    renderTests();
+    renderTestList();
     trackSiteView();
-    loadAllCounts();
+    loadAllTestCounts();
   </script>
 </body>
 </html>
